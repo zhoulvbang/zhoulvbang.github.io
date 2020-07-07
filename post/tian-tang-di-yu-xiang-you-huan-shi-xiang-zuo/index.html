@@ -1,149 +1,92 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+  <head>
+    
+<meta charset="utf-8" >
 
-<head>
-  <meta charset="UTF-8" />
-<title>天堂地狱，向右还是向左 - 小周的深渊牧场</title>
+<title>天堂地狱，向右还是向左 | 小周的深渊牧场</title>
 <meta name="description" content="温故而知新">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
-<link type='text/css' rel='stylesheet' href='https://zhoulvbang.github.io/styles/main.css' media='screen' />
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script type="text/javascript" src='https://zhoulvbang.github.io/media/scripts/jquery.js'></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-</head>
-
-<body>
-  <div class="layout theme-dark">
-    <div class="layout-header">
-
-	<div class="layout-header-main">
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-
-					<div class="navbar">
-
-						<div class="logo">
-							<a href="https://zhoulvbang.github.io">
-								<img class="logo"
-									src="https://zhoulvbang.github.io/media/images/site_avatar.png?v=1594100843668"
-									alt="">
-							</a>
-						</div>
-
-						<div class="menu d-md-inline-block d-none">
-							<ul class="layout-navigation-list">
-								
-								<li class="layout-navigation-item"><a title="首页"
-										href="/">首页</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="归档"
-										href="/archives">归档</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="标签"
-										href="/tags">标签</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="关于"
-										href="/post/about">关于</a>
-								</li>
-								
-							</ul>
-						</div>
-
-						<div class="item d-md-inline-block d-none">
-							<div class="search-icon">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</div>
-						</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zhoulvbang.github.io/favicon.ico?v=1594100875449">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhoulvbang.github.io/styles/main.css">
 
 
 
-						<div class="d-md-inline-block d-none">
-							<div class="search-lightbox">
-								<div class="search-body">
-
-									<form id="gridea-search-form" data-update="1594100843668" action="/search/" class="search-form">
-										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
-										<button type="submit" class="submit" aria-label="Submit">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</form>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="nav d-md-none d-inline-block">
-							<div class="trigger">
-								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-
-		</div>
-	</div>
-
-</div>
-    <div class="layout-collapse d-md-none">
-	<div class="layout-collapse-main">
-		<ul class="layout-collapse-list">
-			
-			<li class="layout-collapse-item"><a title="首页" href="/">首页</a></li>
-			
-			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
-			
-			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
-			
-			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
-			
-
-		</ul>
-	</div>
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://zhoulvbang.github.io">
+        <img class="avatar" src="https://zhoulvbang.github.io/images/avatar.png?v=1594100875449" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://zhoulvbang.github.io">
+        <h1 class="site-title">小周的深渊牧场</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
 </div>
 
-    <div class="layout-content">
-      <div class="layout-content-main">
-        <div class="container">
-          <div class="row justify-content-lg-center">
-            <div class="col-12 col-lg-9">
-              <div class="layout-post">
-                <div class="layout-post-body">
-                  <div class="row">
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
 
-                    <div class="col-12 col-lg-10">
-                      <div class="layout-post-main m-right m-md-right">
-                        <div class="layout-post-header">
-                          <h1 class="layout-post-title">天堂地狱，向右还是向左</h1>
-                          <div class="layout-post-meta">
-                            <div class="item">
-                              
-                            </div>
-                            <div class="item">
-                              <span>2020-07-04</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="layout-post-content">
-                          <div class="layout-post-item">
-                            
-                            <p>2020/6/30记，花了两个小时看完，挺佩服朱朝阳的，但是更多的是怜悯，无尽的伤悲。</p>
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">天堂地狱，向右还是向左</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-07-04</span>
+            
+          </div>
+          <div class="post-content">
+            <p>2020/6/30记，花了两个小时看完，挺佩服朱朝阳的，但是更多的是怜悯，无尽的伤悲。</p>
 <p>“成年人眼里，孩子永远是简单的，他们根本想象不到孩子的诡计多端，哪怕他们自己也曾当过小孩。”成年人总是用自己的视角与观念看待这个世界，自以为是的同时忽略了很多未成年人的心里变化。关于未成年人犯罪及处在社会边缘的人和事，每一件看过去都会非常的令人难受与窒息。去年在寝室看完《少年的你》，说实话没并没有什么太大的触动，因为我当初不是被霸凌的那个小孩。他们明明刚刚到这个世界上没有多久，却经受过太多恶意和恐惧，这些大多来自他们不幸的家庭、混乱的社会和无序的学校，有些事不大但是却深入心底，以至于，终其一生只能存在于童年的黑暗中，成长为面目全非的成人，然后把他们受过的一切报复给社会和他们的后代。</p>
 <p>世人未曾在他们降生最初以爱呵护，所以，心里的伤口渐渐牵扯成巨大的裂痕，任谁也填补不满，到最后变成吞噬一切的邪恶深渊。我始终觉得，孩子只是一张白纸，一面镜子，他们本身只带着很少的遗传倾向性，是后天的环境与经历塑造和强化了孩子的个性，决定了他们走向成人的路径。他们像植物一样扎根于环境之中，用敏锐的触角感知外界，重复着长辈的言行举止，以自己内化的规则去生活，然后按图索骥适应着环境，展现着他们所拥有的观念与认知。</p>
 <p>可能很多人早已经忘记了作为孩子时的渺小和无助感，以及那种对外界过于敏感鲜活的感知能力。即使是浓重的黑夜，或是扎手指时流出的血，都能勾起尖叫、恐惧和痛苦，更不要说持续的家庭暴力、社会伤害和校园霸凌。没有无缘由的爱恨，也没有无根源的“坏小孩”。朱朝阳、刘北山、陈念，他们每个施加恶意的“一念之间”，背后都堆积着无数承受恶意的瞬间。归根结底，他们都是，或者曾经是，被吓坏了的无助孩子，他们总是无力改变自己所处的环境与自己所能拥有的一切。但所有生物都是趋利避害，人也不例外，“适者生存”是写在我们基因里面的程序。他们只是不希望再落入相同的境地，所以才不断重复做出利己的选择，以至于他们往往会迷失自己的本心堕入无尽黑暗，但是又能有什么办法呢？毫无办法，若是没有人在危急之时伸出援助之手，他们将会永远的沉沦。</p>
@@ -153,120 +96,57 @@
 <p>最后一段话也写出了这个世界、社会的纠结，是要公平与正义，还是要成全一个向着阳光成长的少年。若是为了正义，这世间便少了一个向阳生长的少年。若是为了少年的成长，我们所坚持的公平与正义又该何去何从</p>
 <p>以上</p>
 
-                          </div>
-                        </div>
-                        <div class="layout-post-social">
-                          <div class="item reader">
-                            <div id="/post/tian-tang-di-yu-xiang-you-huan-shi-xiang-zuo/" class="leancloud-visitors view"
-                              data-flag-title="天堂地狱，向右还是向左">
-                              <span class="post-meta-item-text">阅读 </span>
-                              <span class="leancloud-visitors-count"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="layout-post-navigation">
-                          <div class="navigation-list">
-                            
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-12">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/" class="title">
-                                      <h4>前程往事（1）</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner">
-                                    <div class="abstract">
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>下一篇</span></div>
-                                  <div class="item">2020-07-04</div>
-                                </div>
-                              </div>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-
-                        <div class="layout-comments"></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-lg-2 d-none d-lg-block">
-                      <div class="layout-post-sidebar">
-                        <div class="layout-sidebar-item">
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/">
+              <h3 class="post-title">
+                下一篇：前程往事（1）
+              </h3>
+            </a>
+          </div>
+          
       </div>
-    </div>
 
-    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+      
 
-    	<div class="layout-footer">
-
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-					<div class="footer">
-						<div class="row">
-							<div class="col-12 col-md-9">
-								<div class="footer-copy">
-									
-									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-									<div class="footer-icp d-none d-sm-inline-block">
-										<span class="px-2">⋅</span>
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3 d-none d-md-block">
-								<div class="footer-links">
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-	<script type="text/javascript" src='https://zhoulvbang.github.io/media/scripts/main.js'></script>
-	
-
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</body>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zhoulvbang.github.io/atom.xml" target="_blank">RSS</a>
+</div>
 
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
 </html>
