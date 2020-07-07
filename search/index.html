@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 <head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 <title>小周的深渊牧场</title>
 <meta name="description" content="温故而知新">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -17,11 +17,15 @@
 <script>
     hljs.initHighlightingOnLoad();
 </script>
+    <script src="/media/search/fuse.js"></script>
+    <script src="/media/search/ejs.min.js"></script>
+    <script src="/media/search/gridea-search.js"></script>
+    <script src="/media/search/result.ejs" type="text/ejs"></script>
 </head>
 
 <body>
-	<div class="layout theme-dark">
-		<div class="layout-header">
+    <div class="layout theme-dark">
+        <div class="layout-header">
 
 	<div class="layout-header-main">
 		<div class="container">
@@ -101,7 +105,7 @@
 	</div>
 
 </div>
-		<div class="layout-collapse d-md-none">
+        <div class="layout-collapse d-md-none">
 	<div class="layout-collapse-main">
 		<ul class="layout-collapse-list">
 			
@@ -118,121 +122,39 @@
 	</div>
 </div>
 
-		<div class="layout-content">
-			<div class="layout-content-main">
-				<div class="container">
-					<div class="row justify-content-lg-center">
-						<div class="col-12 col-lg-9">
-							<div class="layout-archive">
-								
-								
+        <div class="layout-content">
+            <div class="layout-content-main">
+                <div class="container">
+                    <div class="row justify-content-lg-center">
+                        <div class="col-12 col-lg-9">
+                            <div id="gridea-search-result" class="layout-archive">
 
-								<div class="card">
-									<div class="card-header">
-										<div class="header-content">
-											<div class="title">2020</div>
-										</div>
+                                <div class="card searching">
+                                    <div class="card-header">
+                                        <div class="header-content">
+                                            <div class="title">搜索中......</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-									</div>
-									<div class="card-body">
-										
-										
-										<div class="card-item">
-											<div class="thumb">
-												
-												<a href="https://zhoulvbang.github.io/post/tian-tang-di-yu-xiang-you-huan-shi-xiang-zuo/"
-													style="background-image: url('https://zhoulvbang.github.io/images/avatar.png')"></a>
-												
-											</div>
-											<div class="list-content">
-												<div class="list-body">
-													<a class="title" href="https://zhoulvbang.github.io/post/tian-tang-di-yu-xiang-you-huan-shi-xiang-zuo/">天堂地狱，向右还是向左</a>
-													<div class="time">2020-07-04</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										<div class="card-item">
-											<div class="thumb">
-												
-												<a href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/"
-													style="background-image: url('https://zhoulvbang.github.io/images/avatar.png')"></a>
-												
-											</div>
-											<div class="list-content">
-												<div class="list-body">
-													<a class="title" href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/">前程往事（1）</a>
-													<div class="time">2020-07-04</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										
-									</div>
-								</div>
-								
+                                <div class="card no-result" style="display:none">
+                                    <div class="card-header">
+                                        <div class="header-content">
+                                            <div class="title">未搜索到相关文章</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-								<div class="card">
-									<div class="card-header">
-										<div class="header-content">
-											<div class="title">2018</div>
-										</div>
+                            </div>
 
-									</div>
-									<div class="card-body">
-										
-										
-										
-										
-										
-										
-										<div class="card-item">
-											<div class="thumb">
-												
-												<a href="https://zhoulvbang.github.io/post/hello-gridea/" style="background-image: url('https://zhoulvbang.github.io/post-images/hello-gridea.png')"></a>
-												
-											</div>
-											<div class="list-content">
-												<div class="list-body">
-													<a class="title" href="https://zhoulvbang.github.io/post/hello-gridea/">Hello Gridea</a>
-													<div class="time">2018-12-12</div>
-												</div>
-											</div>
-										</div>
-										
-										
-									</div>
-								</div>
-								
-							</div>
+                        </div>
+                    </div>
 
-							<div class="layout-paginator">
-								<div class="paginator row">
-									<div class="col-6">
-										
-										<a class="btn disabled btn-paginator width-100">上一页</a>
-										
-									</div>
-									<div class="col-6">
-										
-										<a class="btn disabled btn-paginator width-100">下一页</a>
-										
-									</div>
-								</div>
-							</div>
+                </div>
+            </div>
+        </div>
 
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-			<div class="layout-footer">
+        	<div class="layout-footer">
 
 		<div class="container">
 			<div class="row justify-content-lg-center">
@@ -280,7 +202,7 @@
 
 	<script type="text/javascript" src='https://zhoulvbang.github.io/media/scripts/main.js'></script>
 	
-	</div>
+    </div>
 </body>
 
 </html>

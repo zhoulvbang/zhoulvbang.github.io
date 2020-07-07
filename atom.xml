@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhoulvbang.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-07-07T05:44:59.402Z</updated>
+    <title>小周的深渊牧场</title>
+    <updated>2020-07-07T05:47:27.154Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhoulvbang.github.io"/>
     <link rel="self" href="https://zhoulvbang.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://zhoulvbang.github.io/images/avatar.png</logo>
     <icon>https://zhoulvbang.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, 小周的深渊牧场</rights>
     <entry>
         <title type="html"><![CDATA[天堂地狱，向右还是向左]]></title>
         <id>https://zhoulvbang.github.io/post/tian-tang-di-yu-xiang-you-huan-shi-xiang-zuo/</id>
@@ -28,7 +28,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[小周的曾经（1）]]></title>
+        <title type="html"><![CDATA[前程往事（1）]]></title>
         <id>https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/</id>
         <link href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/">
         </link>

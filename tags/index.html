@@ -1,75 +1,209 @@
-<!doctype html>
-<html amp lang="">
-    <head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="description" content="温故而知新" />
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preconnect dns-prefetch" href="https://cdn.jsdelivr.net/" crossorigin>
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-<title>Gridea</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8" />
+<title>小周的深渊牧场</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://zhoulvbang.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://zhoulvbang.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+	<div class="layout theme-dark">
+		<div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://zhoulvbang.github.io">
+								<img class="logo"
+									src="https://zhoulvbang.github.io/media/images/site_avatar.png?v=1594100843668"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="/">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
 
 
-  
 
-    
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
 
+									<form id="gridea-search-form" data-update="1594100843668" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
 
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-<link rel="canonical" href="https://zhoulvbang.github.io" />
-<link rel="shortcut icon" href="https://zhoulvbang.github.io/favicon.ico?v=1594100179542">
+								</div>
+							</div>
+						</div>
 
-<meta name="author" content="">
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
 
-<meta itemprop="name" content="Gridea">
-<meta itemprop="description" content="温故而知新">
-<meta itemprop="image" content="">
+					</div>
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gridea">
-<meta name="twitter:description" content="温故而知新">
-<meta name="twitter:image" content="" />
-<meta name="twitter:image:alt" content="Gridea" />
-
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://zhoulvbang.github.io">
-<meta property="og:title" content="Gridea">
-<meta property="og:description" content="温故而知新">
-<meta property="og:image" content="">
-<meta property="og:image:alt" content="Gridea" />
-<meta property="og:site_name" content="Gridea">
-<meta property="og:locale" content="zh_CN">
-<meta property="tag" content="Gridea" />
+				</div>
+			</div>
 
 
 
 
+		</div>
+	</div>
+
+</div>
+		<div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="/">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+		<div class="layout-content">
+			<div class="layout-content-main">
+				<div class="container">
+					<div class="row justify-content-lg-center">
+						<div class="col-12 col-lg-9">
+							<div class="layout-tags row">
+								
+								<div class="col-6 mb-3">
+									<div class="card">
+										<div class="card-header">
+											<div class="header-content">
+												<div class="title">Gridea</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div class="card-item">
+												<div class="list-content">
+													<div class="list-body">
+														<div class="title" href=""><span> 1 </span> 篇文章</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-<link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://zhoulvbang.github.io/atom.xml">
 
-      
-      
+			<div class="layout-footer">
 
-  <meta http-equiv="refresh" content="1;url=https://zhoulvbang.github.io"> 
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  </head>
-  <body>
-    <footer>
-  <div class="footer-container">
-    <div class="footer-menus">
-    </div>
-    <div class="footer-copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-      
-      
+	</div>
 
-    </div>
-  </div>
-</footer>
+	<script type="text/javascript" src='https://zhoulvbang.github.io/media/scripts/main.js'></script>
+	
+	</div>
+</body>
 
-
-  </body>
 </html>
