@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhoulvbang.github.io</id>
     <title>小周的深渊牧场</title>
-    <updated>2020-07-10T14:52:14.954Z</updated>
+    <updated>2020-07-10T14:55:57.158Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhoulvbang.github.io"/>
     <link rel="self" href="https://zhoulvbang.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://zhoulvbang.github.io/post/she-shou-xiao-zhou/">
         </link>
         <updated>2020-07-10T14:46:33.000Z</updated>
-        <content type="html"><![CDATA[<p>#+佛系放几张照片，emmmmm……#+</p>
+        <content type="html"><![CDATA[<h2 id="佛系放几张照片emmmmm">佛系放几张照片，emmmmm……</h2>
 <p><strong>武汉东湖😃</strong></p>
 <figure data-type="image" tabindex="1"><img src="https://zhoulvbang.github.io/post-images/1594392456597.jpg" alt="" loading="lazy"></figure>
 ]]></content>
@@ -66,7 +66,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[前程往事（1）]]></title>
+        <title type="html"><![CDATA[前程往事]]></title>
         <id>https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/</id>
         <link href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/">
         </link>
