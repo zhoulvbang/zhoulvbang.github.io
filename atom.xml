@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhoulvbang.github.io</id>
     <title>小周的深渊牧场</title>
-    <updated>2020-07-10T14:42:44.826Z</updated>
+    <updated>2020-07-10T14:49:49.093Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhoulvbang.github.io"/>
     <link rel="self" href="https://zhoulvbang.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://zhoulvbang.github.io/images/avatar.png</logo>
     <icon>https://zhoulvbang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小周的深渊牧场</rights>
+    <entry>
+        <title type="html"><![CDATA[摄手小周]]></title>
+        <id>https://zhoulvbang.github.io/post/she-shou-xiao-zhou/</id>
+        <link href="https://zhoulvbang.github.io/post/she-shou-xiao-zhou/">
+        </link>
+        <updated>2020-07-10T14:46:33.000Z</updated>
+        <content type="html"><![CDATA[<p>佛系放几张照片，emmmmm……</p>
+<p><strong>武汉东湖😃</strong><br>
+<img src="https://zhoulvbang.github.io/post-images/1594392456597.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[夺命大乌苏]]></title>
         <id>https://zhoulvbang.github.io/post/duo-ming-da-wu-su/</id>
