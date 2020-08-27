@@ -2,11 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhoulvbang.github.io</id>
     <title>小周的深渊牧场</title>
-    <updated>2020-08-26T08:57:07.661Z</updated>
+    <updated>2020-08-27T11:59:37.731Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhoulvbang.github.io"/>
     <link rel="self" href="https://zhoulvbang.github.io/atom.xml"/>
-    <subtitle>愿热爱指引你前进的方向，为了你的所爱之人永不停歇</subtitle>
+    <subtitle>愿热爱指引你前进的方向，为了你的所爱之人永不停歇
+（欢迎关注xiaozhou的知乎与推特）</subtitle>
     <logo>https://zhoulvbang.github.io/images/avatar.png</logo>
     <icon>https://zhoulvbang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小周的深渊牧场</rights>
@@ -16,8 +17,8 @@
         <link href="https://zhoulvbang.github.io/post/lesslessda-hua-xi-fang-yi-zhu-shi-greatergreater-sui-bi/">
         </link>
         <updated>2020-08-26T08:30:38.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://zhoulvbang.github.io/post-images/1598431383245.jpg" alt="" loading="lazy"><br>
-第二本关于西方艺术的书，相比于上一本，这一本穿插了很多作者自己的理解，并且补充了很多内容，这对于我们这些对西方艺术不太了解的人来说是比较友好的。</p>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://zhoulvbang.github.io/post-images/1598431383245.jpg" alt="" loading="lazy"></figure>
+<p>第二本关于西方艺术的书，相比于上一本，这一本穿插了很多作者自己的理解，并且补充了很多内容，这对于我们这些对西方艺术不太了解的人来说是比较友好的。</p>
 <p>所有的艺术故事都和所有好故事一样，有着非常经典的开头：“在很久很久以前……”</p>
 <p>原始艺术起源于一种典型的原始思维，即“交感思维”。这些远古时期的人相信，我画下了你，我就占有了你；我伤害了你的画像，也就间接地伤害到了你本人。就这样有意思的有了艺术，艺术的起源，竟然是“画个圈圈诅咒你”。</p>
 <p>西方艺术来源于两个文明，希腊文明与希伯来文明就像是种子，它们生根发芽，长成了枝繁叶茂的参天大树，结出的果实就是西方社会的文学和艺术。希腊神话看起来人物繁多，剧情杂乱，但其实脉络还是特别清晰的，无非就是“神的起源、王位争夺、宙斯的情史”这三个部分；而《圣经》就是一个“人与神（即上帝）不断约定”的故事。《圣经》主要分为《旧约》和《新约》两部分，讲了神和人类的七个约定。</p>
@@ -48,9 +49,9 @@
 <p>艺术不是外星人突然丢到地球上的包裹，而是一代代艺术家用自己的作品推动、发展得来的精神产物。它的每一次转变都会根据不同的社会政治和经济环境等而变化。艺术可能比现实生活“高”那么一点点，但它终究源于生活。</p>
 <p>记得一切是如何开始的吗？那不过是山洞里的一堆壁画，是对生活的希冀。就在这希冀中，西方艺术一步步前行，经历了无边无际的神话世界，经历了古埃及神秘的死亡艺术，终于在古希腊到达了第一座高峰，自“断臂维纳斯”开始，美的典范得以树立。千百年来，西方人一直在“要不要复古”这个问题中犹豫徘徊。在中世纪漫长而极端的禁欲艺术之后，艺术家打着复古旗号掀起了伟大的艺术改革，用人文精神将艺术推上了灿烂的顶点。紧接着，巴洛克时期的卡拉瓦乔抛弃了古典的理想美，寻求真实；洛可可时期的布歇等人甚至把古典美贬得一塌糊涂，老家伙们过时了，“动感青春”才是王道。</p>
 <p>你看，古希腊定义了古典，中世纪将其抛弃；文艺复兴寻回了古典，巴洛克、洛可可对古典主义进行批判。到了法国大革命时代，出现了新古典主义，大卫和他的学生安格尔高举古典美的旗帜，说洛可可艺术是奢靡、情色、堕落，古典美才是最好的。人类的艺术就是这么纠结，就是在这样来来回回的摸索中前行。</p>
-<p>我们不需要成为艺术界专业的学者，但也不能以纯粹无知的状态去欣赏艺术。<br>
-<img src="https://zhoulvbang.github.io/post-images/1598431151360.jpg" alt="" loading="lazy"><br>
-<img src="https://zhoulvbang.github.io/post-images/1598431158371.jpg" alt="" loading="lazy"></p>
+<p>我们不需要成为艺术界专业的学者，但也不能以纯粹无知的状态去欣赏艺术。</p>
+<figure data-type="image" tabindex="2"><img src="https://zhoulvbang.github.io/post-images/1598431151360.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://zhoulvbang.github.io/post-images/1598431158371.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -62,8 +63,9 @@
         <content type="html"><![CDATA[<p><strong>感谢军军学长的拍摄</strong></p>
 <ul>
 <li>自上学期认识学长以后，因学长会拍照，有自己的设备，便邀请学长为小周拍一组照片（骗），学长已是大三，马上要转去东塘见习，所以在含浦的最后几天，抽出了一点时间为小周拍了这组照片</li>
-<li>而小周因为比赛还留在学校，明天也就回家了<br>
-<img src="https://zhoulvbang.github.io/post-images/1594916955239.jpg" alt="" loading="lazy"><br>
+<li>而小周因为比赛还留在学校，明天也就回家了</li>
+</ul>
+<p><img src="https://zhoulvbang.github.io/post-images/1594916955239.jpg" alt="" loading="lazy"><br>
 <img src="https://zhoulvbang.github.io/post-images/1594916963502.jpg" alt="" loading="lazy"><br>
 <img src="https://zhoulvbang.github.io/post-images/1594916968794.jpg" alt="" loading="lazy"><br>
 <img src="https://zhoulvbang.github.io/post-images/1594916973855.jpg" alt="" loading="lazy"><br>
@@ -73,10 +75,9 @@
 <img src="https://zhoulvbang.github.io/post-images/1594916991008.jpg" alt="" loading="lazy"><br>
 <img src="https://zhoulvbang.github.io/post-images/1594916995147.jpg" alt="" loading="lazy"><br>
 <img src="https://zhoulvbang.github.io/post-images/1594916999022.jpg" alt="" loading="lazy"><br>
-<img src="https://zhoulvbang.github.io/post-images/1594917004038.jpg" alt="" loading="lazy"><br>
-<strong>会越来越好的，因为小周值得</strong><br>
-一切都会好起来的，我相信未来会越来越好</li>
-</ul>
+<img src="https://zhoulvbang.github.io/post-images/1594917004038.jpg" alt="" loading="lazy"></p>
+<p><strong>会越来越好的，因为小周值得</strong><br>
+一切都会好起来的，我相信未来会越来越好</p>
 ]]></content>
     </entry>
     <entry>
@@ -111,8 +112,8 @@
 这个时代哪儿还有什么边塞？<br>
 谁说动人的故事，只配发生在北上广？<br>
 可否携你的手去彩云之南？<br>
-雪落长安，今年可否拥你入怀？<br>
-<img src="https://zhoulvbang.github.io/post-images/1594389862140.jpg" alt="" loading="lazy"></p>
+雪落长安，今年可否拥你入怀？</p>
+<figure data-type="image" tabindex="1"><img src="https://zhoulvbang.github.io/post-images/1594389862140.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -129,9 +130,9 @@
 <p>希望所有的“朱朝阳”都能有机会长大，拥抱美丽的明天。</p>
 <p><em>这一厘米，向右，也许是一个孩子从此过上全新的生活，好好学习，天天向上；向左，也许他的所有虚伪被揭穿，赤裸裸地展现在周围人面前，心理受重创，改变他接下来的整个人生。 这一厘米，通向两个截然不同的未来。 这一厘米，是世上最长的一厘米。</em></p>
 <p>最后一段话也写出了这个世界、社会的纠结，是要公平与正义，还是要成全一个向着阳光成长的少年。若是为了正义，这世间便少了一个向阳生长的少年。若是为了少年的成长，我们所坚持的公平与正义又该何去何从</p>
-<p>以上<br>
-<img src="https://zhoulvbang.github.io/post-images/1594390403027.webp" alt="" loading="lazy"><br>
-<img src="https://zhoulvbang.github.io/post-images/1594390279938.webp" alt="" loading="lazy"></p>
+<p>以上</p>
+<figure data-type="image" tabindex="1"><img src="https://zhoulvbang.github.io/post-images/1594390403027.webp" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://zhoulvbang.github.io/post-images/1594390279938.webp" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
