@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhoulvbang.github.io</id>
     <title>小周的深渊牧场</title>
-    <updated>2020-10-06T10:46:37.863Z</updated>
+    <updated>2020-10-15T15:43:53.671Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhoulvbang.github.io"/>
     <link rel="self" href="https://zhoulvbang.github.io/atom.xml"/>
@@ -12,7 +12,23 @@
     <icon>https://zhoulvbang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小周的深渊牧场</rights>
     <entry>
-        <title type="html"><![CDATA[call me by your name]]></title>
+        <title type="html"><![CDATA[就别重逢成何景，不是悲来就是喜]]></title>
+        <id>https://zhoulvbang.github.io/post/jiu-bie-chong-feng-cheng-he-jing-bu-shi-bei-lai-jiu-shi-xi/</id>
+        <link href="https://zhoulvbang.github.io/post/jiu-bie-chong-feng-cheng-he-jing-bu-shi-bei-lai-jiu-shi-xi/">
+        </link>
+        <updated>2020-10-15T15:26:27.000Z</updated>
+        <content type="html"><![CDATA[<p>大概以后都会规律的来这里写写日记了吧，总要找个地方当树洞。</p>
+<p>傍晚收到了中大胡同学的明信片，非常感动与欣喜。</p>
+<blockquote>
+<p>周周好，很高兴能认识你！在我的第一印象里，你是一个阳光且睿智的男生。看到了你的主页，写了很多有趣的文章，还有个人的写真集，我觉得还挺酷的。不过，有的时候也会在动态里看到过往的感伤，也不知道你经历什么。<br>
+总而言之：“但行好事，莫问前程，我们都有光明的未来。“</p>
+</blockquote>
+<p>这些话真的写到了很多东西，人生这条路，是在太难走了，难以抗衡这世俗的一切，但是又不得不在这里慢慢挣扎。</p>
+<p>很多故事都想写出来，留作回忆，让时间窖藏，沉于在黑暗中。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Call Me By Your Name]]></title>
         <id>https://zhoulvbang.github.io/post/call-me-by-your-name/</id>
         <link href="https://zhoulvbang.github.io/post/call-me-by-your-name/">
         </link>
@@ -242,7 +258,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[前程往事]]></title>
+        <title type="html"><![CDATA[曾经的钓鱼贴]]></title>
         <id>https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/</id>
         <link href="https://zhoulvbang.github.io/post/xiao-zhou-de-ceng-jing-1/">
         </link>
@@ -302,16 +318,14 @@
 可能更多的是想交到有意思的朋友啦</p>
 <p>可以私信换照或者加微信<br>
 照骗一张，认出来的朋友不要往外说呀！记得给我打个招呼</p>
-<p>上学的那一天<br>
-这里传送门</p>
-<p>关于过往</p>
+<p>#关于过往</p>
 <p>放弃一个喜欢很久的人什么感觉？<br>
 ​<br>
 “希望我们</p>
 <p>都是苦尽甘来之人</p>
 <p>但愿殊途同归</p>
 <p>你能同我讲来时的路”</p>
-<p>写在最后</p>
+<p>#写在最后</p>
 <p>我已和父母及某些亲友出柜</p>
 <p>目前父母冷处理，在某些方面达成一致</p>
 <p>希望时间会让他们慢慢接受</p>
@@ -320,9 +334,6 @@
 <p>所以我一直在让自己优秀的路上</p>
 <p>希望我的那一位能够让我不是一个人抗下这一切</p>
 <p>未来应该不会结婚，考虑代孕，是不是想的太早了？</p>
-<p>有没有知友们一起讨论一下出柜这件事，我在这个上面有一些思考和心得，也许会对在迷茫海上的你有所帮助<br>
-超级懒的小周：出柜是种怎样的体验？</p>
-<p>这里写了一些小东西</p>
 ]]></content>
     </entry>
     <entry>
