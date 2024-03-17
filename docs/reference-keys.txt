@@ -19,3 +19,12 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+usage用法
+render-book渲染这本书
+preview-book预览这本书
+关于卫生统计学
+卫生统计学介绍与展望
+什么是卫生统计学
+卫生统计学的重要性
+卫生统计学的未来展望
+结语
