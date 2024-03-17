@@ -58,3 +58,94 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+<!--chapter:end:index.Rmd-->
+
+
+# 关于卫生统计学
+
+Placeholder
+
+
+## 卫生统计学：介绍与展望
+### 什么是卫生统计学？
+### 卫生统计学的重要性
+### 卫生统计学的未来展望
+### 结语
+
+<!--chapter:end:01-intro.Rmd-->
+
+
+# Cross-references {#cross}
+
+Placeholder
+
+
+## Chapters and sub-chapters
+## Captioned figures and tables
+
+<!--chapter:end:02-cross-refs.Rmd-->
+
+# Parts
+
+You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file. 
+
+Add a numbered part: `# (PART) Act one {-}` (followed by `# A chapter`)
+
+Add an unnumbered part: `# (PART\*) Act one {-}` (followed by `# A chapter`)
+
+Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff {-}` (followed by `# A chapter`). Chapters in an appendix are prepended with letters instead of numbers.
+
+
+
+
+<!--chapter:end:03-parts.Rmd-->
+
+# Footnotes and citations 
+
+## Footnotes
+
+Footnotes are put inside the square brackets after a caret `^[]`. Like this one ^[This is a footnote.]. 
+
+## Citations
+
+Reference items in your bibliography file(s) using `@key`.
+
+For example, we are using the **bookdown** package [@R-bookdown] (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and **knitr** [@xie2015] (this citation was added manually in an external file book.bib). 
+Note that the `.bib` files need to be listed in the index.Rmd with the YAML `bibliography` key.
+
+
+The RStudio Visual Markdown Editor can also make it easier to insert citations: <https://rstudio.github.io/visual-markdown-editing/#/citations>
+
+<!--chapter:end:04-citations.Rmd-->
+
+
+# Blocks
+
+Placeholder
+
+
+## Equations
+## Theorems and proofs
+## Callout blocks
+
+<!--chapter:end:05-blocks.Rmd-->
+
+
+# Sharing your book
+
+Placeholder
+
+
+## Publishing
+## 404 pages
+## Metadata for sharing
+
+<!--chapter:end:06-share.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+
