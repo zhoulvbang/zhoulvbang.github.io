@@ -1,13 +1,13 @@
-Welcome! 
+欢迎到来！
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+这是一个基于 R Markdown 和 **bookdown**（https://github.com/rstudio/bookdown）的最简示例书籍模板。
 
-This template provides a skeleton file structure that you can edit to create your book. 
+该模板提供了一个文件结构的框架，您可以编辑它来创建您自己的书籍。
 
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+.Rmd 文件中的内容提供了一些指南，以帮助您入门，但您也可以随意删除每个文件中的内容，从头开始。
 
-Additional resources:
+额外资源：
 
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
+**bookdown** 书籍：https://bookdown.org/yihui/bookdown/
 
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+**bookdown** 包参考站点：https://pkgs.rstudio.com/bookdown
