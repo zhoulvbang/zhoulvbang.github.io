@@ -6,7 +6,7 @@ bookdown::gitbook:
         <li><a href="./">lazyzhou的深山牧场</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:

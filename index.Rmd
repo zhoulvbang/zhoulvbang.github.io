@@ -9,7 +9,11 @@ bibliography:
 - packages.bib
 description: |
   这是一个使用rmarkdown制作，GitHub托管，www.lazyzhou.cn展示的卫生统计学笔记。
+  在终极的分析中，一切知识都是历史
+  在抽象的意义下，一切科学都是数学
+  在理性的基础上，所有的判断都是统计学
   艰难修补与完善。
+  
 link-citations: true
 github-repo: "rstudio/bookdown-demo"
 output: 
@@ -17,14 +21,21 @@ output:
     toc: true
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=TRUE, highlight=TRUE)
+library(ggplot2) #用于绘图
+library(gridExtra) #分格
+library(cowplot) 
+```
+
 # About(关于)
 
-这是一个用**Markdown**编写的 _示例_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
+这是一个用**Markdown**编写的 _卫生统计学_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
 
 
 ## Usage(用法) 
 
-每个 **bookdown** 章节都是一个 .Rmd 文件，每个 .Rmd 文件只能包含一个章节。一个章节 *必须* 以一级标题开始：`# 一个好的章节`，并且可以包含一个（且只能有一个）一级标题。
+每个 **bookdown** 章节都是一个 `.Rmd` 文件，每个 `.Rmd` 文件只能包含一个章节。一个章节 *必须* 以一级标题开始：`# 一个好的章节`，并且可以包含一个（且只能有一个）一级标题。
 
 在章节内部使用二级标题及更高级别的标题，例如：`## 一个简短的小节` 或 `### 一个更短的小节`。
 
@@ -46,7 +57,8 @@ bookdown::render_book()
 
 要将此示例渲染为 `bookdown::pdf_book`，您需要安装 $XeLaTeX$。建议您安装 TinyTeX（其中包含 $XeLaTeX$）：<https://yihui.org/tinytex/>。
 
-当然你也可以下载别的$TeX$发行版，比如[TeXLive](https://tug.org/texlive/)和[MaCTeX](https://tug.org/mactex/)。
+当然你也可以下载别的$TeX$发行版，比如[TeXLive](https://tug.org/texlive/)和[MaCTeX](https://tug.org/mactex/)。对于`TeXLive`的下载可以参照[LaTeX:TeXLive2021安装](https://zhuanlan.zhihu.com/p/362201376)来进行；`MaCTeX`则可以参照[]()
+
 
 ## Preview book(预览这本书)
 
