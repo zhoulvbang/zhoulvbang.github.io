@@ -8,7 +8,7 @@ bibliography:
 - book.bib
 - packages.bib
 description: |
-  这是一个使用rmarkdown制作，GitHub托管，www.lazyzhou.cn展示的卫生统计学笔记。
+  这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn展示的个人笔记。
   在终极的分析中，一切知识都是历史
   在抽象的意义下，一切科学都是数学
   在理性的基础上，所有的判断都是统计学
@@ -30,8 +30,21 @@ library(cowplot)
 
 # About(关于)
 
-这是一个用**Markdown**编写的 _卫生统计学_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
+这是一个用**Markdown**编写的 _小周的学习笔记_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
 
+  “All knowledge is, in final analysis, history.
+
+All sciences are, in the abstact, mathematics.
+
+All judgements are, in their rationale, statistics.”
+
+  “在终极的分析中，一切知识都是历史
+  
+  在抽象的意义下，一切科学都是数学
+  
+  在理性的基础上，所有的判断都是统计学”
+  
+  ——C.R. Rao *Statistics And Truth*
 
 ## Usage(用法) 
 
@@ -92,9 +105,9 @@ knitr::write_bib(c(
 
 **MSOFFICE**：微软的办公套装，Word没啥不好，就是公式难得处理，还是文本格式比较难以管控，一不小心就是划勒巴子散架了，成也灵活，败也灵活。
 
-**$\LaTeX$**：这个东西也是花了我很多时间去学的，特别是大一大二的时候，被高数老师说的数学建模比赛迷得七荤八素，然后高数老师在大一的寒假带着我们学习$\LaTeX$这个啊，说我们先学会这个，其他的等开学了我再教，结果啊，碰上疫情，吹了，数学课题组没人管这个了，那好吧，我就自己玩。$\LaTeX$就是很规矩，很硬，一板一眼，有自己独特的一套逻辑与美感，成也规矩，败也规矩。
+**LaTeX**：这个东西也是花了我很多时间去学的，特别是大一大二的时候，被高数老师说的数学建模比赛迷得七荤八素，然后高数老师在大一的寒假带着我们学习$LaTeX$这个啊，说我们先学会这个，其他的等开学了我再教，结果啊，碰上疫情，吹了，数学课题组没人管这个了，那好吧，我就自己玩。$LaTeX$就是很规矩，很硬，一板一眼，有自己独特的一套逻辑与美感，成也规矩，败也规矩。
 
-**Ramrkdown**：受益于xieyihui的天才般的构想，将`markdown`、$\LaTeX$与`html`结合起来，将`markdown`的轻量化与简洁同$\LaTeX$的规矩与公式显示结合起来，再结合R对数据数据与分析的强大能力，形成了现在的`Rmarkdown`。
+**Ramrkdown**：受益于xieyihui的天才般的构想，将`markdown`、`LaTeX`与`html`结合起来，将`markdown`的轻量化与简洁同$LaTeX$的规矩与公式显示结合起来，再结合R对数据数据与分析的强大能力，形成了现在的`Rmarkdown`。
 
 ## 关于R
 

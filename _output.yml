@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">lazyzhou的深山牧场</a></li>
+        <li><a href="./">lazyzhou的学习笔记</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s
