@@ -26,6 +26,7 @@ bookdown::gitbook: # 配置 GitBook 输出格式
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s # 编辑链接模板
     download: ["pdf", "epub"] # 允许下载的格式，包含 PDF 和 EPUB
+  mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" # 启用 MathJax
 
 bookdown::pdf_book: # 配置 PDF 输出格式
   includes:
