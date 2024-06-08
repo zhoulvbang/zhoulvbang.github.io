@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>一份卫生统计学笔记</title>
+  <title>卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn展示的个人笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="一份卫生统计学笔记" />
+  <meta property="og:title" content="卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn展示的个人笔记。
@@ -20,10 +20,10 @@
 在抽象的意义下，一切科学都是数学
 在理性的基础上，所有的判断都是统计学
 艰难修补与完善。</p>" />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="一份卫生统计学笔记" />
+  <meta name="twitter:title" content="卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn展示的个人笔记。
 在终极的分析中，一切知识都是历史
@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-03-18" />
+<meta name="date" content="2024-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -68,7 +68,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +78,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -185,7 +186,20 @@ div.csl-indent {
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>1.7</b> 创建一个Rmarkdown文件</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>1.7.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
-<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>1.7.2</b> 创建一个<code>bookdown</code>文件</a></li>
+<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#导入安装好的bookdown"><i class="fa fa-check"></i><b>1.7.2</b> 导入安装好的<code>bookdown</code></a></li>
+<li class="chapter" data-level="1.7.3" data-path="index.html"><a href="index.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>1.7.3</b> 其他宏包的需求与使用</a></li>
+<li class="chapter" data-level="1.7.4" data-path="index.html"><a href="index.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>1.7.4</b> 创建一个<code>bookdown</code>文件</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#代码块的选项设置options"><i class="fa fa-check"></i><b>1.8</b> 代码块的选项设置（options）</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="index.html"><a href="index.html#输出信息选项"><i class="fa fa-check"></i><b>1.8.1</b> 输出信息选项</a></li>
+<li class="chapter" data-level="1.8.2" data-path="index.html"><a href="index.html#错误信息选项"><i class="fa fa-check"></i><b>1.8.2</b> 错误信息选项</a></li>
+<li class="chapter" data-level="1.8.3" data-path="index.html"><a href="index.html#全局设置"><i class="fa fa-check"></i><b>1.8.3</b> 全局设置</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>1.9</b> 在vscode中编辑rmarkdown</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="index.html"><a href="index.html#安装r-extension"><i class="fa fa-check"></i><b>1.9.1</b> 安装R extension</a></li>
+<li class="chapter" data-level="1.9.2" data-path="index.html"><a href="index.html#安装其他的软件"><i class="fa fa-check"></i><b>1.9.2</b> 安装其他的软件</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="详解易混淆的疾病测量指标.html"><a href="详解易混淆的疾病测量指标.html"><i class="fa fa-check"></i><b>2</b> 详解易混淆的疾病测量指标</a>
@@ -199,39 +213,36 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="详解易混淆的疾病测量指标.html"><a href="详解易混淆的疾病测量指标.html#定义"><i class="fa fa-check"></i><b>2.2</b> 定义</a></li>
 <li class="chapter" data-level="2.3" data-path="详解易混淆的疾病测量指标.html"><a href="详解易混淆的疾病测量指标.html#发病率vs患病率"><i class="fa fa-check"></i><b>2.3</b> 发病率VS患病率</a></li>
+<li class="chapter" data-level="2.4" data-path="详解易混淆的疾病测量指标.html"><a href="详解易混淆的疾病测量指标.html#常见的概率抽样"><i class="fa fa-check"></i><b>2.4</b> 常见的概率抽样</a></li>
+<li class="chapter" data-level="2.5" data-path="详解易混淆的疾病测量指标.html"><a href="详解易混淆的疾病测量指标.html#常见的非概率抽样"><i class="fa fa-check"></i><b>2.5</b> 常见的非概率抽样</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="抽样.html"><a href="抽样.html"><i class="fa fa-check"></i><b>3</b> 抽样</a>
+<li class="chapter" data-level="3" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html"><i class="fa fa-check"></i><b>3</b> 关于卫生统计学</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="抽样.html"><a href="抽样.html#常见的概率抽样"><i class="fa fa-check"></i><b>3.1</b> 常见的概率抽样</a></li>
-<li class="chapter" data-level="3.2" data-path="抽样.html"><a href="抽样.html#常见的非概率抽样"><i class="fa fa-check"></i><b>3.2</b> 常见的非概率抽样</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html"><i class="fa fa-check"></i><b>4</b> 关于卫生统计学</a>
+<li class="chapter" data-level="3.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学介绍与展望"><i class="fa fa-check"></i><b>3.1</b> 卫生统计学：介绍与展望</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学介绍与展望"><i class="fa fa-check"></i><b>4.1</b> 卫生统计学：介绍与展望</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#什么是卫生统计学"><i class="fa fa-check"></i><b>4.1.1</b> 什么是卫生统计学？</a></li>
-<li class="chapter" data-level="4.1.2" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的重要性"><i class="fa fa-check"></i><b>4.1.2</b> 卫生统计学的重要性</a></li>
-<li class="chapter" data-level="4.1.3" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的未来展望"><i class="fa fa-check"></i><b>4.1.3</b> 卫生统计学的未来展望</a></li>
-<li class="chapter" data-level="4.1.4" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#结语"><i class="fa fa-check"></i><b>4.1.4</b> 结语</a></li>
+<li class="chapter" data-level="3.1.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#什么是卫生统计学"><i class="fa fa-check"></i><b>3.1.1</b> 什么是卫生统计学？</a></li>
+<li class="chapter" data-level="3.1.2" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的重要性"><i class="fa fa-check"></i><b>3.1.2</b> 卫生统计学的重要性</a></li>
+<li class="chapter" data-level="3.1.3" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的未来展望"><i class="fa fa-check"></i><b>3.1.3</b> 卫生统计学的未来展望</a></li>
+<li class="chapter" data-level="3.1.4" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#结语"><i class="fa fa-check"></i><b>3.1.4</b> 结语</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>5</b> Parts</a></li>
-<li class="chapter" data-level="6" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>6</b> Footnotes and citations</a>
+<li class="chapter" data-level="4" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>4</b> Parts</a></li>
+<li class="chapter" data-level="5" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>5</b> Footnotes and citations</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>6.1</b> Footnotes</a></li>
-<li class="chapter" data-level="6.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>6.2</b> Citations</a></li>
+<li class="chapter" data-level="5.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>5.1</b> Footnotes</a></li>
+<li class="chapter" data-level="5.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>5.2</b> Citations</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
-<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
-<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
-<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -246,7 +257,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">一份卫生统计学笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">卫生统计学笔记</a>
           </h1>
         </div>
 
@@ -255,9 +266,9 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">一份卫生统计学笔记</h1>
+<h1 class="title">卫生统计学笔记</h1>
 <p class="author"><em>Zhoulvbang</em></p>
-<p class="date"><em>2024-03-18</em></p>
+<p class="date"><em>2024-06-08</em></p>
 </div>
 <div id="about关于" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> About(关于)<a href="index.html#about关于" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -310,25 +321,193 @@ div.csl-indent {
 </div>
 <div id="安装rrstudio" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> 安装R+Rstudio<a href="index.html#安装rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>回归正题，要使用<code>rmarkdown</code>需要我们使用<code>R</code>与<code>Rstudio</code>，我们可以从<a href="https://www.r-project.org/">R</a>来下载<code>R</code>这个程序，
+<p>回归正题，要使用<code>rmarkdown</code>需要我们使用<code>R</code>与<code>Rstudio</code>，我们可以从<a href="https://www.r-project.org/">R page</a>来下载<code>R</code>这个程序，
 <code>R</code> 是一个用于统计计算和图形的免费软件环境；再从<a href="https://www.rstudio.com/categories/rstudio-ide/">Rstudio</a>来下载适配R的集成开发编辑器，普通的<code>R script</code>可以在<code>vscode</code>中进行编辑和运行，但是<code>rmarkdown</code>文件则需要再<code>Rstudio</code>中才能较好的编辑与运行。</p>
 <p>安装的步骤可以参考<a href="https://zhuanlan.zhihu.com/p/687529684">在macOS中安装R与Rstudio</a></p>
-<p><strong>Notice</strong>：macOS需要看一下是Intel还是arm的CPU，arm目前在M1/M2上搭载</p>
+<blockquote>
+<p>Notice：macOS需要看一下是Intel还是ARM的CPU，ARM目前在M1/M2上搭载</p>
+</blockquote>
 </div>
 <div id="创建一个rmarkdown文件" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> 创建一个Rmarkdown文件<a href="index.html#创建一个rmarkdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>因为我们要将这个文件配置到GitHub上作为网页，所以我们要创建一个特别一点的rmarkdown。</p>
 <div id="首先我们要安装一个专门的包bookdown" class="section level3 hasAnchor" number="1.7.1">
 <h3><span class="header-section-number">1.7.1</span> 首先我们要安装一个专门的包<code>bookdown</code><a href="index.html#首先我们要安装一个专门的包bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rmarkdown&#39;</span>)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>or</span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a><span class="co"># install from GitHub</span></span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;rstudio/rmarkdown&#39;</span>)</span></code></pre></div>
 </div>
-<div id="创建一个bookdown文件" class="section level3 hasAnchor" number="1.7.2">
-<h3><span class="header-section-number">1.7.2</span> 创建一个<code>bookdown</code>文件<a href="index.html#创建一个bookdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="导入安装好的bookdown" class="section level3 hasAnchor" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> 导入安装好的<code>bookdown</code><a href="index.html#导入安装好的bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+</div>
+<div id="其他宏包的需求与使用" class="section level3 hasAnchor" number="1.7.3">
+<h3><span class="header-section-number">1.7.3</span> 其他宏包的需求与使用<a href="index.html#其他宏包的需求与使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果要⽣成PDF输出，则需要安装LaTeX。对于从未安装过LaTeX的R Markdown⽤户，建议安装TinyTeX：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
+<span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<blockquote>
+<p>TinyTex是Yihui Xie专为R Markdown开发的超轻量级的Latex环境，是⼀种轻便、可移植、跨平台、易于维护的LaTeX发⾏版。R中的配套软件包tinytex可以帮助我们在将LaTeX或R Markdown⽂档编译为PDF时⾃动安装缺少的LaTeX软件包，并确保将LaTeX⽂档编译正确的次数以解决所有交叉引⽤。</p>
+</blockquote>
+</div>
+<div id="创建一个bookdown文件" class="section level3 hasAnchor" number="1.7.4">
+<h3><span class="header-section-number">1.7.4</span> 创建一个<code>bookdown</code>文件<a href="index.html#创建一个bookdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>create project</li>
+<li>创建项目</li>
 </ol>
 <p>在Rstudio中点击File-&gt;New Project-&gt;New Directory-&gt;Bookproject using bookdown-&gt;Create Project</p>
+<ol start="2" style="list-style-type: decimal">
+<li>文件配置</li>
+</ol>
+<p>在新建的R Markdown⽂件⾥，主要包含三块内容：</p>
+<ul>
+<li>YAML: R Markdown的头部文件，YAML（YAML Ain’t Markup Language）定义了R Markdown文档的元数据，包括文档的标题（title）、作者（author）、日期（date）、指定的输出文件类型（output format）等。YAML头部通常位于文档的开头，并用三条短划线（—）分隔。例如：</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb6-2"><a href="index.html#cb6-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;文档标题&quot;</span></span>
+<span id="cb6-3"><a href="index.html#cb6-3" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;作者姓名&quot;</span></span>
+<span id="cb6-4"><a href="index.html#cb6-4" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2024-06-08&quot;</span></span>
+<span id="cb6-5"><a href="index.html#cb6-5" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb6-6"><a href="index.html#cb6-6" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<ul>
+<li>Markdown文本: Markdown文本是R Markdown文档的主要内容，使用者按照Markdown语法自行编写的文本内容。Markdown语法简洁易懂，适用于编写格式化文本，如标题、列表、引用、链接和图片等。示例：</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a><span class="co"># 一级标题</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" tabindex="-1"></a>这是一个段落。</span>
+<span id="cb7-3"><a href="index.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="index.html#cb7-4" tabindex="-1"></a><span class="sc">-</span> 无序列表项1</span>
+<span id="cb7-5"><a href="index.html#cb7-5" tabindex="-1"></a><span class="sc">-</span> 无序列表项2</span>
+<span id="cb7-6"><a href="index.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="index.html#cb7-7" tabindex="-1"></a><span class="fl">1.</span> 有序列表项1</span>
+<span id="cb7-8"><a href="index.html#cb7-8" tabindex="-1"></a><span class="fl">2.</span> 有序列表项2</span>
+<span id="cb7-9"><a href="index.html#cb7-9" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="index.html#cb7-10" tabindex="-1"></a><span class="sc">&gt;</span> 这是一个引用。</span></code></pre></div>
+<ul>
+<li>代码块: R Markdown的一个主要功能是可以执行文档内的代码块，并将代码执行结果展示在Markdown文档中。这对撰写操作与分析报告带来了极大的便利，同时还可以进行良好的程序与结果复现。R Markdown文档中除了R代码段以外，还可以插入Python、SQL等许多编程语言的代码段。常用编程语言还可以与R代码段进行信息交换。代码块用三个反引号加上编程语言名称标识，例如：</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a><span class="co"># Python代码块示例，不会被执行</span></span>
+<span id="cb8-2"><a href="index.html#cb8-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, Python!&quot;</span>)</span></code></pre></div>
+<p>图形示例（Python）</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="index.html#cb9-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="index.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="index.html#cb9-4" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb9-5"><a href="index.html#cb9-5" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb9-6"><a href="index.html#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="index.html#cb9-7" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb9-8"><a href="index.html#cb9-8" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb9-9"><a href="index.html#cb9-9" tabindex="-1"></a>plt.title(<span class="st">&#39;example graphs&#39;</span>)</span>
+<span id="cb9-10"><a href="index.html#cb9-10" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="代码块的选项设置options" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> 代码块的选项设置（options）<a href="index.html#代码块的选项设置options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>默认情况下代码和结果会在输出⽂件中呈现。如果通过参数来控制代码块运⾏结果的输出情况可以在<code>{r,options}</code>中设置。⼀般包括代码及运⾏结果的输出、图⽚表格格式定义等。</p>
+<div id="输出信息选项" class="section level3 hasAnchor" number="1.8.1">
+<h3><span class="header-section-number">1.8.1</span> 输出信息选项<a href="index.html#输出信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>eval</code>: 加选项<code>eval=FALSE</code>,可以使得代码仅显⽰⽽不实际运⾏。这样的代码段如果有标签，可以在后续代码段中被引⽤。</li>
+<li><code>include</code>: 加选项<code>include=FALSE</code>，则本代码段仅运⾏，但是代码和结果都不写⼊到⽣成的⽂档中。</li>
+<li><code>echo</code>: echo参数控制了Markdown是否显⽰代码块。若<code>echo=TRUE</code>，则表⽰代码块显⽰在markdown⽂档显⽰代码块；反之，代码块不出现在输出结果中。</li>
+<li><code>collapse</code>: ⼀个代码块的代码、输出通常被分解为多个原样⽂本块中，如果⼀个代码块希望所有的代码、输出都写到同⼀个原样⽂本块中，加选项<code>collapse=TRUE</code>。</li>
+<li><code>prompt</code>: <code>prompt=TRUE</code>代码⽤R的<code>&gt;</code>提⽰符开始。</li>
+<li><code>comment</code>：如果希望结果不⽤#号保护，使⽤选项<code>comment=''</code>。</li>
+<li><code>results</code>: ⽤选项results=选择⽂本型结果的类型。取值有：
+<ul>
+<li><code>markup</code>：这是缺省选项，会把⽂本型结果变成HTML的原样⽂本格式;</li>
+<li><code>hide</code>：运⾏了代码后不显⽰运⾏结果;</li>
+<li><code>hold</code>：⼀个代码块所有的代码都显⽰完，才显⽰所有的结果。</li>
+<li><code>asis</code>：⽂本型输出直接进⼊到HTML⽂件中，这需要R代码直接⽣成HTML标签，knitr包的kable()函数可以把数据框转换为HTML代码的表格。</li>
+</ul></li>
+</ul>
+</div>
+<div id="错误信息选项" class="section level3 hasAnchor" number="1.8.2">
+<h3><span class="header-section-number">1.8.2</span> 错误信息选项<a href="index.html#错误信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>warning</code>：选项<code>warning=FALSE</code>使得代码段的警告信息不进⼊编译结果，⽽是在控制台中显⽰。有⼀些扩展包的载⼊警告可以⽤这种办法屏蔽。</li>
+<li><code>error</code>：选项<code>error=FALSE</code>可以使得错误信息不进⼊编译结果，⽽是出错停⽌并将错误信息在控制台中显⽰。</li>
+<li><code>message</code>：选项<code>message=FALSE</code>可以使得message级别的信息不进⼊编译结果，⽽是在控制台中显⽰。</li>
+</ul>
+</div>
+<div id="全局设置" class="section level3 hasAnchor" number="1.8.3">
+<h3><span class="header-section-number">1.8.3</span> 全局设置<a href="index.html#全局设置" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>若R Markdown内的代码块存在⼀样的参数设置，则可以提前设计好全局的代码块参数。全局代码块通过<code>knitr::opts_chunk$set</code>函数进⾏设置，⼀般设置在YAML⽂件下⽅。</p>
+<p>例如本文的设置为：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" tabindex="-1"></a><span class="co"># 设置knitr全局选项</span></span>
+<span id="cb10-2"><a href="index.html#cb10-2" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb10-3"><a href="index.html#cb10-3" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,  <span class="co"># 是否显示代码</span></span>
+<span id="cb10-4"><a href="index.html#cb10-4" tabindex="-1"></a>  <span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="co">#是否编译代码框内的代码</span></span>
+<span id="cb10-5"><a href="index.html#cb10-5" tabindex="-1"></a>  <span class="at">highlight =</span> <span class="cn">TRUE</span>, <span class="co">#是否语法高亮</span></span>
+<span id="cb10-6"><a href="index.html#cb10-6" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示警告</span></span>
+<span id="cb10-7"><a href="index.html#cb10-7" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示信息</span></span>
+<span id="cb10-8"><a href="index.html#cb10-8" tabindex="-1"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,  <span class="co"># 图形宽度</span></span>
+<span id="cb10-9"><a href="index.html#cb10-9" tabindex="-1"></a>  <span class="at">fig.height =</span> <span class="dv">5</span>  <span class="co"># 图形高度</span></span>
+<span id="cb10-10"><a href="index.html#cb10-10" tabindex="-1"></a>)</span></code></pre></div>
+<blockquote>
+<p>Notice：局部参数设置优先级大于全局参数设置。</p>
+</blockquote>
+</div>
+</div>
+<div id="在vscode中编辑rmarkdown" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> 在vscode中编辑rmarkdown<a href="index.html#在vscode中编辑rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>大部分程序猿或者攻城狮应该都会对vscode比较熟悉，它提供了R Extension for Visual Studio Code，你可以在vscode中调用<code>R</code>对文档进行编译与修改，vscode相较于Rstudio最大的优势是可以直连GitHub，你可以将你创建的rmarkdown文件上传到GitHub，放置在你创建的GitHub主页中，使其成为一个个人主页/博客，从而在网络上展现出来，并可以被人检索到。</p>
+<div id="安装r-extension" class="section level3 hasAnchor" number="1.9.1">
+<h3><span class="header-section-number">1.9.1</span> 安装R extension<a href="index.html#安装r-extension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>请打开vscode后看最左边的导航栏，选择<code>EXTENSIONS</code>后再<code>search</code>框中搜索<code>R</code>，
+然后选择<code>install</code>。</p>
+<div class="float">
+<img src="images/Rextension.png" style="width:50.0%" alt="Rextension" />
+<div class="figcaption">Rextension</div>
+</div>
+</div>
+<div id="安装其他的软件" class="section level3 hasAnchor" number="1.9.2">
+<h3><span class="header-section-number">1.9.2</span> 安装其他的软件<a href="index.html#安装其他的软件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>当你使用vscode提供的插件时，肯定无法和专门适配R的Rstudio的各项功能比较，如果你需要生成PDF文档，你可能会遇到无法完成编译的问题，这是由于渲染R Markdown文档时，需要使用至少版本1.12.3的Pandoc。</p>
+<pre><code>[VSC-R] index.Rmd process started
+==&gt; rmarkdown::render_site(&#39;/Users/uesrname/uesrname.github.io/index.Rmd&#39;)
+Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
+In addition: Warning message:
+In verify_rstudio_version() :
+  Please install or upgrade Pandoc to at least version 1.17.2; or if you are using RStudio, you can just install RStudio 1.0+.
 
+Execution halted</code></pre>
+<div id="安装pandoc" class="section level4 hasAnchor" number="1.9.2.1">
+<h4><span class="header-section-number">1.9.2.1</span> 安装Pandoc<a href="index.html#安装pandoc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>针对上述的问题，你可能需要安装Pandoc这个软件，你可以在<a href="https://pandoc.org/">Pandoc官网</a>了解相关信息和下载你需要的版本。</p>
+<p>如果你是Windows用户，请进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包，然后进行安装。</p>
+<p>如果你是Mac用户，一样可以进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包；当你的电脑中已经安装有homebrew时，你可以选择在终端输入<code>brew install pandoc</code>来安装Pandoc。</p>
+</div>
+<div id="检查pandoc路径" class="section level4 hasAnchor" number="1.9.2.2">
+<h4><span class="header-section-number">1.9.2.2</span> 检查Pandoc路径：<a href="index.html#检查pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>安装完Pandoc后，确保系统中可以访问到Pandoc的可执行文件。</li>
+<li>你可以通过在终端中运行which pandoc来检查Pandoc的安装路径。</li>
+</ol>
+</div>
+<div id="指定pandoc路径" class="section level4 hasAnchor" number="1.9.2.3">
+<h4><span class="header-section-number">1.9.2.3</span> 指定Pandoc路径：<a href="index.html#指定pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>如果系统中有多个版本的Pandoc，你可以在R Markdown文档中使用<code>rmarkdown::render()</code>函数的pandoc参数来指定Pandoc的路径。
+例如：<code>rmarkdown::render("index.Rmd", pandoc="/path/to/pandoc")</code></p>
+<p>一般来说，当你安装好Pandoc之后，在进入vscode进行编译后会正确生成<code>.html</code>文件，具体信息需要看vscode的output内容。当我进行编译后，output给出如下信息：</p>
+<pre><code>Output created: docs/index.html
+
+Output created: /Users/username/username.github.io/docs/index.html
+
+&lt;&lt;&lt;vsc&gt;&gt;&gt;docs/index.html&lt;&lt;&lt;vsc&gt;&gt;&gt;
+[VSC-R] index.Rmd process exited with exit code null</code></pre>
+<p>如果你使用RStudio，可以在RStudio项目设置中指定Pandoc路径（一般不需要进行指定，因为Rstudio生成PDF是通过LaTeX）：</p>
+<ol style="list-style-type: decimal">
+<li>打开RStudio，进入你项目的工作目录。</li>
+<li>点击菜单栏中的 “Tools” -&gt; “Global Options” -&gt; “Sweave”。</li>
+<li>在 “Sweave” 设置中，可以指定Pandoc路径。</li>
+</ol>
+
+</div>
 </div>
 </div>
 </div>
@@ -380,7 +559,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["卫生统计学笔记.pdf", "卫生统计学笔记.epub"],
 "search": {
 "engine": "fuse",
 "options": null

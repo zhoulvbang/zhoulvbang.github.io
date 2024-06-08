@@ -1,17 +1,38 @@
-bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      before: |
+# bookdown::gitbook:
+#   css: style.css
+#   config:
+#     toc:
+#       before: |
+#         <li><a href="./">lazyzhou的学习笔记</a></li>
+#       after: |
+#         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+#     edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s
+#     download: ["pdf", "epub"]
+# bookdown::pdf_book:
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
+#   keep_tex: yes
+# bookdown::epub_book: default
+
+bookdown::gitbook: # 配置 GitBook 输出格式
+  css: style.css # 自定义 CSS 文件，用于定义样式
+  config: # GitBook 配置
+    toc: # 目录（Table of Contents）配置
+      before: | # 目录前插入的 HTML
         <li><a href="./">lazyzhou的学习笔记</a></li>
-      after: |
+      after: | # 目录后插入的 HTML
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s
-    download: ["pdf", "epub"]
-bookdown::pdf_book:
+    edit: https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s # 编辑链接模板
+    download: ["pdf", "epub"] # 允许下载的格式，包含 PDF 和 EPUB
+
+bookdown::pdf_book: # 配置 PDF 输出格式
   includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+    in_header: preamble.tex # 包含在 LaTeX 文档头部的自定义文件
+  latex_engine: xelatex # 使用 xelatex 引擎编译 LaTeX 文档
+  citation_package: natbib # 使用 natbib 处理文献引用
+  keep_tex: yes # 保留中间的 .tex 文件
+
+bookdown::epub_book: default # 配置 EPUB 输出格式，使用默认设置
+

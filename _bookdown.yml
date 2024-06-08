@@ -1,5 +1,17 @@
-delete_merged_file: true
+delete_merged_file: true # 表示在生成输出文件后删除合并的中间文件
 output_dir: "docs"
-language:
-  ui:
-    chapter_name: "Chapter "
+# language:
+#   ui:
+#     chapter_name: "Chapter "
+
+
+book_filename: "卫生统计学笔记" # 设置生成的书籍文件名为"MyBook"
+# delete_merged_file: true # 表示在生成输出文件后删除合并的中间文件
+
+language: # 设置语言元素的显示文本
+  ui: # 自定义用户界面元素的显示方式
+    chapter_name: "Chapter " # 每个章节标题前的前缀是“Chapter ”
+    figure_name: "Figure " # 每个图表标题前的前缀是“Figure ”
+    table_name: "Table " # 每个表格标题前的前缀是“Table ”
+    appendix_name: "Appendix " # 每个附录标题前的前缀是“Appendix ”
+    part_name: "Part " # 每个部分标题前的前缀是“Part ”
