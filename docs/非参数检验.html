@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 14 非参数检验 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 14 非参数检验 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 14 非参数检验 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="参数检验.html"/>
+<link rel="next" href="简单线性相关和回归.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,241 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="非参数检验" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Chapter 14</span> 非参数检验<a href="非参数检验.html#非参数检验" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="卡方检验" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> 卡方检验<a href="非参数检验.html#卡方检验" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="分类资料差异比较的方法" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> 分类资料差异比较的方法<a href="非参数检验.html#分类资料差异比较的方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table style="width:100%;">
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">资料特征</th>
+<th align="center">数据特征</th>
+<th align="left"></th>
+<th align="left">完全随机设计</th>
+<th align="left"></th>
+<th align="left">配对设计</th>
+<th align="left">随机区组</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">单组</td>
+<td align="left">两组</td>
+<td align="left">多组</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">分类资料</td>
+<td align="center">无序分类资料</td>
+<td align="left">二项分布直接计算概率法、正态近似法（Z检验）、率的正态近似</td>
+<td align="left">独立四格表<span class="math inline">\(\chi^2\)</span>检验、Fisher确切概率法</td>
+<td align="left">R×C交叉表<span class="math inline">\(\chi^2\)</span>检验、Fisher确切概率法</td>
+<td align="left">配对四格表<span class="math inline">\(\chi^2\)</span>检验，配对R×R列联表<span class="math inline">\(\chi^2\)</span>检验</td>
+<td align="left">/</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">等级资料</td>
+<td align="left">Wilcoxon符合秩和检验</td>
+<td align="left">wilcoxon秩和检验</td>
+<td align="left">Kruskal-Wallis H检验</td>
+<td align="left">Wilcoxon符合秩和检验</td>
+<td align="left">Friedman M秩和检验</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="单个率的比较" class="section level3 hasAnchor" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> 单个率的比较<a href="非参数检验.html#单个率的比较" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">方法</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">确切概率法</td>
+<td>1. 适用情形：样本量较小或<span class="math inline">\(\pi_0\)</span>不靠近0.5时作单侧检验的情形。<br>2. 计算公式：<br>(1)最多有k例阳性的概率：<span class="math inline">\(Pr(X\le k)\)</span><br>(2)最少有k例阳性的概率：<span class="math inline">\(Pr(X\ge k)\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">正态近似法</td>
+<td>1. 适用情形：样本量较大时，<span class="math inline">\(n\pi,n(1-\pi)\)</span>均大于5；<br>2. 计算公式：分子为<span class="math inline">\(p-\pi_0\)</span>，分母为率的标准误</td>
+</tr>
+</tbody>
+</table>
+<p><em>notice：</em>上式中p为样本率，<span class="math inline">\(\pi_0\)</span>为给的总体率（常为理论值或标准值），n为样本含量。</p>
+</div>
+</div>
+<div id="率的比较" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> 率的比较<a href="非参数检验.html#率的比较" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="交叉表数据的chi2检验" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验<a href="非参数检验.html#交叉表数据的chi2检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">方法</th>
+<th align="left">情形</th>
+<th align="left">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">独立四格表卡方检验</td>
+<td align="left"><span class="math inline">\(n\ge 40\)</span>且所有的<span class="math inline">\(T\ge 5\)</span><br><span class="math inline">\(n\ge 40\)</span>且任一理论频数有<span class="math inline">\(1\le T&lt; 5\)</span><br>当<span class="math inline">\(n&lt;40\)</span>，或任一一个格子理论频数<span class="math inline">\(T&lt;1\)</span>时</td>
+<td align="left">卡方基本公式、独立四格表专用公式<br>同上、但是需要校正<br>用四格表资料的Fisher确切概率法</td>
+</tr>
+<tr class="even">
+<td align="center">正态近似法</td>
+<td align="left"><span class="math inline">\(n_1p_1,n_1(1-p_1),n_2p_2,n_2(1-p_2)\)</span>均大于5</td>
+<td align="left">分子为样本率之差，分母为样本率差的标准误<br><span class="math inline">\(S_{p1-p2}\)</span>为两个样本率之差的标准误，<span class="math inline">\(p_c=\frac{x_1+x_2}{n_1+n_2}\)</span>为两样本的合并率</td>
+</tr>
+<tr class="odd">
+<td align="center">校正样本率的正态近似法</td>
+<td align="left">当<span class="math inline">\(n_1p_1,n_1(1-p_1),n_2p_2,n_2(1-p_2)\)</span>不太大时</td>
+<td align="left">同上，但是需要对样本率实施“分子+2、分母+4”的校正</td>
+</tr>
+</tbody>
+</table>
+<p><em>notice：</em></p>
+<ol style="list-style-type: decimal">
+<li>正态近似法与卡方检验结果是很接近的。在日常计算时，因为计算简便，故常用卡方检验公式。</li>
+<li>四格表的自由度为1。</li>
+<li>四格表实际频数变动时，若周边合计数保持不变，则理论频数将不会产生变化。</li>
+<li>用<span class="math inline">\(n_R\)</span>和<span class="math inline">\(n_C\)</span>和n分别表示行合计、列合计和总合计，则计算每格理论数的公式为：<span class="math inline">\(T_{RC}=\frac{n_R×n_C}{n}\)</span>。</li>
+<li><span class="math inline">\(\chi^2\)</span>检验的基本公式：<span class="math inline">\(\chi^2=\sum \frac{(A-T)^2}{T}\)</span>。</li>
+<li>校正的<span class="math inline">\(\chi^2\)</span>检验的基本公式：<span class="math inline">\(\chi^2=\sum \frac{(|A-T|-0.5)^2}{T}\)</span>。</li>
+</ol>
+</div>
+<div id="配对设计数据的chi2检验" class="section level3 hasAnchor" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验<a href="非参数检验.html#配对设计数据的chi2检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">方法</th>
+<th align="left">情形</th>
+<th align="left">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">配对四格表卡方检验</td>
+<td align="left">当<span class="math inline">\((b+c)\ge 40\)</span>时<br>当<span class="math inline">\((b+c)&lt;40\)</span>时</td>
+<td align="left">配对卡方检验专用公式<br>校正配对卡方检验专用公式</td>
+</tr>
+<tr class="even">
+<td align="center">配对R×R交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</td>
+<td align="left">R（<span class="math inline">\(R\ge2\)</span>）</td>
+<td align="left"><span class="math inline">\(T=\frac{k-1}{k}\sum_{i=1}^{k}\frac{(n_i-m_i)^2}{n_i+m_i-2A_{ii}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><em>notice：</em></p>
+<ol style="list-style-type: decimal">
+<li>配对<span class="math inline">\(\chi^2\)</span>检验的基本公式：<span class="math inline">\(\chi^2=\sum \frac{(A-T)^2}{T}=\frac{(b-c)^2}{b+c}\)</span>。</li>
+<li>若b+c&lt;40,使用校正的配对<span class="math inline">\(\chi^2\)</span>检验的基本公式：<span class="math inline">\(\chi^2=\sum \frac{(|b-c|-1)^2}{b+c}\)</span>。</li>
+</ol>
+</div>
+</div>
+<div id="独立性检验" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> 独立性检验<a href="非参数检验.html#独立性检验" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="交叉表的独立性检验" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> 2×2交叉表的独立性检验<a href="非参数检验.html#交叉表的独立性检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>建立假设检验，确定检验水准
+<span class="math inline">\(H_0\)</span>:两变量之间相互独立
+<span class="math inline">\(H_1\)</span>:两变量之间相互独立
+<span class="math inline">\(\alpha=0.05\)</span></li>
+<li>计算检验统计量
+<span class="math display">\[\chi^2=\sum_{i,j}\frac{(A_{ij}-T_{ij})^2}{T_{ij}}
+\]</span></li>
+<li>确定P值，做出推断</li>
+<li>关联系数的计算
+<span class="math display">\[r=\sqrt{\frac{\chi^2}{\chi^2+n}}\]</span></li>
+</ol>
+</div>
+<div id="配对数据的独立性检验" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> 2×2配对数据的独立性检验<a href="非参数检验.html#配对数据的独立性检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="rc样本率或构成比的比较" class="section level3 hasAnchor" number="14.3.3">
+<h3><span class="header-section-number">14.3.3</span> R×C样本率或构成比的比较<a href="非参数检验.html#rc样本率或构成比的比较" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">类目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">假设检验</td>
+<td align="left"><span class="math inline">\(H_0\)</span>：各组总体率（或构成比）相同。<span class="math inline">\(H_1\)</span>：各组总体率（或构成比）不同（不全相同）。</td>
+</tr>
+<tr class="even">
+<td align="center">计算公式</td>
+<td align="left">卡方检验基本公式，自由度为：<span class="math inline">\(v=(R-1)(C-1)\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">数据要求</td>
+<td align="left">1. 应用条件：不能有理论频数小于1的格子，或者不能有1/5以上的理论频数大于等于1且小于5 <br>2. 不能进行卡方检验时的解决办法：①增加样本量；②合并或删除理论频数比较小的行或列；③采用Fisher确切概率法</td>
+</tr>
+<tr class="even">
+<td align="center">卡方分割</td>
+<td align="left">多个率或多个频率分布比较的卡方检验，当结论为拒绝<span class="math inline">\(H_0\)</span>时，仅表示多组之间是有差别的。若需要明确研究是那两组之间存在差别，可做率的多重比较，将R×C表分割为若干个小的四格表进行检验，并且需要根据比较的次数合理地修正检验水准<span class="math inline">\(\alpha\)</span>，否则将人为地增大犯第一类错误的概率</td>
+</tr>
+</tbody>
+</table>
+<p><em>notice:</em></p>
+<ol style="list-style-type: decimal">
+<li>多个独立样本率的比较，根据R个独立样本的频率分布，是检验R个二项分布总体的概率是否相同，。假设对四个样本率进行比较，进行<span class="math inline">\(\chi^2\)</span>检验，则它的行数为4，列数为2，其自由度为<span class="math inline">\(v=(R-1)×(C-1)=(4-1)(2-1)=3\)</span>。</li>
+<li>针对行列表资料的<span class="math inline">\(\chi^2\)</span>检验，若有<span class="math inline">\(1/5\)</span>格子以上的理论频数小于5，即<span class="math inline">\(1\le T\le5\)</span>时，应考虑增加样本量，或结合专业知识对行或列进行合并。</li>
+</ol>
+</div>
+</div>
+<div id="秩和检验" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> 秩和检验<a href="非参数检验.html#秩和检验" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="参数检验.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="简单线性相关和回归.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +622,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/10-non-parameter-test.Rmd",
 "text": "Edit"
 },
 "history": {

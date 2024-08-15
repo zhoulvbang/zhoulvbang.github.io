@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 9 F分布和\(\chi^2\)分布 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 9 F分布和\(\chi^2\)分布 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 9 F分布和\(\chi^2\)分布 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="连续型随机变量的概率分布.html"/>
+<link rel="next" href="统计量的抽样分布.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="f分布和chi2分布" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> F分布和<span class="math inline">\(\chi^2\)</span>分布<a href="f分布和chi2分布.html#f分布和chi2分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="f分布" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> F分布<a href="f分布和chi2分布.html#f分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-20-1.png" alt="F-distribution Curves" width="672" />
+<p class="caption">
+Figure 9.1: F-distribution Curves
+</p>
+</div>
+<div id="f分布的应用" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> F分布的应用<a href="f分布和chi2分布.html#f分布的应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>方差的同质性检验
+组与组之间的差异称组间变异（variation between classes），反映在各组的平均数不同。同一组内部被试（个体）之间的差异称组内变异（variation within class），反映在每一个个体之间的差异。</li>
+<li>总变异的分解：</li>
+</ol>
+<ul>
+<li>总变异 = 组间变异+组内变异</li>
+<li>组间变异 = 实验条件 + 随机误差</li>
+<li>组内变异 = 个体差异 + 实验误差 。组内误差都是随机误差。</li>
+</ul>
+</div>
+</div>
+<div id="chi2分布" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> <span class="math inline">\(\chi^2\)</span>分布<a href="f分布和chi2分布.html#chi2分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-21-1.png" alt="Chi-square Distribution Curves" width="672" />
+<p class="caption">
+Figure 9.2: Chi-square Distribution Curves
+</p>
+</div>
+<div id="卡方检验应用" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> 卡方检验应用<a href="f分布和chi2分布.html#卡方检验应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>检验连续变量的分布是否与某种理论分布一致。</li>
+<li>检验某个分类变量各类的出现概率是否等于指定概率。</li>
+<li>检验某两种方法的结果是否一致。</li>
+</ol>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="连续型随机变量的概率分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="统计量的抽样分布.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +437,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/05-F-chi-square.Rmd",
 "text": "Edit"
 },
 "history": {

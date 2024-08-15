@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 11 置信区间 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 11 置信区间 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 11 置信区间 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="references.html"/>
+<link rel="next" href="假设检验.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,132 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="置信区间" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> 置信区间<a href="置信区间.html#置信区间" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="置信区间与医学参考值范围的辨析" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> 置信区间与医学参考值范围的辨析<a href="置信区间.html#置信区间与医学参考值范围的辨析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="标准差与标准误" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> 标准差与标准误<a href="置信区间.html#标准差与标准误" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="42%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">类目</th>
+<th align="left">标准差</th>
+<th align="left">均数的标准误</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">定义</td>
+<td align="left">描述一组变量的离散程度，并可以作为总体标准差的点估计</td>
+<td align="left">描述多个样本均数的离散程度，并且是样本均数的标准差估计值</td>
+</tr>
+<tr class="even">
+<td align="center">应用</td>
+<td align="left">1. 标准差越小，个体资料的离散程度就越小，说明变量值围绕均数分布越紧密，均数的代表性越好 <br> 2.估计医学参考值范围，计算变异系数和标准误</td>
+<td align="left">1. 标准误越小，统计量的平均抽样误差就越小，说明样本均数和总体均数的平均差异越小，用样本均数估计总体均数的可靠性越大；<br>2. 计算置信区间、进行假设检验</td>
+</tr>
+<tr class="odd">
+<td align="center">与n的关系</td>
+<td align="left">n越大，样本标准差随机波动的幅度越来越小，并且稳定在总体标准差附近</td>
+<td align="left">n越大，样本均数的标准误越小，并且趋向于0</td>
+</tr>
+<tr class="even">
+<td align="center">控制方法</td>
+<td align="left">个体差异，不能通过统计方法控制</td>
+<td align="left">增加n，可以减小标准误</td>
+</tr>
+<tr class="odd">
+<td align="center">二者联系</td>
+<td align="left">1. 两者都是变异指标 <br> 2. 在n相同的情况下，标准差越大，标准误相对越大；标准差越小，标准误也相对越小。正比关系 <br> 3. <span class="math inline">\(\sigma_{\bar x}=\frac{\sigma}{\sqrt{n}}\)</span>,<span class="math inline">\(\sigma_{\bar x}\)</span>与<span class="math inline">\(\sigma\)</span>成正比，与<span class="math inline">\(\sqrt{n}\)</span>成反比。</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="置信区间与医学参考值范围" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> 置信区间与医学参考值范围<a href="置信区间.html#置信区间与医学参考值范围" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="42%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">类目</th>
+<th align="left">总体均数的置信区间</th>
+<th align="left">医学参考值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">含义</td>
+<td align="left">按照预先给定的概率，确定的包含未知总体参数<span class="math inline">\(\mu\)</span>（总体均数）的可能范围</td>
+<td align="left">指特定的“正常”人群（排除了对所研究指标有影响的疾病和有关因素的人群）的生理生化指标中大多数个体的取值所在的范围</td>
+</tr>
+<tr class="even">
+<td align="center">举例</td>
+<td align="left">若某一样本的均值为10，其95%可信区间为（9.5,10.5），这就表示总体均数介于（9.5,10.5）之间的可信度为95%</td>
+<td align="left">假设空腹血糖95%正常值范围为（3.6,6.1），这就是指95%正常人的空腹血糖值介于（3.6,6.1）之间</td>
+</tr>
+<tr class="odd">
+<td align="center">计算</td>
+<td align="left">1. 总体标准差位置，且样本量n不大，根据t分布计算；<br>2. 总体标准差未知，n足够大，正态近似法；<br>3. 总体标准差已知，根据Z分布计算</td>
+<td align="left">1. 正态分布法；<br> 2. 偏态分布法</td>
+</tr>
+<tr class="even">
+<td align="center">用途</td>
+<td align="left">总体均数的区间估计（估计未知的总体均数所在范围</td>
+<td align="left">1. 个体值的波动范围； <br> 2. 绝大多数观察对象某指标分布范围；<br> 3. 医学判断个体某指标是否正常</td>
+</tr>
+<tr class="odd">
+<td align="center">95%理解的常见误区</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">区别</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="置信区间的含义与常见说法辨析" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> 置信区间的含义与常见说法辨析<a href="置信区间.html#置信区间的含义与常见说法辨析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>在95%置信区间内有95%的总体参数在该区间？×</li>
+<li>在95%置信区间内，该区间包含了95%的总体参数？×</li>
+<li>以<span class="math inline">\(1-\alpha=95\%\)</span>算得的100个可信区间中，平均有95个可信区间包含了总体均数，而另外5个未包含总体均数。√</li>
+<li>在95%置信区间，该区间有95%的可能包含总体参数？×</li>
+<li>该区间包含总体参数，可信度在95%。√</li>
+<li>总体参数有95%的可能落在该区间。×</li>
+</ol>
+</div>
+<div id="置信区间的两要素及影响因素" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> 置信区间的两要素及影响因素<a href="置信区间.html#置信区间的两要素及影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="置信区间的两要素" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> 置信区间的两要素<a href="置信区间.html#置信区间的两要素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="置信区间的影响因素" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> 置信区间的影响因素<a href="置信区间.html#置信区间的影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="假设检验.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +513,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/08-confidence-interval.Rmd",
 "text": "Edit"
 },
 "history": {

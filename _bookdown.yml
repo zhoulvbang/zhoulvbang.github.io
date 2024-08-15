@@ -15,3 +15,18 @@ language: # 设置语言元素的显示文本
     table_name: "Table " # 每个表格标题前的前缀是“Table ”
     appendix_name: "Appendix " # 每个附录标题前的前缀是“Appendix ”
     part_name: "Part " # 每个部分标题前的前缀是“Part ”
+
+
+rmd_files: [
+  "index.Rmd",
+  "01-About-health-statistics.Rmd",
+  "02-sample.Rmd",
+  "03-statistical-description.Rmd",
+  "04-Basic-probability-distribution.Rmd",
+  "05-F-chi-square.Rmd",
+  "06-Sampling-of-statistics.Rmd",
+  "07-analytical-procedure.Rmd",
+  "08-confidence-interval.Rmd",
+  "09-parameter-test.Rmd",
+  "10-non-parameter-test.Rmd"
+]

@@ -8,7 +8,7 @@ bibliography:
 - book.bib
 - packages.bib
 description: |
-  这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn展示的个人笔记。
+  这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
   在终极的分析中，一切知识都是历史
   在抽象的意义下，一切科学都是数学
   在理性的基础上，所有的判断都是统计学
@@ -45,7 +45,8 @@ knitr::opts_chunk$set(
 )
 
 # 使用特定的Python环境（请根据实际路径修改）
-use_python("/Users/simonzhou/anaconda3/bin/python3", required = TRUE)
+#use_python("/Users/simonzhou/anaconda3/bin/python3", required = TRUE)
+use_python("C:/Users/asus/AppData/Local/Programs/Python/Python39/python.exe", required = TRUE)
 #python_path <- system("which python3", intern = TRUE)
 #use_python(python_path, required = TRUE)
 #RMarkdown文档中自动查找并设置Python路径
@@ -343,3 +344,12 @@ Output created: /Users/username/username.github.io/docs/index.html
 3. 在 "Sweave" 设置中，可以指定Pandoc路径。
 
 
+## 关于引用
+
+原设置是：
+
+```{r,eval=FALSE}
+`r if (knitr::is_html_output()) '
+# References {-}
+'
+```

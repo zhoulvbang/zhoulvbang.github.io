@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 10 统计量的抽样分布 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 10 统计量的抽样分布 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 10 统计量的抽样分布 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="f分布和chi2分布.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="统计量的抽样分布" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> 统计量的抽样分布<a href="统计量的抽样分布.html#统计量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="样本量的抽样分布" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> 样本量的抽样分布<a href="统计量的抽样分布.html#样本量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">率的统计指标</th>
+<th align="center">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">样本率<span class="math inline">\(p\)</span>的总体均数</td>
+<td align="center"><span class="math inline">\(\mu_{p}=\pi\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">样本量<span class="math inline">\(p\)</span>的方差</td>
+<td align="center"><span class="math inline">\(\sigma_p^2=\frac{\pi(1-\pi)}{n}\)</span>(理论值);<span class="math inline">\(S_p^2=\frac{p(1-p)}{n}\)</span>(估计值)</td>
+</tr>
+<tr class="odd">
+<td align="center">样本率<span class="math inline">\(p\)</span>的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_p=\sqrt{\frac{\pi(1-\pi)}{n}}\)</span>(理论值);<span class="math inline">\(S_p=\sqrt{\frac{p(1-p)}{n}}\)</span>(估计值)</td>
+</tr>
+<tr class="even">
+<td align="center">率的标准误</td>
+<td align="center"><span class="math inline">\(\sigma_p=\sqrt{\frac{\pi(1-\pi)}{n}}\)</span>(理论值);<span class="math inline">\(S_p=\sqrt{\frac{p(1-p)}{n}}\)</span>(估计值)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="样本均数及其抽样分布" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> 样本均数及其抽样分布<a href="统计量的抽样分布.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">均数的统计指标</th>
+<th align="center">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">样本均数的总体均数</td>
+<td align="center"><span class="math inline">\(\mu_{\bar X}=\mu\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">样本均数的方差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar x}^2=\frac{\sigma^2}{n}\)</span>(理论值);<span class="math inline">\(S_{\bar x}=\frac{S^2}{n}\)</span>(估计值)</td>
+</tr>
+<tr class="odd">
+<td align="center">样本均数的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
+</tr>
+<tr class="even">
+<td align="center">均数的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="中心极限定理" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> 中心极限定理<a href="统计量的抽样分布.html#中心极限定理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>大数定律(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：</li>
+</ol>
+<ul>
+<li>独立重复事件；</li>
+<li>重复次数足够多。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>中心极限定理(Central limit theorems):中心极限定理指的是给定一个任意分布的总体。我每次从这些总体中随机抽取<span class="math inline">\(n\)</span>个抽样，一共抽<span class="math inline">\(m\)</span>次。然后把这<span class="math inline">\(m\)</span>组抽样分别求出平均值。这些平均值的分布接近正态分布。</li>
+</ol>
+</div>
+<div id="小结-1" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> 小结<a href="统计量的抽样分布.html#小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>样本均数的中心极限定理。从任意均数等于<span class="math inline">\(\mu\)</span>，方差等于<span class="math inline">\(\sigma^2\)</span>的一个总体中抽取样本量为<span class="math inline">\(n\)</span>的简单随机样本，<font color=Red>当样本量<span class="math inline">\(n\)</span>很大时，无论总体分布形态如何，样本均数的抽样分布近似服从正态分布</font>。</li>
+<li>样本率的中心极限定理。从“成功”率为<span class="math inline">\(\pi\)</span>的总体中随机抽取样本量为<span class="math inline">\(n\)</span>的样本，其样本“成功”率用<span class="math inline">\(p\)</span>表示，<font color=Red>当<span class="math inline">\(n\pi&gt;5\)</span>且<span class="math inline">\(n(1-\pi)&gt;5\)</span>时，样本率<span class="math inline">\(p\)</span>近似服从正态分布</font>。</li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="f分布和chi2分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +484,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/06-Sampling-of-statistics.Rmd",
 "text": "Edit"
 },
 "history": {

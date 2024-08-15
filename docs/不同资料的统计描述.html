@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 5 不同资料的统计描述 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 5 不同资料的统计描述 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 5 不同资料的统计描述 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="抽样.html"/>
+<link rel="next" href="基本概率分布理论.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,367 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="不同资料的统计描述" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 不同资料的统计描述<a href="不同资料的统计描述.html#不同资料的统计描述" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="定量资料的描述指标" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 定量资料的描述指标<a href="不同资料的统计描述.html#定量资料的描述指标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="集中趋势指标" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 集中趋势指标<a href="不同资料的统计描述.html#集中趋势指标" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="15%" />
+<col width="15%" />
+<col width="26%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">指标</th>
+<th align="left">定义→本质</th>
+<th align="left">表示方法</th>
+<th align="left">计算方法</th>
+<th align="center">应用条件</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">算术均数</td>
+<td align="left">先求和再平均</td>
+<td align="left">(1)样本均数:<span class="math inline">\(\bar x\)</span> <br> (2)总体均数:<span class="math inline">\(\mu\)</span></td>
+<td align="left">(1)直接法：<span class="math inline">\(\bar X=\frac{\sum{X_{i}}}{n}\)</span> <br> (2)加权法：<span class="math inline">\(\bar X = \frac{\sum{f_{i}X_{i}}}{\sum{f}}\)</span>，<br>（<span class="math inline">\(X\)</span>为组中值，<span class="math inline">\(f\)</span>为频数）</td>
+<td align="center">(1)对称分布，尤其是正态分布 <br> (2)不含极端值</td>
+</tr>
+<tr class="even">
+<td align="left">几何均数</td>
+<td align="left">先乘积再开方</td>
+<td align="left"><span class="math inline">\(G\)</span></td>
+<td align="left">(1)直接法：<span class="math inline">\(G=\sqrt[n]{x_{1}·x_{2}·x_{3}\cdots}x_{n}\)</span> <br> (2)加权法：<span class="math inline">\(G=\ln^{-1}(\frac{\sum{f_{i}\ln X_{i}}}{\sum{f_{i}}})\)</span></td>
+<td align="center">(1)数据呈倍数变化或对数正态分布→正偏态分布 <br> (2)观察值中不能有零且不能同时有正数和负数→对数性质</td>
+</tr>
+<tr class="odd">
+<td align="left">中位数</td>
+<td align="left">从小到大找中间 <br> 还要注意奇偶性</td>
+<td align="left"><span class="math inline">\(M\)</span></td>
+<td align="left">(1)直接法：n为奇数，<span class="math inline">\(M=X_{\frac{n+1}{x}}\)</span> <br> n为偶数，<span class="math inline">\(M=\frac{1}{2} (X_{\frac{n}{2}}+X_{\frac{n}{2}+1})\)</span> <br> (2)加权法：百分位数法<span class="math inline">\(P_{X}=L_{X}+\frac{i}{f_{x}}(nX\%-\sum{f_{i}})\)</span></td>
+<td align="center">任何资料</td>
+</tr>
+<tr class="even">
+<td align="left">众数</td>
+<td align="left">出现次数最多</td>
+<td align="left">\</td>
+<td align="left">(1)直接法：一组数据中出现次数最多的数值 <br> 加权法：f最多的组段的组中值<span class="math inline">\(X\)</span></td>
+<td align="center">任何数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="均数中位数和众数大小的关系变化" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> 均数、中位数和众数大小的关系变化<a href="不同资料的统计描述.html#均数中位数和众数大小的关系变化" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>对称分布：算术均数<span class="math inline">\(\approx\)</span>中位数</li>
+<li>右偏态：算术均数<span class="math inline">\(&gt;\)</span>中位数</li>
+<li>左偏态：算术均数<span class="math inline">\(&lt;\)</span>中位数</li>
+</ul>
+</div>
+</div>
+<div id="离散数据的描述指标" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 离散数据的描述指标<a href="不同资料的统计描述.html#离散数据的描述指标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="离散趋势指标" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> 离散趋势指标<a href="不同资料的统计描述.html#离散趋势指标" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="16%" />
+<col width="25%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">指标</th>
+<th align="center">本质→定义</th>
+<th align="center">表示方式</th>
+<th align="center">计算公式</th>
+<th align="center">适用条件</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">极差</td>
+<td align="center"><span class="math inline">\(X_{Max}-X_{Min}\)</span></td>
+<td align="center"><span class="math inline">\(R\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">四分位间距/范围</td>
+<td align="center">位置指标</td>
+<td align="center"><span class="math inline">\(IQR\)</span></td>
+<td align="center"><span class="math inline">\(IQR=P_{75}-P_{25}\)</span></td>
+<td align="center">任何资料</td>
+</tr>
+<tr class="odd">
+<td align="center">方差</td>
+<td align="center">离均差平方和求平均</td>
+<td align="center">样本：<span class="math inline">\(s^{2}\)</span> <br> 总体：<span class="math inline">\(\sigma^{2}\)</span></td>
+<td align="center"><span class="math inline">\(s^{2}=\frac{\sum(x_{i}-x)^2}{(n-1)}\)</span></td>
+<td align="center">对称分布，尤其是正态分布;不含极端值</td>
+</tr>
+<tr class="even">
+<td align="center">标准差</td>
+<td align="center">方差开根号</td>
+<td align="center">样本：<span class="math inline">\(s\)</span> <br> 总体：<span class="math inline">\(\sigma\)</span></td>
+<td align="center"><span class="math inline">\(s=\sqrt{\frac{\sum(x_{i}-x)^2}{(n-1)}}\)</span></td>
+<td align="center">同上</td>
+</tr>
+<tr class="odd">
+<td align="center">变异系数</td>
+<td align="center">测量数据变异程度的相对统计量</td>
+<td align="center"><span class="math inline">\(CV\)</span></td>
+<td align="center"><span class="math inline">\(CV=\frac{s}{\bar x}×100%\)</span></td>
+<td align="center">(1)单位相同：但均数相差悬殊；<br>(2)单位不同</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="分类资料的描述指标" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 分类资料的描述指标<a href="不同资料的统计描述.html#分类资料的描述指标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="分类资料的统计描述指标" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> 分类资料的统计描述指标<a href="不同资料的统计描述.html#分类资料的统计描述指标" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">指标</th>
+<th align="left">相对比</th>
+<th align="left">构成比</th>
+<th align="left">频率型指标</th>
+<th align="left">强度性指标</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">定义</td>
+<td align="left">两个有关联的指标之比</td>
+<td align="left">某一部分与总体之比</td>
+<td align="left">某时期内累计出现的频率</td>
+<td align="left">单位时间内某件事发生的频率</td>
+</tr>
+<tr class="even">
+<td align="left">计算公式</td>
+<td align="left"><span class="math inline">\(\frac{A指标}{B指标}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{某一事物总体中某一部分}{某一事物所有组成部分的总体}×100\%\)</span></td>
+<td align="left"><span class="math inline">\(\frac{同时期实际发生某现象的观察单位数}{某时期可能发生某现象的观察单位总数}×K\)</span></td>
+<td align="left"><span class="math inline">\(\frac{发生某件事的观察单位数}{\sum(观察单位×观察时间)}×K\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">量纲</td>
+<td align="left">可有可无</td>
+<td align="left">一般无量纲</td>
+<td align="left">无</td>
+<td align="left">有</td>
+</tr>
+<tr class="even">
+<td align="left">取值</td>
+<td align="left">没有限制</td>
+<td align="left">[0,1]</td>
+<td align="left">[0,1]</td>
+<td align="left">可大于1</td>
+</tr>
+<tr class="odd">
+<td align="left">举例</td>
+<td align="left">RR,变异系数CV</td>
+<td align="left">死因构成比</td>
+<td align="left">病死率，累计发病率</td>
+<td align="left">发病率，发病密度</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="动态数列" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> 动态数列<a href="不同资料的统计描述.html#动态数列" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>绝对量指标
+<ul>
+<li>累计增长量</li>
+<li>逐年增长量</li>
+</ul></li>
+<li>定基类指标
+<ul>
+<li>定基发展速度</li>
+<li>定基增长速度</li>
+</ul></li>
+<li>环比类指标
+<ul>
+<li>环比发展速度</li>
+<li>环比增长速度</li>
+</ul></li>
+<li>平均类指标
+<ul>
+<li>平均发展速度</li>
+<li>平均增长速度</li>
+</ul></li>
+</ul>
+</div>
+<div id="应用相对数的注意事项" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> 应用相对数的注意事项<a href="不同资料的统计描述.html#应用相对数的注意事项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>频率型指标的解释要紧扣<font color=Blue>总体和属性</font></li>
+<li><font color=Blue>计算相对数分母应该有足够的观察单位数</font>
+-如果观察例数太少，则相对数波动较大
+<ul>
+<li>若因实际因素，观察例数确实过少，建议直接采用绝对数</li>
+</ul></li>
+<li><font color=Blue>正确计算合计率</font>：分子分母分别相加，再求合计率</li>
+<li>不能用结构相对数代替强度相对数，<font color=Blue>不能混淆频率型指标和强度型指标，不能以比代率</font></li>
+<li><font color=Blue>注意资料的可比性</font></li>
+<li>不能仅用样本率比较，因为<font color=Blue>样本和总体之间存在抽样误差</font>，需要进行假设检验推断总体的情况</li>
+</ul>
+</div>
+</div>
+<div id="率的标准化" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 率的标准化<a href="不同资料的统计描述.html#率的标准化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">指标</th>
+<th align="center">参照人数</th>
+<th align="center">目标人群</th>
+<th align="left">过程</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">直接标化法</td>
+<td align="center">人口构成</td>
+<td align="center">率</td>
+<td align="left">各年龄组期望死亡数→期望死亡合计数→直接标化率</td>
+</tr>
+<tr class="even">
+<td align="center">简介标化法</td>
+<td align="center">率</td>
+<td align="center">人口构成</td>
+<td align="left">各年龄组期望死亡数→期望死亡合计数→变化死亡比→间接标化率</td>
+</tr>
+</tbody>
+</table>
+<p><em>notice：</em></p>
+<ul>
+<li>变化死亡比<span class="math inline">\(SMR=\frac{实际死亡人数}{期望死亡人数}\)</span></li>
+<li>直接标准化选择的标准是：各年龄组标准人口构成比或各年龄组标准人口数</li>
+</ul>
+</div>
+<div id="常见统计图" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> 常见统计图<a href="不同资料的统计描述.html#常见统计图" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="资料类型" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> 资料类型<a href="不同资料的统计描述.html#资料类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>连续型变量
+<ul>
+<li>计量资料</li>
+<li>定量资料</li>
+</ul></li>
+<li>离散型变量
+<ul>
+<li>不具有分类性质的资料</li>
+<li>离散型定量资料</li>
+</ul></li>
+<li>分类资料
+<ul>
+<li>有序分类资料</li>
+<li>等级资料</li>
+<li>半定量资料</li>
+<li>无序分类资料</li>
+<li>名义变量</li>
+</ul></li>
+</ul>
+<p><em>notice：</em>一般来说，统计图的选择，是综合考量了变量取值特点+研究目的。</p>
+</div>
+<div id="统计图使用类型及目的" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> 统计图使用类型及目的<a href="不同资料的统计描述.html#统计图使用类型及目的" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="26%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">统计图</th>
+<th align="center">资料类型</th>
+<th align="left">分析目的</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">圆图和百分条图</td>
+<td align="center">构成比资料</td>
+<td align="left">用圆的扇形面积或直条各段的长度表示事物各组成部分的构成情况</td>
+</tr>
+<tr class="even">
+<td align="center">直条图</td>
+<td align="center">相互独立资料</td>
+<td align="left">用直条长短表示相互独立的各指标的数值大小，一般用于比较不同组别的指标大小</td>
+</tr>
+<tr class="odd">
+<td align="center">直方图</td>
+<td align="center">连续型变量的频数分布</td>
+<td align="left">用矩阵面积表示各组段的频数（频率）</td>
+</tr>
+<tr class="even">
+<td align="center">箱式图</td>
+<td align="center">连续型资料</td>
+<td align="left">描述数据的分布特征（包括中位数、四分位范围、最大值和最小值）</td>
+</tr>
+<tr class="odd">
+<td align="center">普通线图</td>
+<td align="center">连续型资料</td>
+<td align="left">用线段的升降表示某事物在时间上的变化趋势、或某一现象随着另一现象变化的情况</td>
+</tr>
+<tr class="even">
+<td align="center">半对数线图</td>
+<td align="center">连续型资料</td>
+<td align="left">用线段的升降表示事物的相对变化速度</td>
+</tr>
+<tr class="odd">
+<td align="center">散点图</td>
+<td align="center">双变量连续型资料</td>
+<td align="left">表示两种事物变化的相关性和趋势</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="统计图的选择" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> 统计图的选择<a href="不同资料的统计描述.html#统计图的选择" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="float">
+<img src="images/Choice%20of%20Statistical%20Charts.png" title="Choice of Statistical Charts" alt="Choice of Statistical Charts" />
+<div class="figcaption">Choice of Statistical Charts</div>
+</div>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="抽样.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="基本概率分布理论.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +748,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/03-statistical-description.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 12 假设检验 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 12 假设检验 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 12 假设检验 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="置信区间.html"/>
+<link rel="next" href="参数检验.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="假设检验" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> 假设检验<a href="假设检验.html#假设检验" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="假设检验的基本步骤" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> 假设检验的基本步骤<a href="假设检验.html#假设检验的基本步骤" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">步骤</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">建立假设检验，确定检验水准</td>
+<td align="left">1. 双侧检验：<span class="math inline">\(H_{0}:\mu_{d}=0;H_{1}:\mu_{d}\neq 0,\alpha=0.05\)</span> <br> 2. 单侧检验：<span class="math inline">\(H_{0}:\mu_{d}=0;H_{1}:\mu_{d}&lt;0或\mu_{d}&gt;0,\alpha=0.05\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">1. 假设检验是针对总体的，而非样本；<br>2. 单双侧检验主要根据专业知识预先确定，并且还需要考虑差异的方向；<br> 3. 单侧检验的检验效能更高。</td>
+</tr>
+<tr class="odd">
+<td align="left">计算并选择检验统计量</td>
+<td align="left">1. 根据研究设计方案、资料类型、样本含量大小及分析目的选用适当的检验方法，并根据样本资料计算相应的检验统计量；<br>2. 不同的检验方法要用不同的公式计算现有样本的检验统计量（<span class="math inline">\(t\)</span>检验、<span class="math inline">\(\chi^2\)</span>检验、<span class="math inline">\(F\)</span>检验）；<br>3. 检验统计量是在<span class="math inline">\(H_{0}\)</span>成立的前提下计算的。</td>
+</tr>
+<tr class="even">
+<td align="left">确定P值，做出推断</td>
+<td align="left">假设检验的统计学结论：<br>1. 若<span class="math inline">\(P\le \alpha\)</span>，按所取<span class="math inline">\(\alpha\)</span>检验水准，拒绝<span class="math inline">\(H_{0}\)</span>，接受<span class="math inline">\(H_{1}\)</span>，可以认为…有差异；<br>2. 若<span class="math inline">\(P&gt;\alpha\)</span>时，现有样本信息还不足以拒绝H0，尚不能认为…有差异</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">假设检验所做出的的结论是具有概率性质的，不是绝对的肯定或否定。不论拒绝或不拒绝<span class="math inline">\(H_{0}\)</span>都可能发生错误。下结论时，只能两种：<br>1. 两总体有无差异；<br>2. 两样本差异有无统计学意义。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="假设检验的两型错误检验效能" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> 假设检验的两型错误、检验效能<a href="假设检验.html#假设检验的两型错误检验效能" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="38%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">客观实际</th>
+<th align="left">拒绝<span class="math inline">\(H_{0}\)</span>，接受<span class="math inline">\(H_{1}\)</span></th>
+<th align="left">不拒绝<span class="math inline">\(H_{0}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_{0}\)</span>成立</td>
+<td align="left"><span class="math inline">\(\textrm{I}\)</span>型错误(<span class="math inline">\(\alpha\)</span>)(假阳性) <br>错误拒绝实际成立的<span class="math inline">\(H_{0}\)</span></td>
+<td align="left">正确推断(<span class="math inline">\(1-\alpha\)</span>)</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(H_{0}\)</span>不成立</td>
+<td align="left">正确推断(<span class="math inline">\(1-\beta\)</span>)<br><span class="math inline">\(H_{1}\)</span>为真，能够拒绝<span class="math inline">\(H_{0}\)</span>的概率称为发现该<span class="math inline">\(H_{1}\)</span>的检验效能，用<span class="math inline">\(1-\beta\)</span>表示</td>
+<td align="left"><span class="math inline">\(\textrm{II}\)</span>型错误(<span class="math inline">\(\beta\)</span>)(假阴性)<br>不拒绝实际不成立的<span class="math inline">\(H_{0}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div id="beta的影响因素" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> <span class="math inline">\(1-\beta\)</span>的影响因素：<a href="假设检验.html#beta的影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>检验水准<span class="math inline">\(\alpha\)</span>（正向）——检验水准<span class="math inline">\(\alpha\)</span>越大，检验效能越大</li>
+<li><span class="math inline">\(H_{0}\)</span>与<span class="math inline">\(H_{1}\)</span>的差异大小（正向）——差异越大，检验效能越大</li>
+<li>样本量（正向）——样本量越大，检验效能越大</li>
+<li>标准差越大（反向）——个体差异（标准差）越小，检验效能越大</li>
+<li>单双侧检验：单侧检验效能高于双侧检验效能</li>
+</ol>
+</div>
+<div id="alpha-beta-1-beta关系" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：<a href="假设检验.html#alpha-beta-1-beta关系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>当样本量确定时，<span class="math inline">\(\alpha\)</span>与<span class="math inline">\(\beta\)</span>呈反向变化关系，与<span class="math inline">\(1-\beta\)</span>呈正向变化关系。如果把<span class="math inline">\(\alpha\)</span>设置得很小，势必增加犯<span class="math inline">\(\textrm{II}\)</span>型错误的概率，从而降低检验效能；反之，如果把重点放在减少<span class="math inline">\(\beta\)</span>上，势必增加犯<span class="math inline">\(\textrm{I}\)</span>型错误的概率，从而降低了置信度。</li>
+<li>要同时减小<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>，只有通过增加样本含量来计算。</li>
+</ol>
+</div>
+</div>
+<div id="假设检验与置信区间的关系" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> 假设检验与置信区间的关系<a href="假设检验.html#假设检验与置信区间的关系" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="38%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">基本思想</th>
+<th align="left">假设检验</th>
+<th align="left">置信区间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">基本思想</td>
+<td align="left">假设检验的假设是指我们对总体特征（如参数、分布）的某种推测，从而用概率来判断样本数据所提供的的信息和我们对总体特征猜想的一致性，进而结合专业知识判断这一猜想的正确性</td>
+<td align="left">置信区间是指有样本统计量所构造的总体参数的估计区间，区间估计是按照一定的概率和可信度<span class="math inline">\((1-\alpha)\)</span>用一个区间估计总体参数所在的范围，这个范围称作可信度为<span class="math inline">\((1-\alpha)\)</span>的可信区间</td>
+</tr>
+<tr class="even">
+<td align="center">区别</td>
+<td align="left">1. 假设检验用于推断总体参数之间是否不同</td>
+<td align="left">1. 置信区间用于推断总体参数所在范围；<br> 2.置信区间比假设检验提供更多的信息，置信区间能够回答假设检验的问题；<br> 3. 置信区间在回答差别有无统计学意义时，还可以提示差别是否具有实际意义。</td>
+</tr>
+<tr class="odd">
+<td align="center">联系</td>
+<td align="left">1. 假设检验与置信区间都属于统计推断方法；<br>2. 置信区间估计总体参数所采用的的统计量与假设检验的检验统计量相同；</td>
+<td align="left">3.置信区间能够回答假设检验的问题。根据置信度<span class="math inline">\(1-\alpha\)</span>构造置信区间，如果统计量在置信区间内，那么不拒绝原假设；如果不在置信区间中，那么拒绝原假设；<br>4. 双侧检验时，置信区间确定的<span class="math inline">\(z&#39;\)</span>与检验水准<span class="math inline">\(\alpha\)</span>确定的检验统计量的分布界值相同，因此，在双侧检验时<span class="math inline">\(C=1-\alpha\)</span>。根据显著水平<span class="math inline">\(\alpha\)</span>，可以构造置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="置信区间.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="参数检验.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +515,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/08-confidence-interval.Rmd",
 "text": "Edit"
 },
 "history": {

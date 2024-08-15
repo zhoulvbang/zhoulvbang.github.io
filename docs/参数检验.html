@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 13 参数检验 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 13 参数检验 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 13 参数检验 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="假设检验.html"/>
+<link rel="next" href="非参数检验.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,182 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="参数检验" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> 参数检验<a href="参数检验.html#参数检验" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="参数检验和非参数检验的区别" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> 参数检验和非参数检验的区别<a href="参数检验.html#参数检验和非参数检验的区别" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="41%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">维度</th>
+<th align="left">参数检验（Parameter test）</th>
+<th align="left">非参数检验（Non-parameter tests）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">定义</td>
+<td align="left">以特定的总体分布为前提<span class="math inline">\(\rightarrow\)</span>?</td>
+<td align="left">不依赖于总体分布特征<span class="math inline">\(\rightarrow\)</span>?</td>
+</tr>
+<tr class="even">
+<td align="left">举例</td>
+<td align="left"><span class="math inline">\(Z\)</span>检验、<span class="math inline">\(t\)</span>分布、<span class="math inline">\(F\)</span>检验</td>
+<td align="left">秩和检验（Rank sum test）、卡方检验</td>
+</tr>
+<tr class="odd">
+<td align="left">优点</td>
+<td align="left">1. 直接利用原始观测值计算统计量，检验效能高；<br>2.可对总体参数做出估计</td>
+<td align="left">1. 适用范围广、收集资料方便；<br>2. 多数非参数检验方法比较简便、易于掌握</td>
+</tr>
+<tr class="even">
+<td align="left">缺点</td>
+<td align="left">对数据分布有特定要求，适用范围窄</td>
+<td align="left">1. 没有充分利用原始数据，检验效能低；<br>2. 不能对总体参数做出推断</td>
+</tr>
+<tr class="odd">
+<td align="left">适用范围</td>
+<td align="left">必须符合相应的要求，如两样本t检验要求：独立、正态、方差齐</td>
+<td align="left">1. 总体分布形式未知、分布类型不明确、偏态分布数据；<br>2. 等级资料；<br>3. 不满足参数检验条件的数据；<br>4. 数据一段或两端为无法测量的数值等。</td>
+</tr>
+<tr class="even">
+<td align="left">选用原则</td>
+<td align="left">1. 如果数据符合参数检验条件，或经过变换后符合参数检验的条件，最好用参数检验；<br>2. 参数检验误用为非参数检验，会导致检验效能降低。</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="t分布" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> <span class="math inline">\(t\)</span>分布<a href="参数检验.html#t分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">类目</th>
+<th align="left"><span class="math inline">\(t\)</span>分布</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">概念</td>
+<td align="left">设从正态分布<span class="math inline">\(N(\mu,\sigma^2)\)</span>随机抽取含量为n的样本，样本均数为<span class="math inline">\(\bar x\)</span>、标准差为<span class="math inline">\(s\)</span>、则<span class="math inline">\(t=\frac{\bar x-\mu}{s_{\bar x}}=\frac{\bar x-\mu}{s/\sqrt{n}}\)</span>，自由度为<span class="math inline">\(n-1\)</span>。</td>
+</tr>
+<tr class="even">
+<td align="left">图形特点</td>
+<td align="left">一簇以0为中心，左右对称的单峰曲线；<br> 但随着自由度的增加，<span class="math inline">\(t\)</span>分布曲线将越来越接近于标准正态分布曲线</td>
+</tr>
+<tr class="odd">
+<td align="left">统计量值</td>
+<td align="left"><span class="math inline">\(t\)</span>的取值范围<span class="math inline">\(-\infty \sim +\infty\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">自由度</td>
+<td align="left"><span class="math inline">\(v=n-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-22-1.png" alt="t-Distribution Curves vs. Standard Normal Curve" width="672" />
+<p class="caption">
+Figure 13.1: t-Distribution Curves vs. Standard Normal Curve
+</p>
+</div>
+</div>
+<div id="方差分析" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> 方差分析<a href="参数检验.html#方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="完全随机设计的方差分析" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> 完全随机设计的方差分析<a href="参数检验.html#完全随机设计的方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">类目</th>
+<th align="left">完全随机设计的方差分析</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">数据要求</td>
+<td align="left">独立性、正态性、方差齐性</td>
+</tr>
+<tr class="even">
+<td align="center">检验目的</td>
+<td align="left">推断多个样本所代表的总体均数是否不等</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_0\)</span>与<span class="math inline">\(H_1\)</span></td>
+<td align="left"><span class="math inline">\(H_0\)</span>:<span class="math inline">\(\mu_1=\mu_2=\dots =\mu_a\)</span>，各组所代表的总体均数相等。<span class="math inline">\(H_1\)</span>:<span class="math inline">\(\mu_1,\mu_2,\dots,\mu_a\)</span>各组总体均数不全相等（至少有一个不等式成立）</td>
+</tr>
+<tr class="even">
+<td align="center">检验统计量</td>
+<td align="left"><span class="math inline">\(F=\frac{MS_{组间}}{MS_{组内}}\sim(v_{组间}=k-1，v_{组内}=n-k）\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">关键要点</td>
+<td align="left">总变异分解为组间变异和组内变异</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="随机区组设计的方差分析" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> 随机区组设计的方差分析<a href="参数检验.html#随机区组设计的方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">类目</th>
+<th align="left">随机区组设计的方差分析</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">数据要求</td>
+<td align="left">处理组间、区组间数据满足独立、正态性和方差齐性</td>
+</tr>
+<tr class="even">
+<td align="center">处理组假设</td>
+<td align="left"><span class="math inline">\(H_0\)</span>：不同处理组水平的均数相同；<span class="math inline">\(H_1\)</span>：不同处理组水平的均属不全相同</td>
+</tr>
+<tr class="odd">
+<td align="center">区组假设</td>
+<td align="left"><span class="math inline">\(H_0\)</span>：不同区组对观测指标的影响很大；<span class="math inline">\(H_1\)</span>：不同区组对观测指标的影响不全相同</td>
+</tr>
+<tr class="even">
+<td align="center">检验统计量</td>
+<td align="left"><span class="math inline">\(F=\frac{MS_{处理}}{MS_{误差}}\sim(v_{处理}=k-1,v_{误差}=(b-1)×(k-1))\)</span><br><span class="math inline">\(F=\frac{MS_{区组}}{MS_{误差}}\sim(v_{区组}=k-1,v_{误差}=(b-1)×(k-1))\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">关键要点</td>
+<td align="left">总变异分解为处理组变异、区组变异和随机误差变异</td>
+</tr>
+</tbody>
+</table>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="假设检验.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="非参数检验.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +563,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/09-parameter-test.Rmd",
 "text": "Edit"
 },
 "history": {

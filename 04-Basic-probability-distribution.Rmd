@@ -1,0 +1,335 @@
+# 基本概率分布理论
+
+![type of data](images\type of data.png "type of data")
+
+# 离散型随机变量的概率分布
+## 二项分布(Binomial Distribution)
+
+**定义：**$n$次伯努利试验，成功的次数为$X$的离散概率分布，其中每次试验的成功概率为$\pi$，失败的概率为$1-\pi$。
+
+- $X$的总体均数$\mu_{x}=n\pi$
+- 总体方差$\sigma_{x}=n\pi(1-\pi)$
+
+*notice：*
+
+- 实际上，当$n=1$时，二项分布就是伯努利试验。
+- 伯努利试验要求：<font color=Red>互斥、独立、重复</font>
+
+```{r ,fig.cap="Binomial Distribution Plots",fig.show='hold',fig.align='center',echo=FALSE}
+
+# Parameters
+parameters <- list(
+  list(n = 5, pi = 0.3),
+  list(n = 10, pi = 0.3),
+  list(n = 20, pi = 0.5),
+  list(n = 30, pi = 0.3)
+)
+
+# Create a list to store the plots
+plots <- list()
+
+# Loop through each set of parameters and create the plot
+for (param in parameters) {
+  n <- param$n
+  pi <- param$pi
+  
+  x <- 0:n
+  pmf <- dbinom(x, size = n, prob = pi)
+  
+  title <- paste("Binomial Distribution (n =", n, ", π =", pi, ")")
+  
+  data <- data.frame(x, pmf)
+  
+  plot <- ggplot(data, aes(x = x, y = pmf)) +
+    geom_bar(stat = "identity", fill = "skyblue", width = 0.5) +
+    labs(title = title, x = "Number of Successes", y = "Probability") +
+    theme_minimal() +
+    theme(plot.title = element_text(hjust = 0.5))  # Center the plot title
+    
+  plots[[length(plots) + 1]] <- plot
+}
+
+# Arrange the plots in a 2x2 grid
+grid.arrange(grobs = plots, ncol = 2)
+
+```
+
+## 泊松分布(Poission Distribution)
+
+**定义：**描述在单位面积、单位时间或单位空间中罕见事件发生次数的概率分布为泊松分布，记作$P(\mu)$。泊松分布是二项分布的极限形式，<font color=Red>当一个二项分布的$n$很大，$\pi$很小时，此时，这个二项分布近似于泊松分布</font>。
+
+- 其总体<font color=Red>均数</font>与总体<font color=Red>方差</font>相等，记为$\mu$
+- 可加性：$X\sim P(\mu_{1})$，$Y\sim P(\mu_{2})$，若$X$与$Y$  独立，则$X+Y \sim P(\mu_{1}+\mu_{1})$
+- 泊松分布只有一个参数$\lambda(\mu)$
+- 服从泊松分布的随机变量，其取值为$0$到$+\infty$的概率之和为1
+- 一般来说，当$\mu \ge20$时，可以认为近似正态分布
+
+```{r ,fig.cap="Poisson Distribution with Different Lambda(λ=nπ)",fig.show='hold', fig.align='center', echo=FALSE}
+
+# Parameters
+lambda_values <- c(1, 4, 10, 20)  # 添加了 lambda 值为 20
+symbols <- c("triangle", "circle", "square", "diamond")  # 添加一个形状用于表示 lambda 值为 20
+
+# 创建不同 lambda 值的数据
+data <- data.frame()
+for (i in 1:length(lambda_values)) {
+  lambda <- lambda_values[i]
+  x <- 0:40
+  pmf <- dpois(x, lambda = lambda)
+  symbol <- symbols[i]
+  
+  data <- rbind(data, data.frame(x, pmf, lambda, symbol))
+}
+
+# 创建绘图
+ggplot(data, aes(x = x, y = pmf, shape = symbol, color = factor(lambda))) +
+  geom_point(size = 3) +
+  geom_line(aes(y = pmf), linetype = "dotted", color = "black") +
+  labs(title = "Poisson Distribution with Different Lambda", x = "Number of Events", y = expression(Pr(X == K))) +
+  scale_shape_manual(values = symbols) +
+  scale_color_discrete(name = expression(lambda)) +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+## 二项分布的应用
+
+1. 统计描述角度：直接法计算概率
+\[
+Pr(X=K)=\frac{n!}{k!(n-k)!}\pi^{k}(1-\pi)^{n-k},k=0,1,2,3,\cdots,n
+\]
+2. 统计推断角度：区间估计、假设检验
+
+## 泊松分布的应用
+1. 统计描述角度：直接法计算概率
+\[
+Pr(X=K)=\frac{e^{-\mu}\mu^{k}}{k!},k=0,1,2,\cdots
+\]
+2. 统计推断角度：区间估计、假设检验
+
+# 连续型随机变量的概率分布
+## 正态分布(Normal Distribution)
+
+1. 正态分布(Normal Distribution)：正态分布是最重要的连续型分布，随机变量$X$服从均数为$\mu$，标准差为$\sigma$的正态分布，记为$X\sim N(\mu,\sigma^{2})$。
+2. 正态曲线（Normal curve）：即正态分布曲线，$\mu$和$\sigma$是正态分布的两个参数。
+
+```{r ,fig.cap="Normal Curve",fig.show='hold', fig.align='center', echo=FALSE, warning=FALSE}
+
+# Parameters
+mu <- 32.86
+sigma <- 1.96
+
+# Generate x-axis values
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 100)
+
+# Calculate corresponding normal distribution values
+y <- dnorm(x, mean = mu, sd = sigma)
+
+# Create the plot
+ggplot(data.frame(x, y), aes(x, y)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_vline(xintercept = c(mu, mu - sigma, mu + sigma), linetype = "dashed", color = "red") +
+  annotate("text", x = mu, y = 0.05, label = "μ", color = "red", hjust = -0.5) +
+  annotate("text", x = mu - sigma, y = 0.05, label = expression(paste("μ - ", sigma)), color = "red", hjust = 1.5) +
+  annotate("text", x = mu + sigma, y = 0.05, label = expression(paste("μ + ", sigma)), color = "red", hjust = -0.5) +
+  labs(title = paste("Normal Distribution: μ =", mu, ", σ =", sigma),
+       x = "Frequency", y = "Latent Trait") +
+  scale_x_continuous(breaks = c(mu, mu - sigma, mu + sigma)) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+3. 性质
+  - 正态曲线在横轴上方<font color=Red>均数处最高</font>
+  - 正态分布<font color=Red>以均数为中心，左右对称</font>
+  - 正态分布有<font color=Red>两个参数</font>，即<font color=Red>位置参数$\mu$</font>和<font color=Red>形态参数$\sigma$</font>
+    - 固定$\sigma$，改变$\mu$值，形态不变，曲线沿着$X$轴平行移动
+    - 固定$\mu$，改变$\sigma$值，中心在$X$轴的位置不变
+      - $\sigma$越小，曲线越陡峭$\to$瘦高
+      - $\sigma$越大，曲线越低平$\to$矮胖
+    - 正态分布的可加性，当随机变量X服从正态分布$N(\mu_1,\sigma_1^2)$，Y服从正态分布$N(\mu_2,\sigma_2^2)$，X与Y独立，则$X-Y$服从$N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)$的正态分布
+
+```{r ,fig.cap="Different Normal Curve",fig.show='hold', fig.align='center', echo=FALSE}
+
+# Parameters for Graph 1
+mu_values_graph1 <- c(-1, 0, 1)
+sigma_graph1 <- 0.5
+
+# Generate x-axis values
+x <- seq(-5, 5, length.out = 100)
+
+# Create data for Graph 1
+data_graph1 <- data.frame(x = rep(x, length(mu_values_graph1)),
+                          mu = rep(mu_values_graph1, each = length(x)))
+
+data_graph1$y <- dnorm(data_graph1$x, mean = data_graph1$mu, sd = sigma_graph1)
+
+# Create Graph 1
+graph1 <- ggplot(data_graph1, aes(x = x, y = y, color = factor(mu))) +
+  geom_line(linewidth = 1) +  # Replace size with linewidth
+  labs(title = "μ determines the peak position", x = "X", y = "Density") +
+  theme_minimal()
+
+# Parameters for Graph 2
+mu_graph2 <- 0
+sigma_values_graph2 <- c(0.5, 1, 2)
+
+# Create data for Graph 2
+data_graph2 <- data.frame(x, sigma = rep(sigma_values_graph2, each = length(x)))
+
+data_graph2$y <- dnorm(data_graph2$x, mean = mu_graph2, sd = data_graph2$sigma)
+
+# Create Graph 2
+graph2 <- ggplot(data_graph2, aes(x = x, y = y, color = factor(sigma))) +
+  geom_line(linewidth = 1) +  # Replace size with linewidth
+  labs(title = "σ determines the steepness", x = "X", y = "Density") +
+  theme_minimal()
+
+# Combine the two graphs
+combined_graphs <- plot_grid(graph1, graph2, ncol = 2)
+
+# Display the combined graphs
+print(combined_graphs)
+```
+
+## 标准正态分布
+
+1. 标准正态分布（Standard normal distribution）：是一种特殊的正态分布，通常用$U$或$Z$表示服从标准正态分布的变量，此时称随机变量$X$服从均数为0，标准差为1的标准正态分布，记为$X \sim N(0,1)$
+  - 正态分布：一簇曲线
+  - 标准正态分布：一条曲线
+2. 标准正态变换：Z变换、U变换
+  - 疑难1：Z值到底表达什么意思？
+    - 个体值到均值的距离，有多少个标准差
+    $Z = \frac{X-\mu}{\sigma}$
+    - 只有正态分布的资料才能通过Z变换变成标准正态分布
+  - 疑难2：标准化变换的公式如何理解？
+    - 个体值减去均值，除以标准差，均数和标准差由$\mu,\sigma$变为$0,1$
+    
+    
+```{r ,fig.cap="Normalized Transformation",fig.show='hold', fig.align='center', echo=FALSE , warning=FALSE}
+
+# Parameters for X ~ N(μ, σ^2)
+mu_x <- 2
+sigma_x <- 1.5
+
+# Generate x-axis values for X
+x <- seq(mu_x - 4*sigma_x, mu_x + 4*sigma_x, length.out = 100)
+
+# Calculate X values
+x_values <- dnorm(x, mean = mu_x, sd = sigma_x)
+
+# Create X distribution plot
+plot_x <- ggplot(data.frame(x, x_values), aes(x = x, y = x_values)) +
+  geom_line(color = "blue", linewidth = 1) +
+  labs(title = "X ~ N(μ, sigma^2)", x = "X", y = "Density") +
+  theme_minimal()
+
+# Parameters for Z ~ N(0, 1)
+mu_z <- 0
+sigma_z <- 1
+
+# Generate x-axis values for Z
+z <- seq(mu_z - 4*sigma_z, mu_z + 4*sigma_z, length.out = 100)
+
+# Calculate Z values
+z_values <- dnorm(z, mean = mu_z, sd = sigma_z)
+
+# Create Z distribution plot
+plot_z <- ggplot(data.frame(z, z_values), aes(x = z, y = z_values)) +
+  geom_line(color = "red", linewidth = 1) +
+  labs(title = "Z ~ N(0, 1)", x = "Z", y = "Density") +
+  theme_minimal()
+
+# Combine the two plots
+combined_plots <- grid.arrange(plot_x, plot_z, ncol = 2)
+
+# Display the combined plots
+print(combined_plots)
+```
+
+### 正态分布、标准正态分布的应用
+1. 正态分布的68-95-99.7法则
+
+```{r ,fig.cap="Normal Distribution with 68-95-99.7 Rule",fig.show='hold', fig.align='center', echo=FALSE,warning=FALSE}
+# Generate x-axis values
+x <- seq(-4, 4, length.out = 1000)
+
+# Calculate probability density values
+density_values <- dnorm(x, mean = 0, sd = 1)
+
+# Create a data frame for shading areas
+shaded_areas <- data.frame(x = c(-1, 1, -2, 2, -3, 3),
+                           y = c(0.1, 0.1, 0.05, 0.05, 0.02, 0.02),
+                           label = c("68%", "68%", "95%", "95%", "99.7%", "99.7%"))
+
+# Create the normal distribution plot
+normal_plot <- ggplot(data.frame(x, density_values), aes(x = x, y = density_values)) +
+  geom_line(color = "black", size = 1) +
+  geom_area(data = subset(shaded_areas, label == "68%"), aes(x = x, y = y),
+            fill = "gray", color = NA) +
+  geom_area(data = subset(shaded_areas, label == "95%"), aes(x = x, y = y),
+            fill = "lightblue", color = NA) +
+  geom_area(data = subset(shaded_areas, label == "99.7%"), aes(x = x, y = y),
+            fill = "blue", color = NA) +
+  annotate("text", x = 0, y = 0.07, label = "68%", size = 4, color = "black") +
+  annotate("text", x = 0, y = 0.03, label = "95%", size = 4, color = "black") +
+  annotate("text", x = 0, y = 0.015, label = "99.7%", size = 4, color = "black") +
+  geom_vline(xintercept = c(-1, 1, -2, 2, -3, 3), linetype = "dashed",
+             color = c("black", "black", "black", "black", "black", "black")) +
+  labs(title = "Normal Distribution with 68-95-99.7 Rule",
+       x = "Standard Deviations from Mean",
+       y = "Probability Density") +
+  theme_minimal()
+
+# Display the normal distribution plot
+print(normal_plot)
+```
+
+2. 标准化转换，涉及到以下两个互逆计算
+  - 估计某个随机变量在一定取值范围内的观测值个数占全部观测值数量的百分比
+  - 通过已知的百分比，估计总体变量值的分布范围（本质同医学参考值范围的计算）
+3. 运用正态近似法计算医学参考值范围
+
+![Medical reference range](images\Medical reference range.png "Medical reference range")
+
+4. 运用正态近似法计算置信区间
+5. 正态分布是很多统计学分析方法的理论基础
+
+*notice:*
+
+1. 正态曲线上的拐点所对应的横坐标为$\mu ±\sigma$。
+2. 设随机变量$X$的概率密度曲线为$f(x)=\frac{1}{2\sqrt{p}}e^{\frac{(x+2)^2}{4}}$，若要将$X$转化为服从标准正态分布的变量$\mu$，则所采用的标准化变换为：$\frac{X-2}{\sqrt{2}}$（其原式为：$f(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$，题目和原式中：$p=\pi$）
+
+### 正负偏态分布
+```{r ,fig.cap="Skewed Curves",fig.show='hold', fig.align='center', echo=FALSE}
+x <- seq(-5, 5, length=100)
+y_left_skewed <- 1.5 * dnorm(x - 2)  # Adjusted left-skewed distribution
+y_right_skewed <- 1.5 * dnorm(x + 2)  # Adjusted right-skewed distribution
+
+par(mfrow=c(1, 2))  # Set the layout to one row and two columns
+
+# Plot for Left Skewed Distribution
+plot(x, y_left_skewed, type="l", ylim=range(y_left_skewed, y_right_skewed)*1.1, xlim=range(x), col="red", xlab="", ylab="")
+box()
+axis(1, at=-5:5)
+axis(2)
+title(main="Left Skewed Distribution")
+mtext(expression(paste("f(",x,"; ", mu," = 2, ", sigma^2," = 1)")), side = 3, line = 0.5)
+
+# Plot for Right Skewed Distribution
+plot(x, y_right_skewed, type="l", ylim=range(y_left_skewed, y_right_skewed)*1.1, xlim=range(x), col="blue", xlab="", ylab="")
+box()
+axis(1, at=-5:5)
+axis(2)
+title(main="Right Skewed Distribution")
+mtext(expression(paste("f(",x,"; ", mu," = -2, ", sigma^2," = 1)")), side = 3, line = 0.5)
+```
+
+*notice：*
+
+- 左偏，左边尾长，平均数靠近左侧，平均数小于中位数小于众数，负偏态；
+- 右偏，右边尾长，平均数靠近右侧，平均数大于中位数大于众数，正偏态。
+
+## 小结
+
+![conversion relationship](images\conversion relationship.png "conversion relationship")

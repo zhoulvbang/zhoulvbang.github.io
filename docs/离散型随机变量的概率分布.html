@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 7 离散型随机变量的概率分布 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 7 离散型随机变量的概率分布 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 7 离散型随机变量的概率分布 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="基本概率分布理论.html"/>
+<link rel="next" href="连续型随机变量的概率分布.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="离散型随机变量的概率分布" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> 离散型随机变量的概率分布<a href="离散型随机变量的概率分布.html#离散型随机变量的概率分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="二项分布binomial-distribution" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 二项分布(Binomial Distribution)<a href="离散型随机变量的概率分布.html#二项分布binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>定义：</strong><span class="math inline">\(n\)</span>次伯努利试验，成功的次数为<span class="math inline">\(X\)</span>的离散概率分布，其中每次试验的成功概率为<span class="math inline">\(\pi\)</span>，失败的概率为<span class="math inline">\(1-\pi\)</span>。</p>
+<ul>
+<li><span class="math inline">\(X\)</span>的总体均数<span class="math inline">\(\mu_{x}=n\pi\)</span></li>
+<li>总体方差<span class="math inline">\(\sigma_{x}=n\pi(1-\pi)\)</span></li>
+</ul>
+<p><em>notice：</em></p>
+<ul>
+<li>实际上，当<span class="math inline">\(n=1\)</span>时，二项分布就是伯努利试验。</li>
+<li>伯努利试验要求：<font color=Red>互斥、独立、重复</font></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-13-1.png" alt="Binomial Distribution Plots" width="672" />
+<p class="caption">
+Figure 7.1: Binomial Distribution Plots
+</p>
+</div>
+</div>
+<div id="泊松分布poission-distribution" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 泊松分布(Poission Distribution)<a href="离散型随机变量的概率分布.html#泊松分布poission-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>定义：</strong>描述在单位面积、单位时间或单位空间中罕见事件发生次数的概率分布为泊松分布，记作<span class="math inline">\(P(\mu)\)</span>。泊松分布是二项分布的极限形式，<font color=Red>当一个二项分布的<span class="math inline">\(n\)</span>很大，<span class="math inline">\(\pi\)</span>很小时，此时，这个二项分布近似于泊松分布</font>。</p>
+<ul>
+<li>其总体<font color=Red>均数</font>与总体<font color=Red>方差</font>相等，记为<span class="math inline">\(\mu\)</span></li>
+<li>可加性：<span class="math inline">\(X\sim P(\mu_{1})\)</span>，<span class="math inline">\(Y\sim P(\mu_{2})\)</span>，若<span class="math inline">\(X\)</span>与<span class="math inline">\(Y\)</span> 独立，则<span class="math inline">\(X+Y \sim P(\mu_{1}+\mu_{1})\)</span></li>
+<li>泊松分布只有一个参数<span class="math inline">\(\lambda(\mu)\)</span></li>
+<li>服从泊松分布的随机变量，其取值为<span class="math inline">\(0\)</span>到<span class="math inline">\(+\infty\)</span>的概率之和为1</li>
+<li>一般来说，当<span class="math inline">\(\mu \ge20\)</span>时，可以认为近似正态分布</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-14-1.png" alt="Poisson Distribution with Different Lambda(λ=nπ)" width="672" />
+<p class="caption">
+Figure 7.2: Poisson Distribution with Different Lambda(λ=nπ)
+</p>
+</div>
+</div>
+<div id="二项分布的应用" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 二项分布的应用<a href="离散型随机变量的概率分布.html#二项分布的应用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>统计描述角度：直接法计算概率
+<span class="math display">\[
+Pr(X=K)=\frac{n!}{k!(n-k)!}\pi^{k}(1-\pi)^{n-k},k=0,1,2,3,\cdots,n
+\]</span></li>
+<li>统计推断角度：区间估计、假设检验</li>
+</ol>
+</div>
+<div id="泊松分布的应用" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 泊松分布的应用<a href="离散型随机变量的概率分布.html#泊松分布的应用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>统计描述角度：直接法计算概率
+<span class="math display">\[
+Pr(X=K)=\frac{e^{-\mu}\mu^{k}}{k!},k=0,1,2,\cdots
+\]</span></li>
+<li>统计推断角度：区间估计、假设检验</li>
+</ol>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="基本概率分布理论.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="连续型随机变量的概率分布.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +453,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/04-Basic-probability-distribution.Rmd",
 "text": "Edit"
 },
 "history": {

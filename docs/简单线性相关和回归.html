@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 卫生统计学笔记</title>
+  <title>Chapter 15 简单线性相关和回归 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 15 简单线性相关和回归 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 15 简单线性相关和回归 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="统计量的抽样分布.html"/>
-<link rel="next" href="置信区间.html"/>
+<link rel="prev" href="非参数检验.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,17 +357,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="简单线性相关和回归" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> 简单线性相关和回归<a href="简单线性相关和回归.html#简单线性相关和回归" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="两变量关系分析" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> 两变量关系分析<a href="简单线性相关和回归.html#两变量关系分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="images/two%20variables.png" title="two variables relationship" alt="two variables" />
+<div class="figcaption">two variables</div>
+</div>
+</div>
+<div id="常见相关系数" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> 常见相关系数<a href="简单线性相关和回归.html#常见相关系数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="直线相关分析基本流程" class="section level3 hasAnchor" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> 直线相关分析基本流程<a href="简单线性相关和回归.html#直线相关分析基本流程" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="float">
+<img src="images/Draw%20a%20scatterplot.png" title="Draw a scatterplot" alt="Draw a scatterplot" />
+<div class="figcaption">Draw a scatterplot</div>
+</div>
+</div>
+<div id="三类相关系数总结" class="section level3 hasAnchor" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> 三类相关系数总结<a href="简单线性相关和回归.html#三类相关系数总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">名称</th>
+<th align="left">适用条件</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Pearson直线相关系数</td>
+<td align="left">双变量正态分布的资料<span class="math inline">\(\rightarrow\)</span>定量<span class="math inline">\(\rightarrow\)</span>类比t检验、方差分析</td>
+</tr>
+<tr class="even">
+<td align="center">列联系数</td>
+<td align="left">非等级资料<span class="math inline">\(\rightarrow\)</span>分类<span class="math inline">\(\rightarrow\)</span>类比卡方检验</td>
+</tr>
+<tr class="odd">
+<td align="center">Spearman秩相关系数</td>
+<td align="left">不满足双变量正态分布、分布未知、等级资料<span class="math inline">\(\rightarrow\)</span>定量+分类<span class="math inline">\(\rightarrow\)</span>类比秩和检验</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="简单直线回归" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> 简单直线回归<a href="简单线性相关和回归.html#简单直线回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="直线回归分析的基本流程" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> 直线回归分析的基本流程<a href="简单线性相关和回归.html#直线回归分析的基本流程" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="float">
+<img src="images/Draw%20a%20scatterplot.png" title="Draw a scatterplot" alt="Draw a scatterplot" />
+<div class="figcaption">Draw a scatterplot</div>
+</div>
+</div>
+</div>
+<div id="直线相关与直线回归的比较" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> 直线相关与直线回归的比较<a href="简单线性相关和回归.html#直线相关与直线回归的比较" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">区别与联系</th>
+<th align="center">类目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">区别</td>
+<td align="center">资料要求</td>
+<td align="left">1. <font color=Red>线性相关</font>要求X,Y服从<font color=Red>双变量正态分布</font>，对这种资料进行回归分析称为<span class="math inline">\(\textrm{II}\)</span>型回归，即可以把X当自变量，也可以当因变量，反之亦然。<br>2. <font color=Red>线性回归要求<font color=Red>Y在给定X值时服从正态分布</font>，X可以是精确测量和严格控制的变量，这时的回归称为型回归，即不可以把X当因变量，Y当自变量进行回归分析。</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">应用</td>
+<td align="left">1. <font color=Red>线性相关用来表达两个变量间的互依关系</font>，两个变量的研究<font color=Red>地位是相等的</font>，谁做X，谁做Y都可以；<br>2. <font color=Red>线性回归用来表达两个变量间的依存变化的数量关系</font>，即一个变量（为因变量Y）如何依存于另一个变量（为自变量X）而变化，两个变量的研究<font color=Red>地位是不相等的</font>。</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">意义</td>
+<td align="left">1. 相关系数r说明具有线性关系的两个变量之间的<font color=Red>密切程度和相关方向</font>；<br>2. 回归系数b表示X每变化一个单位所导致的<font color=Red>Y的平均变化量</font>。</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">r和b的取值范围</td>
+<td align="left">r没有单位，而b有单位（其单位是：Y的单位/X的单位），所以导致两者的取值范围不同；<br> <span class="math inline">\(-1 \le r \le 1\)</span>,<span class="math inline">\(-\infty&lt;b&lt;+\infty\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">r和b的计算公式不同</td>
+<td align="left"><span class="math inline">\(r=\frac{l_{xy}}{\sqrt{l_{xx}l_{yy}}}\)</span>,<span class="math inline">\(b=\frac{l_{xy}}{l_{xx}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">联系</td>
+<td align="center">符号</td>
+<td align="left">对于既可以做相关又可作回归的同一组资料，计算出r与b的正负号相同</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">假设检验</td>
+<td align="left">对于同一组资料，相关系数和回归系数的假设检验等价。即有：<span class="math inline">\(t_b=t_r\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">相互换算</td>
+<td align="left">对于同一组资料，相关系数和回归系数可通过下式换算：<span class="math inline">\(b=s\frac{S_Y}{S_X}\)</span>，<br>式中的<span class="math inline">\(S_X,S_Y\)</span>分别是<span class="math inline">\(X,Y\)</span>的标准差</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">用回归解释相关</td>
+<td align="left">又决定系数<span class="math inline">\(R^2=\frac{SS_{回}}{SS_{总}}\)</span>，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则<span class="math inline">\(R^2\)</span>越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="统计量的抽样分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="置信区间.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="非参数检验.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -398,7 +518,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/07-analytical-procedure.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/10-non-parameter-test.Rmd",
 "text": "Edit"
 },
 "history": {
