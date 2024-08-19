@@ -20,13 +20,14 @@ language: # 设置语言元素的显示文本
 rmd_files: [
   "index.Rmd",
   "01-About-health-statistics.Rmd",
-  "02-sample.Rmd",
-  "03-statistical-description.Rmd",
-  "04-Basic-probability-distribution.Rmd",
-  "05-F-chi-square.Rmd",
-  "06-Sampling-of-statistics.Rmd",
+  "02-descriptive-statistics.Rmd",
+  "03-Random-events-probabilities.Rmd",
+  "04-discrete-type-random-variable.Rmd",
+  "05-random-variable-of-continuous-type.Rmd",
+  "06-parameter-estimation.Rmd",
   "07-analytical-procedure.Rmd",
   "08-confidence-interval.Rmd",
   "09-parameter-test.Rmd",
-  "10-non-parameter-test.Rmd"
+  "10-non-parameter-test.Rmd",
+  "11-Usage.Rmd"
 ]

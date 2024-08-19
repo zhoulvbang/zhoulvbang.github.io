@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 由正态分布引出的三大抽样分布 | 05-random-variable-of-continuous-type.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 由正态分布引出的三大抽样分布 | 05-random-variable-of-continuous-type.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 由正态分布引出的三大抽样分布 | 05-random-variable-of-continuous-type.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="连续型随机变量的概率分布.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">lazyzhou的学习笔记</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>1</b> 连续型随机变量的概率分布</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>1.1</b> 正态分布(Normal Distribution)</a></li>
+<li class="chapter" data-level="1.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>1.2</b> 标准正态分布</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>1.2.1</b> 正态分布、标准正态分布的应用</a></li>
+<li class="chapter" data-level="1.2.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>1.2.2</b> 正负偏态分布</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>1.3</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html"><i class="fa fa-check"></i><b>2</b> 由正态分布引出的三大抽样分布</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#t分布"><i class="fa fa-check"></i><b>2.1</b> t分布</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#f分布的应用"><i class="fa fa-check"></i><b>2.1.1</b> F分布的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#chi2分布"><i class="fa fa-check"></i><b>2.2</b> <span class="math inline">\(\chi^2\)</span>分布</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#卡方检验应用"><i class="fa fa-check"></i><b>2.2.1</b> 卡方检验应用</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="由正态分布引出的三大抽样分布" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 由正态分布引出的三大抽样分布<a href="由正态分布引出的三大抽样分布.html#由正态分布引出的三大抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="t分布" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> t分布<a href="由正态分布引出的三大抽样分布.html#t分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>说起t分布，首先要提一句u分布，正态分布（normal distribution）是许多统计方法的理论基础。
+正态分布的两个参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\delta\)</span>决定了正态分布的位置和形态。为了应用方便，常将一般的正态变量X通过u变换<span class="math inline">\([(X-\mu)/\delta]\)</span>转化成标准正态变量u，以使原来各种形态的正态分布都转换为<span class="math inline">\(\mu=0，\delta=1\)</span>的标准正态分布(standard normaldistribution)，
+亦称u分布。</p>
+<p>根据中心极限定理，通过抽样模拟试验表明，在正态分布总体中以固定 n 抽取若干个样本时，样本均数的分布仍服从正态分布，即<span class="math inline">\(N(\mu,\delta)\)</span>。所以，对样本均数的分布进行u变换，也可变换为标准正态分布<span class="math inline">\(N(0,1)\)</span>。</p>
+<p>由于在实际工作中，往往<span class="math inline">\(\delta\)</span>(总体方差)是未知的，常用s(样本方差)作为<span class="math inline">\(\delta\)</span>的估计值，为了与u变换区别，称为 t 变换，统计量 t 值的分布称为 t 分布。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="05-random-variable-of-continuous-type_files/figure-html/unnamed-chunk-6-1.png" alt="t-distribution Curves" width="672" />
+<p class="caption">
+Figure 2.1: t-distribution Curves
+</p>
+</div>
+<blockquote>
+<p>t 分布是英国统计学家 W.S. Gosset 在 1908 年以笔名 Student发表的论文中提出的, 故后人称为 “学生氏 (Student) 分布” 或 “t 分
+布”。
+## F分布</p>
+</blockquote>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="05-random-variable-of-continuous-type_files/figure-html/unnamed-chunk-7-1.png" alt="F-distribution Curves" width="672" />
+<p class="caption">
+Figure 2.2: F-distribution Curves
+</p>
+</div>
+<div id="f分布的应用" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> F分布的应用<a href="由正态分布引出的三大抽样分布.html#f分布的应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>方差的同质性检验
+组与组之间的差异称组间变异（variation between classes），反映在各组的平均数不同。同一组内部被试（个体）之间的差异称组内变异（variation within class），反映在每一个个体之间的差异。</li>
+<li>总变异的分解：</li>
+</ol>
+<ul>
+<li>总变异 = 组间变异+组内变异</li>
+<li>组间变异 = 实验条件 + 随机误差</li>
+<li>组内变异 = 个体差异 + 实验误差 。组内误差都是随机误差。</li>
+</ul>
+</div>
+</div>
+<div id="chi2分布" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> <span class="math inline">\(\chi^2\)</span>分布<a href="由正态分布引出的三大抽样分布.html#chi2分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="05-random-variable-of-continuous-type_files/figure-html/unnamed-chunk-8-1.png" alt="Chi-square Distribution Curves" width="672" />
+<p class="caption">
+Figure 2.3: Chi-square Distribution Curves
+</p>
+</div>
+<div id="卡方检验应用" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 卡方检验应用<a href="由正态分布引出的三大抽样分布.html#卡方检验应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>检验连续变量的分布是否与某种理论分布一致。</li>
+<li>检验某个分类变量各类的出现概率是否等于指定概率。</li>
+<li>检验某两种方法的结果是否一致。</li>
+</ol>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="连续型随机变量的概率分布.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/%s",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,112 +1,3 @@
-# 基本概率分布理论
-
-![type of data](images\type of data.png "type of data")
-
-# 离散型随机变量的概率分布
-## 二项分布(Binomial Distribution)
-
-**定义：**$n$次伯努利试验，成功的次数为$X$的离散概率分布，其中每次试验的成功概率为$\pi$，失败的概率为$1-\pi$。
-
-- $X$的总体均数$\mu_{x}=n\pi$
-- 总体方差$\sigma_{x}=n\pi(1-\pi)$
-
-*notice：*
-
-- 实际上，当$n=1$时，二项分布就是伯努利试验。
-- 伯努利试验要求：<font color=Red>互斥、独立、重复</font>
-
-```{r ,fig.cap="Binomial Distribution Plots",fig.show='hold',fig.align='center',echo=FALSE}
-
-# Parameters
-parameters <- list(
-  list(n = 5, pi = 0.3),
-  list(n = 10, pi = 0.3),
-  list(n = 20, pi = 0.5),
-  list(n = 30, pi = 0.3)
-)
-
-# Create a list to store the plots
-plots <- list()
-
-# Loop through each set of parameters and create the plot
-for (param in parameters) {
-  n <- param$n
-  pi <- param$pi
-  
-  x <- 0:n
-  pmf <- dbinom(x, size = n, prob = pi)
-  
-  title <- paste("Binomial Distribution (n =", n, ", π =", pi, ")")
-  
-  data <- data.frame(x, pmf)
-  
-  plot <- ggplot(data, aes(x = x, y = pmf)) +
-    geom_bar(stat = "identity", fill = "skyblue", width = 0.5) +
-    labs(title = title, x = "Number of Successes", y = "Probability") +
-    theme_minimal() +
-    theme(plot.title = element_text(hjust = 0.5))  # Center the plot title
-    
-  plots[[length(plots) + 1]] <- plot
-}
-
-# Arrange the plots in a 2x2 grid
-grid.arrange(grobs = plots, ncol = 2)
-
-```
-
-## 泊松分布(Poission Distribution)
-
-**定义：**描述在单位面积、单位时间或单位空间中罕见事件发生次数的概率分布为泊松分布，记作$P(\mu)$。泊松分布是二项分布的极限形式，<font color=Red>当一个二项分布的$n$很大，$\pi$很小时，此时，这个二项分布近似于泊松分布</font>。
-
-- 其总体<font color=Red>均数</font>与总体<font color=Red>方差</font>相等，记为$\mu$
-- 可加性：$X\sim P(\mu_{1})$，$Y\sim P(\mu_{2})$，若$X$与$Y$  独立，则$X+Y \sim P(\mu_{1}+\mu_{1})$
-- 泊松分布只有一个参数$\lambda(\mu)$
-- 服从泊松分布的随机变量，其取值为$0$到$+\infty$的概率之和为1
-- 一般来说，当$\mu \ge20$时，可以认为近似正态分布
-
-```{r ,fig.cap="Poisson Distribution with Different Lambda(λ=nπ)",fig.show='hold', fig.align='center', echo=FALSE}
-
-# Parameters
-lambda_values <- c(1, 4, 10, 20)  # 添加了 lambda 值为 20
-symbols <- c("triangle", "circle", "square", "diamond")  # 添加一个形状用于表示 lambda 值为 20
-
-# 创建不同 lambda 值的数据
-data <- data.frame()
-for (i in 1:length(lambda_values)) {
-  lambda <- lambda_values[i]
-  x <- 0:40
-  pmf <- dpois(x, lambda = lambda)
-  symbol <- symbols[i]
-  
-  data <- rbind(data, data.frame(x, pmf, lambda, symbol))
-}
-
-# 创建绘图
-ggplot(data, aes(x = x, y = pmf, shape = symbol, color = factor(lambda))) +
-  geom_point(size = 3) +
-  geom_line(aes(y = pmf), linetype = "dotted", color = "black") +
-  labs(title = "Poisson Distribution with Different Lambda", x = "Number of Events", y = expression(Pr(X == K))) +
-  scale_shape_manual(values = symbols) +
-  scale_color_discrete(name = expression(lambda)) +
-  theme_minimal() +
-  theme(legend.position = "top")
-```
-
-## 二项分布的应用
-
-1. 统计描述角度：直接法计算概率
-\[
-Pr(X=K)=\frac{n!}{k!(n-k)!}\pi^{k}(1-\pi)^{n-k},k=0,1,2,3,\cdots,n
-\]
-2. 统计推断角度：区间估计、假设检验
-
-## 泊松分布的应用
-1. 统计描述角度：直接法计算概率
-\[
-Pr(X=K)=\frac{e^{-\mu}\mu^{k}}{k!},k=0,1,2,\cdots
-\]
-2. 统计推断角度：区间估计、假设检验
-
 # 连续型随机变量的概率分布
 ## 正态分布(Normal Distribution)
 
@@ -333,3 +224,125 @@ mtext(expression(paste("f(",x,"; ", mu," = -2, ", sigma^2," = 1)")), side = 3, l
 ## 小结
 
 ![conversion relationship](images\conversion relationship.png "conversion relationship")
+
+
+# 由正态分布引出的三大抽样分布
+## t分布
+
+说起t分布，首先要提一句u分布，正态分布（normal distribution）是许多统计方法的理论基础。
+正态分布的两个参数$\mu$和$\delta$决定了正态分布的位置和形态。为了应用方便，常将一般的正态变量X通过u变换$[(X-\mu)/\delta]$转化成标准正态变量u，以使原来各种形态的正态分布都转换为$\mu=0，\delta=1$的标准正态分布(standard normaldistribution)，
+亦称u分布。
+
+根据中心极限定理，通过抽样模拟试验表明，在正态分布总体中以固定 n 抽取若干个样本时，样本均数的分布仍服从正态分布，即$N(\mu,\delta)$。所以，对样本均数的分布进行u变换，也可变换为标准正态分布$N(0,1)$。
+
+由于在实际工作中，往往$\delta$(总体方差)是未知的，常用s(样本方差)作为$\delta$的估计值，为了与u变换区别，称为 t 变换，统计量 t 值的分布称为 t 分布。
+
+```{r ,fig.cap="t-distribution Curves",fig.show='hold', fig.align='center', echo=FALSE}
+# 加载 ggplot2 包
+#library(ggplot2)
+#library(showtext)
+
+# 使用 showtext 以支持中文字体
+showtext_auto()
+font_add("SimHei", "simhei.ttf")
+
+# 定义自由度
+df_values <- c(1, 2, 10, Inf)
+
+# 创建一个数据框，用于绘图
+x <- seq(-5, 5, length.out = 100)
+df_data <- data.frame(x = rep(x, times = length(df_values)),
+                      df = factor(rep(df_values, each = length(x))))
+
+# 计算不同自由度下的 t 分布密度
+df_data$density <- with(df_data, dt(x, df = as.numeric(df)))
+
+# 绘制图形
+ggplot(df_data, aes(x = x, y = density, color = df)) +
+  geom_line(linewidth = 1) +
+  labs(title = "t 分布曲线簇",
+       x = "x",
+       y = "密度",
+       color = "自由度") +
+  theme_minimal() +
+  scale_color_manual(values = c("red", "blue", "green", "black"),
+                     labels = c("df=1", "df=2", "df=10", "正态分布")) +
+  theme(text = element_text(family = "SimHei"),
+        legend.title = element_text(family = "SimHei"))
+```
+
+>t 分布是英国统计学家 W.S. Gosset 在 1908 年以笔名 Student发表的论文中提出的, 故后人称为 “学生氏 (Student) 分布” 或 “t 分
+布”。
+## F分布
+
+```{r ,fig.cap="F-distribution Curves",fig.show='hold', fig.align='center', echo=FALSE}
+# 设置自由度组合
+df_values <- list(c(1, 1), c(2, 1), c(5, 2), c(10, 1), c(100, 100))
+
+# 生成横坐标点
+x_values <- seq(0, 5, length.out = 1000)
+
+# 创建数据框
+df_data <- expand.grid(x = x_values, df1 = numeric(), df2 = numeric())
+
+# 填充数据框
+for (df in df_values) {
+  df_data <- rbind(df_data, data.frame(x = x_values, df1 = df[1], df2 = df[2]))
+}
+
+# 计算F分布的概率密度
+df_data$density <- mapply(function(x, df1, df2) df(x, df1, df2), df_data$x, df_data$df1, df_data$df2)
+
+# 绘制F分布曲线
+p <- ggplot(data = df_data, aes(x = x, y = density, color = factor(df1))) +
+  geom_line() +
+  labs(title = "F-distribution Curves", x = "x", y = "Density", color = "df1") +
+  scale_color_discrete(name = "df1") +
+  annotate("text", x = c(1, 2, 3, 4, 4.5), y = c(0.8, 1.2, 0.6, 1.2, 0.2), 
+           label = c("d1=1, d2=1", "d1=2, d2=1", "d1=5, d2=2", "d1=10, d2=1", "d1=100, d2=100"), 
+           color = c("red", "yellow", "green", "blue", "purple"))+
+  ylim(0, 2.5)  # 设置y轴范围
+            
+# 显示图表
+print(p)
+```
+
+### F分布的应用
+1. 方差的同质性检验
+组与组之间的差异称组间变异（variation between classes），反映在各组的平均数不同。同一组内部被试（个体）之间的差异称组内变异（variation within class），反映在每一个个体之间的差异。
+2. 总变异的分解：
+ - 总变异 = 组间变异+组内变异
+ - 组间变异 = 实验条件 + 随机误差
+ - 组内变异 = 个体差异 + 实验误差 。组内误差都是随机误差。
+
+## $\chi^2$分布
+
+```{r ,fig.cap="Chi-square Distribution Curves",fig.show='hold', fig.align='center', echo=FALSE}
+# 设置自由度
+df_values <- c(1, 2, 5, 10, 20, 100)
+
+# 生成横坐标点
+x_values <- seq(0, 15, length.out = 1000)
+
+# 创建数据框
+df_data <- expand.grid(x = x_values, df = df_values)
+
+# 计算卡方分布的概率密度
+df_data$density <- dchisq(df_data$x, df_data$df)
+
+# 绘制卡方分布曲线
+p <- ggplot(data = df_data, aes(x = x, y = density, color = factor(df))) +
+  geom_line() +
+  labs(title = "Chi-square Distribution Curves", x = "x", y = "Density", color = "Degrees of Freedom") +
+  scale_color_discrete(name = "v:Degrees of Freedom") +
+  ylim(0, 1)  # 设置纵轴范围在（0,1）
+
+# 显示图表
+print(p)
+```
+
+### 卡方检验应用
+
+1. 检验连续变量的分布是否与某种理论分布一致。
+2. 检验某个分类变量各类的出现概率是否等于指定概率。
+3. 检验某两种方法的结果是否一致。

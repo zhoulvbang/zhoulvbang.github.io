@@ -29,11 +29,24 @@ bookdown::gitbook: # 配置 GitBook 输出格式
   #mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" # 启用 MathJax
 
 bookdown::pdf_book: # 配置 PDF 输出格式
+  #includes:
+  #  in_header: preamble.tex # 包含在 LaTeX 文档头部的自定义文件
+  #latex_engine: xelatex # 使用 xelatex 引擎编译 LaTeX 文档
+  #citation_package: natbib # 使用 natbib 处理文献引用
+  #keep_tex: yes # 保留中间的 .tex 文件
   includes:
-    in_header: preamble.tex # 包含在 LaTeX 文档头部的自定义文件
-  latex_engine: xelatex # 使用 xelatex 引擎编译 LaTeX 文档
-  citation_package: natbib # 使用 natbib 处理文献引用
-  keep_tex: yes # 保留中间的 .tex 文件
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+    after_body: latex/after_body.tex
+  keep_tex: yes
+  latex_engine: xelatex
+  citation_package: natbib
+  template: null
+  pandoc_args: [--top-level-division=chapter, --wrap=none]
+  toc_depth: 3
+  toc_unnumbered: no
+  toc_appendix: yes
+  highlight_bw: yes
 
 bookdown::epub_book: default # 配置 EPUB 输出格式，使用默认设置
 

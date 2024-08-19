@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 简单线性相关和回归 | 卫生统计学笔记</title>
+  <title>Chapter 6 参数估计 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 简单线性相关和回归 | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 6 参数估计 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 简单线性相关和回归 | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 6 参数估计 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="非参数检验.html"/>
-<link rel="next" href="usage用法.html"/>
+<link rel="prev" href="连续型随机变量的概率分布.html"/>
+<link rel="next" href="定量资料与分类资料的分析步骤.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -219,46 +219,43 @@
 <li class="chapter" data-level="10.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>10.3.3</b> R×C样本率或构成比的比较</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>10.4</b> 秩和检验</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>11</b> 简单线性相关和回归</a>
+<li class="chapter" data-level="10.5" data-path="非参数检验.html"><a href="非参数检验.html#两变量关系分析"><i class="fa fa-check"></i><b>10.5</b> 两变量关系分析</a></li>
+<li class="chapter" data-level="10.6" data-path="非参数检验.html"><a href="非参数检验.html#常见相关系数"><i class="fa fa-check"></i><b>10.6</b> 常见相关系数</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>11.1</b> 两变量关系分析</a></li>
-<li class="chapter" data-level="11.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>11.2</b> 常见相关系数</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>11.2.1</b> 直线相关分析基本流程</a></li>
-<li class="chapter" data-level="11.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>11.2.2</b> 三类相关系数总结</a></li>
+<li class="chapter" data-level="10.6.1" data-path="非参数检验.html"><a href="非参数检验.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>10.6.1</b> 直线相关分析基本流程</a></li>
+<li class="chapter" data-level="10.6.2" data-path="非参数检验.html"><a href="非参数检验.html#三类相关系数总结"><i class="fa fa-check"></i><b>10.6.2</b> 三类相关系数总结</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>11.3</b> 简单直线回归</a>
+<li class="chapter" data-level="10.7" data-path="非参数检验.html"><a href="非参数检验.html#简单直线回归"><i class="fa fa-check"></i><b>10.7</b> 简单直线回归</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>11.3.1</b> 直线回归分析的基本流程</a></li>
+<li class="chapter" data-level="10.7.1" data-path="非参数检验.html"><a href="非参数检验.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>10.7.1</b> 直线回归分析的基本流程</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>11.4</b> 直线相关与直线回归的比较</a></li>
+<li class="chapter" data-level="10.8" data-path="非参数检验.html"><a href="非参数检验.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>10.8</b> 直线相关与直线回归的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>12</b> Usage(用法)</a>
+<li class="chapter" data-level="11" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>11</b> Usage(用法)</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>12.1</b> Render book(渲染这本书)</a></li>
-<li class="chapter" data-level="12.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>12.2</b> Preview book(预览这本书)</a></li>
-<li class="chapter" data-level="12.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>12.3</b> 安装R+Rstudio</a></li>
-<li class="chapter" data-level="12.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>12.4</b> 创建一个Rmarkdown文件</a>
+<li class="chapter" data-level="11.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>11.1</b> Render book(渲染这本书)</a></li>
+<li class="chapter" data-level="11.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>11.2</b> Preview book(预览这本书)</a></li>
+<li class="chapter" data-level="11.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>11.3</b> 安装R+Rstudio</a></li>
+<li class="chapter" data-level="11.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>11.4</b> 创建一个Rmarkdown文件</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>12.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
-<li class="chapter" data-level="12.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>12.4.2</b> 在set部分load <code>bookdown</code></a></li>
-<li class="chapter" data-level="12.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>12.4.3</b> 其他宏包的需求与使用</a></li>
-<li class="chapter" data-level="12.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>12.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+<li class="chapter" data-level="11.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>11.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
+<li class="chapter" data-level="11.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>11.4.2</b> 在set部分load <code>bookdown</code></a></li>
+<li class="chapter" data-level="11.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>11.4.3</b> 其他宏包的需求与使用</a></li>
+<li class="chapter" data-level="11.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>11.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>12.5</b> 代码块的选项设置（options）</a>
+<li class="chapter" data-level="11.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>11.5</b> 代码块的选项设置（options）</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>12.5.1</b> 输出信息选项</a></li>
-<li class="chapter" data-level="12.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>12.5.2</b> 错误信息选项</a></li>
-<li class="chapter" data-level="12.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>12.5.3</b> 全局设置</a></li>
+<li class="chapter" data-level="11.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>11.5.1</b> 输出信息选项</a></li>
+<li class="chapter" data-level="11.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>11.5.2</b> 错误信息选项</a></li>
+<li class="chapter" data-level="11.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>11.5.3</b> 全局设置</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>12.6</b> 在vscode中编辑rmarkdown</a>
+<li class="chapter" data-level="11.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>11.6</b> 在vscode中编辑rmarkdown</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>12.6.1</b> 安装R extension</a></li>
-<li class="chapter" data-level="12.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>12.6.2</b> 安装其他的软件</a></li>
+<li class="chapter" data-level="11.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>11.6.1</b> 安装R extension</a></li>
+<li class="chapter" data-level="11.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>11.6.2</b> 安装其他的软件</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>12.7</b> 与Rmarkdown的缘分</a></li>
-<li class="chapter" data-level="12.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>12.8</b> 关于引用</a></li>
+<li class="chapter" data-level="11.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>11.7</b> 与Rmarkdown的缘分</a></li>
+<li class="chapter" data-level="11.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>11.8</b> 关于引用</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -280,127 +277,93 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="简单线性相关和回归" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Chapter 11</span> 简单线性相关和回归<a href="简单线性相关和回归.html#简单线性相关和回归" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="两变量关系分析" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> 两变量关系分析<a href="简单线性相关和回归.html#两变量关系分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="float">
-<img src="images/two%20variables.png" title="two variables relationship" alt="two variables" />
-<div class="figcaption">two variables</div>
-</div>
-</div>
-<div id="常见相关系数" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> 常见相关系数<a href="简单线性相关和回归.html#常见相关系数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="直线相关分析基本流程" class="section level3 hasAnchor" number="11.2.1">
-<h3><span class="header-section-number">11.2.1</span> 直线相关分析基本流程<a href="简单线性相关和回归.html#直线相关分析基本流程" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="float">
-<img src="images/Draw%20a%20scatterplot.png" title="Draw a scatterplot" alt="Draw a scatterplot" />
-<div class="figcaption">Draw a scatterplot</div>
-</div>
-</div>
-<div id="三类相关系数总结" class="section level3 hasAnchor" number="11.2.2">
-<h3><span class="header-section-number">11.2.2</span> 三类相关系数总结<a href="简单线性相关和回归.html#三类相关系数总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="参数估计" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 参数估计<a href="参数估计.html#参数估计" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="样本量的抽样分布" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 样本量的抽样分布<a href="参数估计.html#样本量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
-<col width="36%" />
-<col width="63%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">名称</th>
-<th align="left">适用条件</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Pearson直线相关系数</td>
-<td align="left">双变量正态分布的资料<span class="math inline">\(\rightarrow\)</span>定量<span class="math inline">\(\rightarrow\)</span>类比t检验、方差分析</td>
-</tr>
-<tr class="even">
-<td align="center">列联系数</td>
-<td align="left">非等级资料<span class="math inline">\(\rightarrow\)</span>分类<span class="math inline">\(\rightarrow\)</span>类比卡方检验</td>
-</tr>
-<tr class="odd">
-<td align="center">Spearman秩相关系数</td>
-<td align="left">不满足双变量正态分布、分布未知、等级资料<span class="math inline">\(\rightarrow\)</span>定量+分类<span class="math inline">\(\rightarrow\)</span>类比秩和检验</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="简单直线回归" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> 简单直线回归<a href="简单线性相关和回归.html#简单直线回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="直线回归分析的基本流程" class="section level3 hasAnchor" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> 直线回归分析的基本流程<a href="简单线性相关和回归.html#直线回归分析的基本流程" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="float">
-<img src="images/Draw%20a%20scatterplot.png" title="Draw a scatterplot" alt="Draw a scatterplot" />
-<div class="figcaption">Draw a scatterplot</div>
-</div>
-</div>
-</div>
-<div id="直线相关与直线回归的比较" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> 直线相关与直线回归的比较<a href="简单线性相关和回归.html#直线相关与直线回归的比较" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<colgroup>
-<col width="16%" />
-<col width="16%" />
+<col width="33%" />
 <col width="66%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">区别与联系</th>
-<th align="center">类目</th>
-<th align="left">内容</th>
+<th align="center">率的统计指标</th>
+<th align="center">计算公式</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">区别</td>
-<td align="center">资料要求</td>
-<td align="left">1. <font color=Red>线性相关</font>要求X,Y服从<font color=Red>双变量正态分布</font>，对这种资料进行回归分析称为<span class="math inline">\(\textrm{II}\)</span>型回归，即可以把X当自变量，也可以当因变量，反之亦然。<br>2. <font color=Red>线性回归要求<font color=Red>Y在给定X值时服从正态分布</font>，X可以是精确测量和严格控制的变量，这时的回归称为型回归，即不可以把X当因变量，Y当自变量进行回归分析。</td>
+<td align="center">样本率<span class="math inline">\(p\)</span>的总体均数</td>
+<td align="center"><span class="math inline">\(\mu_{p}=\pi\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"></td>
-<td align="center">应用</td>
-<td align="left">1. <font color=Red>线性相关用来表达两个变量间的互依关系</font>，两个变量的研究<font color=Red>地位是相等的</font>，谁做X，谁做Y都可以；<br>2. <font color=Red>线性回归用来表达两个变量间的依存变化的数量关系</font>，即一个变量（为因变量Y）如何依存于另一个变量（为自变量X）而变化，两个变量的研究<font color=Red>地位是不相等的</font>。</td>
+<td align="center">样本量<span class="math inline">\(p\)</span>的方差</td>
+<td align="center"><span class="math inline">\(\sigma_p^2=\frac{\pi(1-\pi)}{n}\)</span>(理论值);<span class="math inline">\(S_p^2=\frac{p(1-p)}{n}\)</span>(估计值)</td>
 </tr>
 <tr class="odd">
-<td align="center"></td>
-<td align="center">意义</td>
-<td align="left">1. 相关系数r说明具有线性关系的两个变量之间的<font color=Red>密切程度和相关方向</font>；<br>2. 回归系数b表示X每变化一个单位所导致的<font color=Red>Y的平均变化量</font>。</td>
+<td align="center">样本率<span class="math inline">\(p\)</span>的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_p=\sqrt{\frac{\pi(1-\pi)}{n}}\)</span>(理论值);<span class="math inline">\(S_p=\sqrt{\frac{p(1-p)}{n}}\)</span>(估计值)</td>
 </tr>
 <tr class="even">
-<td align="center"></td>
-<td align="center">r和b的取值范围</td>
-<td align="left">r没有单位，而b有单位（其单位是：Y的单位/X的单位），所以导致两者的取值范围不同；<br> <span class="math inline">\(-1 \le r \le 1\)</span>,<span class="math inline">\(-\infty&lt;b&lt;+\infty\)</span></td>
-</tr>
-<tr class="odd">
-<td align="center"></td>
-<td align="center">r和b的计算公式不同</td>
-<td align="left"><span class="math inline">\(r=\frac{l_{xy}}{\sqrt{l_{xx}l_{yy}}}\)</span>,<span class="math inline">\(b=\frac{l_{xy}}{l_{xx}}\)</span></td>
-</tr>
-<tr class="even">
-<td align="center">联系</td>
-<td align="center">符号</td>
-<td align="left">对于既可以做相关又可作回归的同一组资料，计算出r与b的正负号相同</td>
-</tr>
-<tr class="odd">
-<td align="center"></td>
-<td align="center">假设检验</td>
-<td align="left">对于同一组资料，相关系数和回归系数的假设检验等价。即有：<span class="math inline">\(t_b=t_r\)</span></td>
-</tr>
-<tr class="even">
-<td align="center"></td>
-<td align="center">相互换算</td>
-<td align="left">对于同一组资料，相关系数和回归系数可通过下式换算：<span class="math inline">\(b=s\frac{S_Y}{S_X}\)</span>，<br>式中的<span class="math inline">\(S_X,S_Y\)</span>分别是<span class="math inline">\(X,Y\)</span>的标准差</td>
-</tr>
-<tr class="odd">
-<td align="center"></td>
-<td align="center">用回归解释相关</td>
-<td align="left">又决定系数<span class="math inline">\(R^2=\frac{SS_{回}}{SS_{总}}\)</span>，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则<span class="math inline">\(R^2\)</span>越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。</td>
+<td align="center">率的标准误</td>
+<td align="center"><span class="math inline">\(\sigma_p=\sqrt{\frac{\pi(1-\pi)}{n}}\)</span>(理论值);<span class="math inline">\(S_p=\sqrt{\frac{p(1-p)}{n}}\)</span>(估计值)</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="样本均数及其抽样分布" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 样本均数及其抽样分布<a href="参数估计.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">均数的统计指标</th>
+<th align="center">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">样本均数的总体均数</td>
+<td align="center"><span class="math inline">\(\mu_{\bar X}=\mu\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">样本均数的方差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar x}^2=\frac{\sigma^2}{n}\)</span>(理论值);<span class="math inline">\(S_{\bar x}=\frac{S^2}{n}\)</span>(估计值)</td>
+</tr>
+<tr class="odd">
+<td align="center">样本均数的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
+</tr>
+<tr class="even">
+<td align="center">均数的标准差</td>
+<td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="中心极限定理" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 中心极限定理<a href="参数估计.html#中心极限定理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>大数定律(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：</li>
+</ol>
+<ul>
+<li>独立重复事件；</li>
+<li>重复次数足够多。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>中心极限定理(Central limit theorems):中心极限定理指的是给定一个任意分布的总体。我每次从这些总体中随机抽取<span class="math inline">\(n\)</span>个抽样，一共抽<span class="math inline">\(m\)</span>次。然后把这<span class="math inline">\(m\)</span>组抽样分别求出平均值。这些平均值的分布接近正态分布。</li>
+</ol>
+</div>
+<div id="小结-1" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> 小结<a href="参数估计.html#小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>样本均数的中心极限定理。从任意均数等于<span class="math inline">\(\mu\)</span>，方差等于<span class="math inline">\(\sigma^2\)</span>的一个总体中抽取样本量为<span class="math inline">\(n\)</span>的简单随机样本，<font color=Red>当样本量<span class="math inline">\(n\)</span>很大时，无论总体分布形态如何，样本均数的抽样分布近似服从正态分布</font>。</li>
+<li>样本率的中心极限定理。从“成功”率为<span class="math inline">\(\pi\)</span>的总体中随机抽取样本量为<span class="math inline">\(n\)</span>的样本，其样本“成功”率用<span class="math inline">\(p\)</span>表示，<font color=Red>当<span class="math inline">\(n\pi&gt;5\)</span>且<span class="math inline">\(n(1-\pi)&gt;5\)</span>时，样本率<span class="math inline">\(p\)</span>近似服从正态分布</font>。</li>
+</ol>
 
 </div>
 </div>
@@ -409,8 +372,8 @@
           </div>
         </div>
       </div>
-<a href="非参数检验.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="usage用法.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="连续型随机变量的概率分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="定量资料与分类资料的分析步骤.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -441,7 +404,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/10-non-parameter-test.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/06-parameter-estimation.Rmd",
 "text": "Edit"
 },
 "history": {
