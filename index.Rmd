@@ -2,7 +2,15 @@
 title: "卫生统计学笔记"
 author: "Zhoulvbang"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+output:
+  bookdown::pdf_document:
+    tufte::tufte_handout:
+    toc: true
+  html_document:
+    toc: true
+    keep_md: true
+    css: style.css
+    df_print: default
 documentclass: book
 bibliography:
 - book.bib
@@ -13,52 +21,49 @@ description: |
   在抽象的意义下，一切科学都是数学
   在理性的基础上，所有的判断都是统计学
   艰难修补与完善。
-  
 link-citations: true
-# github-repo: "rstudio/bookdown-demo"
-github-repo: "zhoulvbang/zhoulvbang.github.io"
-output: 
-  html_document: 
-    toc: true
-    keep_md: true
-    css: style.css
+github-repo: zhoulvbang/zhoulvbang.github.io
+site: bookdown::bookdown_site
 ---
 
-```{r setup, include=FALSE}
+```{r setup,include=FALSE,eval=TRUE}
+#.libPaths("C:\\Users\\asus\\AppData\\Local\\R\\win-library\\4.4")  
+# 替换为正确的路径
 library(ggplot2) #用于绘图
 library(gridExtra) #分格
-library(cowplot) 
+library(cowplot)
 library(bookdown)
 library(rmarkdown)
 
+library(sysfonts)
+library(showtextdb)
 library(showtext) #如果你系统中没有中文字体，或者想要使用更好的中文显示效果，可以使用 showtext 包。
 
 # 加载knitr和reticulate包
-library(knitr) #一个动态报告生成工具，它允许用户将 R 代码嵌入到文档（如 R Markdown、LaTeX、HTML、Markdown）中，并生成包含代码、文本、图形和输出结果的报告。
+library(knitr) #一个动态报告生成工具，它允许用户将 R 代码嵌入到文档（如Markdown、LaTeX、HTML、Markdown）中，并生成包含代码、文本、图形和输出结果的报告。
 library(reticulate)  #是一个 R 和 Python 的接口包，它允许用户在 R 环境中运行 Python 代码，并实现 R 和 Python 之间的无缝数据交换。
 
 # 设置knitr全局选项
 knitr::opts_chunk$set(
-  echo = TRUE,  # 是否显示代码
-  eval=TRUE, #是否编译代码框内的代码
-  highlight=TRUE, #实现语法高亮
-  warning = FALSE,  # 是否显示警告
-  message = FALSE,  # 是否显示信息
-  fig.width = 7,  # 图形宽度
-  fig.height = 5  # 图形高度
+	eval = TRUE,
+	echo = TRUE,
+	fig.height = 5,
+	fig.width = 7,
+	highlight = TRUE
 )
+options(encoding = "UTF-8")
 
 # 使用特定的Python环境（请根据实际路径修改）
-#use_python("/Users/simonzhou/anaconda3/bin/python3", required = TRUE)
-use_python("C:/Users/asus/AppData/Local/Programs/Python/Python39/python.exe", required = TRUE)
-#python_path <- system("which python3", intern = TRUE)
-#use_python(python_path, required = TRUE)
+python_path <- system("which python3", intern = TRUE)
 #RMarkdown文档中自动查找并设置Python路径
 ```
 
-# About(关于)
 
-这是一个用**Markdown**编写的 _小周的学习笔记_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
+# About this book
+
+这是一个用**Markdown**编写的 _$\alpha$=0.05的学习笔记_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
+
+如您在本地编译本文档，请浏览`Usage`部分。
 
   “All knowledge is, in final analysis, history.
 
@@ -73,3 +78,6 @@ All judgements are, in their rationale, statistics.”
   在理性的基础上，所有的判断都是统计学”
   
   ——C.R. Rao *Statistics And Truth*
+  
+  
+

@@ -6,6 +6,17 @@
 
 `index.Rmd` 文件是必需的，并且也是您的第一章。当您渲染这本书时，它将成为主页。
 
+常见的文档结构如下：
+
+```
+my_book_project/
+├── index.Rmd
+├── 01-chapter1.Rmd
+├── 02-chapter2.Rmd
+├── _bookdown.yml
+└── _output.yml
+```
+
 ## Render book(渲染这本书)
 
 您可以在不更改任何内容的情况下，渲染此示例书籍的 HTML 版本：
@@ -24,6 +35,7 @@ bookdown::render_book()
 
 当然你也可以下载别的$TeX$发行版，比如[TeXLive](https://tug.org/texlive/)和[MaCTeX](https://tug.org/mactex/)。对于`TeXLive`的下载可以参照[LaTeX:TeXLive2021安装](https://zhuanlan.zhihu.com/p/362201376)来进行；`MaCTeX`则可以参照[]()
 
+>notice:在24年8月的时候，对文档进行了一次扩充和完善，但是文档增加和指令变多后，发现使用Rstudio界面中的`Knit`按钮无法完成对全文档的编译，如果 one by one 编译，会出现各文档不连贯的状态，并且在部分子文档中，出现部分代码无法编译，例如`could not find ggplot function`的情形，在此时应在`Console`终端输入`bookdown::render_book("index.Rmd")`来对全文档进行编译（在此之前你需要`Set Working Directory`）。
 
 ## Preview book(预览这本书)
 
@@ -126,25 +138,7 @@ output: html_document
 
 - 代码块: R Markdown的一个主要功能是可以执行文档内的代码块，并将代码执行结果展示在Markdown文档中。这对撰写操作与分析报告带来了极大的便利，同时还可以进行良好的程序与结果复现。R Markdown文档中除了R代码段以外，还可以插入Python、SQL等许多编程语言的代码段。常用编程语言还可以与R代码段进行信息交换。代码块用三个反引号加上编程语言名称标识，例如：
 
-```{python,eval = FALSE}
-# Python代码块示例，不会被执行
-print("Hello, Python!")
-```
-
-图形示例（Python）
-
-```{python,eval = TRUE}
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
-
-plt.figure(figsize=(7, 5))
-plt.plot(x, y)
-plt.title('example graphs')
-plt.show()
-```
+python section
 
 ## 代码块的选项设置（options）
 

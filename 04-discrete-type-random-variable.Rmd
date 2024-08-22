@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # 离散型随机变量的概率分布
 
 ![type of data](images\type of data.png "type of data")
@@ -14,7 +19,7 @@
 - 实际上，当$n=1$时，二项分布就是伯努利试验。
 - 伯努利试验要求：<font color=Red>互斥、独立、重复</font>
 
-```{r ,fig.cap="Binomial Distribution Plots",fig.show='hold',fig.align='center',echo=FALSE}
+```{r,fig.cap="Binomial Distribution with Different n/π",fig.show='hold', fig.align='center', echo=FALSE}
 
 # Parameters
 parameters <- list(
@@ -50,8 +55,8 @@ for (param in parameters) {
 
 # Arrange the plots in a 2x2 grid
 grid.arrange(grobs = plots, ncol = 2)
-
 ```
+
 
 ## 泊松分布(Poission Distribution)
 
@@ -63,7 +68,28 @@ grid.arrange(grobs = plots, ncol = 2)
 - 服从泊松分布的随机变量，其取值为$0$到$+\infty$的概率之和为1
 - 一般来说，当$\mu \ge20$时，可以认为近似正态分布
 
-```{r ,fig.cap="Poisson Distribution with Different Lambda(λ=nπ)",fig.show='hold', fig.align='center', echo=FALSE}
+```{r,echo=TRUE}
+# Define the range for x
+x <- 0:40
+
+# Define the lambda values
+lambdas <- c(1, 4, 10, 20)
+
+# Set up the plot area
+plot(x, dpois(x, lambdas[1]), type="n", ylim=c(0, max(dpois(x, lambdas))), 
+     xlab="x", ylab="Probability", main="Poisson Distribution with Different λ Values")
+
+# Plot the Poisson distributions for each lambda
+colors <- c("blue", "green", "red", "purple")
+for (i in 1:length(lambdas)) {
+  lines(x, dpois(x, lambdas[i]), type="b", pch=19, col=colors[i])
+}
+
+# Add a legend
+legend("topright", legend=paste("λ =", lambdas), col=colors, pch=19)
+```
+
+```{r,fig.cap="Poisson Distribution with Different λ=nπ",fig.show='hold', fig.align='center', echo=FALSE}
 
 # Parameters
 lambda_values <- c(1, 4, 10, 20)  # 添加了 lambda 值为 20
@@ -84,12 +110,13 @@ for (i in 1:length(lambda_values)) {
 ggplot(data, aes(x = x, y = pmf, shape = symbol, color = factor(lambda))) +
   geom_point(size = 3) +
   geom_line(aes(y = pmf), linetype = "dotted", color = "black") +
-  labs(title = "Poisson Distribution with Different Lambda", x = "Number of Events", y = expression(Pr(X == K))) +
+  labs(title = "Poisson Distribution with Different λ", x = "Number of Events", y = expression(Pr(X == K))) +
   scale_shape_manual(values = symbols) +
   scale_color_discrete(name = expression(lambda)) +
   theme_minimal() +
   theme(legend.position = "top")
 ```
+
 
 ## 二项分布的应用
 
@@ -100,6 +127,7 @@ Pr(X=K)=\frac{n!}{k!(n-k)!}\pi^{k}(1-\pi)^{n-k},k=0,1,2,3,\cdots,n
 2. 统计推断角度：区间估计、假设检验
 
 ## 泊松分布的应用
+
 1. 统计描述角度：直接法计算概率
 \[
 Pr(X=K)=\frac{e^{-\mu}\mu^{k}}{k!},k=0,1,2,\cdots
