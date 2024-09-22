@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Usage(用法) | 卫生统计学笔记</title>
+  <title>Chapter 5 随机事件的概率 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Usage(用法) | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 5 随机事件的概率 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Usage(用法) | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 5 随机事件的概率 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="简单线性相关和回归.html"/>
-
+<link rel="prev" href="抽样.html"/>
+<link rel="next" href="离散型随机变量的概率分布.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -360,236 +360,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="usage用法" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Usage(用法)<a href="usage用法.html#usage用法" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>每个 <strong>bookdown</strong> 章节都是一个 <code>.Rmd</code> 文件，每个 <code>.Rmd</code> 文件只能包含一个章节。一个章节 <em>必须</em> 以一级标题开始：<code># 一个好的章节</code>，并且可以包含一个（且只能有一个）一级标题。</p>
-<p>在章节内部使用二级标题及更高级别的标题，例如：<code>## 一个简短的小节</code> 或 <code>### 一个更短的小节</code>。</p>
-<p><code>index.Rmd</code> 文件是必需的，并且也是您的第一章。当您渲染这本书时，它将成为主页。</p>
-<p>常见的文档结构如下：</p>
-<pre><code>my_book_project/
-├── index.Rmd
-├── 01-chapter1.Rmd
-├── 02-chapter2.Rmd
-├── _bookdown.yml
-└── _output.yml</code></pre>
-<div id="render-book渲染这本书" class="section level2 hasAnchor" number="16.1">
-<h2><span class="header-section-number">16.1</span> Render book(渲染这本书)<a href="usage用法.html#render-book渲染这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>您可以在不更改任何内容的情况下，渲染此示例书籍的 HTML 版本：</p>
+<div id="随机事件的概率" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 随机事件的概率<a href="随机事件的概率.html#随机事件的概率" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>不确定的知识+所含不确定性度量的只是=可用的知识</p>
+<div id="随机事件与样本空间" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 随机事件与样本空间<a href="随机事件的概率.html#随机事件与样本空间" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>在 RStudio IDE 中找到 <strong>Build</strong> 面板，然后</p></li>
-<li><p>单击 <strong>Build Book</strong>，然后选择您的输出格式，或者如果您想要从相同的书籍源文件中使用多个格式，则选择 “All formats”。</p></li>
+<li>确定性现象（deterministic phenomenon）：在一定条件下必然会发生的现象；</li>
+<li>随机现象（random phenomenon）：在同一条件下具有不确定结果的现象。</li>
 </ol>
-<p>或者从 R 控制台构建书籍：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="usage用法.html#cb4-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
-<p>要将此示例渲染为 <code>bookdown::pdf_book</code>，您需要安装 <span class="math inline">\(XeLaTeX\)</span>。建议您安装 TinyTeX（其中包含 <span class="math inline">\(XeLaTeX\)</span>）：<a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>。</p>
-<p>当然你也可以下载别的<span class="math inline">\(TeX\)</span>发行版，比如<a href="https://tug.org/texlive/">TeXLive</a>和<a href="https://tug.org/mactex/">MaCTeX</a>。对于<code>TeXLive</code>的下载可以参照<a href="https://zhuanlan.zhihu.com/p/362201376">LaTeX:TeXLive2021安装</a>来进行；<code>MaCTeX</code>则可以参照<a href=""></a></p>
-<blockquote>
-<p>notice:在24年8月的时候，对文档进行了一次扩充和完善，但是文档增加和指令变多后，发现使用Rstudio界面中的<code>Knit</code>按钮无法完成对全文档的编译，如果 one by one 编译，会出现各文档不连贯的状态，并且在部分子文档中，出现部分代码无法编译，例如<code>could not find ggplot function</code>的情形，在此时应在<code>Console</code>终端输入<code>bookdown::render_book("index.Rmd")</code>来对全文档进行编译（在此之前你需要<code>Set Working Directory</code>）。</p>
-</blockquote>
+<p>对随机现象获得一个观察或进行一次测量的过程称为随机试验，简称试验，用<span class="math inline">\(E\)</span>表示。</p>
+<p>用<span class="math inline">\(\omega\)</span>表示试验<span class="math inline">\(E\)</span>的一个可能的结果，则称<span class="math inline">\(\omega\)</span>位<span class="math inline">\(E\)</span>的一个基本事件（elementary event）；基本事件是指不能在分解为更简单结果的事件。</p>
 </div>
-<div id="preview-book预览这本书" class="section level2 hasAnchor" number="16.2">
-<h2><span class="header-section-number">16.2</span> Preview book(预览这本书)<a href="usage用法.html#preview-book预览这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>在您工作时，您可以启动本地服务器以实时预览这本 HTML 书籍。当您保存单独的 <code>.Rmd</code> 文件时，此预览将会更新。您可以通过使用 RStudio 的插件 “Preview book” 或从 R 控制台中启动服务器。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="usage用法.html#cb5-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
-</div>
-<div id="安装rrstudio" class="section level2 hasAnchor" number="16.3">
-<h2><span class="header-section-number">16.3</span> 安装R+Rstudio<a href="usage用法.html#安装rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>R语言是一种自由软件编程语言与操作环境，主要用于统计分析、绘图以及数据挖掘。R由新西兰奥克兰大学的统计学家罗斯·伊哈卡和罗伯特·杰特曼开发，现在由R核心小组负责开发，同时也有其他用户编写了诸多外挂的软件包。R以S语言为基础，其词法作用域语义来自Scheme。R的后台程序大多由C语言、FORTRAN语言和R语言自己写成。</p>
-<p>回归正题，要使用<code>rmarkdown</code>需要我们使用<code>R</code>与<code>Rstudio</code>，我们可以从<a href="https://www.r-project.org/">R page</a>来下载<code>R</code>这个程序，
-<code>R</code> 是一个用于统计计算和图形的免费软件环境；再从<a href="https://www.rstudio.com/categories/rstudio-ide/">Rstudio</a>来下载适配R的集成开发编辑器，普通的<code>R script</code>可以在<code>vscode</code>中进行编辑和运行，但是<code>rmarkdown</code>文件则需要再<code>Rstudio</code>中才能较好的编辑与运行。</p>
-<p>安装的步骤可以参考<a href="https://zhuanlan.zhihu.com/p/687529684">在macOS中安装R与Rstudio</a></p>
-<blockquote>
-<p>Notice：macOS需要看一下是Intel还是ARM的CPU，ARM目前在M1/M2上搭载</p>
-</blockquote>
-</div>
-<div id="创建一个rmarkdown文件" class="section level2 hasAnchor" number="16.4">
-<h2><span class="header-section-number">16.4</span> 创建一个Rmarkdown文件<a href="usage用法.html#创建一个rmarkdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>因为我们要将这个文件配置到GitHub上作为网页，所以我们要创建一个特别一点的rmarkdown。</p>
-<div id="首先我们要安装一个专门的包bookdown" class="section level3 hasAnchor" number="16.4.1">
-<h3><span class="header-section-number">16.4.1</span> 首先我们要安装一个专门的包<code>bookdown</code><a href="usage用法.html#首先我们要安装一个专门的包bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="usage用法.html#cb6-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
-<span id="cb6-2"><a href="usage用法.html#cb6-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rmarkdown&#39;</span>)</span>
-<span id="cb6-3"><a href="usage用法.html#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="usage用法.html#cb6-4" tabindex="-1"></a>or</span>
-<span id="cb6-5"><a href="usage用法.html#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="usage用法.html#cb6-6" tabindex="-1"></a><span class="co"># install from GitHub</span></span>
-<span id="cb6-7"><a href="usage用法.html#cb6-7" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;rstudio/rmarkdown&#39;</span>)</span></code></pre></div>
-</div>
-<div id="在set部分load-bookdown" class="section level3 hasAnchor" number="16.4.2">
-<h3><span class="header-section-number">16.4.2</span> 在set部分load <code>bookdown</code><a href="usage用法.html#在set部分load-bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="usage用法.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
-</div>
-<div id="其他宏包的需求与使用" class="section level3 hasAnchor" number="16.4.3">
-<h3><span class="header-section-number">16.4.3</span> 其他宏包的需求与使用<a href="usage用法.html#其他宏包的需求与使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>如果要⽣成PDF输出，则需要安装LaTeX。对于从未安装过LaTeX的R Markdown⽤户，建议安装TinyTeX：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="usage用法.html#cb8-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
-<span id="cb8-2"><a href="usage用法.html#cb8-2" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
-<blockquote>
-<p>TinyTex是Yihui Xie专为R Markdown开发的超轻量级的Latex环境，是⼀种轻便、可移植、跨平台、易于维护的LaTeX发⾏版。R中的配套软件包tinytex可以帮助我们在将LaTeX或R Markdown⽂档编译为PDF时⾃动安装缺少的LaTeX软件包，并确保将LaTeX⽂档编译正确的次数以解决所有交叉引⽤。</p>
-</blockquote>
-<p>当然你可以选择下载TeXLive（Windows or Linux）或MacTeX（macOS）。</p>
-</div>
-<div id="创建一个bookdown文件" class="section level3 hasAnchor" number="16.4.4">
-<h3><span class="header-section-number">16.4.4</span> 创建一个<code>bookdown</code>文件<a href="usage用法.html#创建一个bookdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="事件的运算" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 事件的运算<a href="随机事件的概率.html#事件的运算" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>创建项目</li>
+<li>包含关系：对任意两事件A和B，如果事件B发生，则事件A必发生，则称事件A包含事件B，记作<span class="math inline">\(A\supseteq B\)</span>或<span class="math inline">\(B\subseteq A\)</span>，符号<span class="math inline">\(\supseteq\)</span>和$ $分别表示包含与被包含。</li>
+<li>相等关系：如果事件A和事件B满足以下关系：<span class="math inline">\(A\supseteq B 且B\supseteq A\)</span>，则称A和B相等，记作<span class="math inline">\(A=B\)</span></li>
+<li>事件的和：在一次试验中，对任意两事件A和B，“A和B中至少有一个发生”也是一个事件，称此事件为A和B的“和或并”，记作<span class="math inline">\(A\cup B\)</span>，也可以表示为<span class="math inline">\(A+B\)</span>。</li>
+<li>事件的交：在一次试验中，对任意两事件A和B，“A和B同时发生”也是一个事件，称此事件为A和B的“交”，记作<span class="math inline">\(A\cap B\)</span>，也可以表示为<span class="math inline">\(AB\)</span>。</li>
+<li>事件的差：在一次试验中，“A发生且B不发生”也是一个事件，称此事件为A和B的“差”，记作<span class="math inline">\(A-B\)</span>。</li>
+<li>互不相容事件：在一次试验中，“A与B不能同时发生”，即<span class="math inline">\(A\cup B=\emptyset\)</span>，则称此事件A和事件B为互不相容事件，也称互斥事件。</li>
+<li>对立事件：是一种特殊的互不相容事件，若“事件A与事件B不能同时发生，且他们的和组成样本空间”，即<span class="math inline">\(A\cap B=\emptyset 且A\cup B=\Omega\)</span>，则称A和B互为对立事件（complementary events）。</li>
 </ol>
-<p>在Rstudio中点击File-&gt;New Project-&gt;New Directory-&gt;Bookproject using bookdown-&gt;Create Project</p>
-<ol start="2" style="list-style-type: decimal">
-<li>文件配置</li>
-</ol>
-<p>在新建的R Markdown⽂件⾥，主要包含三块内容：</p>
-<ul>
-<li>YAML: R Markdown的头部文件，YAML（YAML Ain’t Markup Language）定义了R Markdown文档的元数据，包括文档的标题（title）、作者（author）、日期（date）、指定的输出文件类型（output format）等。YAML头部通常位于文档的开头，并用三条短划线（—）分隔。例如：</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="usage用法.html#cb9-1" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb9-2"><a href="usage用法.html#cb9-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;文档标题&quot;</span></span>
-<span id="cb9-3"><a href="usage用法.html#cb9-3" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;作者姓名&quot;</span></span>
-<span id="cb9-4"><a href="usage用法.html#cb9-4" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2024-06-08&quot;</span></span>
-<span id="cb9-5"><a href="usage用法.html#cb9-5" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb9-6"><a href="usage用法.html#cb9-6" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
-<ul>
-<li>Markdown文本: Markdown文本是R Markdown文档的主要内容，使用者按照Markdown语法自行编写的文本内容。Markdown语法简洁易懂，适用于编写格式化文本，如标题、列表、引用、链接和图片等。示例：</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="usage用法.html#cb10-1" tabindex="-1"></a><span class="co"># 一级标题</span></span>
-<span id="cb10-2"><a href="usage用法.html#cb10-2" tabindex="-1"></a>这是一个段落。</span>
-<span id="cb10-3"><a href="usage用法.html#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="usage用法.html#cb10-4" tabindex="-1"></a><span class="sc">-</span> 无序列表项1</span>
-<span id="cb10-5"><a href="usage用法.html#cb10-5" tabindex="-1"></a><span class="sc">-</span> 无序列表项2</span>
-<span id="cb10-6"><a href="usage用法.html#cb10-6" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="usage用法.html#cb10-7" tabindex="-1"></a><span class="fl">1.</span> 有序列表项1</span>
-<span id="cb10-8"><a href="usage用法.html#cb10-8" tabindex="-1"></a><span class="fl">2.</span> 有序列表项2</span>
-<span id="cb10-9"><a href="usage用法.html#cb10-9" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="usage用法.html#cb10-10" tabindex="-1"></a><span class="sc">&gt;</span> 这是一个引用。</span></code></pre></div>
-<ul>
-<li>代码块: R Markdown的一个主要功能是可以执行文档内的代码块，并将代码执行结果展示在Markdown文档中。这对撰写操作与分析报告带来了极大的便利，同时还可以进行良好的程序与结果复现。R Markdown文档中除了R代码段以外，还可以插入Python、SQL等许多编程语言的代码段。常用编程语言还可以与R代码段进行信息交换。代码块用三个反引号加上编程语言名称标识，例如：</li>
-</ul>
-<p>python section</p>
 </div>
-</div>
-<div id="代码块的选项设置options" class="section level2 hasAnchor" number="16.5">
-<h2><span class="header-section-number">16.5</span> 代码块的选项设置（options）<a href="usage用法.html#代码块的选项设置options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>默认情况下代码和结果会在输出⽂件中呈现。如果通过参数来控制代码块运⾏结果的输出情况可以在<code>{r,options}</code>中设置。⼀般包括代码及运⾏结果的输出、图⽚表格格式定义等。</p>
-<div id="输出信息选项" class="section level3 hasAnchor" number="16.5.1">
-<h3><span class="header-section-number">16.5.1</span> 输出信息选项<a href="usage用法.html#输出信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><code>eval</code>: 加选项<code>eval=FALSE</code>,可以使得代码仅显⽰⽽不实际运⾏。这样的代码段如果有标签，可以在后续代码段中被引⽤。</li>
-<li><code>include</code>: 加选项<code>include=FALSE</code>，则本代码段仅运⾏，但是代码和结果都不写⼊到⽣成的⽂档中。</li>
-<li><code>echo</code>: echo参数控制了Markdown是否显⽰代码块。若<code>echo=TRUE</code>，则表⽰代码块显⽰在markdown⽂档显⽰代码块；反之，代码块不出现在输出结果中。</li>
-<li><code>collapse</code>: ⼀个代码块的代码、输出通常被分解为多个原样⽂本块中，如果⼀个代码块希望所有的代码、输出都写到同⼀个原样⽂本块中，加选项<code>collapse=TRUE</code>。</li>
-<li><code>prompt</code>: <code>prompt=TRUE</code>代码⽤R的<code>&gt;</code>提⽰符开始。</li>
-<li><code>comment</code>：如果希望结果不⽤#号保护，使⽤选项<code>comment=''</code>。</li>
-<li><code>results</code>: ⽤选项results=选择⽂本型结果的类型。取值有：
-<ul>
-<li><code>markup</code>：这是缺省选项，会把⽂本型结果变成HTML的原样⽂本格式;</li>
-<li><code>hide</code>：运⾏了代码后不显⽰运⾏结果;</li>
-<li><code>hold</code>：⼀个代码块所有的代码都显⽰完，才显⽰所有的结果。</li>
-<li><code>asis</code>：⽂本型输出直接进⼊到HTML⽂件中，这需要R代码直接⽣成HTML标签，knitr包的kable()函数可以把数据框转换为HTML代码的表格。</li>
-</ul></li>
-</ul>
-</div>
-<div id="错误信息选项" class="section level3 hasAnchor" number="16.5.2">
-<h3><span class="header-section-number">16.5.2</span> 错误信息选项<a href="usage用法.html#错误信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><code>warning</code>：选项<code>warning=FALSE</code>使得代码段的警告信息不进⼊编译结果，⽽是在控制台中显⽰。有⼀些扩展包的载⼊警告可以⽤这种办法屏蔽。</li>
-<li><code>error</code>：选项<code>error=FALSE</code>可以使得错误信息不进⼊编译结果，⽽是出错停⽌并将错误信息在控制台中显⽰。</li>
-<li><code>message</code>：选项<code>message=FALSE</code>可以使得message级别的信息不进⼊编译结果，⽽是在控制台中显⽰。</li>
-</ul>
-</div>
-<div id="全局设置" class="section level3 hasAnchor" number="16.5.3">
-<h3><span class="header-section-number">16.5.3</span> 全局设置<a href="usage用法.html#全局设置" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>若R Markdown内的代码块存在⼀样的参数设置，则可以提前设计好全局的代码块参数。全局代码块通过<code>knitr::opts_chunk$set</code>函数进⾏设置，⼀般设置在YAML⽂件下⽅。</p>
-<p>例如本文的设置为：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="usage用法.html#cb11-1" tabindex="-1"></a><span class="co"># 设置knitr全局选项</span></span>
-<span id="cb11-2"><a href="usage用法.html#cb11-2" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb11-3"><a href="usage用法.html#cb11-3" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,  <span class="co"># 是否显示代码</span></span>
-<span id="cb11-4"><a href="usage用法.html#cb11-4" tabindex="-1"></a>  <span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="co">#是否编译代码框内的代码</span></span>
-<span id="cb11-5"><a href="usage用法.html#cb11-5" tabindex="-1"></a>  <span class="at">highlight =</span> <span class="cn">TRUE</span>, <span class="co">#是否语法高亮</span></span>
-<span id="cb11-6"><a href="usage用法.html#cb11-6" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示警告</span></span>
-<span id="cb11-7"><a href="usage用法.html#cb11-7" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示信息</span></span>
-<span id="cb11-8"><a href="usage用法.html#cb11-8" tabindex="-1"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,  <span class="co"># 图形宽度</span></span>
-<span id="cb11-9"><a href="usage用法.html#cb11-9" tabindex="-1"></a>  <span class="at">fig.height =</span> <span class="dv">5</span>  <span class="co"># 图形高度</span></span>
-<span id="cb11-10"><a href="usage用法.html#cb11-10" tabindex="-1"></a>)</span></code></pre></div>
-<blockquote>
-<p>Notice：局部参数设置优先级大于全局参数设置。</p>
-</blockquote>
-</div>
-</div>
-<div id="在vscode中编辑rmarkdown" class="section level2 hasAnchor" number="16.6">
-<h2><span class="header-section-number">16.6</span> 在vscode中编辑rmarkdown<a href="usage用法.html#在vscode中编辑rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>大部分程序猿或者攻城狮应该都会对vscode比较熟悉，它提供了R Extension for Visual Studio Code，你可以在vscode中调用<code>R</code>对文档进行编译与修改，vscode相较于Rstudio最大的优势是可以直连GitHub，你可以将你创建的rmarkdown文件上传到GitHub，放置在你创建的GitHub主页中，使其成为一个个人主页/博客，从而在网络上展现出来，并可以被人检索到。</p>
-<div id="安装r-extension" class="section level3 hasAnchor" number="16.6.1">
-<h3><span class="header-section-number">16.6.1</span> 安装R extension<a href="usage用法.html#安装r-extension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>请打开vscode后看最左边的导航栏，选择<code>EXTENSIONS</code>后再<code>search</code>框中搜索<code>R</code>，
-然后选择<code>install</code>。</p>
-<div class="float">
-<img src="images/Rextension.png" style="width:50.0%" alt="Rextension" />
-<div class="figcaption">Rextension</div>
-</div>
-</div>
-<div id="安装其他的软件" class="section level3 hasAnchor" number="16.6.2">
-<h3><span class="header-section-number">16.6.2</span> 安装其他的软件<a href="usage用法.html#安装其他的软件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>当你使用vscode提供的插件时，肯定无法和专门适配R的Rstudio的各项功能比较，如果你需要生成PDF文档，你可能会遇到无法完成编译的问题，这是由于渲染R Markdown文档时，需要使用至少版本1.12.3的Pandoc。</p>
-<pre><code>[VSC-R] index.Rmd process started
-==&gt; rmarkdown::render_site(&#39;/Users/uesrname/uesrname.github.io/index.Rmd&#39;)
-Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
-In addition: Warning message:
-In verify_rstudio_version() :
-  Please install or upgrade Pandoc to at least version 1.17.2; or if you are using RStudio, you can just install RStudio 1.0+.
-
-Execution halted</code></pre>
-<div id="安装pandoc" class="section level4 hasAnchor" number="16.6.2.1">
-<h4><span class="header-section-number">16.6.2.1</span> 安装Pandoc<a href="usage用法.html#安装pandoc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>针对上述的问题，你可能需要安装Pandoc这个软件，你可以在<a href="https://pandoc.org/">Pandoc官网</a>了解相关信息和下载你需要的版本。</p>
-<p>如果你是Windows用户，请进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包，然后进行安装。</p>
-<p>如果你是Mac用户，一样可以进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包；当你的电脑中已经安装有homebrew时，你可以选择在终端输入<code>brew install pandoc</code>来安装Pandoc。</p>
-</div>
-<div id="检查pandoc路径" class="section level4 hasAnchor" number="16.6.2.2">
-<h4><span class="header-section-number">16.6.2.2</span> 检查Pandoc路径：<a href="usage用法.html#检查pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="概率的定义" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 概率的定义<a href="随机事件的概率.html#概率的定义" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>安装完Pandoc后，确保系统中可以访问到Pandoc的可执行文件。</li>
-<li>你可以通过在终端中运行which pandoc来检查Pandoc的安装路径。</li>
+<li><p>频率（frequency）：设E为一随机试验，A是其中一事件，在同样条件下把E重复的做n次，以m表示事件A在这n次试验中发生的次数，则称比值<span class="math inline">\(m/n\)</span>为事件A发生的频率，记为F(A)：
+<span class="math display">\[F(A)=\frac{m}{n}\]</span></p></li>
+<li><p>概率（probability）：设在同一条件下，重复进行n次试验，随机事件A发生m次，若试验次数n无限大时，频率<span class="math inline">\(m/n\)</span>将在某一确定值p的附近摆动，则称p为事件A的概率，记为P(A)：
+<span class="math display">\[P(A)=p \approx \frac{m}{n}\]</span></p></li>
+<li><p>概率有时也被称为相对频率方法；概率是事物固有的属性，不以人的主观意志为转移。</p></li>
+<li><p>概率的描述性定义</p></li>
+<li><p>概率的公理化定义：</p></li>
 </ol>
+<ul>
+<li>非负性</li>
+<li>规范性</li>
+<li>可加可列性</li>
+</ul>
 </div>
-<div id="指定pandoc路径" class="section level4 hasAnchor" number="16.6.2.3">
-<h4><span class="header-section-number">16.6.2.3</span> 指定Pandoc路径：<a href="usage用法.html#指定pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>如果系统中有多个版本的Pandoc，你可以在R Markdown文档中使用<code>rmarkdown::render()</code>函数的pandoc参数来指定Pandoc的路径。
-例如：<code>rmarkdown::render("index.Rmd", pandoc="/path/to/pandoc")</code></p>
-<p>一般来说，当你安装好Pandoc之后，在进入vscode进行编译后会正确生成<code>.html</code>文件，具体信息需要看vscode的output内容。当我进行编译后，output给出如下信息：</p>
-<pre><code>Output created: docs/index.html
-
-Output created: /Users/username/username.github.io/docs/index.html
-
-&lt;&lt;&lt;vsc&gt;&gt;&gt;docs/index.html&lt;&lt;&lt;vsc&gt;&gt;&gt;
-[VSC-R] index.Rmd process exited with exit code null</code></pre>
-<p>如果出现上述信息则表示生成了正确的<code>index.html</code>文件，打开文件夹，选定该文件双击在浏览器打开进行查看。</p>
-<p>如果你使用RStudio，可以在RStudio项目设置中指定Pandoc路径（一般不需要进行指定，因为Rstudio生成PDF是通过LaTeX）：</p>
-<ol style="list-style-type: decimal">
-<li>打开RStudio，进入你项目的工作目录。</li>
-<li>点击菜单栏中的 “Tools” -&gt; “Global Options” -&gt; “Sweave”。</li>
-<li>在 “Sweave” 设置中，可以指定Pandoc路径。</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="与rmarkdown的缘分" class="section level2 hasAnchor" number="16.7">
-<h2><span class="header-section-number">16.7</span> 与Rmarkdown的缘分<a href="usage用法.html#与rmarkdown的缘分" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>有很多方法制作一个学术主页/网站，我是过很多办法，最开始是使用<code>gridea</code>，那还是大二的故事，看见一个朋友搭建了一夜主页，我很好奇，也觉得很好玩（其实是逼格很高），我就觉得我也得来一个，奈何不是学计算机的，很多原理都没搞明白，网络问题也是很棘手，弄着弄着就没兴趣了，然后荒废了，当时也确实没什么东西可以写，纯粹就是为了装逼而装逼。</p>
-<p>后来到了大四的时候，我看到<a href="https://academicpages.github.io/">Academic page</a>，我就又觉得我行了，结果还是史无前例的大坑啊！因为这个网页的搭建是使用<code>jerkll</code>来生成静态网页，需要本地对其进行渲染然后在Internet中显示，我前期只是修改了一些信息然后就将其放置在GitHub上，然后在腾讯云租用了一个域名，将其关联（其实22年租用了域名以后，一直没搞好，专业知识太匮乏，没得办法~）。</p>
-<p>关于这个坑啊，有时间再专门写一个post来讲~</p>
-<p>后来学习准备二战，学着学着其实有点无聊，你懂吧~</p>
-<p>就是啥都可以弄一弄，但是就是对专业课没有心思了，所以吧，我捉摸着学一学<code>R</code>，然后就一发不可收拾啊，又让我发现了<code>Rmarkdown</code>这个好东西，嘿嘿，用来做笔记其实挺爽的，刚好卫生统计学有不少公式和图标，都可以不错的解决~</p>
-<p>这里就不是不说一下另外几个硬货的优缺点了，敲黑板···</p>
-<p><strong>MSOFFICE</strong>：微软的办公套装，Word没啥不好，就是公式难得处理，还是文本格式比较难以管控，一不小心就是划勒巴子散架了，成也灵活，败也灵活。</p>
-<p><strong>LaTeX</strong>：这个东西也是花了我很多时间去学的，特别是大一大二的时候，被高数老师说的数学建模比赛迷得七荤八素，然后高数老师在大一的寒假带着我们学习<span class="math inline">\(LaTeX\)</span>这个啊，说我们先学会这个，其他的等开学了我再教，结果啊，碰上疫情，吹了，数学课题组没人管这个了，那好吧，我就自己玩。<span class="math inline">\(LaTeX\)</span>就是很规矩，很硬，一板一眼，有自己独特的一套逻辑与美感，成也规矩，败也规矩。</p>
-<p><strong>Ramrkdown</strong>：受益于xieyihui的杰出构想与操作，将<code>markdown</code>、<code>LaTeX</code>与<code>html</code>结合起来，将<code>markdown</code>的轻量化与简洁同<span class="math inline">\(LaTeX\)</span>的规矩与公式显示结合起来，再结合R对数据数据与分析的强大能力，形成了现在的<code>Rmarkdown</code>。</p>
-</div>
-<div id="关于引用" class="section level2 hasAnchor" number="16.8">
-<h2><span class="header-section-number">16.8</span> 关于引用<a href="usage用法.html#关于引用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>原设置是：</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="usage用法.html#cb14-1" tabindex="-1"></a><span class="st">`</span><span class="at">r if (knitr::is_html_output()) &#39;</span></span>
-<span id="cb14-2"><a href="usage用法.html#cb14-2" tabindex="-1"></a><span class="at"># References {-}</span></span>
-<span id="cb14-3"><a href="usage用法.html#cb14-3" tabindex="-1"></a><span class="at">&#39;</span></span></code></pre></div>
+<div id="概率的加法公式" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 概率的加法公式<a href="随机事件的概率.html#概率的加法公式" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -598,8 +411,8 @@ Output created: /Users/username/username.github.io/docs/index.html
           </div>
         </div>
       </div>
-<a href="简单线性相关和回归.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="抽样.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="离散型随机变量的概率分布.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -630,7 +443,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/12-usage.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/03-Random-events-probabilities.Rmd",
 "text": "Edit"
 },
 "history": {

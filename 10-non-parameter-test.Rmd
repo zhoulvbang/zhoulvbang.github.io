@@ -74,42 +74,5 @@ $\alpha=0.05$
 
 ## 秩和检验 
 
-# 简单线性相关和回归
-## 两变量关系分析
-
-![two variables](images\two variables.png "two variables relationship")
-
-## 常见相关系数
-### 直线相关分析基本流程
-
-![Draw a scatterplot](images\Draw a scatterplot.png "Draw a scatterplot")
-
-### 三类相关系数总结
-
-| 名称 | 适用条件 | 
-| :--: | :------  |
-| Pearson直线相关系数 | 双变量正态分布的资料$\rightarrow$定量$\rightarrow$类比t检验、方差分析 |
-| 列联系数 | 非等级资料$\rightarrow$分类$\rightarrow$类比卡方检验 |
-| Spearman秩相关系数 | 不满足双变量正态分布、分布未知、等级资料$\rightarrow$定量+分类$\rightarrow$类比秩和检验 |
-
-## 简单直线回归
-
-### 直线回归分析的基本流程
-
-![Draw a scatterplot](images\Draw a scatterplot.png "Draw a scatterplot")
-
-## 直线相关与直线回归的比较
-
-| 区别与联系 | 类目 | 内容 |
-| :-: | :-: | :----------- |
-| 区别 | 资料要求 | 1. <font color=Red>线性相关</font>要求X,Y服从<font color=Red>双变量正态分布</font>，对这种资料进行回归分析称为$\textrm{II}$型回归，即可以把X当自变量，也可以当因变量，反之亦然。<br>2. <font color=Red>线性回归要求<font color=Red>Y在给定X值时服从正态分布</font>，X可以是精确测量和严格控制的变量，这时的回归称为\textrm{I}型回归，即不可以把X当因变量，Y当自变量进行回归分析。 |
-| | 应用 | 1. <font color=Red>线性相关用来表达两个变量间的互依关系</font>，两个变量的研究<font color=Red>地位是相等的</font>，谁做X，谁做Y都可以；<br>2. <font color=Red>线性回归用来表达两个变量间的依存变化的数量关系</font>，即一个变量（为因变量Y）如何依存于另一个变量（为自变量X）而变化，两个变量的研究<font color=Red>地位是不相等的</font>。 |
-|  | 意义 | 1. 相关系数r说明具有线性关系的两个变量之间的<font color=Red>密切程度和相关方向</font>；<br>2. 回归系数b表示X每变化一个单位所导致的<font color=Red>Y的平均变化量</font>。 |
-|  | r和b的取值范围 | r没有单位，而b有单位（其单位是：Y的单位/X的单位），所以导致两者的取值范围不同；<br> $-1 \le r \le 1$,$-\infty<b<+\infty$ |
-| | r和b的计算公式不同 | $r=\frac{l_{xy}}{\sqrt{l_{xx}l_{yy}}}$,$b=\frac{l_{xy}}{l_{xx}}$ |
-| 联系  | 符号 | 对于既可以做相关又可作回归的同一组资料，计算出r与b的正负号相同 |
-| | 假设检验 | 对于同一组资料，相关系数和回归系数的假设检验等价。即有：$t_b=t_r$|
-| | 相互换算 | 对于同一组资料，相关系数和回归系数可通过下式换算：$b=s\frac{S_Y}{S_X}$，<br>式中的$S_X,S_Y$分别是$X,Y$的标准差 |
-| | 用回归解释相关 | 又决定系数$R^2=\frac{SS_{回}}{SS_{总}}$，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则$R^2$越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。|
 
 

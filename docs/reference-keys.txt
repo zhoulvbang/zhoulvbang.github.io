@@ -34,7 +34,11 @@ about-this-book
 抽样
 常见的概率抽样
 常见的非概率抽样
-待定
+随机事件的概率
+随机事件与样本空间
+事件的运算
+概率的定义
+概率的加法公式
 离散型随机变量的概率分布
 二项分布binomial-distribution
 泊松分布poission-distribution
@@ -101,6 +105,7 @@ rc样本率或构成比的比较
 三类相关系数总结
 简单直线回归
 直线回归分析的基本流程
+回归方程的建立
 直线相关与直线回归的比较
 usage用法
 render-book渲染这本书
@@ -123,3 +128,4 @@ preview-book预览这本书
 指定pandoc路径
 与rmarkdown的缘分
 关于引用
+f分布

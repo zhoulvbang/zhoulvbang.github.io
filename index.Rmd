@@ -4,7 +4,8 @@ author: "Zhoulvbang"
 date: "`r Sys.Date()`"
 output:
   bookdown::pdf_document:
-    tufte::tufte_handout:
+    #tufte::tufte_handout:
+    latex_engine: xelatex
     toc: true
   html_document:
     toc: true
