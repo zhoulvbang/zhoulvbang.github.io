@@ -35,7 +35,7 @@ $$\hat y=a+bx$$
 $$
 \begin{cases}
 a=\bar y-b \bar x\\
-b=\frac{\sum_{i=1}^n x_i y_i - \frac{1}{n}(\sum_{i=1}^n x_i)(\sum_{i=1}^n y_i)}{\sum_{i=1}^n x_i^2 - \frac{1}{n}(\sum_{i=1}^n x_i)^2}
+b=\frac{\sum_{i=1}^{n} x_i y_i - \frac{1}{n}(\sum_{i=1}^n x_i)(\sum_{i=1}^{n} y_i)}{\sum_{i=1}^{n} x_i^2 - \frac{1}{n}(\sum_{i=1}^{n} x_i)^2}
 \end{cases}
 $$
 为方便，引入以下记号：
@@ -53,6 +53,33 @@ a=\bar y-b \bar x\\
 b=\frac{SS_{xy}}{SS_{xx}}
 \end{cases}
 $$
+
+### 假设检验
+
+1. F检验
+
+$y_i$的总离均差平方和为：
+
+$$SS_{yy}=\sum_{i}(y_i-\bar y)^2$$
+对其做分解，得到等式：
+
+$$SS_{yy}=\sum_{i}^{n}(\hat y_i-\bar y)^2+\sum_{i}^{n}(y_i-\hat y_i)^2$$
+$\sum_{i}^{n}(\hat y_i-\bar y)^2$为回归平方和（regression sum of squares），记为$SS_R$，表示回归估计值$\hat y_i$与均数$\bar y$的离差平方和，其公式为：
+
+$$
+\begin{align}
+SS_{yy} &= \sum_{i=1}^{n}(\hat y_i - \bar y)^2 \\
+        &= \sum_{i=1}^{n}[a + bx_i - (a + b\bar x)]^2 \\
+        &= SS_{xx}b^2 \\
+        &= SS_{xy}b
+\end{align}
+$$
+显然，回归平方和$SS_{R}$反映的是在y的总变异中由x与y的直线回归关系解释的那部分变异。$SS_R$值越大，说明回归直线的拟合效果就越好。
+
+$\sum_{i}^{n}(y_i-\hat y_i)^2$为残差平方和（residual sum of squares），记为$SS_E$，表示观测值$y_i$与回归估计值$\hat y_i$的离差平方和，其公式为：
+$$SS_E=\sum_{i=1}^{n}(y_i-\hat y_i)^2$$
+$SS_E$反映了在总变异中扣除自变量x对因变量y的线性影响以后的其他因素（包括x对y的非线性影响和随机误差等）对y变异的影响，也就是在总平方和中无法用y和x线性回归关系解释的部分。$SS_E$值越小，说明回归直线的拟合效果就越好。
+
 
 ## 直线相关与直线回归的比较
 
