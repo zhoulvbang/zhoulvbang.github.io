@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-09-23" />
+<meta name="date" content="2024-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -109,6 +109,7 @@
 <li class="chapter" data-level="3.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#离散数据的描述指标"><i class="fa fa-check"></i><b>3.2</b> 离散数据的描述指标</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#离散趋势指标"><i class="fa fa-check"></i><b>3.2.1</b> 离散趋势指标</a></li>
+<li class="chapter" data-level="3.2.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#标准差standard-deviation的计算"><i class="fa fa-check"></i><b>3.2.2</b> 标准差（standard deviation）的计算</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#分类资料的描述指标"><i class="fa fa-check"></i><b>3.3</b> 分类资料的描述指标</a>
 <ul>
@@ -355,7 +356,7 @@
 <p><span class="math display">\[
 \begin{cases}
 a=\bar y-b \bar x\\
-b=\frac{\sum_{i=1}^{n} x_i y_i - \frac{1}{n}(\sum_{i=1}^n x_i)(\sum_{i=1}^{n} y_i)}{\sum_{i=1}^{n} x_i^2 - \frac{1}{n}(\sum_{i=1}^{n} x_i)^2}
+b=\frac{\sum\limits_{i=1}^n x_i y_i - \frac{1}{n}(\sum\limits_{i=1}^n x_i)(\sum\limits_{i=1}^n y_i)}{\sum\limits_{i=1}^n x_i^2 - \frac{1}{n}(\sum\limits_{i=1}^n x_i)^2}
 \end{cases}
 \]</span>
 为方便，引入以下记号：
@@ -395,6 +396,26 @@ SS_{yy} &amp;= \sum_{i=1}^{n}(\hat y_i - \bar y)^2 \\
 <p><span class="math inline">\(\sum_{i}^{n}(y_i-\hat y_i)^2\)</span>为残差平方和（residual sum of squares），记为<span class="math inline">\(SS_E\)</span>，表示观测值<span class="math inline">\(y_i\)</span>与回归估计值<span class="math inline">\(\hat y_i\)</span>的离差平方和，其公式为：
 <span class="math display">\[SS_E=\sum_{i=1}^{n}(y_i-\hat y_i)^2\]</span>
 <span class="math inline">\(SS_E\)</span>反映了在总变异中扣除自变量x对因变量y的线性影响以后的其他因素（包括x对y的非线性影响和随机误差等）对y变异的影响，也就是在总平方和中无法用y和x线性回归关系解释的部分。<span class="math inline">\(SS_E\)</span>值越小，说明回归直线的拟合效果就越好。</p>
+<p>对公式进行简化：
+<span class="math display">\[\begin{align}
+SS_{yy}=&amp;\sum_{i}^{n}(\hat y_i-\bar y)^2+\sum_{i}^{n}(y_i-\hat y_i)^2\\
+=&amp;SS_R+SS_E
+\end{align}\]</span>
+上述三个平方和，各有其相应的自由度<span class="math inline">\(v\)</span>，并有如下关系：
+<span class="math display">\[v_{yy}=v_R+v_E\\
+v_{yy}=n-1,v_R=1,v_E=n-2\]</span></p>
+<p>在<span class="math inline">\(H_0\)</span>成立的条件下，有：
+<span class="math display">\[\frac{SS_R}{\sigma^2}\sim \chi^2(v_R),\frac{SS_E}{\sigma^2}\sim \chi^2(v_E)\]</span>
+且<span class="math inline">\(SS_R\)</span>和<span class="math inline">\(SS_E\)</span>相互独立。</p>
+<p>检验统计量：</p>
+<p><span class="math display">\[F=\frac{SS_R/v_R}{SS_E/v_E}\]</span>
+服从自由度<span class="math inline">\(v_R=1,v_E=n-2\)</span>的F分布。如果y和x确实存在直线回归关系，那么回归所解释的变异<span class="math inline">\(SS_R\)</span>应大于其他因素所解释的变异<span class="math inline">\(SS_E\)</span>。由此可见，F检验正是建立在这个基础上的。</p>
+<p>对于给定的检验水准<span class="math inline">\(\alpha\)</span>，
+如果<span class="math inline">\(F&gt;F_{(v_R,v_E),1-\alpha}\)</span>，则拒绝<span class="math inline">\(H_0\)</span>，认为直线回归方程有统计学显著性；</p>
+<p>如果<span class="math inline">\(F\leq F_{(v_R,v_E),1-\alpha}\)</span>，则不拒绝<span class="math inline">\(H_0\)</span>，尚不能认为直线回归方程有统计学显著性。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>t检验法</li>
+</ol>
 </div>
 </div>
 <div id="直线相关与直线回归的比较" class="section level2 hasAnchor" number="12.4">

@@ -25,6 +25,14 @@
 | 标准差 | 方差开根号 | 样本：$s$ <br> 总体：$\sigma$ | $s=\sqrt{\frac{\sum(x_{i}-x)^2}{(n-1)}}$ | 同上 |
 | 变异系数 | 测量数据变异程度的相对统计量 | $CV$ | $CV=\frac{s}{\bar x}×100%$ | (1)单位相同：但均数相差悬殊；<br>(2)单位不同 |
 
+### 标准差（standard deviation）的计算
+
+1. 直接法
+$$s=\sqrt{\frac{\sum\limits_{i=1}^nx_i^2-\frac{\left(\sum\limits_{i=1}^nx_i\right)^2}{n}}{n-1}}$$
+2. 加权法：与讨算均数的方法类似，对频数表资料采用加权法，讨算公式为
+
+$$s=\sqrt{\frac{\sum\limits_{k=1}^gf_kx_{mk}^2-\left(\sum\limits_{k=1}^gf_kx_{mk}\right)^2 \left(\sum\limits_{k=1}^gf_k\right)}{\sum\limits_{k=1}^gf_k-1}}$$
+
 ## 分类资料的描述指标
 ### 分类资料的统计描述指标
 
@@ -71,7 +79,7 @@
 
 *notice：*
 
-- 变化死亡比$SMR=\frac{实际死亡人数}{期望死亡人数}$
+- 变化标化比$SMR=\frac{实际死亡人数}{期望死亡人数}$
 - 直接标准化选择的标准是：各年龄组标准人口构成比或各年龄组标准人口数
 
 ## 常见统计图

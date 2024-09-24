@@ -129,3 +129,4 @@ preview-book预览这本书
 与rmarkdown的缘分
 关于引用
 f分布
+标准差standard-deviation的计算

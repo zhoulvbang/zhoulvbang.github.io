@@ -39,6 +39,7 @@ library(rmarkdown)
 library(sysfonts)
 library(showtextdb)
 library(showtext) #如果你系统中没有中文字体，或者想要使用更好的中文显示效果，可以使用 showtext 包。
+library(broom)#用于整理线性模型结果
 
 # 加载knitr和reticulate包
 library(knitr) #一个动态报告生成工具，它允许用户将 R 代码嵌入到文档（如Markdown、LaTeX、HTML、Markdown）中，并生成包含代码、文本、图形和输出结果的报告。
@@ -62,7 +63,7 @@ python_path <- system("which python3", intern = TRUE)
 
 # About this book
 
-这是一个用**Markdown**编写的 _$\alpha$=0.05的学习笔记_ 书籍。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
+这是一个用**Markdown**编写的 _$\alpha$=0.05的学习笔记_ 。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
 
 如您在本地编译本文档，请浏览`Usage`部分。
 

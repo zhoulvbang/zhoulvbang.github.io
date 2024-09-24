@@ -35,7 +35,7 @@ $$\hat y=a+bx$$
 $$
 \begin{cases}
 a=\bar y-b \bar x\\
-b=\frac{\sum_{i=1}^{n} x_i y_i - \frac{1}{n}(\sum_{i=1}^n x_i)(\sum_{i=1}^{n} y_i)}{\sum_{i=1}^{n} x_i^2 - \frac{1}{n}(\sum_{i=1}^{n} x_i)^2}
+b=\frac{\sum\limits_{i=1}^n x_i y_i - \frac{1}{n}(\sum\limits_{i=1}^n x_i)(\sum\limits_{i=1}^n y_i)}{\sum\limits_{i=1}^n x_i^2 - \frac{1}{n}(\sum\limits_{i=1}^n x_i)^2}
 \end{cases}
 $$
 为方便，引入以下记号：
@@ -79,6 +79,33 @@ $$
 $\sum_{i}^{n}(y_i-\hat y_i)^2$为残差平方和（residual sum of squares），记为$SS_E$，表示观测值$y_i$与回归估计值$\hat y_i$的离差平方和，其公式为：
 $$SS_E=\sum_{i=1}^{n}(y_i-\hat y_i)^2$$
 $SS_E$反映了在总变异中扣除自变量x对因变量y的线性影响以后的其他因素（包括x对y的非线性影响和随机误差等）对y变异的影响，也就是在总平方和中无法用y和x线性回归关系解释的部分。$SS_E$值越小，说明回归直线的拟合效果就越好。
+
+对公式进行简化：
+$$\begin{align}
+SS_{yy}=&\sum_{i}^{n}(\hat y_i-\bar y)^2+\sum_{i}^{n}(y_i-\hat y_i)^2\\
+=&SS_R+SS_E
+\end{align}$$
+上述三个平方和，各有其相应的自由度$v$，并有如下关系：
+$$v_{yy}=v_R+v_E\\
+v_{yy}=n-1,v_R=1,v_E=n-2$$
+
+在$H_0$成立的条件下，有：
+$$\frac{SS_R}{\sigma^2}\sim \chi^2(v_R),\frac{SS_E}{\sigma^2}\sim \chi^2(v_E)$$
+且$SS_R$和$SS_E$相互独立。
+
+检验统计量：
+
+$$F=\frac{SS_R/v_R}{SS_E/v_E}$$
+服从自由度$v_R=1,v_E=n-2$的F分布。如果y和x确实存在直线回归关系，那么回归所解释的变异$SS_R$应大于其他因素所解释的变异$SS_E$。由此可见，F检验正是建立在这个基础上的。
+
+对于给定的检验水准$\alpha$，
+如果$F>F_{(v_R,v_E),1-\alpha}$，则拒绝$H_0$，认为直线回归方程有统计学显著性；
+
+如果$F\leq F_{(v_R,v_E),1-\alpha}$，则不拒绝$H_0$，尚不能认为直线回归方程有统计学显著性。
+
+2. t检验法
+
+
 
 
 ## 直线相关与直线回归的比较
