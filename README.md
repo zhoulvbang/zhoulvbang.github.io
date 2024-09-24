@@ -11,3 +11,5 @@
 **bookdown** 书籍：https://bookdown.org/yihui/bookdown/
 
 **bookdown** 包参考站点：https://pkgs.rstudio.com/bookdown
+
+本仓库的内容（除模版外）均不提供商业用途和分发。
