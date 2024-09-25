@@ -130,3 +130,5 @@ preview-book预览这本书
 关于引用
 f分布
 标准差standard-deviation的计算
+概率的乘法公式
+全概率公式与bayes公式
