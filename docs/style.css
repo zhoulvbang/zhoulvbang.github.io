@@ -13,6 +13,11 @@
 #  white-space: inherit;
 # }
 
+/* 设置整个网页的背景颜色为原木护眼色 */  
+body {  
+  background-color: #f5e0dc; /* 假设的原木护眼色 */  
+}  
+
 /* 设置<p>标签的样式，带有caption类 */
 p.caption {
   color: #777; /* 设置文字颜色为灰色 (#777) */

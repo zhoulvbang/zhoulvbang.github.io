@@ -15,13 +15,13 @@ about-this-book
 什么是卫生统计学
 卫生统计学的重要性
 卫生统计学的未来展望
-结语
 不同资料的统计描述
 定量资料的描述指标
 集中趋势指标
 均数中位数和众数大小的关系变化
 离散数据的描述指标
 离散趋势指标
+标准差standard-deviation的计算
 分类资料的描述指标
 分类资料的统计描述指标
 动态数列
@@ -39,6 +39,8 @@ about-this-book
 事件的运算
 概率的定义
 概率的加法公式
+概率的乘法公式
+全概率公式与bayes公式
 离散型随机变量的概率分布
 二项分布binomial-distribution
 泊松分布poission-distribution
@@ -106,7 +108,10 @@ rc样本率或构成比的比较
 简单直线回归
 直线回归分析的基本流程
 回归方程的建立
+假设检验-1
 直线相关与直线回归的比较
+学业迷思
+section
 usage用法
 render-book渲染这本书
 preview-book预览这本书
@@ -129,6 +134,3 @@ preview-book预览这本书
 与rmarkdown的缘分
 关于引用
 f分布
-标准差standard-deviation的计算
-概率的乘法公式
-全概率公式与bayes公式

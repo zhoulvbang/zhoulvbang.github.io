@@ -30,5 +30,6 @@ rmd_files: [
   "09-parameter-test.Rmd",
   "10-non-parameter-test.Rmd",
   "11-regression-correlation.Rmd",
-  "12-usage.Rmd"
+  "12-learning-thought.Rmd",
+  "13-Usage.Rmd"
 ]

@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 连续型随机变量的概率分布 | 卫生统计学笔记</title>
+  <title>Chapter 16 学业迷思 | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 连续型随机变量的概率分布 | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 16 学业迷思 | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 连续型随机变量的概率分布 | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 16 学业迷思 | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -42,8 +42,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="离散型随机变量的概率分布.html"/>
-<link rel="next" href="由正态分布引出的三大抽样分布.html"/>
+<link rel="prev" href="简单线性相关和回归.html"/>
+<link rel="next" href="usage用法.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -367,134 +367,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="连续型随机变量的概率分布" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> 连续型随机变量的概率分布<a href="连续型随机变量的概率分布.html#连续型随机变量的概率分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="正态分布normal-distribution" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> 正态分布(Normal Distribution)<a href="连续型随机变量的概率分布.html#正态分布normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>正态分布(Normal Distribution)：正态分布是最重要的连续型分布，随机变量<span class="math inline">\(X\)</span>服从均数为<span class="math inline">\(\mu\)</span>，标准差为<span class="math inline">\(\sigma\)</span>的正态分布，记为<span class="math inline">\(X\sim N(\mu,\sigma^{2})\)</span>。</li>
-<li>正态曲线（Normal curve）：即正态分布曲线，<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span>是正态分布的两个参数。</li>
-</ol>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-4-1.png" alt="Normal Curve" width="672" />
-<p class="caption">
-Figure 7.1: Normal Curve
-</p>
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li>性质</li>
-</ol>
-<ul>
-<li>正态曲线在横轴上方<font color=Red>均数处最高</font></li>
-<li>正态分布<font color=Red>以均数为中心，左右对称</font></li>
-<li>正态分布有<font color=Red>两个参数</font>，即<font color=Red>位置参数<span class="math inline">\(\mu\)</span></font>和<font color=Red>形态参数<span class="math inline">\(\sigma\)</span></font>
-<ul>
-<li>固定<span class="math inline">\(\sigma\)</span>，改变<span class="math inline">\(\mu\)</span>值，形态不变，曲线沿着<span class="math inline">\(X\)</span>轴平行移动</li>
-<li>固定<span class="math inline">\(\mu\)</span>，改变<span class="math inline">\(\sigma\)</span>值，中心在<span class="math inline">\(X\)</span>轴的位置不变
-<ul>
-<li><span class="math inline">\(\sigma\)</span>越小，曲线越陡峭<span class="math inline">\(\to\)</span>瘦高</li>
-<li><span class="math inline">\(\sigma\)</span>越大，曲线越低平<span class="math inline">\(\to\)</span>矮胖</li>
-</ul></li>
-<li>正态分布的可加性，当随机变量X服从正态分布<span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span>，Y服从正态分布<span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>，X与Y独立，则<span class="math inline">\(X-Y\)</span>服从<span class="math inline">\(N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)\)</span>的正态分布</li>
-</ul></li>
-</ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-5-1.png" alt="Different Normal Curve" width="672" />
-<p class="caption">
-Figure 7.2: Different Normal Curve
-</p>
-</div>
-</div>
-<div id="标准正态分布" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> 标准正态分布<a href="连续型随机变量的概率分布.html#标准正态分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>标准正态分布（Standard normal distribution）：是一种特殊的正态分布，通常用<span class="math inline">\(U\)</span>或<span class="math inline">\(Z\)</span>表示服从标准正态分布的变量，此时称随机变量<span class="math inline">\(X\)</span>服从均数为0，标准差为1的标准正态分布，记为<span class="math inline">\(X \sim N(0,1)\)</span></li>
-</ol>
-<ul>
-<li>正态分布：一簇曲线</li>
-<li>标准正态分布：一条曲线</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>标准正态变换：Z变换、U变换</li>
-</ol>
-<ul>
-<li>疑难1：Z值到底表达什么意思？
-<ul>
-<li>个体值到均值的距离，有多少个标准差
-<span class="math inline">\(Z = \frac{X-\mu}{\sigma}\)</span></li>
-<li>只有正态分布的资料才能通过Z变换变成标准正态分布</li>
-</ul></li>
-<li>疑难2：标准化变换的公式如何理解？
-<ul>
-<li>个体值减去均值，除以标准差，均数和标准差由<span class="math inline">\(\mu,\sigma\)</span>变为<span class="math inline">\(0,1\)</span></li>
-</ul></li>
-</ul>
-<pre><code>## TableGrob (1 x 2) &quot;arrange&quot;: 2 grobs
-##   z     cells    name           grob
-## 1 1 (1-1,1-1) arrange gtable[layout]
-## 2 2 (1-1,2-2) arrange gtable[layout]</code></pre>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-6-1.png" alt="Normalized Transformation" width="672" />
-<p class="caption">
-Figure 7.3: Normalized Transformation
-</p>
-</div>
-<div id="正态分布标准正态分布的应用" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> 正态分布、标准正态分布的应用<a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>正态分布的68-95-99.7法则</li>
-</ol>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-7-1.png" alt="Normal Distribution with 68-95-99.7 Rule" width="672" />
-<p class="caption">
-Figure 7.4: Normal Distribution with 68-95-99.7 Rule
-</p>
-</div>
-<ol start="2" style="list-style-type: decimal">
-<li>标准化转换，涉及到以下两个互逆计算</li>
-</ol>
-<ul>
-<li>估计某个随机变量在一定取值范围内的观测值个数占全部观测值数量的百分比</li>
-<li>通过已知的百分比，估计总体变量值的分布范围（本质同医学参考值范围的计算）</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>运用正态近似法计算医学参考值范围</li>
-</ol>
-<div class="float">
-<img src="images/Medical%20reference%20range.png" title="Medical reference range" alt="Medical reference range" />
-<div class="figcaption">Medical reference range</div>
-</div>
-<ol start="4" style="list-style-type: decimal">
-<li>运用正态近似法计算置信区间</li>
-<li>正态分布是很多统计学分析方法的理论基础</li>
-</ol>
-<p><em>notice:</em></p>
-<ol style="list-style-type: decimal">
-<li>正态曲线上的拐点所对应的横坐标为<span class="math inline">\(\mu ±\sigma\)</span>。</li>
-<li>设随机变量<span class="math inline">\(X\)</span>的概率密度曲线为<span class="math inline">\(f(x)=\frac{1}{2\sqrt{p}}e^{\frac{(x+2)^2}{4}}\)</span>，若要将<span class="math inline">\(X\)</span>转化为服从标准正态分布的变量<span class="math inline">\(\mu\)</span>，则所采用的标准化变换为：<span class="math inline">\(\frac{X-2}{\sqrt{2}}\)</span>（其原式为：<span class="math inline">\(f(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}\)</span>，题目和原式中：<span class="math inline">\(p=\pi\)</span>）</li>
-</ol>
-</div>
-<div id="正负偏态分布" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> 正负偏态分布<a href="连续型随机变量的概率分布.html#正负偏态分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-8-1.png" alt="Skewed Curves" width="672" />
-<p class="caption">
-Figure 7.5: Skewed Curves
-</p>
-</div>
-<p><em>notice：</em></p>
-<ul>
-<li>左偏，左边尾长，平均数靠近左侧，平均数小于中位数小于众数，负偏态；</li>
-<li>右偏，右边尾长，平均数靠近右侧，平均数大于中位数大于众数，正偏态。</li>
-</ul>
-</div>
-</div>
-<div id="小结" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> 小结<a href="连续型随机变量的概率分布.html#小结" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="float">
-<img src="images/conversion%20relationship.png" title="conversion relationship" alt="conversion relationship" />
-<div class="figcaption">conversion relationship</div>
-</div>
+<div id="学业迷思" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Chapter 16</span> 学业迷思<a href="学业迷思.html#学业迷思" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="section" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> 2024.09.25<a href="学业迷思.html#section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>下午用平板拍书，然后extract内容，paste到notion之中，进行格式调整与完善，预期的想法是将
+所有习题统一抄录一份，然后形成电子文稿，方便自己打印出来练习或者放置到
+网络上，然后将答案也放出来，以便后来者。</p>
+<p>但是今天实际操作起来是很痛苦的，extract不总是能完全提取，notion的格式也不
+总是如人意，每个软件和工具都有其优点和缺点，很难找到其中的平衡点。Rmarkdown
+算是一个优秀的平衡之作，但是依旧繁琐。</p>
+<p>如果按照以前的学习习惯，直接在书上写就是了，为什么要花那么多功夫来抄录与
+展现，想了很久的答案，其实还是一个核心——neat and repeat。</p>
+<p>希望能快速完成这个工作。</p>
+
 </div>
 </div>
             </section>
@@ -502,8 +388,8 @@ Figure 7.5: Skewed Curves
           </div>
         </div>
       </div>
-<a href="离散型随机变量的概率分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="由正态分布引出的三大抽样分布.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="简单线性相关和回归.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="usage用法.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -534,7 +420,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/05-random-variable-of-continuous-type.Rmd",
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/12-learning-thought.Rmd",
 "text": "Edit"
 },
 "history": {
