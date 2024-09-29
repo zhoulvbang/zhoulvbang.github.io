@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-09-26" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -211,7 +211,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>7</b> 连续型随机变量的概率分布</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>7.1</b> 正态分布(Normal Distribution)</a></li>
+<li class="chapter" data-level="7.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>7.1</b> 正态分布(Normal Distribution)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>7.1.1</b> 正态分布的概念</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>7.2</b> 标准正态分布</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>7.2.1</b> 正态分布、标准正态分布的应用</a></li>
@@ -371,14 +374,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 7</span> 连续型随机变量的概率分布<a href="连续型随机变量的概率分布.html#连续型随机变量的概率分布" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="正态分布normal-distribution" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> 正态分布(Normal Distribution)<a href="连续型随机变量的概率分布.html#正态分布normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="正态分布的概念" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> 正态分布的概念<a href="连续型随机变量的概率分布.html#正态分布的概念" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>若随机变量X的密度函数是</p>
+<p><span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, (-\infty&lt;x&lt;+\infty)\]</span>
+则称X服从正态分布，记为<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-5-1.png" alt="Normal Curve comparsion" width="3600" />
+<p class="caption">
+Figure 7.1: Normal Curve comparsion
+</p>
+</div>
 <ol style="list-style-type: decimal">
 <li>正态分布(Normal Distribution)：正态分布是最重要的连续型分布，随机变量<span class="math inline">\(X\)</span>服从均数为<span class="math inline">\(\mu\)</span>，标准差为<span class="math inline">\(\sigma\)</span>的正态分布，记为<span class="math inline">\(X\sim N(\mu,\sigma^{2})\)</span>。</li>
 <li>正态曲线（Normal curve）：即正态分布曲线，<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span>是正态分布的两个参数。</li>
 </ol>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-4-1.png" alt="Normal Curve" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-6-1.png" alt="Normal Curve" width="672" />
 <p class="caption">
-Figure 7.1: Normal Curve
+Figure 7.2: Normal Curve
 </p>
 </div>
 <ol start="3" style="list-style-type: decimal">
@@ -398,15 +412,18 @@ Figure 7.1: Normal Curve
 <li>正态分布的可加性，当随机变量X服从正态分布<span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span>，Y服从正态分布<span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>，X与Y独立，则<span class="math inline">\(X-Y\)</span>服从<span class="math inline">\(N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)\)</span>的正态分布</li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-5-1.png" alt="Different Normal Curve" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-7-1.png" alt="Different Normal Curve" width="672" />
 <p class="caption">
-Figure 7.2: Different Normal Curve
+Figure 7.3: Different Normal Curve
 </p>
+</div>
 </div>
 </div>
 <div id="标准正态分布" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> 标准正态分布<a href="连续型随机变量的概率分布.html#标准正态分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>标准正态随机变量U的密度函数用<span class="math inline">\(\varphi(u)\)</span>表示，为：
+<span class="math display">\[\varphi(u)=\frac{1}{\sqrt{2\pi}}e^{-\frac{u^2}{2}},(-\infty&lt;x&lt;+\infty)\]</span></p>
 <ol style="list-style-type: decimal">
 <li>标准正态分布（Standard normal distribution）：是一种特殊的正态分布，通常用<span class="math inline">\(U\)</span>或<span class="math inline">\(Z\)</span>表示服从标准正态分布的变量，此时称随机变量<span class="math inline">\(X\)</span>服从均数为0，标准差为1的标准正态分布，记为<span class="math inline">\(X \sim N(0,1)\)</span></li>
 </ol>
@@ -433,10 +450,10 @@ Figure 7.2: Different Normal Curve
 ##   z     cells    name           grob
 ## 1 1 (1-1,1-1) arrange gtable[layout]
 ## 2 2 (1-1,2-2) arrange gtable[layout]</code></pre>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-6-1.png" alt="Normalized Transformation" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-8-1.png" alt="Normalized Transformation" width="672" />
 <p class="caption">
-Figure 7.3: Normalized Transformation
+Figure 7.4: Normalized Transformation
 </p>
 </div>
 <div id="正态分布标准正态分布的应用" class="section level3 hasAnchor" number="7.2.1">
@@ -444,10 +461,10 @@ Figure 7.3: Normalized Transformation
 <ol style="list-style-type: decimal">
 <li>正态分布的68-95-99.7法则</li>
 </ol>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-7-1.png" alt="Normal Distribution with 68-95-99.7 Rule" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-9-1.png" alt="Normal Distribution with 68-95-99.7 Rule" width="672" />
 <p class="caption">
-Figure 7.4: Normal Distribution with 68-95-99.7 Rule
+Figure 7.5: Normal Distribution with 68-95-99.7 Rule
 </p>
 </div>
 <ol start="2" style="list-style-type: decimal">
@@ -476,10 +493,10 @@ Figure 7.4: Normal Distribution with 68-95-99.7 Rule
 </div>
 <div id="正负偏态分布" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> 正负偏态分布<a href="连续型随机变量的概率分布.html#正负偏态分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-8-1.png" alt="Skewed Curves" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-10-1.png" alt="Skewed Curves" width="672" />
 <p class="caption">
-Figure 7.5: Skewed Curves
+Figure 7.6: Skewed Curves
 </p>
 </div>
 <p><em>notice：</em></p>

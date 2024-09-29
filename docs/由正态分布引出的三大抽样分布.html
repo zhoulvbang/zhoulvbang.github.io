@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-09-26" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -211,7 +211,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>7</b> 连续型随机变量的概率分布</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>7.1</b> 正态分布(Normal Distribution)</a></li>
+<li class="chapter" data-level="7.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>7.1</b> 正态分布(Normal Distribution)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>7.1.1</b> 正态分布的概念</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>7.2</b> 标准正态分布</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>7.2.1</b> 正态分布、标准正态分布的应用</a></li>
@@ -375,8 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>正态分布的两个参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span>决定了正态分布的位置和形态。为了应用方便，常将一般的正态变量X通过u变换<span class="math inline">\([(X-\mu)/\sigma]\)</span>转化成标准正态变量u，以使原来各种形态的正态分布都转换为<span class="math inline">\(\mu=0,\sigma=1\)</span>的标准正态分布(Standard Normal Distribution)，亦称u分布。</p>
 <p>根据中心极限定理，通过抽样模拟试验表明，在正态分布总体中以固定 n 抽取若干个样本时，样本均数的分布仍服从正态分布，即<span class="math inline">\(N(\mu,\sigma)\)</span>。所以，对样本均数的分布进行u变换，也可变换为标准正态分布<span class="math inline">\(N(0,1)\)</span>。</p>
 <p>由于在实际工作中，往往<span class="math inline">\(\sigma^2\)</span>(总体方差)是未知的，常用<span class="math inline">\(s^2\)</span>(样本方差)作为<span class="math inline">\(\sigma^2\)</span>的估计值，为了与u变换区别，称为 t 变换，统计量 t 值的分布称为 t 分布。</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-9-1.png" alt="t-distribution Curves" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-11-1.png" alt="t-distribution Curves" width="672" />
 <p class="caption">
 Figure 8.1: t-distribution Curves
 </p>
@@ -386,8 +389,8 @@ Figure 8.1: t-distribution Curves
 布”。
 ## F分布</p>
 </blockquote>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-10-1.png" alt="F-distribution Curves" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-12-1.png" alt="F-distribution Curves" width="672" />
 <p class="caption">
 Figure 8.2: F-distribution Curves
 </p>
@@ -408,8 +411,8 @@ Figure 8.2: F-distribution Curves
 </div>
 <div id="chi2分布" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> <span class="math inline">\(\chi^2\)</span>分布<a href="由正态分布引出的三大抽样分布.html#chi2分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
-<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-11-1.png" alt="Chi-square Distribution Curves" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="%E5%8D%AB%E7%94%9F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%AC%94%E8%AE%B0_files/figure-html/unnamed-chunk-13-1.png" alt="Chi-square Distribution Curves" width="672" />
 <p class="caption">
 Figure 8.3: Chi-square Distribution Curves
 </p>

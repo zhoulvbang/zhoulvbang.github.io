@@ -1,5 +1,67 @@
 # 连续型随机变量的概率分布
+
+
 ## 正态分布(Normal Distribution)
+
+### 正态分布的概念
+
+若随机变量X的密度函数是
+
+$$f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, (-\infty<x<+\infty)$$
+则称X服从正态分布，记为$X\sim N(\mu,\sigma^2)$。
+
+
+```{r, fig.cap="Normal Curve comparsion", fig.show='hold', fig.align='center',fig.width=12, fig.height=8, echo=FALSE, warning=FALSE, dpi=300}
+# 加载必要的库
+#library(ggplot2)
+#library(tidyr)
+
+# 创建数据框
+x <- seq(-20, 20, length.out = 1000)
+df <- data.frame(x = rep(x, 4))
+
+# 添加不同参数的正态分布密度
+df$y1 <- dnorm(x, mean = -3, sd = 5)
+df$y2 <- dnorm(x, mean = 0, sd = 1)
+df$y3 <- dnorm(x, mean = 3, sd = 3)
+df$y4 <- dnorm(x, mean = 5, sd = 2)
+
+# 将数据转换为长格式
+df_long <- tidyr::pivot_longer(df, cols = starts_with("y"), names_to = "distribution", values_to = "density")
+
+# 创建标签
+labels <- c(
+  y1 = "μ = -3, σ = 5",
+  y2 = "μ = 0, σ = 1",
+  y3 = "μ = 3, σ = 3",
+  y4 = "μ = 5, σ = 2"
+)
+
+# 绘制图形
+ggplot(df_long, aes(x = x, y = density, color = distribution)) +
+  geom_line(size = 1) +  # 增加线条粗细
+  scale_color_manual(values = c("red", "blue", "green", "purple"), labels = labels) +
+  labs(title = "正态分布密度函数", 
+       x = "x", 
+       y = "密度",
+       color = "分布参数") +
+  theme_minimal(base_size = 14) +  # 增加基础字体大小
+  theme(
+    plot.title = element_text(size = 20, face = "bold"),  # 增大标题字体
+    axis.title = element_text(size = 16),  # 增大轴标题字体
+    axis.text = element_text(size = 12),  # 增大轴刻度标签字体
+    legend.position = "bottom",
+    legend.box = "vertical",
+    legend.margin = margin(t = 10, r = 0, b = 10, l = 0),
+    legend.spacing.y = unit(0.2, "cm"),
+    legend.key.size = unit(1, "cm"),
+    legend.text = element_text(size = 12),  # 增大图例文本字体
+    legend.title = element_text(size = 14, face = "bold"),  # 增大图例标题字体
+    plot.margin = margin(t = 20, r = 20, b = 20, l = 20)
+  ) +
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
+```
+
 
 1. 正态分布(Normal Distribution)：正态分布是最重要的连续型分布，随机变量$X$服从均数为$\mu$，标准差为$\sigma$的正态分布，记为$X\sim N(\mu,\sigma^{2})$。
 2. 正态曲线（Normal curve）：即正态分布曲线，$\mu$和$\sigma$是正态分布的两个参数。
@@ -84,6 +146,9 @@ print(combined_graphs)
 ```
 
 ## 标准正态分布
+
+标准正态随机变量U的密度函数用$\varphi(u)$表示，为：
+$$\varphi(u)=\frac{1}{\sqrt{2\pi}}e^{-\frac{u^2}{2}},(-\infty<x<+\infty)$$
 
 1. 标准正态分布（Standard normal distribution）：是一种特殊的正态分布，通常用$U$或$Z$表示服从标准正态分布的变量，此时称随机变量$X$服从均数为0，标准差为1的标准正态分布，记为$X \sim N(0,1)$
   - 正态分布：一簇曲线

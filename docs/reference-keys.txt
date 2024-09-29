@@ -1,5 +1,4 @@
-fig:unnamed-chunk-1
-fig:unnamed-chunk-3
+fig:unnamed-chunk-2
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
 fig:unnamed-chunk-6
@@ -9,6 +8,8 @@ fig:unnamed-chunk-9
 fig:unnamed-chunk-10
 fig:unnamed-chunk-11
 fig:unnamed-chunk-12
+fig:unnamed-chunk-13
+fig:unnamed-chunk-14
 about-this-book
 关于卫生统计学
 卫生统计学介绍与展望
@@ -48,6 +49,7 @@ about-this-book
 泊松分布的应用
 连续型随机变量的概率分布
 正态分布normal-distribution
+正态分布的概念
 标准正态分布
 正态分布标准正态分布的应用
 正负偏态分布
@@ -133,4 +135,3 @@ preview-book预览这本书
 指定pandoc路径
 与rmarkdown的缘分
 关于引用
-f分布
