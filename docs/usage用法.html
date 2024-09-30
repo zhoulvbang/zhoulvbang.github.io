@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 17 Usage(用法) | 卫生统计学笔记</title>
+  <title>Chapter 16 Usage(用法) | 卫生统计学笔记</title>
   <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
 在抽象的意义下，一切科学都是数学
@@ -12,7 +12,7 @@
 艰难修补与完善。</p>" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 17 Usage(用法) | 卫生统计学笔记" />
+  <meta property="og:title" content="Chapter 16 Usage(用法) | 卫生统计学笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
@@ -23,7 +23,7 @@
   <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 17 Usage(用法) | 卫生统计学笔记" />
+  <meta name="twitter:title" content="Chapter 16 Usage(用法) | 卫生统计学笔记" />
   
   <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
 在终极的分析中，一切知识都是历史
@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-09-29" />
+<meta name="date" content="2024-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,6 +64,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -208,147 +216,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布poission-distribution"><i class="fa fa-check"></i><b>6.2</b> 泊松分布(Poission Distribution)</a></li>
 <li class="chapter" data-level="6.3" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布的应用"><i class="fa fa-check"></i><b>6.3</b> 二项分布的应用</a></li>
 <li class="chapter" data-level="6.4" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布的应用"><i class="fa fa-check"></i><b>6.4</b> 泊松分布的应用</a></li>
+<li class="chapter" data-level="6.5" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>6.5</b> 正态分布(Normal Distribution)</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>6.5.1</b> 正态分布的概念</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>7</b> 连续型随机变量的概率分布</a>
+<li class="chapter" data-level="6.6" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>6.6</b> 标准正态分布</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>7.1</b> 正态分布(Normal Distribution)</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>7.1.1</b> 正态分布的概念</a></li>
+<li class="chapter" data-level="6.6.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>6.6.1</b> 正态分布、标准正态分布的应用</a></li>
+<li class="chapter" data-level="6.6.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>6.6.2</b> 正负偏态分布</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>7.2</b> 标准正态分布</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>7.2.1</b> 正态分布、标准正态分布的应用</a></li>
-<li class="chapter" data-level="7.2.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>7.2.2</b> 正负偏态分布</a></li>
+<li class="chapter" data-level="6.7" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>6.7</b> 小结</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>7.3</b> 小结</a></li>
+<li class="chapter" data-level="7" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html"><i class="fa fa-check"></i><b>7</b> 由正态分布引出的三大抽样分布</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#t分布"><i class="fa fa-check"></i><b>7.1</b> t分布</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#f分布的应用"><i class="fa fa-check"></i><b>7.1.1</b> F分布的应用</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html"><i class="fa fa-check"></i><b>8</b> 由正态分布引出的三大抽样分布</a>
+<li class="chapter" data-level="7.2" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#chi2分布"><i class="fa fa-check"></i><b>7.2</b> <span class="math inline">\(\chi^2\)</span>分布</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#t分布"><i class="fa fa-check"></i><b>8.1</b> t分布</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#f分布的应用"><i class="fa fa-check"></i><b>8.1.1</b> F分布的应用</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#chi2分布"><i class="fa fa-check"></i><b>8.2</b> <span class="math inline">\(\chi^2\)</span>分布</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#卡方检验应用"><i class="fa fa-check"></i><b>8.2.1</b> 卡方检验应用</a></li>
+<li class="chapter" data-level="7.2.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#卡方检验应用"><i class="fa fa-check"></i><b>7.2.1</b> 卡方检验应用</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>9</b> 参数估计</a>
+<li class="chapter" data-level="8" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>8</b> 参数估计</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="参数估计.html"><a href="参数估计.html#样本量的抽样分布"><i class="fa fa-check"></i><b>9.1</b> 样本量的抽样分布</a></li>
-<li class="chapter" data-level="9.2" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>9.2</b> 样本均数及其抽样分布</a></li>
-<li class="chapter" data-level="9.3" data-path="参数估计.html"><a href="参数估计.html#中心极限定理"><i class="fa fa-check"></i><b>9.3</b> 中心极限定理</a></li>
-<li class="chapter" data-level="9.4" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>9.4</b> 小结</a></li>
+<li class="chapter" data-level="8.1" data-path="参数估计.html"><a href="参数估计.html#样本量的抽样分布"><i class="fa fa-check"></i><b>8.1</b> 样本量的抽样分布</a></li>
+<li class="chapter" data-level="8.2" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.2</b> 样本均数及其抽样分布</a></li>
+<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#中心极限定理"><i class="fa fa-check"></i><b>8.3</b> 中心极限定理</a></li>
+<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>8.4</b> 小结</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>10</b> 定量资料与分类资料的分析步骤</a>
+<li class="chapter" data-level="9" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>9</b> 定量资料与分类资料的分析步骤</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#定量资料的分析步骤"><i class="fa fa-check"></i><b>10.1</b> 定量资料的分析步骤</a></li>
-<li class="chapter" data-level="10.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#分类资料的分析步骤"><i class="fa fa-check"></i><b>10.2</b> 分类资料的分析步骤</a></li>
-<li class="chapter" data-level="10.3" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题"><i class="fa fa-check"></i><b>10.3</b> 经典例题</a>
+<li class="chapter" data-level="9.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#定量资料的分析步骤"><i class="fa fa-check"></i><b>9.1</b> 定量资料的分析步骤</a></li>
+<li class="chapter" data-level="9.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#分类资料的分析步骤"><i class="fa fa-check"></i><b>9.2</b> 分类资料的分析步骤</a></li>
+<li class="chapter" data-level="9.3" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题"><i class="fa fa-check"></i><b>9.3</b> 经典例题</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题1"><i class="fa fa-check"></i><b>10.3.1</b> 经典例题1</a></li>
-<li class="chapter" data-level="10.3.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题2"><i class="fa fa-check"></i><b>10.3.2</b> 经典例题2</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="置信区间.html"><a href="置信区间.html"><i class="fa fa-check"></i><b>11</b> 置信区间</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围的辨析"><i class="fa fa-check"></i><b>11.1</b> 置信区间与医学参考值范围的辨析</a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="置信区间.html"><a href="置信区间.html#标准差与标准误"><i class="fa fa-check"></i><b>11.1.1</b> 标准差与标准误</a></li>
-<li class="chapter" data-level="11.1.2" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围"><i class="fa fa-check"></i><b>11.1.2</b> 置信区间与医学参考值范围</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的含义与常见说法辨析"><i class="fa fa-check"></i><b>11.2</b> 置信区间的含义与常见说法辨析</a></li>
-<li class="chapter" data-level="11.3" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素及影响因素"><i class="fa fa-check"></i><b>11.3</b> 置信区间的两要素及影响因素</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素"><i class="fa fa-check"></i><b>11.3.1</b> 置信区间的两要素</a></li>
-<li class="chapter" data-level="11.3.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的影响因素"><i class="fa fa-check"></i><b>11.3.2</b> 置信区间的影响因素</a></li>
+<li class="chapter" data-level="9.3.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题1"><i class="fa fa-check"></i><b>9.3.1</b> 经典例题1</a></li>
+<li class="chapter" data-level="9.3.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题2"><i class="fa fa-check"></i><b>9.3.2</b> 经典例题2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="假设检验.html"><a href="假设检验.html"><i class="fa fa-check"></i><b>12</b> 假设检验</a>
+<li class="chapter" data-level="10" data-path="置信区间.html"><a href="置信区间.html"><i class="fa fa-check"></i><b>10</b> 置信区间</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="假设检验.html"><a href="假设检验.html#假设检验的基本步骤"><i class="fa fa-check"></i><b>12.1</b> 假设检验的基本步骤</a></li>
-<li class="chapter" data-level="12.2" data-path="假设检验.html"><a href="假设检验.html#假设检验的两型错误检验效能"><i class="fa fa-check"></i><b>12.2</b> 假设检验的两型错误、检验效能</a>
+<li class="chapter" data-level="10.1" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围的辨析"><i class="fa fa-check"></i><b>10.1</b> 置信区间与医学参考值范围的辨析</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="假设检验.html"><a href="假设检验.html#beta的影响因素"><i class="fa fa-check"></i><b>12.2.1</b> <span class="math inline">\(1-\beta\)</span>的影响因素：</a></li>
-<li class="chapter" data-level="12.2.2" data-path="假设检验.html"><a href="假设检验.html#alpha-beta-1-beta关系"><i class="fa fa-check"></i><b>12.2.2</b> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：</a></li>
+<li class="chapter" data-level="10.1.1" data-path="置信区间.html"><a href="置信区间.html#标准差与标准误"><i class="fa fa-check"></i><b>10.1.1</b> 标准差与标准误</a></li>
+<li class="chapter" data-level="10.1.2" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围"><i class="fa fa-check"></i><b>10.1.2</b> 置信区间与医学参考值范围</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="假设检验.html"><a href="假设检验.html#假设检验与置信区间的关系"><i class="fa fa-check"></i><b>12.3</b> 假设检验与置信区间的关系</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="参数检验.html"><a href="参数检验.html"><i class="fa fa-check"></i><b>13</b> 参数检验</a>
+<li class="chapter" data-level="10.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的含义与常见说法辨析"><i class="fa fa-check"></i><b>10.2</b> 置信区间的含义与常见说法辨析</a></li>
+<li class="chapter" data-level="10.3" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素及影响因素"><i class="fa fa-check"></i><b>10.3</b> 置信区间的两要素及影响因素</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="参数检验.html"><a href="参数检验.html#参数检验和非参数检验的区别"><i class="fa fa-check"></i><b>13.1</b> 参数检验和非参数检验的区别</a></li>
-<li class="chapter" data-level="13.2" data-path="参数检验.html"><a href="参数检验.html#t分布-1"><i class="fa fa-check"></i><b>13.2</b> <span class="math inline">\(t\)</span>分布</a></li>
-<li class="chapter" data-level="13.3" data-path="参数检验.html"><a href="参数检验.html#方差分析"><i class="fa fa-check"></i><b>13.3</b> 方差分析</a>
-<ul>
-<li class="chapter" data-level="13.3.1" data-path="参数检验.html"><a href="参数检验.html#完全随机设计的方差分析"><i class="fa fa-check"></i><b>13.3.1</b> 完全随机设计的方差分析</a></li>
-<li class="chapter" data-level="13.3.2" data-path="参数检验.html"><a href="参数检验.html#随机区组设计的方差分析"><i class="fa fa-check"></i><b>13.3.2</b> 随机区组设计的方差分析</a></li>
+<li class="chapter" data-level="10.3.1" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素"><i class="fa fa-check"></i><b>10.3.1</b> 置信区间的两要素</a></li>
+<li class="chapter" data-level="10.3.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的影响因素"><i class="fa fa-check"></i><b>10.3.2</b> 置信区间的影响因素</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="非参数检验.html"><a href="非参数检验.html"><i class="fa fa-check"></i><b>14</b> 非参数检验</a>
+<li class="chapter" data-level="11" data-path="假设检验.html"><a href="假设检验.html"><i class="fa fa-check"></i><b>11</b> 假设检验</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="非参数检验.html"><a href="非参数检验.html#卡方检验"><i class="fa fa-check"></i><b>14.1</b> 卡方检验</a>
+<li class="chapter" data-level="11.1" data-path="假设检验.html"><a href="假设检验.html#假设检验的基本步骤"><i class="fa fa-check"></i><b>11.1</b> 假设检验的基本步骤</a></li>
+<li class="chapter" data-level="11.2" data-path="假设检验.html"><a href="假设检验.html#假设检验的两型错误检验效能"><i class="fa fa-check"></i><b>11.2</b> 假设检验的两型错误、检验效能</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="非参数检验.html"><a href="非参数检验.html#分类资料差异比较的方法"><i class="fa fa-check"></i><b>14.1.1</b> 分类资料差异比较的方法</a></li>
-<li class="chapter" data-level="14.1.2" data-path="非参数检验.html"><a href="非参数检验.html#单个率的比较"><i class="fa fa-check"></i><b>14.1.2</b> 单个率的比较</a></li>
+<li class="chapter" data-level="11.2.1" data-path="假设检验.html"><a href="假设检验.html#beta的影响因素"><i class="fa fa-check"></i><b>11.2.1</b> <span class="math inline">\(1-\beta\)</span>的影响因素：</a></li>
+<li class="chapter" data-level="11.2.2" data-path="假设检验.html"><a href="假设检验.html#alpha-beta-1-beta关系"><i class="fa fa-check"></i><b>11.2.2</b> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="非参数检验.html"><a href="非参数检验.html#率的比较"><i class="fa fa-check"></i><b>14.2</b> 率的比较</a>
-<ul>
-<li class="chapter" data-level="14.2.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表数据的chi2检验"><i class="fa fa-check"></i><b>14.2.1</b> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
-<li class="chapter" data-level="14.2.2" data-path="非参数检验.html"><a href="非参数检验.html#配对设计数据的chi2检验"><i class="fa fa-check"></i><b>14.2.2</b> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+<li class="chapter" data-level="11.3" data-path="假设检验.html"><a href="假设检验.html#假设检验与置信区间的关系"><i class="fa fa-check"></i><b>11.3</b> 假设检验与置信区间的关系</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="非参数检验.html"><a href="非参数检验.html#独立性检验"><i class="fa fa-check"></i><b>14.3</b> 独立性检验</a>
+<li class="chapter" data-level="12" data-path="参数检验.html"><a href="参数检验.html"><i class="fa fa-check"></i><b>12</b> 参数检验</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表的独立性检验"><i class="fa fa-check"></i><b>14.3.1</b> 2×2交叉表的独立性检验</a></li>
-<li class="chapter" data-level="14.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>14.3.2</b> 2×2配对数据的独立性检验</a></li>
-<li class="chapter" data-level="14.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>14.3.3</b> R×C样本率或构成比的比较</a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>14.4</b> 秩和检验</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>15</b> 简单线性相关和回归</a>
+<li class="chapter" data-level="12.1" data-path="参数检验.html"><a href="参数检验.html#参数检验和非参数检验的区别"><i class="fa fa-check"></i><b>12.1</b> 参数检验和非参数检验的区别</a></li>
+<li class="chapter" data-level="12.2" data-path="参数检验.html"><a href="参数检验.html#t分布-1"><i class="fa fa-check"></i><b>12.2</b> <span class="math inline">\(t\)</span>分布</a></li>
+<li class="chapter" data-level="12.3" data-path="参数检验.html"><a href="参数检验.html#方差分析"><i class="fa fa-check"></i><b>12.3</b> 方差分析</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>15.1</b> 两变量关系分析</a></li>
-<li class="chapter" data-level="15.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>15.2</b> 常见相关系数</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>15.2.1</b> 直线相关分析基本流程</a></li>
-<li class="chapter" data-level="15.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>15.2.2</b> 三类相关系数总结</a></li>
+<li class="chapter" data-level="12.3.1" data-path="参数检验.html"><a href="参数检验.html#完全随机设计的方差分析"><i class="fa fa-check"></i><b>12.3.1</b> 完全随机设计的方差分析</a></li>
+<li class="chapter" data-level="12.3.2" data-path="参数检验.html"><a href="参数检验.html#随机区组设计的方差分析"><i class="fa fa-check"></i><b>12.3.2</b> 随机区组设计的方差分析</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>15.3</b> 简单直线回归</a>
-<ul>
-<li class="chapter" data-level="15.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>15.3.1</b> 直线回归分析的基本流程</a></li>
-<li class="chapter" data-level="15.3.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#回归方程的建立"><i class="fa fa-check"></i><b>15.3.2</b> 回归方程的建立</a></li>
-<li class="chapter" data-level="15.3.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#假设检验-1"><i class="fa fa-check"></i><b>15.3.3</b> 假设检验</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>15.4</b> 直线相关与直线回归的比较</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="学业迷思.html"><a href="学业迷思.html"><i class="fa fa-check"></i><b>16</b> 学业迷思</a>
+<li class="chapter" data-level="13" data-path="非参数检验.html"><a href="非参数检验.html"><i class="fa fa-check"></i><b>13</b> 非参数检验</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="学业迷思.html"><a href="学业迷思.html#section"><i class="fa fa-check"></i><b>16.1</b> 2024.09.25</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>17</b> Usage(用法)</a>
+<li class="chapter" data-level="13.1" data-path="非参数检验.html"><a href="非参数检验.html#卡方检验"><i class="fa fa-check"></i><b>13.1</b> 卡方检验</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>17.1</b> Render book(渲染这本书)</a></li>
-<li class="chapter" data-level="17.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>17.2</b> Preview book(预览这本书)</a></li>
-<li class="chapter" data-level="17.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>17.3</b> 安装R+Rstudio</a></li>
-<li class="chapter" data-level="17.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>17.4</b> 创建一个Rmarkdown文件</a>
-<ul>
-<li class="chapter" data-level="17.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>17.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
-<li class="chapter" data-level="17.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>17.4.2</b> 在set部分load <code>bookdown</code></a></li>
-<li class="chapter" data-level="17.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>17.4.3</b> 其他宏包的需求与使用</a></li>
-<li class="chapter" data-level="17.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>17.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+<li class="chapter" data-level="13.1.1" data-path="非参数检验.html"><a href="非参数检验.html#分类资料差异比较的方法"><i class="fa fa-check"></i><b>13.1.1</b> 分类资料差异比较的方法</a></li>
+<li class="chapter" data-level="13.1.2" data-path="非参数检验.html"><a href="非参数检验.html#单个率的比较"><i class="fa fa-check"></i><b>13.1.2</b> 单个率的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="17.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>17.5</b> 代码块的选项设置（options）</a>
+<li class="chapter" data-level="13.2" data-path="非参数检验.html"><a href="非参数检验.html#率的比较"><i class="fa fa-check"></i><b>13.2</b> 率的比较</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>17.5.1</b> 输出信息选项</a></li>
-<li class="chapter" data-level="17.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>17.5.2</b> 错误信息选项</a></li>
-<li class="chapter" data-level="17.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>17.5.3</b> 全局设置</a></li>
+<li class="chapter" data-level="13.2.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表数据的chi2检验"><i class="fa fa-check"></i><b>13.2.1</b> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+<li class="chapter" data-level="13.2.2" data-path="非参数检验.html"><a href="非参数检验.html#配对设计数据的chi2检验"><i class="fa fa-check"></i><b>13.2.2</b> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
 </ul></li>
-<li class="chapter" data-level="17.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>17.6</b> 在vscode中编辑rmarkdown</a>
+<li class="chapter" data-level="13.3" data-path="非参数检验.html"><a href="非参数检验.html#独立性检验"><i class="fa fa-check"></i><b>13.3</b> 独立性检验</a>
 <ul>
-<li class="chapter" data-level="17.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>17.6.1</b> 安装R extension</a></li>
-<li class="chapter" data-level="17.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>17.6.2</b> 安装其他的软件</a></li>
+<li class="chapter" data-level="13.3.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表的独立性检验"><i class="fa fa-check"></i><b>13.3.1</b> 2×2交叉表的独立性检验</a></li>
+<li class="chapter" data-level="13.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>13.3.2</b> 2×2配对数据的独立性检验</a></li>
+<li class="chapter" data-level="13.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>13.3.3</b> R×C样本率或构成比的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="17.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>17.7</b> 与Rmarkdown的缘分</a></li>
-<li class="chapter" data-level="17.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>17.8</b> 关于引用</a></li>
+<li class="chapter" data-level="13.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>13.4</b> 秩和检验</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>14</b> 简单线性相关和回归</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>14.1</b> 两变量关系分析</a></li>
+<li class="chapter" data-level="14.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>14.2</b> 常见相关系数</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>14.2.1</b> 直线相关分析基本流程</a></li>
+<li class="chapter" data-level="14.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>14.2.2</b> 三类相关系数总结</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>14.3</b> 简单直线回归</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>14.3.1</b> 直线回归分析的基本流程</a></li>
+<li class="chapter" data-level="14.3.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#回归方程的建立"><i class="fa fa-check"></i><b>14.3.2</b> 回归方程的建立</a></li>
+<li class="chapter" data-level="14.3.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#假设检验-1"><i class="fa fa-check"></i><b>14.3.3</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>14.4</b> 直线相关与直线回归的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="学业迷思.html"><a href="学业迷思.html"><i class="fa fa-check"></i><b>15</b> 学业迷思</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="学业迷思.html"><a href="学业迷思.html#section"><i class="fa fa-check"></i><b>15.1</b> 2024.09.25</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>16</b> Usage(用法)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>16.1</b> Render book(渲染这本书)</a></li>
+<li class="chapter" data-level="16.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>16.2</b> Preview book(预览这本书)</a></li>
+<li class="chapter" data-level="16.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>16.3</b> 安装R+Rstudio</a></li>
+<li class="chapter" data-level="16.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>16.4</b> 创建一个Rmarkdown文件</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>16.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
+<li class="chapter" data-level="16.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>16.4.2</b> 在set部分load <code>bookdown</code></a></li>
+<li class="chapter" data-level="16.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>16.4.3</b> 其他宏包的需求与使用</a></li>
+<li class="chapter" data-level="16.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>16.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>16.5</b> 代码块的选项设置（options）</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>16.5.1</b> 输出信息选项</a></li>
+<li class="chapter" data-level="16.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>16.5.2</b> 错误信息选项</a></li>
+<li class="chapter" data-level="16.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>16.5.3</b> 全局设置</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>16.6</b> 在vscode中编辑rmarkdown</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>16.6.1</b> 安装R extension</a></li>
+<li class="chapter" data-level="16.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>16.6.2</b> 安装其他的软件</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>16.7</b> 与Rmarkdown的缘分</a></li>
+<li class="chapter" data-level="16.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>16.8</b> 关于引用</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -370,8 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="usage用法" class="section level1 hasAnchor" number="17">
-<h1><span class="header-section-number">Chapter 17</span> Usage(用法)<a href="usage用法.html#usage用法" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="usage用法" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Usage(用法)<a href="usage用法.html#usage用法" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>每个 <strong>bookdown</strong> 章节都是一个 <code>.Rmd</code> 文件，每个 <code>.Rmd</code> 文件只能包含一个章节。一个章节 <em>必须</em> 以一级标题开始：<code># 一个好的章节</code>，并且可以包含一个（且只能有一个）一级标题。</p>
 <p>在章节内部使用二级标题及更高级别的标题，例如：<code>## 一个简短的小节</code> 或 <code>### 一个更短的小节</code>。</p>
 <p><code>index.Rmd</code> 文件是必需的，并且也是您的第一章。当您渲染这本书时，它将成为主页。</p>
@@ -382,28 +387,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ├── 02-chapter2.Rmd
 ├── _bookdown.yml
 └── _output.yml</code></pre>
-<div id="render-book渲染这本书" class="section level2 hasAnchor" number="17.1">
-<h2><span class="header-section-number">17.1</span> Render book(渲染这本书)<a href="usage用法.html#render-book渲染这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="render-book渲染这本书" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Render book(渲染这本书)<a href="usage用法.html#render-book渲染这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>您可以在不更改任何内容的情况下，渲染此示例书籍的 HTML 版本：</p>
 <ol style="list-style-type: decimal">
 <li><p>在 RStudio IDE 中找到 <strong>Build</strong> 面板，然后</p></li>
 <li><p>单击 <strong>Build Book</strong>，然后选择您的输出格式，或者如果您想要从相同的书籍源文件中使用多个格式，则选择 “All formats”。</p></li>
 </ol>
 <p>或者从 R 控制台构建书籍：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="usage用法.html#cb4-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="usage用法.html#cb8-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
 <p>要将此示例渲染为 <code>bookdown::pdf_book</code>，您需要安装 <span class="math inline">\(XeLaTeX\)</span>。建议您安装 TinyTeX（其中包含 <span class="math inline">\(XeLaTeX\)</span>）：<a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>。</p>
 <p>当然你也可以下载别的<span class="math inline">\(TeX\)</span>发行版，比如<a href="https://tug.org/texlive/">TeXLive</a>和<a href="https://tug.org/mactex/">MaCTeX</a>。对于<code>TeXLive</code>的下载可以参照<a href="https://zhuanlan.zhihu.com/p/362201376">LaTeX:TeXLive2021安装</a>来进行；<code>MaCTeX</code>则可以参照<a href=""></a></p>
 <blockquote>
 <p>notice:在24年8月的时候，对文档进行了一次扩充和完善，但是文档增加和指令变多后，发现使用Rstudio界面中的<code>Knit</code>按钮无法完成对全文档的编译，如果 one by one 编译，会出现各文档不连贯的状态，并且在部分子文档中，出现部分代码无法编译，例如<code>could not find ggplot function</code>的情形，在此时应在<code>Console</code>终端输入<code>bookdown::render_book("index.Rmd")</code>来对全文档进行编译（在此之前你需要<code>Set Working Directory</code>）。</p>
 </blockquote>
 </div>
-<div id="preview-book预览这本书" class="section level2 hasAnchor" number="17.2">
-<h2><span class="header-section-number">17.2</span> Preview book(预览这本书)<a href="usage用法.html#preview-book预览这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="preview-book预览这本书" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Preview book(预览这本书)<a href="usage用法.html#preview-book预览这本书" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>在您工作时，您可以启动本地服务器以实时预览这本 HTML 书籍。当您保存单独的 <code>.Rmd</code> 文件时，此预览将会更新。您可以通过使用 RStudio 的插件 “Preview book” 或从 R 控制台中启动服务器。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="usage用法.html#cb5-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="usage用法.html#cb9-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
 </div>
-<div id="安装rrstudio" class="section level2 hasAnchor" number="17.3">
-<h2><span class="header-section-number">17.3</span> 安装R+Rstudio<a href="usage用法.html#安装rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="安装rrstudio" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> 安装R+Rstudio<a href="usage用法.html#安装rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R语言是一种自由软件编程语言与操作环境，主要用于统计分析、绘图以及数据挖掘。R由新西兰奥克兰大学的统计学家罗斯·伊哈卡和罗伯特·杰特曼开发，现在由R核心小组负责开发，同时也有其他用户编写了诸多外挂的软件包。R以S语言为基础，其词法作用域语义来自Scheme。R的后台程序大多由C语言、FORTRAN语言和R语言自己写成。</p>
 <p>回归正题，要使用<code>rmarkdown</code>需要我们使用<code>R</code>与<code>Rstudio</code>，我们可以从<a href="https://www.r-project.org/">R page</a>来下载<code>R</code>这个程序，
 <code>R</code> 是一个用于统计计算和图形的免费软件环境；再从<a href="https://www.rstudio.com/categories/rstudio-ide/">Rstudio</a>来下载适配R的集成开发编辑器，普通的<code>R script</code>可以在<code>vscode</code>中进行编辑和运行，但是<code>rmarkdown</code>文件则需要再<code>Rstudio</code>中才能较好的编辑与运行。</p>
@@ -412,35 +417,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Notice：macOS需要看一下是Intel还是ARM的CPU，ARM目前在M1/M2上搭载</p>
 </blockquote>
 </div>
-<div id="创建一个rmarkdown文件" class="section level2 hasAnchor" number="17.4">
-<h2><span class="header-section-number">17.4</span> 创建一个Rmarkdown文件<a href="usage用法.html#创建一个rmarkdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="创建一个rmarkdown文件" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> 创建一个Rmarkdown文件<a href="usage用法.html#创建一个rmarkdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>因为我们要将这个文件配置到GitHub上作为网页，所以我们要创建一个特别一点的rmarkdown。</p>
-<div id="首先我们要安装一个专门的包bookdown" class="section level3 hasAnchor" number="17.4.1">
-<h3><span class="header-section-number">17.4.1</span> 首先我们要安装一个专门的包<code>bookdown</code><a href="usage用法.html#首先我们要安装一个专门的包bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="usage用法.html#cb6-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
-<span id="cb6-2"><a href="usage用法.html#cb6-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rmarkdown&#39;</span>)</span>
-<span id="cb6-3"><a href="usage用法.html#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="usage用法.html#cb6-4" tabindex="-1"></a>or</span>
-<span id="cb6-5"><a href="usage用法.html#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="usage用法.html#cb6-6" tabindex="-1"></a><span class="co"># install from GitHub</span></span>
-<span id="cb6-7"><a href="usage用法.html#cb6-7" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;rstudio/rmarkdown&#39;</span>)</span></code></pre></div>
+<div id="首先我们要安装一个专门的包bookdown" class="section level3 hasAnchor" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> 首先我们要安装一个专门的包<code>bookdown</code><a href="usage用法.html#首先我们要安装一个专门的包bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="usage用法.html#cb10-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
+<span id="cb10-2"><a href="usage用法.html#cb10-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rmarkdown&#39;</span>)</span>
+<span id="cb10-3"><a href="usage用法.html#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="usage用法.html#cb10-4" tabindex="-1"></a>or</span>
+<span id="cb10-5"><a href="usage用法.html#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="usage用法.html#cb10-6" tabindex="-1"></a><span class="co"># install from GitHub</span></span>
+<span id="cb10-7"><a href="usage用法.html#cb10-7" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;rstudio/rmarkdown&#39;</span>)</span></code></pre></div>
 </div>
-<div id="在set部分load-bookdown" class="section level3 hasAnchor" number="17.4.2">
-<h3><span class="header-section-number">17.4.2</span> 在set部分load <code>bookdown</code><a href="usage用法.html#在set部分load-bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="usage用法.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+<div id="在set部分load-bookdown" class="section level3 hasAnchor" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> 在set部分load <code>bookdown</code><a href="usage用法.html#在set部分load-bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="usage用法.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
 </div>
-<div id="其他宏包的需求与使用" class="section level3 hasAnchor" number="17.4.3">
-<h3><span class="header-section-number">17.4.3</span> 其他宏包的需求与使用<a href="usage用法.html#其他宏包的需求与使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="其他宏包的需求与使用" class="section level3 hasAnchor" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> 其他宏包的需求与使用<a href="usage用法.html#其他宏包的需求与使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>如果要⽣成PDF输出，则需要安装LaTeX。对于从未安装过LaTeX的R Markdown⽤户，建议安装TinyTeX：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="usage用法.html#cb8-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
-<span id="cb8-2"><a href="usage用法.html#cb8-2" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="usage用法.html#cb12-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
+<span id="cb12-2"><a href="usage用法.html#cb12-2" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 <blockquote>
 <p>TinyTex是Yihui Xie专为R Markdown开发的超轻量级的Latex环境，是⼀种轻便、可移植、跨平台、易于维护的LaTeX发⾏版。R中的配套软件包tinytex可以帮助我们在将LaTeX或R Markdown⽂档编译为PDF时⾃动安装缺少的LaTeX软件包，并确保将LaTeX⽂档编译正确的次数以解决所有交叉引⽤。</p>
 </blockquote>
 <p>当然你可以选择下载TeXLive（Windows or Linux）或MacTeX（macOS）。</p>
 </div>
-<div id="创建一个bookdown文件" class="section level3 hasAnchor" number="17.4.4">
-<h3><span class="header-section-number">17.4.4</span> 创建一个<code>bookdown</code>文件<a href="usage用法.html#创建一个bookdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="创建一个bookdown文件" class="section level3 hasAnchor" number="16.4.4">
+<h3><span class="header-section-number">16.4.4</span> 创建一个<code>bookdown</code>文件<a href="usage用法.html#创建一个bookdown文件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>创建项目</li>
 </ol>
@@ -452,36 +457,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>YAML: R Markdown的头部文件，YAML（YAML Ain’t Markup Language）定义了R Markdown文档的元数据，包括文档的标题（title）、作者（author）、日期（date）、指定的输出文件类型（output format）等。YAML头部通常位于文档的开头，并用三条短划线（—）分隔。例如：</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="usage用法.html#cb9-1" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb9-2"><a href="usage用法.html#cb9-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;文档标题&quot;</span></span>
-<span id="cb9-3"><a href="usage用法.html#cb9-3" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;作者姓名&quot;</span></span>
-<span id="cb9-4"><a href="usage用法.html#cb9-4" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2024-06-08&quot;</span></span>
-<span id="cb9-5"><a href="usage用法.html#cb9-5" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb9-6"><a href="usage用法.html#cb9-6" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="usage用法.html#cb13-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb13-2"><a href="usage用法.html#cb13-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;文档标题&quot;</span></span>
+<span id="cb13-3"><a href="usage用法.html#cb13-3" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;作者姓名&quot;</span></span>
+<span id="cb13-4"><a href="usage用法.html#cb13-4" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2024-06-08&quot;</span></span>
+<span id="cb13-5"><a href="usage用法.html#cb13-5" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb13-6"><a href="usage用法.html#cb13-6" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <ul>
 <li>Markdown文本: Markdown文本是R Markdown文档的主要内容，使用者按照Markdown语法自行编写的文本内容。Markdown语法简洁易懂，适用于编写格式化文本，如标题、列表、引用、链接和图片等。示例：</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="usage用法.html#cb10-1" tabindex="-1"></a><span class="co"># 一级标题</span></span>
-<span id="cb10-2"><a href="usage用法.html#cb10-2" tabindex="-1"></a>这是一个段落。</span>
-<span id="cb10-3"><a href="usage用法.html#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="usage用法.html#cb10-4" tabindex="-1"></a><span class="sc">-</span> 无序列表项1</span>
-<span id="cb10-5"><a href="usage用法.html#cb10-5" tabindex="-1"></a><span class="sc">-</span> 无序列表项2</span>
-<span id="cb10-6"><a href="usage用法.html#cb10-6" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="usage用法.html#cb10-7" tabindex="-1"></a><span class="fl">1.</span> 有序列表项1</span>
-<span id="cb10-8"><a href="usage用法.html#cb10-8" tabindex="-1"></a><span class="fl">2.</span> 有序列表项2</span>
-<span id="cb10-9"><a href="usage用法.html#cb10-9" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="usage用法.html#cb10-10" tabindex="-1"></a><span class="sc">&gt;</span> 这是一个引用。</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="usage用法.html#cb14-1" tabindex="-1"></a><span class="co"># 一级标题</span></span>
+<span id="cb14-2"><a href="usage用法.html#cb14-2" tabindex="-1"></a>这是一个段落。</span>
+<span id="cb14-3"><a href="usage用法.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="usage用法.html#cb14-4" tabindex="-1"></a><span class="sc">-</span> 无序列表项1</span>
+<span id="cb14-5"><a href="usage用法.html#cb14-5" tabindex="-1"></a><span class="sc">-</span> 无序列表项2</span>
+<span id="cb14-6"><a href="usage用法.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="usage用法.html#cb14-7" tabindex="-1"></a><span class="fl">1.</span> 有序列表项1</span>
+<span id="cb14-8"><a href="usage用法.html#cb14-8" tabindex="-1"></a><span class="fl">2.</span> 有序列表项2</span>
+<span id="cb14-9"><a href="usage用法.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="usage用法.html#cb14-10" tabindex="-1"></a><span class="sc">&gt;</span> 这是一个引用。</span></code></pre></div>
 <ul>
 <li>代码块: R Markdown的一个主要功能是可以执行文档内的代码块，并将代码执行结果展示在Markdown文档中。这对撰写操作与分析报告带来了极大的便利，同时还可以进行良好的程序与结果复现。R Markdown文档中除了R代码段以外，还可以插入Python、SQL等许多编程语言的代码段。常用编程语言还可以与R代码段进行信息交换。代码块用三个反引号加上编程语言名称标识，例如：</li>
 </ul>
 <p>python section</p>
 </div>
 </div>
-<div id="代码块的选项设置options" class="section level2 hasAnchor" number="17.5">
-<h2><span class="header-section-number">17.5</span> 代码块的选项设置（options）<a href="usage用法.html#代码块的选项设置options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="代码块的选项设置options" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> 代码块的选项设置（options）<a href="usage用法.html#代码块的选项设置options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>默认情况下代码和结果会在输出⽂件中呈现。如果通过参数来控制代码块运⾏结果的输出情况可以在<code>{r,options}</code>中设置。⼀般包括代码及运⾏结果的输出、图⽚表格格式定义等。</p>
-<div id="输出信息选项" class="section level3 hasAnchor" number="17.5.1">
-<h3><span class="header-section-number">17.5.1</span> 输出信息选项<a href="usage用法.html#输出信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="输出信息选项" class="section level3 hasAnchor" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> 输出信息选项<a href="usage用法.html#输出信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>eval</code>: 加选项<code>eval=FALSE</code>,可以使得代码仅显⽰⽽不实际运⾏。这样的代码段如果有标签，可以在后续代码段中被引⽤。</li>
 <li><code>include</code>: 加选项<code>include=FALSE</code>，则本代码段仅运⾏，但是代码和结果都不写⼊到⽣成的⽂档中。</li>
@@ -498,38 +503,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="错误信息选项" class="section level3 hasAnchor" number="17.5.2">
-<h3><span class="header-section-number">17.5.2</span> 错误信息选项<a href="usage用法.html#错误信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="错误信息选项" class="section level3 hasAnchor" number="16.5.2">
+<h3><span class="header-section-number">16.5.2</span> 错误信息选项<a href="usage用法.html#错误信息选项" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>warning</code>：选项<code>warning=FALSE</code>使得代码段的警告信息不进⼊编译结果，⽽是在控制台中显⽰。有⼀些扩展包的载⼊警告可以⽤这种办法屏蔽。</li>
 <li><code>error</code>：选项<code>error=FALSE</code>可以使得错误信息不进⼊编译结果，⽽是出错停⽌并将错误信息在控制台中显⽰。</li>
 <li><code>message</code>：选项<code>message=FALSE</code>可以使得message级别的信息不进⼊编译结果，⽽是在控制台中显⽰。</li>
 </ul>
 </div>
-<div id="全局设置" class="section level3 hasAnchor" number="17.5.3">
-<h3><span class="header-section-number">17.5.3</span> 全局设置<a href="usage用法.html#全局设置" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="全局设置" class="section level3 hasAnchor" number="16.5.3">
+<h3><span class="header-section-number">16.5.3</span> 全局设置<a href="usage用法.html#全局设置" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>若R Markdown内的代码块存在⼀样的参数设置，则可以提前设计好全局的代码块参数。全局代码块通过<code>knitr::opts_chunk$set</code>函数进⾏设置，⼀般设置在YAML⽂件下⽅。</p>
 <p>例如本文的设置为：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="usage用法.html#cb11-1" tabindex="-1"></a><span class="co"># 设置knitr全局选项</span></span>
-<span id="cb11-2"><a href="usage用法.html#cb11-2" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb11-3"><a href="usage用法.html#cb11-3" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,  <span class="co"># 是否显示代码</span></span>
-<span id="cb11-4"><a href="usage用法.html#cb11-4" tabindex="-1"></a>  <span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="co">#是否编译代码框内的代码</span></span>
-<span id="cb11-5"><a href="usage用法.html#cb11-5" tabindex="-1"></a>  <span class="at">highlight =</span> <span class="cn">TRUE</span>, <span class="co">#是否语法高亮</span></span>
-<span id="cb11-6"><a href="usage用法.html#cb11-6" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示警告</span></span>
-<span id="cb11-7"><a href="usage用法.html#cb11-7" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示信息</span></span>
-<span id="cb11-8"><a href="usage用法.html#cb11-8" tabindex="-1"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,  <span class="co"># 图形宽度</span></span>
-<span id="cb11-9"><a href="usage用法.html#cb11-9" tabindex="-1"></a>  <span class="at">fig.height =</span> <span class="dv">5</span>  <span class="co"># 图形高度</span></span>
-<span id="cb11-10"><a href="usage用法.html#cb11-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="usage用法.html#cb15-1" tabindex="-1"></a><span class="co"># 设置knitr全局选项</span></span>
+<span id="cb15-2"><a href="usage用法.html#cb15-2" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb15-3"><a href="usage用法.html#cb15-3" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,  <span class="co"># 是否显示代码</span></span>
+<span id="cb15-4"><a href="usage用法.html#cb15-4" tabindex="-1"></a>  <span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="co">#是否编译代码框内的代码</span></span>
+<span id="cb15-5"><a href="usage用法.html#cb15-5" tabindex="-1"></a>  <span class="at">highlight =</span> <span class="cn">TRUE</span>, <span class="co">#是否语法高亮</span></span>
+<span id="cb15-6"><a href="usage用法.html#cb15-6" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示警告</span></span>
+<span id="cb15-7"><a href="usage用法.html#cb15-7" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,  <span class="co"># 是否显示信息</span></span>
+<span id="cb15-8"><a href="usage用法.html#cb15-8" tabindex="-1"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,  <span class="co"># 图形宽度</span></span>
+<span id="cb15-9"><a href="usage用法.html#cb15-9" tabindex="-1"></a>  <span class="at">fig.height =</span> <span class="dv">5</span>  <span class="co"># 图形高度</span></span>
+<span id="cb15-10"><a href="usage用法.html#cb15-10" tabindex="-1"></a>)</span></code></pre></div>
 <blockquote>
 <p>Notice：局部参数设置优先级大于全局参数设置。</p>
 </blockquote>
 </div>
 </div>
-<div id="在vscode中编辑rmarkdown" class="section level2 hasAnchor" number="17.6">
-<h2><span class="header-section-number">17.6</span> 在vscode中编辑rmarkdown<a href="usage用法.html#在vscode中编辑rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="在vscode中编辑rmarkdown" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> 在vscode中编辑rmarkdown<a href="usage用法.html#在vscode中编辑rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>大部分程序猿或者攻城狮应该都会对vscode比较熟悉，它提供了R Extension for Visual Studio Code，你可以在vscode中调用<code>R</code>对文档进行编译与修改，vscode相较于Rstudio最大的优势是可以直连GitHub，你可以将你创建的rmarkdown文件上传到GitHub，放置在你创建的GitHub主页中，使其成为一个个人主页/博客，从而在网络上展现出来，并可以被人检索到。</p>
-<div id="安装r-extension" class="section level3 hasAnchor" number="17.6.1">
-<h3><span class="header-section-number">17.6.1</span> 安装R extension<a href="usage用法.html#安装r-extension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="安装r-extension" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> 安装R extension<a href="usage用法.html#安装r-extension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>请打开vscode后看最左边的导航栏，选择<code>EXTENSIONS</code>后再<code>search</code>框中搜索<code>R</code>，
 然后选择<code>install</code>。</p>
 <div class="float">
@@ -537,8 +542,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figcaption">Rextension</div>
 </div>
 </div>
-<div id="安装其他的软件" class="section level3 hasAnchor" number="17.6.2">
-<h3><span class="header-section-number">17.6.2</span> 安装其他的软件<a href="usage用法.html#安装其他的软件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="安装其他的软件" class="section level3 hasAnchor" number="16.6.2">
+<h3><span class="header-section-number">16.6.2</span> 安装其他的软件<a href="usage用法.html#安装其他的软件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>当你使用vscode提供的插件时，肯定无法和专门适配R的Rstudio的各项功能比较，如果你需要生成PDF文档，你可能会遇到无法完成编译的问题，这是由于渲染R Markdown文档时，需要使用至少版本1.12.3的Pandoc。</p>
 <pre><code>[VSC-R] index.Rmd process started
 ==&gt; rmarkdown::render_site(&#39;/Users/uesrname/uesrname.github.io/index.Rmd&#39;)
@@ -548,21 +553,21 @@ In verify_rstudio_version() :
   Please install or upgrade Pandoc to at least version 1.17.2; or if you are using RStudio, you can just install RStudio 1.0+.
 
 Execution halted</code></pre>
-<div id="安装pandoc" class="section level4 hasAnchor" number="17.6.2.1">
-<h4><span class="header-section-number">17.6.2.1</span> 安装Pandoc<a href="usage用法.html#安装pandoc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="安装pandoc" class="section level4 hasAnchor" number="16.6.2.1">
+<h4><span class="header-section-number">16.6.2.1</span> 安装Pandoc<a href="usage用法.html#安装pandoc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>针对上述的问题，你可能需要安装Pandoc这个软件，你可以在<a href="https://pandoc.org/">Pandoc官网</a>了解相关信息和下载你需要的版本。</p>
 <p>如果你是Windows用户，请进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包，然后进行安装。</p>
 <p>如果你是Mac用户，一样可以进入<a href="https://github.com/jgm/pandoc/releases/tag/3.2">pandoc’s download page</a>后下载安装包；当你的电脑中已经安装有homebrew时，你可以选择在终端输入<code>brew install pandoc</code>来安装Pandoc。</p>
 </div>
-<div id="检查pandoc路径" class="section level4 hasAnchor" number="17.6.2.2">
-<h4><span class="header-section-number">17.6.2.2</span> 检查Pandoc路径：<a href="usage用法.html#检查pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="检查pandoc路径" class="section level4 hasAnchor" number="16.6.2.2">
+<h4><span class="header-section-number">16.6.2.2</span> 检查Pandoc路径：<a href="usage用法.html#检查pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li>安装完Pandoc后，确保系统中可以访问到Pandoc的可执行文件。</li>
 <li>你可以通过在终端中运行which pandoc来检查Pandoc的安装路径。</li>
 </ol>
 </div>
-<div id="指定pandoc路径" class="section level4 hasAnchor" number="17.6.2.3">
-<h4><span class="header-section-number">17.6.2.3</span> 指定Pandoc路径：<a href="usage用法.html#指定pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="指定pandoc路径" class="section level4 hasAnchor" number="16.6.2.3">
+<h4><span class="header-section-number">16.6.2.3</span> 指定Pandoc路径：<a href="usage用法.html#指定pandoc路径" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>如果系统中有多个版本的Pandoc，你可以在R Markdown文档中使用<code>rmarkdown::render()</code>函数的pandoc参数来指定Pandoc的路径。
 例如：<code>rmarkdown::render("index.Rmd", pandoc="/path/to/pandoc")</code></p>
 <p>一般来说，当你安装好Pandoc之后，在进入vscode进行编译后会正确生成<code>.html</code>文件，具体信息需要看vscode的output内容。当我进行编译后，output给出如下信息：</p>
@@ -582,8 +587,8 @@ Output created: /Users/username/username.github.io/docs/index.html
 </div>
 </div>
 </div>
-<div id="与rmarkdown的缘分" class="section level2 hasAnchor" number="17.7">
-<h2><span class="header-section-number">17.7</span> 与Rmarkdown的缘分<a href="usage用法.html#与rmarkdown的缘分" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="与rmarkdown的缘分" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> 与Rmarkdown的缘分<a href="usage用法.html#与rmarkdown的缘分" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>有很多方法制作一个学术主页/网站，我是过很多办法，最开始是使用<code>gridea</code>，那还是大二的故事，看见一个朋友搭建了一夜主页，我很好奇，也觉得很好玩（其实是逼格很高），我就觉得我也得来一个，奈何不是学计算机的，很多原理都没搞明白，网络问题也是很棘手，弄着弄着就没兴趣了，然后荒废了，当时也确实没什么东西可以写，纯粹就是为了装逼而装逼。</p>
 <p>后来到了大四的时候，我看到<a href="https://academicpages.github.io/">Academic page</a>，我就又觉得我行了，结果还是史无前例的大坑啊！因为这个网页的搭建是使用<code>jerkll</code>来生成静态网页，需要本地对其进行渲染然后在Internet中显示，我前期只是修改了一些信息然后就将其放置在GitHub上，然后在腾讯云租用了一个域名，将其关联（其实22年租用了域名以后，一直没搞好，专业知识太匮乏，没得办法~）。</p>
 <p>关于这个坑啊，有时间再专门写一个post来讲~</p>
@@ -594,12 +599,12 @@ Output created: /Users/username/username.github.io/docs/index.html
 <p><strong>LaTeX</strong>：这个东西也是花了我很多时间去学的，特别是大一大二的时候，被高数老师说的数学建模比赛迷得七荤八素，然后高数老师在大一的寒假带着我们学习<span class="math inline">\(LaTeX\)</span>这个啊，说我们先学会这个，其他的等开学了我再教，结果啊，碰上疫情，吹了，数学课题组没人管这个了，那好吧，我就自己玩。<span class="math inline">\(LaTeX\)</span>就是很规矩，很硬，一板一眼，有自己独特的一套逻辑与美感，成也规矩，败也规矩。</p>
 <p><strong>Ramrkdown</strong>：受益于xieyihui的杰出构想与操作，将<code>markdown</code>、<code>LaTeX</code>与<code>html</code>结合起来，将<code>markdown</code>的轻量化与简洁同<span class="math inline">\(LaTeX\)</span>的规矩与公式显示结合起来，再结合R对数据数据与分析的强大能力，形成了现在的<code>Rmarkdown</code>。</p>
 </div>
-<div id="关于引用" class="section level2 hasAnchor" number="17.8">
-<h2><span class="header-section-number">17.8</span> 关于引用<a href="usage用法.html#关于引用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="关于引用" class="section level2 hasAnchor" number="16.8">
+<h2><span class="header-section-number">16.8</span> 关于引用<a href="usage用法.html#关于引用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>原设置是：</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="usage用法.html#cb14-1" tabindex="-1"></a><span class="st">`</span><span class="at">r if (knitr::is_html_output()) &#39;</span></span>
-<span id="cb14-2"><a href="usage用法.html#cb14-2" tabindex="-1"></a><span class="at"># References {-}</span></span>
-<span id="cb14-3"><a href="usage用法.html#cb14-3" tabindex="-1"></a><span class="at">&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="usage用法.html#cb18-1" tabindex="-1"></a><span class="st">`</span><span class="at">r if (knitr::is_html_output()) &#39;</span></span>
+<span id="cb18-2"><a href="usage用法.html#cb18-2" tabindex="-1"></a><span class="at"># References {-}</span></span>
+<span id="cb18-3"><a href="usage用法.html#cb18-3" tabindex="-1"></a><span class="at">&#39;</span></span></code></pre></div>
 
 </div>
 </div>

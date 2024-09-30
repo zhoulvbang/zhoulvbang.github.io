@@ -1,4 +1,5 @@
-fig:unnamed-chunk-2
+fig:unnamed-chunk-1
+fig:unnamed-chunk-3
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
 fig:unnamed-chunk-6
@@ -47,7 +48,6 @@ about-this-book
 泊松分布poission-distribution
 二项分布的应用
 泊松分布的应用
-连续型随机变量的概率分布
 正态分布normal-distribution
 正态分布的概念
 标准正态分布

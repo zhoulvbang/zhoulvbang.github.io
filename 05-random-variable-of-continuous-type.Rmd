@@ -1,3 +1,5 @@
+library(ggplot2)
+library(cowplot)
 # 连续型随机变量的概率分布
 
 
@@ -13,8 +15,8 @@ $$f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, (-\infty<x<+
 
 ```{r, fig.cap="Normal Curve comparsion", fig.show='hold', fig.align='center',fig.width=12, fig.height=8, echo=FALSE, warning=FALSE, dpi=300}
 # 加载必要的库
-#library(ggplot2)
-#library(tidyr)
+library(ggplot2)
+library(tidyr)
 
 # 创建数据框
 x <- seq(-20, 20, length.out = 1000)
@@ -206,19 +208,20 @@ print(combined_plots)
 ### 正态分布、标准正态分布的应用
 1. 正态分布的68-95-99.7法则
 
-```{r ,fig.cap="Normal Distribution with 68-95-99.7 Rule",fig.show='hold', fig.align='center', echo=FALSE,warning=FALSE}
-# Generate x-axis values
+
+```{r, fig.align='center', fig.show='hold', warning=FALSE, fig.cap="Normal", echo=FALSE}
+# 生成x轴值
 x <- seq(-4, 4, length.out = 1000)
 
-# Calculate probability density values
+# 计算概率密度值
 density_values <- dnorm(x, mean = 0, sd = 1)
 
-# Create a data frame for shading areas
+# 创建阴影区域的数据框
 shaded_areas <- data.frame(x = c(-1, 1, -2, 2, -3, 3),
                            y = c(0.1, 0.1, 0.05, 0.05, 0.02, 0.02),
                            label = c("68%", "68%", "95%", "95%", "99.7%", "99.7%"))
 
-# Create the normal distribution plot
+# 创建正态分布图
 normal_plot <- ggplot(data.frame(x, density_values), aes(x = x, y = density_values)) +
   geom_line(color = "black", size = 1) +
   geom_area(data = subset(shaded_areas, label == "68%"), aes(x = x, y = y),
@@ -231,13 +234,13 @@ normal_plot <- ggplot(data.frame(x, density_values), aes(x = x, y = density_valu
   annotate("text", x = 0, y = 0.03, label = "95%", size = 4, color = "black") +
   annotate("text", x = 0, y = 0.015, label = "99.7%", size = 4, color = "black") +
   geom_vline(xintercept = c(-1, 1, -2, 2, -3, 3), linetype = "dashed",
-             color = c("black", "black", "black", "black", "black", "black")) +
+             color = "black") +
   labs(title = "Normal Distribution with 68-95-99.7 Rule",
        x = "Standard Deviations from Mean",
        y = "Probability Density") +
   theme_minimal()
 
-# Display the normal distribution plot
+# 显示正态分布图
 print(normal_plot)
 ```
 
@@ -371,6 +374,7 @@ p <- ggplot(data = df_data, aes(x = x, y = density, color = factor(df1))) +
 # 显示图表
 print(p)
 ```
+
 
 ### F分布的应用
 1. 方差的同质性检验

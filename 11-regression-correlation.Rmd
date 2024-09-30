@@ -121,3 +121,94 @@ $$F=\frac{SS_R/v_R}{SS_E/v_E}$$
 | | 假设检验 | 对于同一组资料，相关系数和回归系数的假设检验等价。即有：$t_b=t_r$|
 | | 相互换算 | 对于同一组资料，相关系数和回归系数可通过下式换算：$b=s\frac{S_Y}{S_X}$，<br>式中的$S_X,S_Y$分别是$X,Y$的标准差 |
 | | 用回归解释相关 | 又决定系数$R^2=\frac{SS_{回}}{SS_{总}}$，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则$R^2$越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。|
+
+**notice**：关于双变量正态分布
+
+双元正态变量是指两个随机变量同时遵循正态分布的情况，通常记作 $(X, Y) \sim N(\mu, \Sigma)$，其中 $\mu$ 是均值向量，$\Sigma$ 是协方差矩阵。
+
+数学定义
+
+	1.	均值向量：对于双元正态变量 $(X, Y)$，均值向量为：
+
+$$\mu = \begin{pmatrix}
+\mu_X \\
+\mu_Y
+\end{pmatrix}$$
+
+其中 $\mu_X$ 和 $\mu_Y$ 分别是随机变量 $X$ 和 $Y$ 的均值。
+	2.	协方差矩阵：协方差矩阵为：
+
+$$\Sigma = \begin{pmatrix}
+\sigma_X^2 & \sigma_{XY} \\
+\sigma_{XY} & \sigma_Y^2
+\end{pmatrix}$$
+
+其中 $\sigma_X^2$ 和 $\sigma_Y^2$ 是 $X$ 和 $Y$ 的方差，$\sigma_{XY}$ 是它们之间的协方差。
+
+性质
+
+	•	边缘分布：$X$ 和 $Y$ 的边缘分布也是正态分布。
+	•	条件分布：给定 $X$ 的值，$Y$ 的条件分布也是正态分布。
+	•	相关性：协方差矩阵的值可以用来判断 X 和 Y 之间的相关性。如果 $\sigma_{XY} > 0$，则两者正相关；如果 $\sigma_{XY} < 0$，则负相关。
+
+示例
+
+假设有一组数据描述学生的身高 $X$ 和体重 $Y$，并且假设 $(X, Y)$ 服从双元正态分布：
+
+	•	均值向量：
+
+$$\mu = \begin{pmatrix}
+170 \\
+65
+\end{pmatrix}$$
+
+表示身高的均值为 170 厘米，体重的均值为 65 千克。
+	•	协方差矩阵：
+
+$$\Sigma = \begin{pmatrix}
+100 & 20 \\
+20 & 25
+\end{pmatrix}$$
+
+这里，身高的方差为 100，体重的方差为 25，协方差为 20，表示身高和体重之间存在正相关关系。
+
+在这个示例中，如果我们知道某个学生的身高为 180 厘米，我们可以利用条件分布来预测他的体重，这个体重的预测值也是正态分布。
+
+我们用一个图形来展示：
+
+```{r,fig.cap="Binary normal distribution",fig.show='hold', fig.align='center', echo=TRUE}
+## 安装和加载所需的包
+#install.packages("plotly")
+#install.packages("mvtnorm")
+#library(plotly)
+#library(mvtnorm)
+
+# 创建网格数据
+x <- seq(150, 190, length.out = 100)
+#身高150-190，等距的100个值
+y <- seq(50, 80, length.out = 100)
+#体重50-80，等距的100个值
+grid <- expand.grid(X = x, Y = y)
+#生成 x 和 y 的所有组合，用于构建一个网格数据框，以便计算多元正态分布的概率密度。
+
+# 设置均值和协方差矩阵
+mu <- c(170, 65)
+#设置双元正态分布的均值向量，表示均值分别为身高 170 cm 和体重 65 kg
+
+sigma <- matrix(c(100, 20, 20, 25), nrow = 2)
+#设置协方差矩阵，表示身高的方差为 100，体重的方差为 25，身高和体重之间的协方差为 20
+
+# 计算概率密度
+z <- dmvnorm(as.matrix(grid), mean = mu, sigma = sigma)
+#计算每个网格点上双元正态分布的概率密度。
+
+# 将概率密度矩阵转换为适合绘图的形状
+z_matrix <- matrix(z, nrow = 100, ncol = 100)
+
+# 绘制三维表面图
+plot_ly(x = x, y = y, z = z_matrix, type = "surface") %>%
+  layout(title = list(text = "双元正态分布的三维概率密度图", y=0.95),
+         scene = list(xaxis = list(title = "身高 (cm)"),
+                      yaxis = list(title = "体重 (kg)"),
+                      zaxis = list(title = "概率密度")))
+```

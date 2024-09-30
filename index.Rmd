@@ -44,6 +44,9 @@ library(broom)#用于整理线性模型结果
 # 加载knitr和reticulate包
 library(knitr) #一个动态报告生成工具，它允许用户将 R 代码嵌入到文档（如Markdown、LaTeX、HTML、Markdown）中，并生成包含代码、文本、图形和输出结果的报告。
 library(reticulate)  #是一个 R 和 Python 的接口包，它允许用户在 R 环境中运行 Python 代码，并实现 R 和 Python 之间的无缝数据交换。
+library(plotly)#加载plotly包，用于创建交互式图形
+library(mvtnorm)#用于计算多元正态分布的概率密度
+
 
 # 设置knitr全局选项
 knitr::opts_chunk$set(
