@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-10-01" />
+<meta name="date" content="2024-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,10 +240,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>8</b> 参数估计</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="参数估计.html"><a href="参数估计.html#样本量的抽样分布"><i class="fa fa-check"></i><b>8.1</b> 样本量的抽样分布</a></li>
-<li class="chapter" data-level="8.2" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.2</b> 样本均数及其抽样分布</a></li>
-<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#中心极限定理"><i class="fa fa-check"></i><b>8.3</b> 中心极限定理</a></li>
-<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>8.4</b> 小结</a></li>
+<li class="chapter" data-level="8.1" data-path="参数估计.html"><a href="参数估计.html#统计量"><i class="fa fa-check"></i><b>8.1</b> 统计量</a></li>
+<li class="chapter" data-level="8.2" data-path="参数估计.html"><a href="参数估计.html#抽样分布"><i class="fa fa-check"></i><b>8.2</b> 抽样分布</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="参数估计.html"><a href="参数估计.html#样本均数bar-x的抽样分布"><i class="fa fa-check"></i><b>8.2.1</b> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="8.2.2" data-path="参数估计.html"><a href="参数估计.html#样本方差s2的抽样分布"><i class="fa fa-check"></i><b>8.2.2</b> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#样本量的抽样分布"><i class="fa fa-check"></i><b>8.3</b> 样本量的抽样分布</a></li>
+<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.4</b> 样本均数及其抽样分布</a></li>
+<li class="chapter" data-level="8.5" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>8.5</b> 小结</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>9</b> 定量资料与分类资料的分析步骤</a>
 <ul>
@@ -377,8 +382,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="参数估计" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> 参数估计<a href="参数估计.html#参数估计" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="样本量的抽样分布" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> 样本量的抽样分布<a href="参数估计.html#样本量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="统计量" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 统计量<a href="参数估计.html#统计量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>统计量实际上是一种对样本数据信息的压缩。一个好的统计量，应该能把样本中包含总体的信息全部提炼出来，而不损失任何信息，这样的统计量称为充分统计量（sufficient statistic）。</p>
+</div>
+<div id="抽样分布" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 抽样分布<a href="参数估计.html#抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="样本均数bar-x的抽样分布" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布<a href="参数估计.html#样本均数bar-x的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>抽样误差是抽样研究固有的属性，不可避免，它是由个体变异和抽样共同引起的。</p>
+<ol style="list-style-type: decimal">
+<li>总体方差已知，或总体方差未知但样本量足够大时</li>
+</ol>
+<p><span class="math display">\[\bar X \sim N(\mu,\sigma_{\bar X}^2)\]</span>
+将<span class="math inline">\(\bar X\)</span>标准化，有：
+<span class="math display">\[U=\frac{\bar X-\mu}{\sigma_{\bar X}}=\frac{\bar X-\mu}{\sigma_ X/\sqrt{n}}\]</span>
+U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。</p>
+<p>若从一个非正态总体中随机抽样，且样本量足够大<span class="math inline">\((n\geq30)\)</span>，样本均数<span class="math inline">\(\bar X\)</span>的抽样分布又该如何？</p>
+<p><em>中心极限定理</em>(Central limit theorems):中心极限定理指的是给定一个任意分布的总体<span class="math inline">\(X\)</span>，只要存在有限的方差<span class="math inline">\(\sigma^2(\sigma^2\neq0)\)</span>，则当样本量n足够大时，样本均数<span class="math inline">\(\bar X\)</span>的抽样分布将近似的服从均数为<span class="math inline">\(\mu\)</span>和方差为<span class="math inline">\(\sigma_{\bar X}^2\)</span>的正态分布。
+<span class="math display">\[\bar X\simeq N(\mu,\frac{\sigma^2}{n})\]</span>
+在大样本量条件下，由于样本方差<span class="math inline">\(S^2\)</span>对总体方差<span class="math inline">\(\sigma^2\)</span>的估计误差非常小，实践中我们可以直接用<span class="math inline">\(S^2\)</span>替代<span class="math inline">\(\sigma^2\)</span>进行计算。</p>
+<p>每次从这些总体中随机抽取<span class="math inline">\(n\)</span>个抽样，一共抽<span class="math inline">\(m\)</span>次。然后把这<span class="math inline">\(m\)</span>组抽样分别求出平均值。这些平均值的分布接近正态分布。</p>
+</div>
+<div id="样本方差s2的抽样分布" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布<a href="参数估计.html#样本方差s2的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2}\sim \chi^2(v)\]</span>
+<span class="math inline">\(\chi^2\)</span>分布式赫尔默特（F.R. Helmert）于1875年研究来自正态总体的样本方差的抽样分布时得出的，其密度函数为：
+<span class="math display">\[f_v(x)=\begin{cases} \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}y^{\frac{v}{2}-1}\mathrm{e}^{-\frac{\chi^2}{2}},&amp;\chi^2&gt;0\\ 0,&amp;\chi^2\leq0\end{cases}\]</span></p>
+</div>
+</div>
+<div id="样本量的抽样分布" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 样本量的抽样分布<a href="参数估计.html#样本量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="33%" />
@@ -410,8 +444,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="样本均数及其抽样分布" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> 样本均数及其抽样分布<a href="参数估计.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="样本均数及其抽样分布" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> 样本均数及其抽样分布<a href="参数估计.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="33%" />
@@ -442,22 +476,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p><em>大数定律</em>(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：
+- 独立重复事件；
+- 重复次数足够多。</p>
 </div>
-<div id="中心极限定理" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> 中心极限定理<a href="参数估计.html#中心极限定理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>大数定律(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：</li>
-</ol>
-<ul>
-<li>独立重复事件；</li>
-<li>重复次数足够多。</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>中心极限定理(Central limit theorems):中心极限定理指的是给定一个任意分布的总体。我每次从这些总体中随机抽取<span class="math inline">\(n\)</span>个抽样，一共抽<span class="math inline">\(m\)</span>次。然后把这<span class="math inline">\(m\)</span>组抽样分别求出平均值。这些平均值的分布接近正态分布。</li>
-</ol>
-</div>
-<div id="小结-1" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> 小结<a href="参数估计.html#小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="小结-1" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> 小结<a href="参数估计.html#小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>样本均数的中心极限定理。从任意均数等于<span class="math inline">\(\mu\)</span>，方差等于<span class="math inline">\(\sigma^2\)</span>的一个总体中抽取样本量为<span class="math inline">\(n\)</span>的简单随机样本，<font color=Red>当样本量<span class="math inline">\(n\)</span>很大时，无论总体分布形态如何，样本均数的抽样分布近似服从正态分布</font>。</li>
 <li>样本率的中心极限定理。从“成功”率为<span class="math inline">\(\pi\)</span>的总体中随机抽取样本量为<span class="math inline">\(n\)</span>的样本，其样本“成功”率用<span class="math inline">\(p\)</span>表示，<font color=Red>当<span class="math inline">\(n\pi&gt;5\)</span>且<span class="math inline">\(n(1-\pi)&gt;5\)</span>时，样本率<span class="math inline">\(p\)</span>近似服从正态分布</font>。</li>

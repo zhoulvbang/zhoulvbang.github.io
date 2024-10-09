@@ -3,15 +3,15 @@ title: "卫生统计学笔记"
 author: "Zhoulvbang"
 date: "`r Sys.Date()`"
 output:
-  bookdown::pdf_document:
-    #tufte::tufte_handout:
-    latex_engine: xelatex
-    toc: true
   html_document:
     toc: true
     keep_md: true
     css: style.css
     df_print: default
+  bookdown::pdf_document:
+    #tufte::tufte_handout:
+    latex_engine: xelatex
+    toc: true
 documentclass: book
 bibliography:
 - book.bib
@@ -68,7 +68,7 @@ python_path <- system("which python3", intern = TRUE)
 
 这是一个用**Markdown**编写的 _$\alpha$=0.05的学习笔记_ 。您可以使用Pandoc的Markdown支持的任何内容；例如，数学方程式 $a^2 + b^2 = c^2$。
 
-如您在本地编译本文档，请浏览`Usage`部分。
+如您在需要再本地编译本文档，请浏览`Usage`部分。
 
   “All knowledge is, in final analysis, history.
 
