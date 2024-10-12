@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -246,9 +246,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="参数估计.html"><a href="参数估计.html#样本均数bar-x的抽样分布"><i class="fa fa-check"></i><b>8.2.1</b> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布</a></li>
 <li class="chapter" data-level="8.2.2" data-path="参数估计.html"><a href="参数估计.html#样本方差s2的抽样分布"><i class="fa fa-check"></i><b>8.2.2</b> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="8.2.3" data-path="参数估计.html"><a href="参数估计.html#样本率的抽样分布"><i class="fa fa-check"></i><b>8.2.3</b> 样本率的抽样分布</a></li>
+<li class="chapter" data-level="8.2.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.2.4</b> 样本均数及其抽样分布</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#样本量的抽样分布"><i class="fa fa-check"></i><b>8.3</b> 样本量的抽样分布</a></li>
-<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.4</b> 样本均数及其抽样分布</a></li>
+<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#一个正态总体参数的估计"><i class="fa fa-check"></i><b>8.3</b> 一个正态总体参数的估计</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="参数估计.html"><a href="参数估计.html#点估计"><i class="fa fa-check"></i><b>8.3.1</b> 点估计</a></li>
+<li class="chapter" data-level="8.3.2" data-path="参数估计.html"><a href="参数估计.html#区间估计"><i class="fa fa-check"></i><b>8.3.2</b> 区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#两个正态总体的参数估计"><i class="fa fa-check"></i><b>8.4</b> 两个正态总体的参数估计</a></li>
 <li class="chapter" data-level="8.5" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>8.5</b> 小结</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>9</b> 定量资料与分类资料的分析步骤</a>
@@ -400,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display">\[U=\frac{\bar X-\mu}{\sigma_{\bar X}}=\frac{\bar X-\mu}{\sigma_ X/\sqrt{n}}\]</span>
 U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。</p>
 <p>若从一个非正态总体中随机抽样，且样本量足够大<span class="math inline">\((n\geq30)\)</span>，样本均数<span class="math inline">\(\bar X\)</span>的抽样分布又该如何？</p>
-<p><em>中心极限定理</em>(Central limit theorems):中心极限定理指的是给定一个任意分布的总体<span class="math inline">\(X\)</span>，只要存在有限的方差<span class="math inline">\(\sigma^2(\sigma^2\neq0)\)</span>，则当样本量n足够大时，样本均数<span class="math inline">\(\bar X\)</span>的抽样分布将近似的服从均数为<span class="math inline">\(\mu\)</span>和方差为<span class="math inline">\(\sigma_{\bar X}^2\)</span>的正态分布。
+<p><strong>中心极限定理</strong>(Central limit theorems):中心极限定理指的是给定一个任意分布的总体<span class="math inline">\(X\)</span>，只要存在有限的方差<span class="math inline">\(\sigma^2(\sigma^2\neq0)\)</span>，则当样本量n足够大时，样本均数<span class="math inline">\(\bar X\)</span>的抽样分布将近似的服从均数为<span class="math inline">\(\mu\)</span>和方差为<span class="math inline">\(\sigma_{\bar X}^2\)</span>的正态分布。
 <span class="math display">\[\bar X\simeq N(\mu,\frac{\sigma^2}{n})\]</span>
 在大样本量条件下，由于样本方差<span class="math inline">\(S^2\)</span>对总体方差<span class="math inline">\(\sigma^2\)</span>的估计误差非常小，实践中我们可以直接用<span class="math inline">\(S^2\)</span>替代<span class="math inline">\(\sigma^2\)</span>进行计算。</p>
 <p>每次从这些总体中随机抽取<span class="math inline">\(n\)</span>个抽样，一共抽<span class="math inline">\(m\)</span>次。然后把这<span class="math inline">\(m\)</span>组抽样分别求出平均值。这些平均值的分布接近正态分布。</p>
@@ -409,11 +415,11 @@ U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。
 <h3><span class="header-section-number">8.2.2</span> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布<a href="参数估计.html#样本方差s2的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2}\sim \chi^2(v)\]</span>
 <span class="math inline">\(\chi^2\)</span>分布式赫尔默特（F.R. Helmert）于1875年研究来自正态总体的样本方差的抽样分布时得出的，其密度函数为：
-<span class="math display">\[f_v(x)=\begin{cases} \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}y^{\frac{v}{2}-1}\mathrm{e}^{-\frac{\chi^2}{2}},&amp;\chi^2&gt;0\\ 0,&amp;\chi^2\leq0\end{cases}\]</span></p>
+<span class="math display">\[f_v(x)=\begin{cases} \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}y^{\frac{v}{2}-1}\mathrm{e}^{-\frac{\chi^2}{2}},&amp;\chi^2&gt;0\\ 0,&amp;\chi^2\leq0\end{cases}\]</span>
+<span class="math inline">\(\chi^2\)</span>分布和<span class="math inline">\(t\)</span>分布一样，是依赖于参数（自由度）的一簇分布。随着自由度的增加，其分布曲线由正偏态分布趋近于正态分布。</p>
 </div>
-</div>
-<div id="样本量的抽样分布" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> 样本量的抽样分布<a href="参数估计.html#样本量的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="样本率的抽样分布" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> 样本率的抽样分布<a href="参数估计.html#样本率的抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="33%" />
@@ -445,8 +451,8 @@ U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。
 </tbody>
 </table>
 </div>
-<div id="样本均数及其抽样分布" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> 样本均数及其抽样分布<a href="参数估计.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="样本均数及其抽样分布" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> 样本均数及其抽样分布<a href="参数估计.html#样本均数及其抽样分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="33%" />
@@ -460,26 +466,47 @@ U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">样本均数的总体均数</td>
-<td align="center"><span class="math inline">\(\mu_{\bar X}=\mu\)</span></td>
+<td align="center">样本均数</td>
+<td align="center"><span class="math inline">\(\bar X=\frac{\sum_\limits{i=1}^{n}X_i}{n}\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">样本均数的方差</td>
-<td align="center"><span class="math inline">\(\sigma_{\bar x}^2=\frac{\sigma^2}{n}\)</span>(理论值);<span class="math inline">\(S_{\bar x}=\frac{S^2}{n}\)</span>(估计值)</td>
+<td align="center">样本方差</td>
+<td align="center"><span class="math inline">\(\sigma^2=\frac{\sum_\limits{i=1}^{n}(\mu-\bar \mu)^2}{n}\)</span>(理论值);<span class="math inline">\(S^2=\frac{\sum_\limits{i=1}^{n}(X_i-\bar X)^2}{n-1}\)</span>(估计值) <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
 </tr>
 <tr class="odd">
-<td align="center">样本均数的标准差</td>
-<td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
-</tr>
-<tr class="even">
-<td align="center">均数的标准差</td>
+<td align="center">样本均数标准误(SE)</td>
 <td align="center"><span class="math inline">\(\sigma_{\bar X}=\frac{\sigma}{\sqrt{n}}\)</span>(理论值);<span class="math inline">\(S_{\bar X}=\frac{S}{\sqrt{n}}\)</span>(估计值)</td>
 </tr>
 </tbody>
 </table>
-<p><em>大数定律</em>(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：
-- 独立重复事件；
-- 重复次数足够多。</p>
+<p><strong>大数定律</strong>(Law of large Numbers):当随机事件发生的次数足够多时，随机事件发生的频率趋近于预期的概率。可以简单理解为样本数量越多，其平概率越接近于期望值。大数定律的条件：</p>
+<ul>
+<li>独立重复事件；</li>
+<li>重复次数足够多。</li>
+</ul>
+</div>
+</div>
+<div id="一个正态总体参数的估计" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 一个正态总体参数的估计<a href="参数估计.html#一个正态总体参数的估计" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="点估计" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> 点估计<a href="参数估计.html#点估计" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="区间估计" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> 区间估计<a href="参数估计.html#区间估计" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="总体均数mu的置信区间估计" class="section level4 hasAnchor" number="8.3.2.1">
+<h4><span class="header-section-number">8.3.2.1</span> 总体均数<span class="math inline">\(\mu\)</span>的置信区间估计<a href="参数估计.html#总体均数mu的置信区间估计" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>正态（或正态近似法）</li>
+<li>t分布法</li>
+</ol>
+</div>
+<div id="总体方差sigma2的置信区间估计" class="section level4 hasAnchor" number="8.3.2.2">
+<h4><span class="header-section-number">8.3.2.2</span> 总体方差<span class="math inline">\(\sigma^2\)</span>的置信区间估计<a href="参数估计.html#总体方差sigma2的置信区间估计" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+</div>
+<div id="两个正态总体的参数估计" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> 两个正态总体的参数估计<a href="参数估计.html#两个正态总体的参数估计" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
 <div id="小结-1" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> 小结<a href="参数估计.html#小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -489,6 +516,12 @@ U为标准化随机变量，<span class="math inline">\(U\sim N(0,1)\)</span>。
 </ol>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>无偏方差:<span class="math inline">\(S^2\)</span>作为样本方差，称之为无偏方差。样本方差是度量样本离散程度的统计量，其中n为样本量， <span class="math inline">\(\sum_{i=1}^{n}(x_i-\bar x)^2\)</span>为偏差平方和，<span class="math inline">\(n-1\)</span>称为偏差平方和的自由度，因为在<span class="math inline">\(\bar x\)</span>确定后，<span class="math inline">\(x_i(i=1,2,\dots,n)\)</span>中只有<span class="math inline">\(n-1\)</span>个可以自由变动。<a href="参数估计.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
