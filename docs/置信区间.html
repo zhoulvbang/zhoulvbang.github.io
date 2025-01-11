@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-10-12" />
+<meta name="date" content="2025-01-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -86,7 +86,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -208,7 +208,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的定义"><i class="fa fa-check"></i><b>5.3</b> 概率的定义</a></li>
 <li class="chapter" data-level="5.4" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的加法公式"><i class="fa fa-check"></i><b>5.4</b> 概率的加法公式</a></li>
 <li class="chapter" data-level="5.5" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的乘法公式"><i class="fa fa-check"></i><b>5.5</b> 概率的乘法公式</a></li>
-<li class="chapter" data-level="5.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>5.6</b> 全概率公式与Bayes公式</a></li>
+<li class="chapter" data-level="5.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>5.6</b> 全概率公式与Bayes公式</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#bayes方法"><i class="fa fa-check"></i><b>5.6.1</b> Bayes方法</a></li>
+<li class="chapter" data-level="5.6.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#流行病学中的bayes应用"><i class="fa fa-check"></i><b>5.6.2</b> 流行病学中的Bayes应用</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html"><i class="fa fa-check"></i><b>6</b> 离散型随机变量的概率分布</a>
 <ul>
@@ -319,7 +323,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>13.3.2</b> 2×2配对数据的独立性检验</a></li>
 <li class="chapter" data-level="13.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>13.3.3</b> R×C样本率或构成比的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>13.4</b> 秩和检验</a></li>
+<li class="chapter" data-level="13.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>13.4</b> 秩和检验</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验的公式"><i class="fa fa-check"></i><b>13.4.1</b> 秩和检验的公式</a></li>
+<li class="chapter" data-level="13.4.2" data-path="非参数检验.html"><a href="非参数检验.html#应用场景"><i class="fa fa-check"></i><b>13.4.2</b> 应用场景</a></li>
+<li class="chapter" data-level="13.4.3" data-path="非参数检验.html"><a href="非参数检验.html#注意事项"><i class="fa fa-check"></i><b>13.4.3</b> 注意事项</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>14</b> 简单线性相关和回归</a>
 <ul>
@@ -500,9 +509,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.3</span> 置信区间的两要素及影响因素<a href="置信区间.html#置信区间的两要素及影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="置信区间的两要素" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> 置信区间的两要素<a href="置信区间.html#置信区间的两要素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>置信水平（Confidence Level）</strong><br />
+置信水平是指在多次重复抽样时，置信区间覆盖总体参数的比例。常见的置信水平有95%、99%等。置信水平越高，表示对总体参数的估计越保守，但置信区间也会变得更宽。</p></li>
+<li><p><strong>置信区间的宽度（Width of Confidence Interval）</strong><br />
+置信区间的宽度是指上下限之间的距离，反映了估计的精确程度。置信区间越窄，说明估计的精度越高，越宽则精度越低。</p></li>
+</ol>
 </div>
 <div id="置信区间的影响因素" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> 置信区间的影响因素<a href="置信区间.html#置信区间的影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>样本大小（Sample Size）</strong><br />
+样本大小是置信区间宽度的一个关键决定因素。样本量越大，标准误差越小，置信区间越窄，从而提高估计的精确度。</p></li>
+<li><p><strong>样本标准差（Sample Standard Deviation）</strong><br />
+样本标准差反映数据的离散程度。样本的波动越大，置信区间越宽；样本的波动越小，置信区间越窄。</p></li>
+<li><p><strong>置信水平</strong><br />
+提高置信水平（例如从95%提高到99%）会导致置信区间变宽，因为要包含更多可能的参数值范围。</p></li>
+<li><p><strong>总体分布的形状</strong><br />
+如果数据服从正态分布且样本量较大，置信区间估计会更精确；对于非正态分布，特别是在样本量较小时，置信区间的估计可能不够准确。</p></li>
+<li><p><strong>估计方法（Point Estimate and Statistical Technique）</strong><br />
+使用不同的统计方法（如t分布、z分布）会对置信区间的范围造成影响。通常情况下，样本量较小时采用t分布，样本量较大时可以近似采用z分布。</p></li>
+</ol>
 </div>
 </div>
 </div>

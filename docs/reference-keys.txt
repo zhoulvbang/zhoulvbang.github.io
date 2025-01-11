@@ -43,6 +43,8 @@ about-this-book
 概率的加法公式
 概率的乘法公式
 全概率公式与bayes公式
+bayes方法
+流行病学中的bayes应用
 离散型随机变量的概率分布
 二项分布binomial-distribution
 泊松分布poission-distribution
@@ -112,6 +114,9 @@ t分布-1
 配对数据的独立性检验
 rc样本率或构成比的比较
 秩和检验
+秩和检验的公式
+应用场景
+注意事项
 简单线性相关和回归
 两变量关系分析
 常见相关系数

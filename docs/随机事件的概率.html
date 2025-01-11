@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2024-10-12" />
+<meta name="date" content="2025-01-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -86,7 +86,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -208,7 +208,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的定义"><i class="fa fa-check"></i><b>5.3</b> 概率的定义</a></li>
 <li class="chapter" data-level="5.4" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的加法公式"><i class="fa fa-check"></i><b>5.4</b> 概率的加法公式</a></li>
 <li class="chapter" data-level="5.5" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的乘法公式"><i class="fa fa-check"></i><b>5.5</b> 概率的乘法公式</a></li>
-<li class="chapter" data-level="5.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>5.6</b> 全概率公式与Bayes公式</a></li>
+<li class="chapter" data-level="5.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>5.6</b> 全概率公式与Bayes公式</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#bayes方法"><i class="fa fa-check"></i><b>5.6.1</b> Bayes方法</a></li>
+<li class="chapter" data-level="5.6.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#流行病学中的bayes应用"><i class="fa fa-check"></i><b>5.6.2</b> 流行病学中的Bayes应用</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html"><i class="fa fa-check"></i><b>6</b> 离散型随机变量的概率分布</a>
 <ul>
@@ -319,7 +323,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>13.3.2</b> 2×2配对数据的独立性检验</a></li>
 <li class="chapter" data-level="13.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>13.3.3</b> R×C样本率或构成比的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>13.4</b> 秩和检验</a></li>
+<li class="chapter" data-level="13.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>13.4</b> 秩和检验</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验的公式"><i class="fa fa-check"></i><b>13.4.1</b> 秩和检验的公式</a></li>
+<li class="chapter" data-level="13.4.2" data-path="非参数检验.html"><a href="非参数检验.html#应用场景"><i class="fa fa-check"></i><b>13.4.2</b> 应用场景</a></li>
+<li class="chapter" data-level="13.4.3" data-path="非参数检验.html"><a href="非参数检验.html#注意事项"><i class="fa fa-check"></i><b>13.4.3</b> 注意事项</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>14</b> 简单线性相关和回归</a>
 <ul>
@@ -402,7 +411,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="事件的运算" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> 事件的运算<a href="随机事件的概率.html#事件的运算" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>包含关系：对任意两事件A和B，如果事件B发生，则事件A必发生，则称事件A包含事件B，记作<span class="math inline">\(A\supseteq B\)</span>或<span class="math inline">\(B\subseteq A\)</span>，符号<span class="math inline">\(\supseteq\)</span>和$ $分别表示包含与被包含。</li>
+<li>包含关系：对任意两事件A和B，如果事件B发生，则事件A必发生，则称事件A包含事件B，记作<span class="math inline">\(A\supseteq B\)</span>或<span class="math inline">\(B\subseteq A\)</span>，符号<span class="math inline">\(\supseteq\)</span>和
+<span class="math inline">\(\subseteq\)</span>分别表示包含与被包含。</li>
 <li>相等关系：如果事件A和事件B满足以下关系：<span class="math inline">\(A\supseteq B 且B\supseteq A\)</span>，则称A和B相等，记作<span class="math inline">\(A=B\)</span></li>
 <li>事件的和：在一次试验中，对任意两事件A和B，“A和B中至少有一个发生”也是一个事件，称此事件为A和B的“和或并”，记作<span class="math inline">\(A\cup B\)</span>，也可以表示为<span class="math inline">\(A+B\)</span>。</li>
 <li>事件的交：在一次试验中，对任意两事件A和B，“A和B同时发生”也是一个事件，称此事件为A和B的“交”，记作<span class="math inline">\(A\cap B\)</span>，也可以表示为<span class="math inline">\(AB\)</span>。</li>
@@ -479,7 +489,36 @@ P(AB)=P(B)P(A\mid B),P(B)&gt;0\]</span></p>
 <p>对于n个互不相容的事件<span class="math inline">\(A_1,A_2,\dots,A_n\)</span>，且他们的和为必然事件，则在时间B发生的前提下事件<span class="math inline">\(A_k(k=1,2,\dots,n)\)</span>发生的概率为：</p>
 <p><span class="math display">\[P(A_k\mid B)=\frac{P(A_k)P(B\mid A_k)}{\sum_\limits{i=1}^{n}P(A_i)P(B\mid A_i)},(k=1,2,\dots,n),P(B)&gt;0\]</span></p>
 <p>Bayes公式的意义在于，它可以改变条件概率结论的方向，即在知道结果的情况下来推断原因，用式子<span class="math inline">\(P(A_k\mid B)\)</span>表示，称为后验概率(posterior probability)；而<span class="math inline">\(P(A_k)\)</span>表示各种原因出现可能性的大小，一般是过去经验的总结，称为先验概率(prior probability)。</p>
+<div id="bayes方法" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Bayes方法<a href="随机事件的概率.html#bayes方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在流行病学领域，研究人员一直在寻找提高分析准确性和可靠性的方法。一种越来越流行的方法是使用贝叶斯方法，该方法为处理复杂数据和整合先验知识提供了独特的视角。</p>
+<ol style="list-style-type: decimal">
+<li>为什么使用贝叶斯方法？</li>
+</ol>
+<p>贝叶斯方法允许流行病学家纳入关于该疾病的现有知识或信念或风险因素纳入分析，从而获得更准确、更翔实的结果。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>处理复杂模型</li>
+</ol>
+<p>贝叶斯方法非常适合分析复杂的流行病学模型具有许多参数和相互作用，因为它们可以解释这些参数的不确定性。</p>
+<ol start="3" style="list-style-type: decimal">
+<li>处理缺失数据</li>
+</ol>
+<p>贝叶斯方法可以将缺失数据视为另一个需要估计的未知参数来处理，与排除或归咎于缺失数据的传统方法相比，这可以产生更准确的结果。</p>
+<ol start="4" style="list-style-type: decimal">
+<li>提供概率解释</li>
+</ol>
+<p>贝叶斯方法以概率分布的形式提供结果，比频率学派方法获得的点估计和置信区间更直观、更具信息量。</p>
+</div>
+<div id="流行病学中的bayes应用" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> 流行病学中的Bayes应用<a href="随机事件的概率.html#流行病学中的bayes应用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在人卫版《流行病学》第8版中，第七章-筛检，关于预测值的计算，该指标反映了筛检试验实际应用到人群筛查后，获得的首医收益大小。</p>
+<p>在医院开展的基于病例-非病例设计的筛查试验研究，病例组和非病例组的构成比不能代表目标人群的现患与未患比例，因此不能直接计算预测值。此时，可以根据灵敏度、特异度、现患率与预测值的关系式（Bayes公式）来估算预测值。</p>
+<p><span class="math display">\[PPV=\frac{SE\times P}{SE\times P+(1-P)(1-SP)}\]</span>
+<span class="math display">\[NPV=\frac{SP\times (1-P)}{SP\times (1-P)+(1-SE)\times P}\]</span></p>
+<p>公式中，PPV是阳性预测值，NPV是阴性预测值；SE是灵敏度，SP是特异度，P是患病率。</p>
+<p><a href="https://www.editverse.com/zh-CN/%E6%B5%81%E8%A1%8C%E7%97%85%E5%AD%A6%E4%B8%AD%E7%9A%84%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/">流行病学中的贝叶斯方法:简介</a></p>
 
+</div>
 </div>
 </div>
             </section>
