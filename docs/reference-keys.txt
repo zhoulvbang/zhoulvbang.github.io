@@ -150,3 +150,5 @@ preview-book预览这本书
 指定pandoc路径
 与rmarkdown的缘分
 关于引用
+连续型随机变量的概率分布
+基于秩次的非参数检验
