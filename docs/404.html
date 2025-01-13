@@ -35,7 +35,7 @@
 <meta name="author" content="Zhoulvbang" />
 
 
-<meta name="date" content="2025-01-12" />
+<meta name="date" content="2025-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,8 +64,80 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -123,180 +195,191 @@
 <li class="chapter" data-level="3.5.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#统计图使用类型及目的"><i class="fa fa-check"></i><b>3.5.2</b> 统计图使用类型及目的</a></li>
 <li class="chapter" data-level="3.5.3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#统计图的选择"><i class="fa fa-check"></i><b>3.5.3</b> 统计图的选择</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#常见的概率抽样"><i class="fa fa-check"></i><b>3.6</b> 常见的概率抽样</a></li>
-<li class="chapter" data-level="3.7" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#常见的非概率抽样"><i class="fa fa-check"></i><b>3.7</b> 常见的非概率抽样</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="随机事件的概率.html"><a href="随机事件的概率.html"><i class="fa fa-check"></i><b>4</b> 随机事件的概率</a>
+<li class="chapter" data-level="4" data-path="抽样.html"><a href="抽样.html"><i class="fa fa-check"></i><b>4</b> 抽样</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#随机事件与样本空间"><i class="fa fa-check"></i><b>4.1</b> 随机事件与样本空间</a></li>
-<li class="chapter" data-level="4.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#事件的运算"><i class="fa fa-check"></i><b>4.2</b> 事件的运算</a></li>
-<li class="chapter" data-level="4.3" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的定义"><i class="fa fa-check"></i><b>4.3</b> 概率的定义</a></li>
-<li class="chapter" data-level="4.4" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的加法公式"><i class="fa fa-check"></i><b>4.4</b> 概率的加法公式</a></li>
-<li class="chapter" data-level="4.5" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的乘法公式"><i class="fa fa-check"></i><b>4.5</b> 概率的乘法公式</a></li>
-<li class="chapter" data-level="4.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>4.6</b> 全概率公式与Bayes公式</a>
-<ul>
-<li class="chapter" data-level="4.6.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#bayes方法"><i class="fa fa-check"></i><b>4.6.1</b> Bayes方法</a></li>
-<li class="chapter" data-level="4.6.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#流行病学中的bayes应用"><i class="fa fa-check"></i><b>4.6.2</b> 流行病学中的Bayes应用</a></li>
+<li class="chapter" data-level="4.1" data-path="抽样.html"><a href="抽样.html#常见的概率抽样"><i class="fa fa-check"></i><b>4.1</b> 常见的概率抽样</a></li>
+<li class="chapter" data-level="4.2" data-path="抽样.html"><a href="抽样.html#常见的非概率抽样"><i class="fa fa-check"></i><b>4.2</b> 常见的非概率抽样</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html"><i class="fa fa-check"></i><b>5</b> 离散型随机变量的概率分布</a>
+<li class="chapter" data-level="5" data-path="随机事件的概率.html"><a href="随机事件的概率.html"><i class="fa fa-check"></i><b>5</b> 随机事件的概率</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>5.1</b> 二项分布(Binomial Distribution)</a></li>
-<li class="chapter" data-level="5.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布poission-distribution"><i class="fa fa-check"></i><b>5.2</b> 泊松分布(Poission Distribution)</a></li>
-<li class="chapter" data-level="5.3" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布的应用"><i class="fa fa-check"></i><b>5.3</b> 二项分布的应用</a></li>
-<li class="chapter" data-level="5.4" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布的应用"><i class="fa fa-check"></i><b>5.4</b> 泊松分布的应用</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>6</b> 连续型随机变量的概率分布</a>
+<li class="chapter" data-level="5.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#随机事件与样本空间"><i class="fa fa-check"></i><b>5.1</b> 随机事件与样本空间</a></li>
+<li class="chapter" data-level="5.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#事件的运算"><i class="fa fa-check"></i><b>5.2</b> 事件的运算</a></li>
+<li class="chapter" data-level="5.3" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的定义"><i class="fa fa-check"></i><b>5.3</b> 概率的定义</a></li>
+<li class="chapter" data-level="5.4" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的加法公式"><i class="fa fa-check"></i><b>5.4</b> 概率的加法公式</a></li>
+<li class="chapter" data-level="5.5" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的乘法公式"><i class="fa fa-check"></i><b>5.5</b> 概率的乘法公式</a></li>
+<li class="chapter" data-level="5.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>5.6</b> 全概率公式与Bayes公式</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>6.1</b> 正态分布(Normal Distribution)</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>6.1.1</b> 正态分布的概念</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>6.2</b> 标准正态分布</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>6.2.1</b> 正态分布、标准正态分布的应用</a></li>
-<li class="chapter" data-level="6.2.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>6.2.2</b> 正负偏态分布</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>6.3</b> 小结</a></li>
-<li class="chapter" data-level="6.4" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#t分布"><i class="fa fa-check"></i><b>6.4</b> t分布</a></li>
-<li class="chapter" data-level="6.5" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#f分布"><i class="fa fa-check"></i><b>6.5</b> F分布</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#f分布的应用"><i class="fa fa-check"></i><b>6.5.1</b> F分布的应用</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#chi2分布"><i class="fa fa-check"></i><b>6.6</b> <span class="math inline">\(\chi^2\)</span>分布</a>
-<ul>
-<li class="chapter" data-level="6.6.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#卡方检验应用"><i class="fa fa-check"></i><b>6.6.1</b> 卡方检验应用</a></li>
+<li class="chapter" data-level="5.6.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#bayes方法"><i class="fa fa-check"></i><b>5.6.1</b> Bayes方法</a></li>
+<li class="chapter" data-level="5.6.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#流行病学中的bayes应用"><i class="fa fa-check"></i><b>5.6.2</b> 流行病学中的Bayes应用</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>7</b> 参数估计</a>
+<li class="chapter" data-level="6" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html"><i class="fa fa-check"></i><b>6</b> 离散型随机变量的概率分布</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="参数估计.html"><a href="参数估计.html#统计量"><i class="fa fa-check"></i><b>7.1</b> 统计量</a></li>
-<li class="chapter" data-level="7.2" data-path="参数估计.html"><a href="参数估计.html#抽样分布"><i class="fa fa-check"></i><b>7.2</b> 抽样分布</a>
+<li class="chapter" data-level="6.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>6.1</b> 二项分布(Binomial Distribution)</a></li>
+<li class="chapter" data-level="6.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布poission-distribution"><i class="fa fa-check"></i><b>6.2</b> 泊松分布(Poission Distribution)</a></li>
+<li class="chapter" data-level="6.3" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布的应用"><i class="fa fa-check"></i><b>6.3</b> 二项分布的应用</a></li>
+<li class="chapter" data-level="6.4" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布的应用"><i class="fa fa-check"></i><b>6.4</b> 泊松分布的应用</a></li>
+<li class="chapter" data-level="6.5" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>6.5</b> 正态分布(Normal Distribution)</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="参数估计.html"><a href="参数估计.html#样本均数bar-x的抽样分布"><i class="fa fa-check"></i><b>7.2.1</b> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布</a></li>
-<li class="chapter" data-level="7.2.2" data-path="参数估计.html"><a href="参数估计.html#样本方差s2的抽样分布"><i class="fa fa-check"></i><b>7.2.2</b> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布</a></li>
-<li class="chapter" data-level="7.2.3" data-path="参数估计.html"><a href="参数估计.html#样本率的抽样分布"><i class="fa fa-check"></i><b>7.2.3</b> 样本率的抽样分布</a></li>
-<li class="chapter" data-level="7.2.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>7.2.4</b> 样本均数及其抽样分布</a></li>
+<li class="chapter" data-level="6.5.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>6.5.1</b> 正态分布的概念</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="参数估计.html"><a href="参数估计.html#一个正态总体参数的估计"><i class="fa fa-check"></i><b>7.3</b> 一个正态总体参数的估计</a>
+<li class="chapter" data-level="6.6" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>6.6</b> 标准正态分布</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="参数估计.html"><a href="参数估计.html#点估计"><i class="fa fa-check"></i><b>7.3.1</b> 点估计</a></li>
-<li class="chapter" data-level="7.3.2" data-path="参数估计.html"><a href="参数估计.html#区间估计"><i class="fa fa-check"></i><b>7.3.2</b> 区间估计</a></li>
+<li class="chapter" data-level="6.6.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>6.6.1</b> 正态分布、标准正态分布的应用</a></li>
+<li class="chapter" data-level="6.6.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>6.6.2</b> 正负偏态分布</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="参数估计.html"><a href="参数估计.html#两个正态总体的参数估计"><i class="fa fa-check"></i><b>7.4</b> 两个正态总体的参数估计</a></li>
-<li class="chapter" data-level="7.5" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>7.5</b> 小结</a></li>
+<li class="chapter" data-level="6.7" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>6.7</b> 小结</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>8</b> 定量资料与分类资料的分析步骤</a>
+<li class="chapter" data-level="7" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html"><i class="fa fa-check"></i><b>7</b> 由正态分布引出的三大抽样分布</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#定量资料的分析步骤"><i class="fa fa-check"></i><b>8.1</b> 定量资料的分析步骤</a></li>
-<li class="chapter" data-level="8.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#分类资料的分析步骤"><i class="fa fa-check"></i><b>8.2</b> 分类资料的分析步骤</a></li>
-<li class="chapter" data-level="8.3" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题"><i class="fa fa-check"></i><b>8.3</b> 经典例题</a>
+<li class="chapter" data-level="7.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#t分布"><i class="fa fa-check"></i><b>7.1</b> t分布</a></li>
+<li class="chapter" data-level="7.2" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#f分布"><i class="fa fa-check"></i><b>7.2</b> F分布</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题1"><i class="fa fa-check"></i><b>8.3.1</b> 经典例题1</a></li>
-<li class="chapter" data-level="8.3.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题2"><i class="fa fa-check"></i><b>8.3.2</b> 经典例题2</a></li>
+<li class="chapter" data-level="7.2.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#f分布的应用"><i class="fa fa-check"></i><b>7.2.1</b> F分布的应用</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="置信区间.html"><a href="置信区间.html"><i class="fa fa-check"></i><b>9</b> 置信区间</a>
+<li class="chapter" data-level="7.3" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#chi2分布"><i class="fa fa-check"></i><b>7.3</b> <span class="math inline">\(\chi^2\)</span>分布</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围的辨析"><i class="fa fa-check"></i><b>9.1</b> 置信区间与医学参考值范围的辨析</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="置信区间.html"><a href="置信区间.html#标准差与标准误"><i class="fa fa-check"></i><b>9.1.1</b> 标准差与标准误</a></li>
-<li class="chapter" data-level="9.1.2" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围"><i class="fa fa-check"></i><b>9.1.2</b> 置信区间与医学参考值范围</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的含义与常见说法辨析"><i class="fa fa-check"></i><b>9.2</b> 置信区间的含义与常见说法辨析</a></li>
-<li class="chapter" data-level="9.3" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素及影响因素"><i class="fa fa-check"></i><b>9.3</b> 置信区间的两要素及影响因素</a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素"><i class="fa fa-check"></i><b>9.3.1</b> 置信区间的两要素</a></li>
-<li class="chapter" data-level="9.3.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的影响因素"><i class="fa fa-check"></i><b>9.3.2</b> 置信区间的影响因素</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="置信区间.html"><a href="置信区间.html#假设检验的基本步骤"><i class="fa fa-check"></i><b>9.4</b> 假设检验的基本步骤</a></li>
-<li class="chapter" data-level="9.5" data-path="置信区间.html"><a href="置信区间.html#假设检验的两型错误检验效能"><i class="fa fa-check"></i><b>9.5</b> 假设检验的两型错误、检验效能</a>
-<ul>
-<li class="chapter" data-level="9.5.1" data-path="置信区间.html"><a href="置信区间.html#beta的影响因素"><i class="fa fa-check"></i><b>9.5.1</b> <span class="math inline">\(1-\beta\)</span>的影响因素：</a></li>
-<li class="chapter" data-level="9.5.2" data-path="置信区间.html"><a href="置信区间.html#alpha-beta-1-beta关系"><i class="fa fa-check"></i><b>9.5.2</b> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="置信区间.html"><a href="置信区间.html#假设检验与置信区间的关系"><i class="fa fa-check"></i><b>9.6</b> 假设检验与置信区间的关系</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="参数检验.html"><a href="参数检验.html"><i class="fa fa-check"></i><b>10</b> 参数检验</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="参数检验.html"><a href="参数检验.html#参数检验和非参数检验的区别"><i class="fa fa-check"></i><b>10.1</b> 参数检验和非参数检验的区别</a></li>
-<li class="chapter" data-level="10.2" data-path="参数检验.html"><a href="参数检验.html#t分布-1"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(t\)</span>分布</a></li>
-<li class="chapter" data-level="10.3" data-path="参数检验.html"><a href="参数检验.html#方差分析"><i class="fa fa-check"></i><b>10.3</b> 方差分析</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="参数检验.html"><a href="参数检验.html#完全随机设计的方差分析"><i class="fa fa-check"></i><b>10.3.1</b> 完全随机设计的方差分析</a></li>
-<li class="chapter" data-level="10.3.2" data-path="参数检验.html"><a href="参数检验.html#随机区组设计的方差分析"><i class="fa fa-check"></i><b>10.3.2</b> 随机区组设计的方差分析</a></li>
+<li class="chapter" data-level="7.3.1" data-path="由正态分布引出的三大抽样分布.html"><a href="由正态分布引出的三大抽样分布.html#卡方检验应用"><i class="fa fa-check"></i><b>7.3.1</b> 卡方检验应用</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="非参数检验.html"><a href="非参数检验.html"><i class="fa fa-check"></i><b>11</b> 非参数检验</a>
+<li class="chapter" data-level="8" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>8</b> 参数估计</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="非参数检验.html"><a href="非参数检验.html#卡方检验"><i class="fa fa-check"></i><b>11.1</b> 卡方检验</a>
+<li class="chapter" data-level="8.1" data-path="参数估计.html"><a href="参数估计.html#统计量"><i class="fa fa-check"></i><b>8.1</b> 统计量</a></li>
+<li class="chapter" data-level="8.2" data-path="参数估计.html"><a href="参数估计.html#抽样分布"><i class="fa fa-check"></i><b>8.2</b> 抽样分布</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="非参数检验.html"><a href="非参数检验.html#分类资料差异比较的方法"><i class="fa fa-check"></i><b>11.1.1</b> 分类资料差异比较的方法</a></li>
-<li class="chapter" data-level="11.1.2" data-path="非参数检验.html"><a href="非参数检验.html#单个率的比较"><i class="fa fa-check"></i><b>11.1.2</b> 单个率的比较</a></li>
+<li class="chapter" data-level="8.2.1" data-path="参数估计.html"><a href="参数估计.html#样本均数bar-x的抽样分布"><i class="fa fa-check"></i><b>8.2.1</b> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="8.2.2" data-path="参数估计.html"><a href="参数估计.html#样本方差s2的抽样分布"><i class="fa fa-check"></i><b>8.2.2</b> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="8.2.3" data-path="参数估计.html"><a href="参数估计.html#样本率的抽样分布"><i class="fa fa-check"></i><b>8.2.3</b> 样本率的抽样分布</a></li>
+<li class="chapter" data-level="8.2.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>8.2.4</b> 样本均数及其抽样分布</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="非参数检验.html"><a href="非参数检验.html#率的比较"><i class="fa fa-check"></i><b>11.2</b> 率的比较</a>
+<li class="chapter" data-level="8.3" data-path="参数估计.html"><a href="参数估计.html#一个正态总体参数的估计"><i class="fa fa-check"></i><b>8.3</b> 一个正态总体参数的估计</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表数据的chi2检验"><i class="fa fa-check"></i><b>11.2.1</b> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
-<li class="chapter" data-level="11.2.2" data-path="非参数检验.html"><a href="非参数检验.html#配对设计数据的chi2检验"><i class="fa fa-check"></i><b>11.2.2</b> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+<li class="chapter" data-level="8.3.1" data-path="参数估计.html"><a href="参数估计.html#点估计"><i class="fa fa-check"></i><b>8.3.1</b> 点估计</a></li>
+<li class="chapter" data-level="8.3.2" data-path="参数估计.html"><a href="参数估计.html#区间估计"><i class="fa fa-check"></i><b>8.3.2</b> 区间估计</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="非参数检验.html"><a href="非参数检验.html#独立性检验"><i class="fa fa-check"></i><b>11.3</b> 独立性检验</a>
+<li class="chapter" data-level="8.4" data-path="参数估计.html"><a href="参数估计.html#两个正态总体的参数估计"><i class="fa fa-check"></i><b>8.4</b> 两个正态总体的参数估计</a></li>
+<li class="chapter" data-level="8.5" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>8.5</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>9</b> 定量资料与分类资料的分析步骤</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表的独立性检验"><i class="fa fa-check"></i><b>11.3.1</b> 2×2交叉表的独立性检验</a></li>
-<li class="chapter" data-level="11.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>11.3.2</b> 2×2配对数据的独立性检验</a></li>
-<li class="chapter" data-level="11.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>11.3.3</b> R×C样本率或构成比的比较</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>11.4</b> 秩和检验</a>
+<li class="chapter" data-level="9.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#定量资料的分析步骤"><i class="fa fa-check"></i><b>9.1</b> 定量资料的分析步骤</a></li>
+<li class="chapter" data-level="9.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#分类资料的分析步骤"><i class="fa fa-check"></i><b>9.2</b> 分类资料的分析步骤</a></li>
+<li class="chapter" data-level="9.3" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题"><i class="fa fa-check"></i><b>9.3</b> 经典例题</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验的公式"><i class="fa fa-check"></i><b>11.4.1</b> 秩和检验的公式</a></li>
-<li class="chapter" data-level="11.4.2" data-path="非参数检验.html"><a href="非参数检验.html#应用场景"><i class="fa fa-check"></i><b>11.4.2</b> 应用场景</a></li>
-<li class="chapter" data-level="11.4.3" data-path="非参数检验.html"><a href="非参数检验.html#注意事项"><i class="fa fa-check"></i><b>11.4.3</b> 注意事项</a></li>
+<li class="chapter" data-level="9.3.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题1"><i class="fa fa-check"></i><b>9.3.1</b> 经典例题1</a></li>
+<li class="chapter" data-level="9.3.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题2"><i class="fa fa-check"></i><b>9.3.2</b> 经典例题2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>12</b> 简单线性相关和回归</a>
+<li class="chapter" data-level="10" data-path="置信区间.html"><a href="置信区间.html"><i class="fa fa-check"></i><b>10</b> 置信区间</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>12.1</b> 两变量关系分析</a></li>
-<li class="chapter" data-level="12.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>12.2</b> 常见相关系数</a>
+<li class="chapter" data-level="10.1" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围的辨析"><i class="fa fa-check"></i><b>10.1</b> 置信区间与医学参考值范围的辨析</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>12.2.1</b> 直线相关分析基本流程</a></li>
-<li class="chapter" data-level="12.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>12.2.2</b> 三类相关系数总结</a></li>
+<li class="chapter" data-level="10.1.1" data-path="置信区间.html"><a href="置信区间.html#标准差与标准误"><i class="fa fa-check"></i><b>10.1.1</b> 标准差与标准误</a></li>
+<li class="chapter" data-level="10.1.2" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围"><i class="fa fa-check"></i><b>10.1.2</b> 置信区间与医学参考值范围</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>12.3</b> 简单直线回归</a>
+<li class="chapter" data-level="10.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的含义与常见说法辨析"><i class="fa fa-check"></i><b>10.2</b> 置信区间的含义与常见说法辨析</a></li>
+<li class="chapter" data-level="10.3" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素及影响因素"><i class="fa fa-check"></i><b>10.3</b> 置信区间的两要素及影响因素</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>12.3.1</b> 直线回归分析的基本流程</a></li>
-<li class="chapter" data-level="12.3.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#回归方程的建立"><i class="fa fa-check"></i><b>12.3.2</b> 回归方程的建立</a></li>
-<li class="chapter" data-level="12.3.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#假设检验"><i class="fa fa-check"></i><b>12.3.3</b> 假设检验</a></li>
+<li class="chapter" data-level="10.3.1" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素"><i class="fa fa-check"></i><b>10.3.1</b> 置信区间的两要素</a></li>
+<li class="chapter" data-level="10.3.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的影响因素"><i class="fa fa-check"></i><b>10.3.2</b> 置信区间的影响因素</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>12.4</b> 直线相关与直线回归的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="学业迷思.html"><a href="学业迷思.html"><i class="fa fa-check"></i><b>13</b> 学业迷思</a>
+<li class="chapter" data-level="11" data-path="假设检验.html"><a href="假设检验.html"><i class="fa fa-check"></i><b>11</b> 假设检验</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="学业迷思.html"><a href="学业迷思.html#section"><i class="fa fa-check"></i><b>13.1</b> 2024.09.25</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>14</b> Usage(用法)</a>
+<li class="chapter" data-level="11.1" data-path="假设检验.html"><a href="假设检验.html#假设检验的基本步骤"><i class="fa fa-check"></i><b>11.1</b> 假设检验的基本步骤</a></li>
+<li class="chapter" data-level="11.2" data-path="假设检验.html"><a href="假设检验.html#假设检验的两型错误检验效能"><i class="fa fa-check"></i><b>11.2</b> 假设检验的两型错误、检验效能</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>14.1</b> Render book(渲染这本书)</a></li>
-<li class="chapter" data-level="14.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>14.2</b> Preview book(预览这本书)</a></li>
-<li class="chapter" data-level="14.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>14.3</b> 安装R+Rstudio</a></li>
-<li class="chapter" data-level="14.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>14.4</b> 创建一个Rmarkdown文件</a>
-<ul>
-<li class="chapter" data-level="14.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>14.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
-<li class="chapter" data-level="14.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>14.4.2</b> 在set部分load <code>bookdown</code></a></li>
-<li class="chapter" data-level="14.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>14.4.3</b> 其他宏包的需求与使用</a></li>
-<li class="chapter" data-level="14.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>14.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+<li class="chapter" data-level="11.2.1" data-path="假设检验.html"><a href="假设检验.html#beta的影响因素"><i class="fa fa-check"></i><b>11.2.1</b> <span class="math inline">\(1-\beta\)</span>的影响因素：</a></li>
+<li class="chapter" data-level="11.2.2" data-path="假设检验.html"><a href="假设检验.html#alpha-beta-1-beta关系"><i class="fa fa-check"></i><b>11.2.2</b> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>14.5</b> 代码块的选项设置（options）</a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>14.5.1</b> 输出信息选项</a></li>
-<li class="chapter" data-level="14.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>14.5.2</b> 错误信息选项</a></li>
-<li class="chapter" data-level="14.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>14.5.3</b> 全局设置</a></li>
+<li class="chapter" data-level="11.3" data-path="假设检验.html"><a href="假设检验.html#假设检验与置信区间的关系"><i class="fa fa-check"></i><b>11.3</b> 假设检验与置信区间的关系</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>14.6</b> 在vscode中编辑rmarkdown</a>
+<li class="chapter" data-level="12" data-path="参数检验.html"><a href="参数检验.html"><i class="fa fa-check"></i><b>12</b> 参数检验</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>14.6.1</b> 安装R extension</a></li>
-<li class="chapter" data-level="14.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>14.6.2</b> 安装其他的软件</a></li>
+<li class="chapter" data-level="12.1" data-path="参数检验.html"><a href="参数检验.html#参数检验和非参数检验的区别"><i class="fa fa-check"></i><b>12.1</b> 参数检验和非参数检验的区别</a></li>
+<li class="chapter" data-level="12.2" data-path="参数检验.html"><a href="参数检验.html#t分布-1"><i class="fa fa-check"></i><b>12.2</b> <span class="math inline">\(t\)</span>分布</a></li>
+<li class="chapter" data-level="12.3" data-path="参数检验.html"><a href="参数检验.html#方差分析"><i class="fa fa-check"></i><b>12.3</b> 方差分析</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="参数检验.html"><a href="参数检验.html#完全随机设计的方差分析"><i class="fa fa-check"></i><b>12.3.1</b> 完全随机设计的方差分析</a></li>
+<li class="chapter" data-level="12.3.2" data-path="参数检验.html"><a href="参数检验.html#随机区组设计的方差分析"><i class="fa fa-check"></i><b>12.3.2</b> 随机区组设计的方差分析</a></li>
+<li class="chapter" data-level="12.3.3" data-path="参数检验.html"><a href="参数检验.html#析因设计"><i class="fa fa-check"></i><b>12.3.3</b> 析因设计</a></li>
+<li class="chapter" data-level="12.3.4" data-path="参数检验.html"><a href="参数检验.html#析因设计的总结"><i class="fa fa-check"></i><b>12.3.4</b> 析因设计的总结</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>14.7</b> 与Rmarkdown的缘分</a></li>
-<li class="chapter" data-level="14.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>14.8</b> 关于引用</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="非参数检验.html"><a href="非参数检验.html"><i class="fa fa-check"></i><b>13</b> 非参数检验</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="非参数检验.html"><a href="非参数检验.html#卡方检验"><i class="fa fa-check"></i><b>13.1</b> 卡方检验</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="非参数检验.html"><a href="非参数检验.html#分类资料差异比较的方法"><i class="fa fa-check"></i><b>13.1.1</b> 分类资料差异比较的方法</a></li>
+<li class="chapter" data-level="13.1.2" data-path="非参数检验.html"><a href="非参数检验.html#单个率的比较"><i class="fa fa-check"></i><b>13.1.2</b> 单个率的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="非参数检验.html"><a href="非参数检验.html#率的比较"><i class="fa fa-check"></i><b>13.2</b> 率的比较</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表数据的chi2检验"><i class="fa fa-check"></i><b>13.2.1</b> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+<li class="chapter" data-level="13.2.2" data-path="非参数检验.html"><a href="非参数检验.html#配对设计数据的chi2检验"><i class="fa fa-check"></i><b>13.2.2</b> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="非参数检验.html"><a href="非参数检验.html#独立性检验"><i class="fa fa-check"></i><b>13.3</b> 独立性检验</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表的独立性检验"><i class="fa fa-check"></i><b>13.3.1</b> 2×2交叉表的独立性检验</a></li>
+<li class="chapter" data-level="13.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>13.3.2</b> 2×2配对数据的独立性检验</a></li>
+<li class="chapter" data-level="13.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>13.3.3</b> R×C样本率或构成比的比较</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="基于秩次的非参数检验.html"><a href="基于秩次的非参数检验.html"><i class="fa fa-check"></i><b>14</b> 基于秩次的非参数检验</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="基于秩次的非参数检验.html"><a href="基于秩次的非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>14.1</b> 秩和检验</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="基于秩次的非参数检验.html"><a href="基于秩次的非参数检验.html#秩和检验的公式"><i class="fa fa-check"></i><b>14.1.1</b> 秩和检验的公式</a></li>
+<li class="chapter" data-level="14.1.2" data-path="基于秩次的非参数检验.html"><a href="基于秩次的非参数检验.html#应用场景"><i class="fa fa-check"></i><b>14.1.2</b> 应用场景</a></li>
+<li class="chapter" data-level="14.1.3" data-path="基于秩次的非参数检验.html"><a href="基于秩次的非参数检验.html#注意事项"><i class="fa fa-check"></i><b>14.1.3</b> 注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>15</b> 简单线性相关和回归</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>15.1</b> 两变量关系分析</a></li>
+<li class="chapter" data-level="15.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>15.2</b> 常见相关系数</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>15.2.1</b> 直线相关分析基本流程</a></li>
+<li class="chapter" data-level="15.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>15.2.2</b> 三类相关系数总结</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>15.3</b> 简单直线回归</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>15.3.1</b> 直线回归分析的基本流程</a></li>
+<li class="chapter" data-level="15.3.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#回归方程的建立"><i class="fa fa-check"></i><b>15.3.2</b> 回归方程的建立</a></li>
+<li class="chapter" data-level="15.3.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#假设检验-1"><i class="fa fa-check"></i><b>15.3.3</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>15.4</b> 直线相关与直线回归的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="学业迷思.html"><a href="学业迷思.html"><i class="fa fa-check"></i><b>16</b> 学业迷思</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="学业迷思.html"><a href="学业迷思.html#section"><i class="fa fa-check"></i><b>16.1</b> 2024.09.25</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>17</b> Usage(用法)</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>17.1</b> Render book(渲染这本书)</a></li>
+<li class="chapter" data-level="17.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>17.2</b> Preview book(预览这本书)</a></li>
+<li class="chapter" data-level="17.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>17.3</b> 安装R+Rstudio</a></li>
+<li class="chapter" data-level="17.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>17.4</b> 创建一个Rmarkdown文件</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>17.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
+<li class="chapter" data-level="17.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>17.4.2</b> 在set部分load <code>bookdown</code></a></li>
+<li class="chapter" data-level="17.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>17.4.3</b> 其他宏包的需求与使用</a></li>
+<li class="chapter" data-level="17.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>17.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>17.5</b> 代码块的选项设置（options）</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>17.5.1</b> 输出信息选项</a></li>
+<li class="chapter" data-level="17.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>17.5.2</b> 错误信息选项</a></li>
+<li class="chapter" data-level="17.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>17.5.3</b> 全局设置</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>17.6</b> 在vscode中编辑rmarkdown</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>17.6.1</b> 安装R extension</a></li>
+<li class="chapter" data-level="17.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>17.6.2</b> 安装其他的软件</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>17.7</b> 与Rmarkdown的缘分</a></li>
+<li class="chapter" data-level="17.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>17.8</b> 关于引用</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
