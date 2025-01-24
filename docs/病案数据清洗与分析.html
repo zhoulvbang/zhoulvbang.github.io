@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 病案数据清洗与分析 | 卫生统计学笔记</title>
+  <meta name="description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
+在终极的分析中，一切知识都是历史
+在抽象的意义下，一切科学都是数学
+在理性的基础上，所有的判断都是统计学
+艰难修补与完善。</p>" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 病案数据清洗与分析 | 卫生统计学笔记" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
+在终极的分析中，一切知识都是历史
+在抽象的意义下，一切科学都是数学
+在理性的基础上，所有的判断都是统计学
+艰难修补与完善。</p>" />
+  <meta name="github-repo" content="zhoulvbang/zhoulvbang.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 病案数据清洗与分析 | 卫生统计学笔记" />
+  
+  <meta name="twitter:description" content="<p>这是一个使用rmarkdown制作，用GitHub托管，由www.lazyzhou.cn进行展示的卫生统计学笔记。
+在终极的分析中，一切知识都是历史
+在抽象的意义下，一切科学都是数学
+在理性的基础上，所有的判断都是统计学
+艰难修补与完善。</p>" />
+  
+
+<meta name="author" content="Zhoulvbang" />
+
+
+<meta name="date" content="2025-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="usage用法.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">lazyzhou的学习笔记</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this book</a></li>
+<li class="chapter" data-level="2" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html"><i class="fa fa-check"></i><b>2</b> 关于卫生统计学</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学介绍与展望"><i class="fa fa-check"></i><b>2.1</b> 卫生统计学：介绍与展望</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#什么是卫生统计学"><i class="fa fa-check"></i><b>2.1.1</b> 什么是卫生统计学？</a></li>
+<li class="chapter" data-level="2.1.2" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的重要性"><i class="fa fa-check"></i><b>2.1.2</b> 卫生统计学的重要性</a></li>
+<li class="chapter" data-level="2.1.3" data-path="关于卫生统计学.html"><a href="关于卫生统计学.html#卫生统计学的未来展望"><i class="fa fa-check"></i><b>2.1.3</b> 卫生统计学的未来展望</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html"><i class="fa fa-check"></i><b>3</b> 不同资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#定量资料的描述指标"><i class="fa fa-check"></i><b>3.1</b> 定量资料的描述指标</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#集中趋势指标"><i class="fa fa-check"></i><b>3.1.1</b> 集中趋势指标</a></li>
+<li class="chapter" data-level="3.1.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#均数中位数和众数大小的关系变化"><i class="fa fa-check"></i><b>3.1.2</b> 均数、中位数和众数大小的关系变化</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#离散数据的描述指标"><i class="fa fa-check"></i><b>3.2</b> 离散数据的描述指标</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#离散趋势指标"><i class="fa fa-check"></i><b>3.2.1</b> 离散趋势指标</a></li>
+<li class="chapter" data-level="3.2.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#标准差standard-deviation的计算"><i class="fa fa-check"></i><b>3.2.2</b> 标准差（standard deviation）的计算</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#分类资料的描述指标"><i class="fa fa-check"></i><b>3.3</b> 分类资料的描述指标</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#分类资料的统计描述指标"><i class="fa fa-check"></i><b>3.3.1</b> 分类资料的统计描述指标</a></li>
+<li class="chapter" data-level="3.3.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#动态数列"><i class="fa fa-check"></i><b>3.3.2</b> 动态数列</a></li>
+<li class="chapter" data-level="3.3.3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#应用相对数的注意事项"><i class="fa fa-check"></i><b>3.3.3</b> 应用相对数的注意事项</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#率的标准化"><i class="fa fa-check"></i><b>3.4</b> 率的标准化</a></li>
+<li class="chapter" data-level="3.5" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#常见统计图"><i class="fa fa-check"></i><b>3.5</b> 常见统计图</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#资料类型"><i class="fa fa-check"></i><b>3.5.1</b> 资料类型</a></li>
+<li class="chapter" data-level="3.5.2" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#统计图使用类型及目的"><i class="fa fa-check"></i><b>3.5.2</b> 统计图使用类型及目的</a></li>
+<li class="chapter" data-level="3.5.3" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#统计图的选择"><i class="fa fa-check"></i><b>3.5.3</b> 统计图的选择</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#常见的概率抽样"><i class="fa fa-check"></i><b>3.6</b> 常见的概率抽样</a></li>
+<li class="chapter" data-level="3.7" data-path="不同资料的统计描述.html"><a href="不同资料的统计描述.html#常见的非概率抽样"><i class="fa fa-check"></i><b>3.7</b> 常见的非概率抽样</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="随机事件的概率.html"><a href="随机事件的概率.html"><i class="fa fa-check"></i><b>4</b> 随机事件的概率</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#随机事件与样本空间"><i class="fa fa-check"></i><b>4.1</b> 随机事件与样本空间</a></li>
+<li class="chapter" data-level="4.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#事件的运算"><i class="fa fa-check"></i><b>4.2</b> 事件的运算</a></li>
+<li class="chapter" data-level="4.3" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的定义"><i class="fa fa-check"></i><b>4.3</b> 概率的定义</a></li>
+<li class="chapter" data-level="4.4" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的加法公式"><i class="fa fa-check"></i><b>4.4</b> 概率的加法公式</a></li>
+<li class="chapter" data-level="4.5" data-path="随机事件的概率.html"><a href="随机事件的概率.html#概率的乘法公式"><i class="fa fa-check"></i><b>4.5</b> 概率的乘法公式</a></li>
+<li class="chapter" data-level="4.6" data-path="随机事件的概率.html"><a href="随机事件的概率.html#全概率公式与bayes公式"><i class="fa fa-check"></i><b>4.6</b> 全概率公式与Bayes公式</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="随机事件的概率.html"><a href="随机事件的概率.html#bayes方法"><i class="fa fa-check"></i><b>4.6.1</b> Bayes方法</a></li>
+<li class="chapter" data-level="4.6.2" data-path="随机事件的概率.html"><a href="随机事件的概率.html#流行病学中的bayes应用"><i class="fa fa-check"></i><b>4.6.2</b> 流行病学中的Bayes应用</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html"><i class="fa fa-check"></i><b>5</b> 离散型随机变量的概率分布</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>5.1</b> 二项分布(Binomial Distribution)</a></li>
+<li class="chapter" data-level="5.2" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布poission-distribution"><i class="fa fa-check"></i><b>5.2</b> 泊松分布(Poission Distribution)</a></li>
+<li class="chapter" data-level="5.3" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#二项分布的应用"><i class="fa fa-check"></i><b>5.3</b> 二项分布的应用</a></li>
+<li class="chapter" data-level="5.4" data-path="离散型随机变量的概率分布.html"><a href="离散型随机变量的概率分布.html#泊松分布的应用"><i class="fa fa-check"></i><b>5.4</b> 泊松分布的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html"><i class="fa fa-check"></i><b>6</b> 连续型随机变量的概率分布</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布normal-distribution"><i class="fa fa-check"></i><b>6.1</b> 正态分布(Normal Distribution)</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布的概念"><i class="fa fa-check"></i><b>6.1.1</b> 正态分布的概念</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#标准正态分布"><i class="fa fa-check"></i><b>6.2</b> 标准正态分布</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正态分布标准正态分布的应用"><i class="fa fa-check"></i><b>6.2.1</b> 正态分布、标准正态分布的应用</a></li>
+<li class="chapter" data-level="6.2.2" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#正负偏态分布"><i class="fa fa-check"></i><b>6.2.2</b> 正负偏态分布</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#小结"><i class="fa fa-check"></i><b>6.3</b> 小结</a></li>
+<li class="chapter" data-level="6.4" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#t分布"><i class="fa fa-check"></i><b>6.4</b> t分布</a></li>
+<li class="chapter" data-level="6.5" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#f分布"><i class="fa fa-check"></i><b>6.5</b> F分布</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#f分布的应用"><i class="fa fa-check"></i><b>6.5.1</b> F分布的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#chi2分布"><i class="fa fa-check"></i><b>6.6</b> <span class="math inline">\(\chi^2\)</span>分布</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="连续型随机变量的概率分布.html"><a href="连续型随机变量的概率分布.html#卡方检验应用"><i class="fa fa-check"></i><b>6.6.1</b> 卡方检验应用</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>7</b> 参数估计</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="参数估计.html"><a href="参数估计.html#统计量"><i class="fa fa-check"></i><b>7.1</b> 统计量</a></li>
+<li class="chapter" data-level="7.2" data-path="参数估计.html"><a href="参数估计.html#抽样分布"><i class="fa fa-check"></i><b>7.2</b> 抽样分布</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="参数估计.html"><a href="参数估计.html#样本均数bar-x的抽样分布"><i class="fa fa-check"></i><b>7.2.1</b> 样本均数<span class="math inline">\(\bar X\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="7.2.2" data-path="参数估计.html"><a href="参数估计.html#样本方差s2的抽样分布"><i class="fa fa-check"></i><b>7.2.2</b> 样本方差<span class="math inline">\(S^2\)</span>的抽样分布</a></li>
+<li class="chapter" data-level="7.2.3" data-path="参数估计.html"><a href="参数估计.html#样本率的抽样分布"><i class="fa fa-check"></i><b>7.2.3</b> 样本率的抽样分布</a></li>
+<li class="chapter" data-level="7.2.4" data-path="参数估计.html"><a href="参数估计.html#样本均数及其抽样分布"><i class="fa fa-check"></i><b>7.2.4</b> 样本均数及其抽样分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="参数估计.html"><a href="参数估计.html#一个正态总体参数的估计"><i class="fa fa-check"></i><b>7.3</b> 一个正态总体参数的估计</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="参数估计.html"><a href="参数估计.html#点估计"><i class="fa fa-check"></i><b>7.3.1</b> 点估计</a></li>
+<li class="chapter" data-level="7.3.2" data-path="参数估计.html"><a href="参数估计.html#区间估计"><i class="fa fa-check"></i><b>7.3.2</b> 区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="参数估计.html"><a href="参数估计.html#两个正态总体的参数估计"><i class="fa fa-check"></i><b>7.4</b> 两个正态总体的参数估计</a></li>
+<li class="chapter" data-level="7.5" data-path="参数估计.html"><a href="参数估计.html#小结-1"><i class="fa fa-check"></i><b>7.5</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html"><i class="fa fa-check"></i><b>8</b> 定量资料与分类资料的分析步骤</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#定量资料的分析步骤"><i class="fa fa-check"></i><b>8.1</b> 定量资料的分析步骤</a></li>
+<li class="chapter" data-level="8.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#分类资料的分析步骤"><i class="fa fa-check"></i><b>8.2</b> 分类资料的分析步骤</a></li>
+<li class="chapter" data-level="8.3" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题"><i class="fa fa-check"></i><b>8.3</b> 经典例题</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题1"><i class="fa fa-check"></i><b>8.3.1</b> 经典例题1</a></li>
+<li class="chapter" data-level="8.3.2" data-path="定量资料与分类资料的分析步骤.html"><a href="定量资料与分类资料的分析步骤.html#经典例题2"><i class="fa fa-check"></i><b>8.3.2</b> 经典例题2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="置信区间.html"><a href="置信区间.html"><i class="fa fa-check"></i><b>9</b> 置信区间</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围的辨析"><i class="fa fa-check"></i><b>9.1</b> 置信区间与医学参考值范围的辨析</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="置信区间.html"><a href="置信区间.html#标准差与标准误"><i class="fa fa-check"></i><b>9.1.1</b> 标准差与标准误</a></li>
+<li class="chapter" data-level="9.1.2" data-path="置信区间.html"><a href="置信区间.html#置信区间与医学参考值范围"><i class="fa fa-check"></i><b>9.1.2</b> 置信区间与医学参考值范围</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的含义与常见说法辨析"><i class="fa fa-check"></i><b>9.2</b> 置信区间的含义与常见说法辨析</a></li>
+<li class="chapter" data-level="9.3" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素及影响因素"><i class="fa fa-check"></i><b>9.3</b> 置信区间的两要素及影响因素</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="置信区间.html"><a href="置信区间.html#置信区间的两要素"><i class="fa fa-check"></i><b>9.3.1</b> 置信区间的两要素</a></li>
+<li class="chapter" data-level="9.3.2" data-path="置信区间.html"><a href="置信区间.html#置信区间的影响因素"><i class="fa fa-check"></i><b>9.3.2</b> 置信区间的影响因素</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="置信区间.html"><a href="置信区间.html#假设检验的基本步骤"><i class="fa fa-check"></i><b>9.4</b> 假设检验的基本步骤</a></li>
+<li class="chapter" data-level="9.5" data-path="置信区间.html"><a href="置信区间.html#假设检验的两型错误检验效能"><i class="fa fa-check"></i><b>9.5</b> 假设检验的两型错误、检验效能</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="置信区间.html"><a href="置信区间.html#beta的影响因素"><i class="fa fa-check"></i><b>9.5.1</b> <span class="math inline">\(1-\beta\)</span>的影响因素：</a></li>
+<li class="chapter" data-level="9.5.2" data-path="置信区间.html"><a href="置信区间.html#alpha-beta-1-beta关系"><i class="fa fa-check"></i><b>9.5.2</b> <span class="math inline">\(\alpha 、\beta 、1-\beta\)</span>关系：</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="置信区间.html"><a href="置信区间.html#假设检验与置信区间的关系"><i class="fa fa-check"></i><b>9.6</b> 假设检验与置信区间的关系</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="参数检验.html"><a href="参数检验.html"><i class="fa fa-check"></i><b>10</b> 参数检验</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="参数检验.html"><a href="参数检验.html#参数检验和非参数检验的区别"><i class="fa fa-check"></i><b>10.1</b> 参数检验和非参数检验的区别</a></li>
+<li class="chapter" data-level="10.2" data-path="参数检验.html"><a href="参数检验.html#t分布-1"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(t\)</span>分布</a></li>
+<li class="chapter" data-level="10.3" data-path="参数检验.html"><a href="参数检验.html#方差分析"><i class="fa fa-check"></i><b>10.3</b> 方差分析</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="参数检验.html"><a href="参数检验.html#完全随机设计的方差分析"><i class="fa fa-check"></i><b>10.3.1</b> 完全随机设计的方差分析</a></li>
+<li class="chapter" data-level="10.3.2" data-path="参数检验.html"><a href="参数检验.html#随机区组设计的方差分析"><i class="fa fa-check"></i><b>10.3.2</b> 随机区组设计的方差分析</a></li>
+<li class="chapter" data-level="10.3.3" data-path="参数检验.html"><a href="参数检验.html#析因设计"><i class="fa fa-check"></i><b>10.3.3</b> 析因设计</a></li>
+<li class="chapter" data-level="10.3.4" data-path="参数检验.html"><a href="参数检验.html#析因设计的总结"><i class="fa fa-check"></i><b>10.3.4</b> 析因设计的总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="非参数检验.html"><a href="非参数检验.html"><i class="fa fa-check"></i><b>11</b> 非参数检验</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="非参数检验.html"><a href="非参数检验.html#卡方检验"><i class="fa fa-check"></i><b>11.1</b> 卡方检验</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="非参数检验.html"><a href="非参数检验.html#分类资料差异比较的方法"><i class="fa fa-check"></i><b>11.1.1</b> 分类资料差异比较的方法</a></li>
+<li class="chapter" data-level="11.1.2" data-path="非参数检验.html"><a href="非参数检验.html#单个率的比较"><i class="fa fa-check"></i><b>11.1.2</b> 单个率的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="非参数检验.html"><a href="非参数检验.html#率的比较"><i class="fa fa-check"></i><b>11.2</b> 率的比较</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表数据的chi2检验"><i class="fa fa-check"></i><b>11.2.1</b> 2×2交叉表数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+<li class="chapter" data-level="11.2.2" data-path="非参数检验.html"><a href="非参数检验.html#配对设计数据的chi2检验"><i class="fa fa-check"></i><b>11.2.2</b> 配对设计数据的<span class="math inline">\(\chi^2\)</span>检验</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="非参数检验.html"><a href="非参数检验.html#独立性检验"><i class="fa fa-check"></i><b>11.3</b> 独立性检验</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="非参数检验.html"><a href="非参数检验.html#交叉表的独立性检验"><i class="fa fa-check"></i><b>11.3.1</b> 2×2交叉表的独立性检验</a></li>
+<li class="chapter" data-level="11.3.2" data-path="非参数检验.html"><a href="非参数检验.html#配对数据的独立性检验"><i class="fa fa-check"></i><b>11.3.2</b> 2×2配对数据的独立性检验</a></li>
+<li class="chapter" data-level="11.3.3" data-path="非参数检验.html"><a href="非参数检验.html#rc样本率或构成比的比较"><i class="fa fa-check"></i><b>11.3.3</b> R×C样本率或构成比的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验"><i class="fa fa-check"></i><b>11.4</b> 秩和检验</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="非参数检验.html"><a href="非参数检验.html#秩和检验的公式"><i class="fa fa-check"></i><b>11.4.1</b> 秩和检验的公式</a></li>
+<li class="chapter" data-level="11.4.2" data-path="非参数检验.html"><a href="非参数检验.html#应用场景"><i class="fa fa-check"></i><b>11.4.2</b> 应用场景</a></li>
+<li class="chapter" data-level="11.4.3" data-path="非参数检验.html"><a href="非参数检验.html#注意事项"><i class="fa fa-check"></i><b>11.4.3</b> 注意事项</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html"><i class="fa fa-check"></i><b>12</b> 简单线性相关和回归</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#两变量关系分析"><i class="fa fa-check"></i><b>12.1</b> 两变量关系分析</a></li>
+<li class="chapter" data-level="12.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#常见相关系数"><i class="fa fa-check"></i><b>12.2</b> 常见相关系数</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关分析基本流程"><i class="fa fa-check"></i><b>12.2.1</b> 直线相关分析基本流程</a></li>
+<li class="chapter" data-level="12.2.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#三类相关系数总结"><i class="fa fa-check"></i><b>12.2.2</b> 三类相关系数总结</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#简单直线回归"><i class="fa fa-check"></i><b>12.3</b> 简单直线回归</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线回归分析的基本流程"><i class="fa fa-check"></i><b>12.3.1</b> 直线回归分析的基本流程</a></li>
+<li class="chapter" data-level="12.3.2" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#回归方程的建立"><i class="fa fa-check"></i><b>12.3.2</b> 回归方程的建立</a></li>
+<li class="chapter" data-level="12.3.3" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#假设检验"><i class="fa fa-check"></i><b>12.3.3</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="简单线性相关和回归.html"><a href="简单线性相关和回归.html#直线相关与直线回归的比较"><i class="fa fa-check"></i><b>12.4</b> 直线相关与直线回归的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="学业迷思.html"><a href="学业迷思.html"><i class="fa fa-check"></i><b>13</b> 学业迷思</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="学业迷思.html"><a href="学业迷思.html#section"><i class="fa fa-check"></i><b>13.1</b> 2024.09.25</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="usage用法.html"><a href="usage用法.html"><i class="fa fa-check"></i><b>14</b> Usage(用法)</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="usage用法.html"><a href="usage用法.html#render-book渲染这本书"><i class="fa fa-check"></i><b>14.1</b> Render book(渲染这本书)</a></li>
+<li class="chapter" data-level="14.2" data-path="usage用法.html"><a href="usage用法.html#preview-book预览这本书"><i class="fa fa-check"></i><b>14.2</b> Preview book(预览这本书)</a></li>
+<li class="chapter" data-level="14.3" data-path="usage用法.html"><a href="usage用法.html#安装rrstudio"><i class="fa fa-check"></i><b>14.3</b> 安装R+Rstudio</a></li>
+<li class="chapter" data-level="14.4" data-path="usage用法.html"><a href="usage用法.html#创建一个rmarkdown文件"><i class="fa fa-check"></i><b>14.4</b> 创建一个Rmarkdown文件</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="usage用法.html"><a href="usage用法.html#首先我们要安装一个专门的包bookdown"><i class="fa fa-check"></i><b>14.4.1</b> 首先我们要安装一个专门的包<code>bookdown</code></a></li>
+<li class="chapter" data-level="14.4.2" data-path="usage用法.html"><a href="usage用法.html#在set部分load-bookdown"><i class="fa fa-check"></i><b>14.4.2</b> 在set部分load <code>bookdown</code></a></li>
+<li class="chapter" data-level="14.4.3" data-path="usage用法.html"><a href="usage用法.html#其他宏包的需求与使用"><i class="fa fa-check"></i><b>14.4.3</b> 其他宏包的需求与使用</a></li>
+<li class="chapter" data-level="14.4.4" data-path="usage用法.html"><a href="usage用法.html#创建一个bookdown文件"><i class="fa fa-check"></i><b>14.4.4</b> 创建一个<code>bookdown</code>文件</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="usage用法.html"><a href="usage用法.html#代码块的选项设置options"><i class="fa fa-check"></i><b>14.5</b> 代码块的选项设置（options）</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="usage用法.html"><a href="usage用法.html#输出信息选项"><i class="fa fa-check"></i><b>14.5.1</b> 输出信息选项</a></li>
+<li class="chapter" data-level="14.5.2" data-path="usage用法.html"><a href="usage用法.html#错误信息选项"><i class="fa fa-check"></i><b>14.5.2</b> 错误信息选项</a></li>
+<li class="chapter" data-level="14.5.3" data-path="usage用法.html"><a href="usage用法.html#全局设置"><i class="fa fa-check"></i><b>14.5.3</b> 全局设置</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="usage用法.html"><a href="usage用法.html#在vscode中编辑rmarkdown"><i class="fa fa-check"></i><b>14.6</b> 在vscode中编辑rmarkdown</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="usage用法.html"><a href="usage用法.html#安装r-extension"><i class="fa fa-check"></i><b>14.6.1</b> 安装R extension</a></li>
+<li class="chapter" data-level="14.6.2" data-path="usage用法.html"><a href="usage用法.html#安装其他的软件"><i class="fa fa-check"></i><b>14.6.2</b> 安装其他的软件</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="usage用法.html"><a href="usage用法.html#与rmarkdown的缘分"><i class="fa fa-check"></i><b>14.7</b> 与Rmarkdown的缘分</a></li>
+<li class="chapter" data-level="14.8" data-path="usage用法.html"><a href="usage用法.html#关于引用"><i class="fa fa-check"></i><b>14.8</b> 关于引用</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="病案数据清洗与分析.html"><a href="病案数据清洗与分析.html"><i class="fa fa-check"></i><b>15</b> 病案数据清洗与分析</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="病案数据清洗与分析.html"><a href="病案数据清洗与分析.html#使用python对病案数据进行清洗"><i class="fa fa-check"></i><b>15.1</b> 使用Python对病案数据进行清洗</a></li>
+<li class="chapter" data-level="15.2" data-path="病案数据清洗与分析.html"><a href="病案数据清洗与分析.html#使用stata程序对诊断进行分列与赋值"><i class="fa fa-check"></i><b>15.2</b> 使用stata程序对诊断进行分列与赋值</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="病案数据清洗与分析.html"><a href="病案数据清洗与分析.html#诊断拆分与共病判断"><i class="fa fa-check"></i><b>15.2.1</b> 诊断拆分与共病判断</a></li>
+<li class="chapter" data-level="15.2.2" data-path="病案数据清洗与分析.html"><a href="病案数据清洗与分析.html#疾病分类"><i class="fa fa-check"></i><b>15.2.2</b> 疾病分类</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">卫生统计学笔记</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="病案数据清洗与分析" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> 病案数据清洗与分析<a href="病案数据清洗与分析.html#病案数据清洗与分析" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="使用python对病案数据进行清洗" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> 使用Python对病案数据进行清洗<a href="病案数据清洗与分析.html#使用python对病案数据进行清洗" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>由于完整数据很大，且涉及到数据的保密，只选取部分数据以作参考。</p>
+<p>对数据进行清洗可以使用多种方式，包括但不限于使用Excel、Python、R等。</p>
+<p>考虑到数据量较大，本次处理选择使用Python对其进行清洗，测试数据存放
+在<a href="https://zhoulvbang.github.io/Data/test-patients-info.xlsx">test-patients-info</a>中，
+可以使’pandas’对其进行读取与修改，步骤如下：</p>
+<ol style="list-style-type: decimal">
+<li>前置准备，安装必要的包</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="病案数据清洗与分析.html#cb1-1" tabindex="-1"></a>pip install pandas openpyxl <span class="co">#安装pandas和openpyxl这两个包</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>导入’pandas’包</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="病案数据清洗与分析.html#cb2-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>导入xlsx文件并查看数据</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="病案数据清洗与分析.html#cb3-1" tabindex="-1"></a><span class="co"># input_file = r&quot;C:\Data\test-patients-info.xlsx&quot;  #r转置符</span></span>
+<span id="cb3-2"><a href="病案数据清洗与分析.html#cb3-2" tabindex="-1"></a>excel_file <span class="op">=</span> <span class="st">&#39;./Data/test-patients-info.xlsx&#39;</span>        <span class="co">#导入文件</span></span>
+<span id="cb3-3"><a href="病案数据清洗与分析.html#cb3-3" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(excel_file)      <span class="co">#读入数据</span></span>
+<span id="cb3-4"><a href="病案数据清洗与分析.html#cb3-4" tabindex="-1"></a>sheet_name <span class="op">=</span> <span class="st">&#39;Sheet1&#39;</span>   <span class="co">#默认sheet1</span></span>
+<span id="cb3-5"><a href="病案数据清洗与分析.html#cb3-5" tabindex="-1"></a>sheet_data <span class="op">=</span> excel_data[sheet_name]</span>
+<span id="cb3-6"><a href="病案数据清洗与分析.html#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="病案数据清洗与分析.html#cb3-7" tabindex="-1"></a><span class="co"># 读取前3行数据</span></span>
+<span id="cb3-8"><a href="病案数据清洗与分析.html#cb3-8" tabindex="-1"></a>num_rows <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb3-9"><a href="病案数据清洗与分析.html#cb3-9" tabindex="-1"></a>data <span class="op">=</span> sheet_data.head(num_rows)</span></code></pre></div>
+<p>实际上因为相关数据一般是分年份存放，所以会在一个.xlsx文件中有多个sheet表单，
+但是又因为各年份所纪录的并不一定完全一致或相同。因此，首先我们要对原始数据中的变量进行筛选，
+保留下我们做需要的变量信息。</p>
+<ol start="4" style="list-style-type: decimal">
+<li>读取所有的sheet并进行变量筛选</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="病案数据清洗与分析.html#cb4-1" tabindex="-1"></a><span class="co"># 读取所有 sheet</span></span>
+<span id="cb4-2"><a href="病案数据清洗与分析.html#cb4-2" tabindex="-1"></a>sheets <span class="op">=</span> pd.read_excel(input_file, sheet_name<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-3"><a href="病案数据清洗与分析.html#cb4-3" tabindex="-1"></a><span class="co"># 构建需要删除的变量列表</span></span>
+<span id="cb4-4"><a href="病案数据清洗与分析.html#cb4-4" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb4-5"><a href="病案数据清洗与分析.html#cb4-5" tabindex="-1"></a>  <span class="st">&quot;新生儿出生体重&quot;</span>, <span class="st">&quot;新生儿入院体重&quot;</span>, <span class="st">&quot;国籍&quot;</span>, <span class="st">&quot;籍贯&quot;</span>, <span class="st">&quot;病室&quot;</span>, </span>
+<span id="cb4-6"><a href="病案数据清洗与分析.html#cb4-6" tabindex="-1"></a>  ......</span>
+<span id="cb4-7"><a href="病案数据清洗与分析.html#cb4-7" tabindex="-1"></a>  ]</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>其他要求</li>
+</ol>
+<ul>
+<li>删除含有某特征的病例：删除公安病区的病例</li>
+<li>删除年份不一致的数据：跨年收治的病例</li>
+<li>删除住院天数中出现的异常值：超过Q3 + 1.5IQR</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>构建pd.ExcelWriter，综合上述信息：</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="病案数据清洗与分析.html#cb5-1" tabindex="-1"></a><span class="cf">with</span> pd.ExcelWriter(output_file, engine<span class="op">=</span><span class="st">&#39;openpyxl&#39;</span>) <span class="im">as</span> writer:</span>
+<span id="cb5-2"><a href="病案数据清洗与分析.html#cb5-2" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb5-3"><a href="病案数据清洗与分析.html#cb5-3" tabindex="-1"></a>        sheet_name <span class="op">=</span> <span class="bu">str</span>(year)</span>
+<span id="cb5-4"><a href="病案数据清洗与分析.html#cb5-4" tabindex="-1"></a>        <span class="cf">if</span> sheet_name <span class="kw">in</span> sheets:</span>
+<span id="cb5-5"><a href="病案数据清洗与分析.html#cb5-5" tabindex="-1"></a>            df <span class="op">=</span> sheets[sheet_name]</span>
+<span id="cb5-6"><a href="病案数据清洗与分析.html#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="病案数据清洗与分析.html#cb5-7" tabindex="-1"></a>            <span class="co"># 确保数据包含 &#39;入院日期&#39; 和 &#39;出院日期&#39;</span></span>
+<span id="cb5-8"><a href="病案数据清洗与分析.html#cb5-8" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">&#39;入院日期&#39;</span> <span class="kw">not</span> <span class="kw">in</span> df.columns <span class="kw">or</span> <span class="st">&#39;出院日期&#39;</span> <span class="kw">not</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb5-9"><a href="病案数据清洗与分析.html#cb5-9" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f&quot;⚠️ </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年数据缺少 &#39;入院日期&#39; 或 &#39;出院日期&#39; 列，跳过。&quot;</span>)</span>
+<span id="cb5-10"><a href="病案数据清洗与分析.html#cb5-10" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb5-11"><a href="病案数据清洗与分析.html#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="病案数据清洗与分析.html#cb5-12" tabindex="-1"></a>            <span class="co"># 删除无用列（忽略不存在的列，避免报错）</span></span>
+<span id="cb5-13"><a href="病案数据清洗与分析.html#cb5-13" tabindex="-1"></a>            df <span class="op">=</span> df.drop(columns<span class="op">=</span>[col <span class="cf">for</span> col <span class="kw">in</span> columns_to_drop <span class="cf">if</span> col <span class="kw">in</span> df.columns], errors<span class="op">=</span><span class="st">&#39;ignore&#39;</span>)</span>
+<span id="cb5-14"><a href="病案数据清洗与分析.html#cb5-14" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="病案数据清洗与分析.html#cb5-15" tabindex="-1"></a>            <span class="co"># 只删除 &#39;入院日期&#39; 和 &#39;出院日期&#39; 为空的行</span></span>
+<span id="cb5-16"><a href="病案数据清洗与分析.html#cb5-16" tabindex="-1"></a>            df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">&#39;入院日期&#39;</span>, <span class="st">&#39;出院日期&#39;</span>])</span>
+<span id="cb5-17"><a href="病案数据清洗与分析.html#cb5-17" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="病案数据清洗与分析.html#cb5-18" tabindex="-1"></a>            <span class="co"># 转换日期</span></span>
+<span id="cb5-19"><a href="病案数据清洗与分析.html#cb5-19" tabindex="-1"></a>            df[<span class="st">&#39;入院日期&#39;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&#39;入院日期&#39;</span>], errors<span class="op">=</span><span class="st">&#39;coerce&#39;</span>)</span>
+<span id="cb5-20"><a href="病案数据清洗与分析.html#cb5-20" tabindex="-1"></a>            df[<span class="st">&#39;出院日期&#39;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&#39;出院日期&#39;</span>], errors<span class="op">=</span><span class="st">&#39;coerce&#39;</span>)</span>
+<span id="cb5-21"><a href="病案数据清洗与分析.html#cb5-21" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="病案数据清洗与分析.html#cb5-22" tabindex="-1"></a>            <span class="co"># **调试信息：检查 NaN**</span></span>
+<span id="cb5-23"><a href="病案数据清洗与分析.html#cb5-23" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 入院日期 NaT 数量: </span><span class="sc">{</span>df[<span class="st">&#39;入院日期&#39;</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-24"><a href="病案数据清洗与分析.html#cb5-24" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 出院日期 NaT 数量: </span><span class="sc">{</span>df[<span class="st">&#39;出院日期&#39;</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-25"><a href="病案数据清洗与分析.html#cb5-25" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="病案数据清洗与分析.html#cb5-26" tabindex="-1"></a>            <span class="co"># 选择保留的年份变量，并重命名为 &#39;year&#39;</span></span>
+<span id="cb5-27"><a href="病案数据清洗与分析.html#cb5-27" tabindex="-1"></a>            df[<span class="st">&#39;year&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;入院年份&#39;</span>]  <span class="co"># 或者 df[&#39;出院年份&#39;]，看你需要哪个年份</span></span>
+<span id="cb5-28"><a href="病案数据清洗与分析.html#cb5-28" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="病案数据清洗与分析.html#cb5-29" tabindex="-1"></a>            <span class="co"># 删除不再需要的年份变量（如果需要的话）</span></span>
+<span id="cb5-30"><a href="病案数据清洗与分析.html#cb5-30" tabindex="-1"></a>            df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">&#39;入院年份&#39;</span>, <span class="st">&#39;出院年份&#39;</span>])</span>
+<span id="cb5-31"><a href="病案数据清洗与分析.html#cb5-31" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="病案数据清洗与分析.html#cb5-32" tabindex="-1"></a>            <span class="co"># **调试信息：检查年份分布**</span></span>
+<span id="cb5-33"><a href="病案数据清洗与分析.html#cb5-33" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 年份分布:</span><span class="ch">\n</span><span class="sc">{</span>df[<span class="st">&#39;year&#39;</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-34"><a href="病案数据清洗与分析.html#cb5-34" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="病案数据清洗与分析.html#cb5-35" tabindex="-1"></a>            <span class="co"># 检查 &quot;1手术名称&quot; 列是否有数据，如果有数据则赋值 1，否则赋值 0</span></span>
+<span id="cb5-36"><a href="病案数据清洗与分析.html#cb5-36" tabindex="-1"></a>            df[<span class="st">&#39;是否手术&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;1手术名称&#39;</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> pd.notna(x) <span class="kw">and</span> x <span class="op">!=</span> <span class="st">&#39;&#39;</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb5-37"><a href="病案数据清洗与分析.html#cb5-37" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="病案数据清洗与分析.html#cb5-38" tabindex="-1"></a>            <span class="co"># 打印结果查看</span></span>
+<span id="cb5-39"><a href="病案数据清洗与分析.html#cb5-39" tabindex="-1"></a>            <span class="bu">print</span>(df[[<span class="st">&#39;1手术名称&#39;</span>, <span class="st">&#39;是否手术&#39;</span>]].head())  <span class="co"># 只打印 &#39;1手术名称&#39; 和 &#39;是否手术&#39; 列的前几行</span></span>
+<span id="cb5-40"><a href="病案数据清洗与分析.html#cb5-40" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="病案数据清洗与分析.html#cb5-41" tabindex="-1"></a>            <span class="co"># 提取年龄数值部分</span></span>
+<span id="cb5-42"><a href="病案数据清洗与分析.html#cb5-42" tabindex="-1"></a>            df[<span class="st">&#39;年龄&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;年龄&#39;</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.extract(<span class="st">&#39;(\d+)&#39;</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb5-43"><a href="病案数据清洗与分析.html#cb5-43" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="病案数据清洗与分析.html#cb5-44" tabindex="-1"></a>            <span class="co"># 打印结果查看</span></span>
+<span id="cb5-45"><a href="病案数据清洗与分析.html#cb5-45" tabindex="-1"></a>            <span class="bu">print</span>(df[[<span class="st">&#39;年龄&#39;</span>]].head())  <span class="co"># 打印 &#39;年龄&#39; 列的前几行</span></span>
+<span id="cb5-46"><a href="病案数据清洗与分析.html#cb5-46" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="病案数据清洗与分析.html#cb5-47" tabindex="-1"></a>            <span class="co"># 过滤掉 &#39;公安病区&#39;</span></span>
+<span id="cb5-48"><a href="病案数据清洗与分析.html#cb5-48" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">&#39;入院科别&#39;</span> <span class="kw">in</span> df.columns <span class="kw">and</span> <span class="st">&#39;出院科别&#39;</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb5-49"><a href="病案数据清洗与分析.html#cb5-49" tabindex="-1"></a>                df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">&#39;入院科别&#39;</span>].isin([<span class="st">&#39;公安病区&#39;</span>])]</span>
+<span id="cb5-50"><a href="病案数据清洗与分析.html#cb5-50" tabindex="-1"></a>                df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">&#39;出院科别&#39;</span>].isin([<span class="st">&#39;公安病区&#39;</span>])]</span>
+<span id="cb5-51"><a href="病案数据清洗与分析.html#cb5-51" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="病案数据清洗与分析.html#cb5-52" tabindex="-1"></a>                <span class="co"># **调试信息：删除公安病区后数据行数**</span></span>
+<span id="cb5-53"><a href="病案数据清洗与分析.html#cb5-53" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 过滤公安病区后剩余行数: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-54"><a href="病案数据清洗与分析.html#cb5-54" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="病案数据清洗与分析.html#cb5-55" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">&#39;住院天数&#39;</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb5-56"><a href="病案数据清洗与分析.html#cb5-56" tabindex="-1"></a>                Q1 <span class="op">=</span> df[<span class="st">&#39;住院天数&#39;</span>].quantile(<span class="fl">0.25</span>)  <span class="co"># 下四分位数</span></span>
+<span id="cb5-57"><a href="病案数据清洗与分析.html#cb5-57" tabindex="-1"></a>                Q3 <span class="op">=</span> df[<span class="st">&#39;住院天数&#39;</span>].quantile(<span class="fl">0.75</span>)  <span class="co"># 上四分位数</span></span>
+<span id="cb5-58"><a href="病案数据清洗与分析.html#cb5-58" tabindex="-1"></a>                IQR <span class="op">=</span> Q3 <span class="op">-</span> Q1  <span class="co"># 四分位距</span></span>
+<span id="cb5-59"><a href="病案数据清洗与分析.html#cb5-59" tabindex="-1"></a>                upper_bound <span class="op">=</span> Q3 <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> IQR  <span class="co"># 异常值上限</span></span>
+<span id="cb5-60"><a href="病案数据清洗与分析.html#cb5-60" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="病案数据清洗与分析.html#cb5-61" tabindex="-1"></a>            <span class="co"># 过滤掉超过异常值上界的行</span></span>
+<span id="cb5-62"><a href="病案数据清洗与分析.html#cb5-62" tabindex="-1"></a>                df <span class="op">=</span> df[df[<span class="st">&#39;住院天数&#39;</span>] <span class="op">&lt;=</span> upper_bound]</span>
+<span id="cb5-63"><a href="病案数据清洗与分析.html#cb5-63" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f&quot;✅ </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 住院天数异常值上限: </span><span class="sc">{</span>upper_bound<span class="sc">}</span><span class="ss">, 剩余数据行数: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-64"><a href="病案数据清洗与分析.html#cb5-64" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="病案数据清洗与分析.html#cb5-65" tabindex="-1"></a>            <span class="co"># 筛选该年份数据</span></span>
+<span id="cb5-66"><a href="病案数据清洗与分析.html#cb5-66" tabindex="-1"></a>            filtered_df <span class="op">=</span> df[(df[<span class="st">&#39;入院年份&#39;</span>] <span class="op">==</span> year) <span class="op">&amp;</span> (df[<span class="st">&#39;出院年份&#39;</span>] <span class="op">==</span> year)]</span>
+<span id="cb5-67"><a href="病案数据清洗与分析.html#cb5-67" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="病案数据清洗与分析.html#cb5-68" tabindex="-1"></a>            <span class="co"># **调试信息：筛选后数据**</span></span>
+<span id="cb5-69"><a href="病案数据清洗与分析.html#cb5-69" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年 - 筛选 </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年入院且出院后数据行数: </span><span class="sc">{</span><span class="bu">len</span>(filtered_df)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-70"><a href="病案数据清洗与分析.html#cb5-70" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="病案数据清洗与分析.html#cb5-71" tabindex="-1"></a>            <span class="co"># 只有当数据不为空时才保存</span></span>
+<span id="cb5-72"><a href="病案数据清洗与分析.html#cb5-72" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> filtered_df.empty:</span>
+<span id="cb5-73"><a href="病案数据清洗与分析.html#cb5-73" tabindex="-1"></a>                filtered_df.to_excel(writer, sheet_name<span class="op">=</span>sheet_name, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-74"><a href="病案数据清洗与分析.html#cb5-74" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f&quot;✅ </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年数据清洗完成并保存。&quot;</span>)</span>
+<span id="cb5-75"><a href="病案数据清洗与分析.html#cb5-75" tabindex="-1"></a>                all_sheets_empty <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb5-76"><a href="病案数据清洗与分析.html#cb5-76" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb5-77"><a href="病案数据清洗与分析.html#cb5-77" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f&quot;⚠️ </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> 年筛选后无数据，未保存。&quot;</span>)</span>
+<span id="cb5-78"><a href="病案数据清洗与分析.html#cb5-78" tabindex="-1"></a></span>
+<span id="cb5-79"><a href="病案数据清洗与分析.html#cb5-79" tabindex="-1"></a>    <span class="co"># 如果所有 sheet 都为空，则写入默认的 README sheet</span></span>
+<span id="cb5-80"><a href="病案数据清洗与分析.html#cb5-80" tabindex="-1"></a>    <span class="cf">if</span> all_sheets_empty:</span>
+<span id="cb5-81"><a href="病案数据清洗与分析.html#cb5-81" tabindex="-1"></a>        df_readme <span class="op">=</span> pd.DataFrame({<span class="st">&quot;信息&quot;</span>: [<span class="st">&quot;所有年份的数据筛选后为空，未生成可用数据。&quot;</span>]})</span>
+<span id="cb5-82"><a href="病案数据清洗与分析.html#cb5-82" tabindex="-1"></a>        df_readme.to_excel(writer, sheet_name<span class="op">=</span><span class="st">&quot;README&quot;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-83"><a href="病案数据清洗与分析.html#cb5-83" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;⚠️ 所有年份数据均为空，创建 README sheet 以避免 Excel 报错。&quot;</span>)</span>
+<span id="cb5-84"><a href="病案数据清洗与分析.html#cb5-84" tabindex="-1"></a></span>
+<span id="cb5-85"><a href="病案数据清洗与分析.html#cb5-85" tabindex="-1"></a>output_file <span class="op">=</span> <span class="vs">r&quot;C:\Data\allclean.xlsx&quot;</span></span>
+<span id="cb5-86"><a href="病案数据清洗与分析.html#cb5-86" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">✅ 所有年份数据清洗完成，已保存到 </span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>sheet的合并</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="病案数据清洗与分析.html#cb6-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="病案数据清洗与分析.html#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="病案数据清洗与分析.html#cb6-3" tabindex="-1"></a><span class="co"># =========== 1. Excel文件路径与Sheet名称列表 ===========</span></span>
+<span id="cb6-4"><a href="病案数据清洗与分析.html#cb6-4" tabindex="-1"></a><span class="co"># 假设在同一份Excel里有6个Sheet，分别是 &quot;2018&quot;, &quot;2019&quot;, ..., &quot;2023&quot;</span></span>
+<span id="cb6-5"><a href="病案数据清洗与分析.html#cb6-5" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r&quot;C:\Data\allclean.xlsx.xlsx&quot;</span></span>
+<span id="cb6-6"><a href="病案数据清洗与分析.html#cb6-6" tabindex="-1"></a>sheet_names <span class="op">=</span> [<span class="st">&quot;2017&quot;</span>, <span class="st">&quot;2018&quot;</span>, <span class="st">&quot;2019&quot;</span>, <span class="st">&quot;2020&quot;</span>, <span class="st">&quot;2021&quot;</span>, <span class="st">&quot;2022&quot;</span>, <span class="st">&quot;2023&quot;</span>]</span>
+<span id="cb6-7"><a href="病案数据清洗与分析.html#cb6-7" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="病案数据清洗与分析.html#cb6-8" tabindex="-1"></a><span class="co"># 用于存放各年份DataFrame的列表</span></span>
+<span id="cb6-9"><a href="病案数据清洗与分析.html#cb6-9" tabindex="-1"></a>df_list <span class="op">=</span> []</span>
+<span id="cb6-10"><a href="病案数据清洗与分析.html#cb6-10" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="病案数据清洗与分析.html#cb6-11" tabindex="-1"></a><span class="co"># =========== 2. 逐个读取并append到列表 ===========</span></span>
+<span id="cb6-12"><a href="病案数据清洗与分析.html#cb6-12" tabindex="-1"></a><span class="cf">for</span> sheet <span class="kw">in</span> sheet_names:</span>
+<span id="cb6-13"><a href="病案数据清洗与分析.html#cb6-13" tabindex="-1"></a>    df_temp <span class="op">=</span> pd.read_excel(file_path, sheet_name<span class="op">=</span>sheet, header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-14"><a href="病案数据清洗与分析.html#cb6-14" tabindex="-1"></a>    </span>
+<span id="cb6-15"><a href="病案数据清洗与分析.html#cb6-15" tabindex="-1"></a>    <span class="co"># 可在此检查一下当前Sheet的列名，确保与其他年份一致</span></span>
+<span id="cb6-16"><a href="病案数据清洗与分析.html#cb6-16" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>sheet<span class="sc">}</span><span class="ss"> 列名:&quot;</span>, df_temp.columns.tolist())</span>
+<span id="cb6-17"><a href="病案数据清洗与分析.html#cb6-17" tabindex="-1"></a>    </span>
+<span id="cb6-18"><a href="病案数据清洗与分析.html#cb6-18" tabindex="-1"></a>    <span class="co"># 将DataFrame添加到列表</span></span>
+<span id="cb6-19"><a href="病案数据清洗与分析.html#cb6-19" tabindex="-1"></a>    df_list.append(df_temp)</span>
+<span id="cb6-20"><a href="病案数据清洗与分析.html#cb6-20" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="病案数据清洗与分析.html#cb6-21" tabindex="-1"></a><span class="co"># =========== 3. 按照列名对应进行纵向合并 ===========</span></span>
+<span id="cb6-22"><a href="病案数据清洗与分析.html#cb6-22" tabindex="-1"></a><span class="co"># 如果所有Sheet列名完全一致，就能顺利concat</span></span>
+<span id="cb6-23"><a href="病案数据清洗与分析.html#cb6-23" tabindex="-1"></a>df_merged <span class="op">=</span> pd.concat(df_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-24"><a href="病案数据清洗与分析.html#cb6-24" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="病案数据清洗与分析.html#cb6-25" tabindex="-1"></a><span class="co"># =========== 4. 查看合并结果并导出 ===========</span></span>
+<span id="cb6-26"><a href="病案数据清洗与分析.html#cb6-26" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">合并后前5行数据：&quot;</span>)</span>
+<span id="cb6-27"><a href="病案数据清洗与分析.html#cb6-27" tabindex="-1"></a><span class="bu">print</span>(df_merged.head())</span>
+<span id="cb6-28"><a href="病案数据清洗与分析.html#cb6-28" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="病案数据清洗与分析.html#cb6-29" tabindex="-1"></a><span class="co"># 导出为新的Excel，包含所有6个年份数据</span></span>
+<span id="cb6-30"><a href="病案数据清洗与分析.html#cb6-30" tabindex="-1"></a>output_file <span class="op">=</span> <span class="vs">r&quot;C:\Data\merged_result.xlsx&quot;</span></span>
+<span id="cb6-31"><a href="病案数据清洗与分析.html#cb6-31" tabindex="-1"></a>df_merged.to_excel(output_file, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-32"><a href="病案数据清洗与分析.html#cb6-32" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">合并完成！已保存到：</span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+<div id="使用stata程序对诊断进行分列与赋值" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> 使用stata程序对诊断进行分列与赋值<a href="病案数据清洗与分析.html#使用stata程序对诊断进行分列与赋值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="诊断拆分与共病判断" class="section level3 hasAnchor" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> 诊断拆分与共病判断<a href="病案数据清洗与分析.html#诊断拆分与共病判断" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在得到合并年份的.xlsx文件后，需要继续对数据进行整理，在保留下来的“出院诊断”变量中，形式如下：</p>
+<blockquote>
+<p>上颌窦囊肿|J34.104|有,鼻中隔偏曲|J34.200|有,变应性鼻炎|J30.400|有,慢性鼻窦炎|J32.900|有,脑梗死|I63.900|有</p>
+</blockquote>
+<blockquote>
+<p>乳房恶性肿瘤个人史|Z85.300|有,手术后恶性肿瘤化学治疗|Z51.102|有</p>
+</blockquote>
+<blockquote>
+<p>腹股沟斜疝|K40.901|有</p>
+</blockquote>
+<p>从上可以看处，单个患者的诊断可能是一个，也可能是多个，我们一般将第一个诊断作为该患者的疾病分类依据，同时可以根据是否有多个诊断来判断该患者是否共病（患有多种疾病）。</p>
+<ol style="list-style-type: decimal">
+<li>疾病诊断拆分</li>
+</ol>
+<p>可通过下面stata程序实现：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="病案数据清洗与分析.html#cb7-1" tabindex="-1"></a>***********************************************************</span>
+<span id="cb7-2"><a href="病案数据清洗与分析.html#cb7-2" tabindex="-1"></a>* 1. 清理环境并导入数据</span>
+<span id="cb7-3"><a href="病案数据清洗与分析.html#cb7-3" tabindex="-1"></a>***********************************************************</span>
+<span id="cb7-4"><a href="病案数据清洗与分析.html#cb7-4" tabindex="-1"></a><span class="kw">clear</span> <span class="ot">all</span></span>
+<span id="cb7-5"><a href="病案数据清洗与分析.html#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="病案数据清洗与分析.html#cb7-6" tabindex="-1"></a>* 读取 Excel 文件，假设第一行为列名</span>
+<span id="cb7-7"><a href="病案数据清洗与分析.html#cb7-7" tabindex="-1"></a>import excel <span class="st">&quot;C:\Users</span><span class="ch">\a</span><span class="st">sus\Desktop</span><span class="ch">\t</span><span class="st">est\stata\ICD-10</span><span class="ch">\a</span><span class="st">llclean.xlsx&quot;</span>, <span class="co">///</span></span>
+<span id="cb7-8"><a href="病案数据清洗与分析.html#cb7-8" tabindex="-1"></a>    firstrow <span class="kw">case</span>(<span class="fu">lower</span>) <span class="kw">clear</span></span>
+<span id="cb7-9"><a href="病案数据清洗与分析.html#cb7-9" tabindex="-1"></a>* 注意：</span>
+<span id="cb7-10"><a href="病案数据清洗与分析.html#cb7-10" tabindex="-1"></a>*  - firstrow 表示将第一行作为变量名</span>
+<span id="cb7-11"><a href="病案数据清洗与分析.html#cb7-11" tabindex="-1"></a>*  - <span class="kw">case</span>(<span class="fu">lower</span>) 将变量名转换为小写，避免中文或大小写冲突</span>
+<span id="cb7-12"><a href="病案数据清洗与分析.html#cb7-12" tabindex="-1"></a>*  - 如果您的表格存在中文列名，可能需要手动 <span class="kw">rename</span></span>
+<span id="cb7-13"><a href="病案数据清洗与分析.html#cb7-13" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="病案数据清洗与分析.html#cb7-14" tabindex="-1"></a>***********************************************************</span>
+<span id="cb7-15"><a href="病案数据清洗与分析.html#cb7-15" tabindex="-1"></a>* 2. 处理、提取与分类: 以“出院诊断”列为例</span>
+<span id="cb7-16"><a href="病案数据清洗与分析.html#cb7-16" tabindex="-1"></a>***********************************************************</span>
+<span id="cb7-17"><a href="病案数据清洗与分析.html#cb7-17" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="病案数据清洗与分析.html#cb7-18" tabindex="-1"></a>*---------------------------------------------------------</span>
+<span id="cb7-19"><a href="病案数据清洗与分析.html#cb7-19" tabindex="-1"></a>* (可选) 如果数据集中 出院诊断 是中文列名，且您想要改成 disease：</span>
+<span id="cb7-20"><a href="病案数据清洗与分析.html#cb7-20" tabindex="-1"></a><span class="kw">gen</span> disease = 出院诊断</span>
+<span id="cb7-21"><a href="病案数据清洗与分析.html#cb7-21" tabindex="-1"></a>*---------------------------------------------------------</span>
+<span id="cb7-22"><a href="病案数据清洗与分析.html#cb7-22" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="病案数据清洗与分析.html#cb7-23" tabindex="-1"></a><span class="co">// 对disease进行拆分</span></span>
+<span id="cb7-24"><a href="病案数据清洗与分析.html#cb7-24" tabindex="-1"></a>* 1. 按 | 分隔 disease 列，生成多个新变量</span>
+<span id="cb7-25"><a href="病案数据清洗与分析.html#cb7-25" tabindex="-1"></a><span class="kw">split</span> disease, <span class="kw">parse</span>(<span class="st">&quot;|&quot;</span>) <span class="kw">generate</span>(disease_part)</span>
+<span id="cb7-26"><a href="病案数据清洗与分析.html#cb7-26" tabindex="-1"></a> </span>
+<span id="cb7-27"><a href="病案数据清洗与分析.html#cb7-27" tabindex="-1"></a><span class="co">// 提取第一个 ICD 编码</span></span>
+<span id="cb7-28"><a href="病案数据清洗与分析.html#cb7-28" tabindex="-1"></a>* 2. 提取第二部分（part2）作为 icd10，使用正则表达式剔除多余编码</span>
+<span id="cb7-29"><a href="病案数据清洗与分析.html#cb7-29" tabindex="-1"></a>* 保留 disease_part2 的前7个字符作为 icd10，形如 C15.900</span>
+<span id="cb7-30"><a href="病案数据清洗与分析.html#cb7-30" tabindex="-1"></a><span class="kw">gen</span> icd10 = <span class="fu">substr</span>(disease_part2, 1, 7)</span>
+<span id="cb7-31"><a href="病案数据清洗与分析.html#cb7-31" tabindex="-1"></a><span class="kw">gen</span> icd_com = <span class="fu">substr</span>(disease_part4, 1, 7)</span>
+<span id="cb7-32"><a href="病案数据清洗与分析.html#cb7-32" tabindex="-1"></a>* 去除前后的空格</span>
+<span id="cb7-33"><a href="病案数据清洗与分析.html#cb7-33" tabindex="-1"></a><span class="kw">replace</span> icd10 = <span class="kw">trim</span>(icd10)</span>
+<span id="cb7-34"><a href="病案数据清洗与分析.html#cb7-34" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="病案数据清洗与分析.html#cb7-35" tabindex="-1"></a>* 3. 删除所有拆分部分</span>
+<span id="cb7-36"><a href="病案数据清洗与分析.html#cb7-36" tabindex="-1"></a><span class="kw">drop</span> disease_part1-disease_part55</span>
+<span id="cb7-37"><a href="病案数据清洗与分析.html#cb7-37" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="病案数据清洗与分析.html#cb7-38" tabindex="-1"></a>* 4. 检查结果</span>
+<span id="cb7-39"><a href="病案数据清洗与分析.html#cb7-39" tabindex="-1"></a><span class="ot">list</span> disease icd10 <span class="kw">in</span> 1/10</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>按 ICD 数量判断是否共病</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="病案数据清洗与分析.html#cb8-1" tabindex="-1"></a>***************************************</span>
+<span id="cb8-2"><a href="病案数据清洗与分析.html#cb8-2" tabindex="-1"></a>* 按 ICD 数量判断是否共病</span>
+<span id="cb8-3"><a href="病案数据清洗与分析.html#cb8-3" tabindex="-1"></a>***************************************</span>
+<span id="cb8-4"><a href="病案数据清洗与分析.html#cb8-4" tabindex="-1"></a><span class="kw">gen</span> comorbidity = 0  <span class="co">// 初始值为 0</span></span>
+<span id="cb8-5"><a href="病案数据清洗与分析.html#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="病案数据清洗与分析.html#cb8-6" tabindex="-1"></a><span class="kw">replace</span> comorbidity = 1 <span class="kw">if</span> !<span class="fu">missing</span>(icd10) &amp; !<span class="fu">missing</span>(icd_com)  </span>
+<span id="cb8-7"><a href="病案数据清洗与分析.html#cb8-7" tabindex="-1"></a><span class="co">// 如果ICD10和ICD_com都不为空，则赋值为1</span></span>
+<span id="cb8-8"><a href="病案数据清洗与分析.html#cb8-8" tabindex="-1"></a><span class="ot">list</span> icd10 icd_com comorbidity <span class="kw">in</span> 1/10  </span>
+<span id="cb8-9"><a href="病案数据清洗与分析.html#cb8-9" tabindex="-1"></a><span class="co">// 查看前10行的数据</span></span></code></pre></div>
+</div>
+<div id="疾病分类" class="section level3 hasAnchor" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> 疾病分类<a href="病案数据清洗与分析.html#疾病分类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>按照ICD-10（International Classification of Diseases）进行分类与赋值.</p>
+<ol style="list-style-type: decimal">
+<li>ICD-10</li>
+</ol>
+<table>
+<caption><span id="tab:unnamed-chunk-9">Table 15.1: </span>ICD 分类章节</caption>
+<thead>
+<tr class="header">
+<th align="left">章</th>
+<th align="left">块</th>
+<th align="left">标题</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">I</td>
+<td align="left">A00-B99</td>
+<td align="left">某些传染病和寄生虫病</td>
+</tr>
+<tr class="even">
+<td align="left">II</td>
+<td align="left">C00-D48</td>
+<td align="left">肿瘤</td>
+</tr>
+<tr class="odd">
+<td align="left">III</td>
+<td align="left">D50-D89</td>
+<td align="left">血液及造血器官疾病和某些涉及免疫系统的疾患</td>
+</tr>
+<tr class="even">
+<td align="left">IV</td>
+<td align="left">E00-E90</td>
+<td align="left">内分泌，营养和代谢疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">F00-F99</td>
+<td align="left">精神和行为疾患</td>
+</tr>
+<tr class="even">
+<td align="left">VI</td>
+<td align="left">G00-G99</td>
+<td align="left">神经系统疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">VII</td>
+<td align="left">H00-H59</td>
+<td align="left">眼和附器疾病</td>
+</tr>
+<tr class="even">
+<td align="left">VIII</td>
+<td align="left">H60-H95</td>
+<td align="left">耳和乳突疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">IX</td>
+<td align="left">I00-I99</td>
+<td align="left">循环系统疾病</td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td align="left">J00-J99</td>
+<td align="left">呼吸系统疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">XI</td>
+<td align="left">K00-K93</td>
+<td align="left">消化系统疾病</td>
+</tr>
+<tr class="even">
+<td align="left">XII</td>
+<td align="left">L00-L99</td>
+<td align="left">皮肤和皮下组织疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">XIII</td>
+<td align="left">M00-M99</td>
+<td align="left">肌肉骨骼系统和结缔组织疾病</td>
+</tr>
+<tr class="even">
+<td align="left">XIV</td>
+<td align="left">N00-N99</td>
+<td align="left">泌尿生殖系统疾病</td>
+</tr>
+<tr class="odd">
+<td align="left">XV</td>
+<td align="left">O00-O99</td>
+<td align="left">妊娠、分娩和产褥期</td>
+</tr>
+<tr class="even">
+<td align="left">XVI</td>
+<td align="left">P00-P96</td>
+<td align="left">起源于围产期的某些情况</td>
+</tr>
+<tr class="odd">
+<td align="left">XVII</td>
+<td align="left">Q00-Q99</td>
+<td align="left">先天畸形、变形和染色体异常</td>
+</tr>
+<tr class="even">
+<td align="left">XVIII</td>
+<td align="left">R00-R99</td>
+<td align="left">症状、体征和临床与实验室异常所见，不可归类在他处者</td>
+</tr>
+<tr class="odd">
+<td align="left">XIX</td>
+<td align="left">S00-T98</td>
+<td align="left">损伤、中毒和外因的某些其他后果</td>
+</tr>
+<tr class="even">
+<td align="left">XX</td>
+<td align="left">V01-Y98</td>
+<td align="left">疾病和死亡的外因</td>
+</tr>
+<tr class="odd">
+<td align="left">XXI</td>
+<td align="left">Z00-Z99</td>
+<td align="left">影响健康状态和与保健机构接触的因素</td>
+</tr>
+<tr class="even">
+<td align="left">XXII</td>
+<td align="left">U00-U99</td>
+<td align="left">特殊目的代码</td>
+</tr>
+</tbody>
+</table>
+<p>关于 ICD-10 的更多信息请查看：<a href="https://zh.wikipedia.org/wiki/ICD-10" class="uri">https://zh.wikipedia.org/wiki/ICD-10</a>、<a href="https://zh.wikipedia.org/wiki/ICD-10" class="uri">https://zh.wikipedia.org/wiki/ICD-10</a></p>
+<ol start="2" style="list-style-type: decimal">
+<li>截取变量</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="病案数据清洗与分析.html#cb9-1" tabindex="-1"></a>***************************************</span>
+<span id="cb9-2"><a href="病案数据清洗与分析.html#cb9-2" tabindex="-1"></a>* 按 ICD 编码生成截取变量</span>
+<span id="cb9-3"><a href="病案数据清洗与分析.html#cb9-3" tabindex="-1"></a>***************************************</span>
+<span id="cb9-4"><a href="病案数据清洗与分析.html#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="病案数据清洗与分析.html#cb9-5" tabindex="-1"></a>* 如果 icd10 是数值型，转换为字符串型</span>
+<span id="cb9-6"><a href="病案数据清洗与分析.html#cb9-6" tabindex="-1"></a><span class="kw">tostring</span> icd10, <span class="kw">replace</span>  </span>
+<span id="cb9-7"><a href="病案数据清洗与分析.html#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="病案数据清洗与分析.html#cb9-8" tabindex="-1"></a>* 检查并创建 icd_3c 变量</span>
+<span id="cb9-9"><a href="病案数据清洗与分析.html#cb9-9" tabindex="-1"></a><span class="kw">gen</span> icd_3c = <span class="st">&quot;&quot;</span>   <span class="co">// 如果 icd_3c 不存在，创建一个空的字符串变量</span></span>
+<span id="cb9-10"><a href="病案数据清洗与分析.html#cb9-10" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="病案数据清洗与分析.html#cb9-11" tabindex="-1"></a>* icd_3c:：截取 ICD 编码的前三位并赋值给 icd_3c</span>
+<span id="cb9-12"><a href="病案数据清洗与分析.html#cb9-12" tabindex="-1"></a><span class="kw">replace</span> icd_3c = <span class="fu">substr</span>(icd10, 1, 3)</span>
+<span id="cb9-13"><a href="病案数据清洗与分析.html#cb9-13" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="病案数据清洗与分析.html#cb9-14" tabindex="-1"></a>* 如果 icd_3c 是数值型，转换为字符串型</span>
+<span id="cb9-15"><a href="病案数据清洗与分析.html#cb9-15" tabindex="-1"></a><span class="kw">tostring</span> icd_3c, <span class="kw">replace</span> </span>
+<span id="cb9-16"><a href="病案数据清洗与分析.html#cb9-16" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="病案数据清洗与分析.html#cb9-17" tabindex="-1"></a>* 创建 icd_str1 变量</span>
+<span id="cb9-18"><a href="病案数据清洗与分析.html#cb9-18" tabindex="-1"></a><span class="kw">gen</span> icd_str1 = <span class="st">&quot;&quot;</span></span>
+<span id="cb9-19"><a href="病案数据清洗与分析.html#cb9-19" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="病案数据清洗与分析.html#cb9-20" tabindex="-1"></a>* icd_str1: ICD 的编码首位</span>
+<span id="cb9-21"><a href="病案数据清洗与分析.html#cb9-21" tabindex="-1"></a><span class="kw">replace</span> icd_str1 = <span class="fu">substr</span>(icd10,1,1)</span>
+<span id="cb9-22"><a href="病案数据清洗与分析.html#cb9-22" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="病案数据清洗与分析.html#cb9-23" tabindex="-1"></a>* 如果 icd_str1 是数值型，转换为字符串型</span>
+<span id="cb9-24"><a href="病案数据清洗与分析.html#cb9-24" tabindex="-1"></a><span class="kw">tostring</span> icd_str1, <span class="kw">replace</span> </span>
+<span id="cb9-25"><a href="病案数据清洗与分析.html#cb9-25" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="病案数据清洗与分析.html#cb9-26" tabindex="-1"></a>* 使用 <span class="kw">trim</span>() 来去除空格</span>
+<span id="cb9-27"><a href="病案数据清洗与分析.html#cb9-27" tabindex="-1"></a><span class="kw">replace</span> icd_str1 = <span class="kw">trim</span>(icd_str1)</span>
+<span id="cb9-28"><a href="病案数据清洗与分析.html#cb9-28" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="病案数据清洗与分析.html#cb9-29" tabindex="-1"></a>* 查看 icd_str1 的数据类型</span>
+<span id="cb9-30"><a href="病案数据清洗与分析.html#cb9-30" tabindex="-1"></a><span class="kw">describe</span> icd_str1</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>按照 ICD-10 编码进行分类</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="病案数据清洗与分析.html#cb10-1" tabindex="-1"></a>***************************************</span>
+<span id="cb10-2"><a href="病案数据清洗与分析.html#cb10-2" tabindex="-1"></a>* 按照ICD编码归为22类</span>
+<span id="cb10-3"><a href="病案数据清洗与分析.html#cb10-3" tabindex="-1"></a>***************************************</span>
+<span id="cb10-4"><a href="病案数据清洗与分析.html#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="病案数据清洗与分析.html#cb10-5" tabindex="-1"></a>* 创建icd分类变量：icd_chapter</span>
+<span id="cb10-6"><a href="病案数据清洗与分析.html#cb10-6" tabindex="-1"></a><span class="kw">gen</span> icd_chapter = <span class="st">&quot;&quot;</span> </span>
+<span id="cb10-7"><a href="病案数据清洗与分析.html#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="病案数据清洗与分析.html#cb10-8" tabindex="-1"></a><span class="co">// 为icd_chapter赋值</span></span>
+<span id="cb10-9"><a href="病案数据清洗与分析.html#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="病案数据清洗与分析.html#cb10-10" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=1 <span class="kw">if</span> icd_str1==<span class="st">&quot;A&quot;</span>|icd_str1==<span class="st">&quot;B&quot;</span></span>
+<span id="cb10-11"><a href="病案数据清洗与分析.html#cb10-11" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=2 <span class="kw">if</span> icd_str1==<span class="st">&quot;C&quot;</span>|(icd_3c&gt;=<span class="st">&quot;D00&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;D48&quot;</span>)</span>
+<span id="cb10-12"><a href="病案数据清洗与分析.html#cb10-12" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=3 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;D50&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;D89&quot;</span></span>
+<span id="cb10-13"><a href="病案数据清洗与分析.html#cb10-13" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=4 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;E00&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;E90&quot;</span></span>
+<span id="cb10-14"><a href="病案数据清洗与分析.html#cb10-14" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=5 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;F00&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;F99&quot;</span></span>
+<span id="cb10-15"><a href="病案数据清洗与分析.html#cb10-15" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=6 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;G00&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;G99&quot;</span></span>
+<span id="cb10-16"><a href="病案数据清洗与分析.html#cb10-16" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=7 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;H00&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;H59&quot;</span></span>
+<span id="cb10-17"><a href="病案数据清洗与分析.html#cb10-17" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=8 <span class="kw">if</span> icd_3c&gt;=<span class="st">&quot;H60&quot;</span>&amp;icd_3c&lt;=<span class="st">&quot;H99&quot;</span></span>
+<span id="cb10-18"><a href="病案数据清洗与分析.html#cb10-18" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=9 <span class="kw">if</span> icd_str1==<span class="st">&quot;I&quot;</span></span>
+<span id="cb10-19"><a href="病案数据清洗与分析.html#cb10-19" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=10 <span class="kw">if</span> icd_str1==<span class="st">&quot;J&quot;</span></span>
+<span id="cb10-20"><a href="病案数据清洗与分析.html#cb10-20" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=11 <span class="kw">if</span> icd_str1==<span class="st">&quot;K&quot;</span></span>
+<span id="cb10-21"><a href="病案数据清洗与分析.html#cb10-21" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=12 <span class="kw">if</span> icd_str1==<span class="st">&quot;L&quot;</span></span>
+<span id="cb10-22"><a href="病案数据清洗与分析.html#cb10-22" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=13 <span class="kw">if</span> icd_str1==<span class="st">&quot;M&quot;</span></span>
+<span id="cb10-23"><a href="病案数据清洗与分析.html#cb10-23" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=14 <span class="kw">if</span> icd_str1==<span class="st">&quot;N&quot;</span></span>
+<span id="cb10-24"><a href="病案数据清洗与分析.html#cb10-24" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=15 <span class="kw">if</span> icd_str1==<span class="st">&quot;O&quot;</span></span>
+<span id="cb10-25"><a href="病案数据清洗与分析.html#cb10-25" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=16 <span class="kw">if</span> icd_str1==<span class="st">&quot;P&quot;</span></span>
+<span id="cb10-26"><a href="病案数据清洗与分析.html#cb10-26" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=17 <span class="kw">if</span> icd_str1==<span class="st">&quot;Q&quot;</span></span>
+<span id="cb10-27"><a href="病案数据清洗与分析.html#cb10-27" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=18 <span class="kw">if</span> icd_str1==<span class="st">&quot;R&quot;</span></span>
+<span id="cb10-28"><a href="病案数据清洗与分析.html#cb10-28" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=19 <span class="kw">if</span> icd_str1==<span class="st">&quot;S&quot;</span>| icd_str1==<span class="st">&quot;T&quot;</span></span>
+<span id="cb10-29"><a href="病案数据清洗与分析.html#cb10-29" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=20 <span class="kw">if</span> icd_str1==<span class="st">&quot;V&quot;</span>| icd_str1==<span class="st">&quot;Y&quot;</span></span>
+<span id="cb10-30"><a href="病案数据清洗与分析.html#cb10-30" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=21 <span class="kw">if</span> icd_str1==<span class="st">&quot;Z&quot;</span></span>
+<span id="cb10-31"><a href="病案数据清洗与分析.html#cb10-31" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=22 <span class="kw">if</span> icd_str1==<span class="st">&quot;U&quot;</span></span>
+<span id="cb10-32"><a href="病案数据清洗与分析.html#cb10-32" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=20 <span class="kw">if</span> icd_str1==<span class="st">&quot;V&quot;</span>| icd_str1==<span class="st">&quot;Y&quot;</span>|icd_str1==<span class="st">&quot;X&quot;</span>|icd_str1==<span class="st">&quot;W&quot;</span></span>
+<span id="cb10-33"><a href="病案数据清洗与分析.html#cb10-33" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=21 <span class="kw">if</span> icd_str1==<span class="st">&quot;Z&quot;</span>| <span class="fu">substr</span>(<span class="kw">trim</span>(icd10),1,2)==<span class="st">&quot;WW&quot;</span></span>
+<span id="cb10-34"><a href="病案数据清洗与分析.html#cb10-34" tabindex="-1"></a><span class="kw">replace</span> icd_chapter=22 <span class="kw">if</span> icd_str1==<span class="st">&quot;U&quot;</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>报错
+你可能会遇到如下报错：</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="病案数据清洗与分析.html#cb11-1" tabindex="-1"></a>* 为icd_chapter赋值</span>
+<span id="cb11-2"><a href="病案数据清洗与分析.html#cb11-2" tabindex="-1"></a>. <span class="kw">replace</span> icd_chapter = 1 <span class="kw">if</span> icd_str1 == <span class="st">&quot;A&quot;</span> | icd_str1 == <span class="st">&quot;B&quot;</span></span>
+<span id="cb11-3"><a href="病案数据清洗与分析.html#cb11-3" tabindex="-1"></a><span class="dv">type</span> mismatch</span>
+<span id="cb11-4"><a href="病案数据清洗与分析.html#cb11-4" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
+<p>这个问题花了很多时间寻找解决方案，但是实际上它“真的”只是一个小问题，然而很难想到。
+报错的原因是“type mismatch”，这是因为在运行<code>replace icd_chapter=1</code>时，给<code>icd_chapter</code>赋值的数据类型是<code>1</code>，这是数值型变量，因此只要让<code>icd_chapter</code>可以写入数值变量就可以。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="病案数据清洗与分析.html#cb12-1" tabindex="-1"></a>* 创建icd分类变量：icd_chapter</span>
+<span id="cb12-2"><a href="病案数据清洗与分析.html#cb12-2" tabindex="-1"></a><span class="kw">gen</span> icd_chapter = <span class="st">&quot;&quot;</span> </span>
+<span id="cb12-3"><a href="病案数据清洗与分析.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="病案数据清洗与分析.html#cb12-4" tabindex="-1"></a>* 字符转换为数值</span>
+<span id="cb12-5"><a href="病案数据清洗与分析.html#cb12-5" tabindex="-1"></a><span class="kw">destring</span> icd_chapter,<span class="kw">replace</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>保存数据</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="病案数据清洗与分析.html#cb13-1" tabindex="-1"></a>*导出为 Stata 格式</span>
+<span id="cb13-2"><a href="病案数据清洗与分析.html#cb13-2" tabindex="-1"></a><span class="kw">save</span> <span class="st">&quot;C:\Data\ICD-result.dta&quot;</span>, <span class="kw">replace</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="usage用法.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/zhoulvbang/zhoulvbang.github.io/edit/BRANCH/14-Analytics-Practices.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["卫生统计学笔记.pdf", "卫生统计学笔记.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

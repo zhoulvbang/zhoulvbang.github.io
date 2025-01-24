@@ -153,3 +153,10 @@ preview-book预览这本书
 指定pandoc路径
 与rmarkdown的缘分
 关于引用
+病案数据清洗与分析
+使用python对病案数据进行清洗
+使用stata程序对诊断进行分列与赋值
+诊断拆分与共病判断
+疾病分类
+连续型随机变量的概率分布
+tab:unnamed-chunk-9

@@ -3,15 +3,16 @@ title: "卫生统计学笔记"
 author: "Zhoulvbang"
 date: "`r Sys.Date()`"
 output:
+  bookdown::pdf_document:
+    latex_engine: xelatex
+    toc: true
+  pdf_document:
+    toc: true
   html_document:
     toc: true
     keep_md: true
     css: style.css
     df_print: default
-  bookdown::pdf_document:
-    #tufte::tufte_handout:
-    latex_engine: xelatex
-    toc: true
 documentclass: book
 bibliography:
 - book.bib
@@ -46,7 +47,7 @@ library(knitr) #一个动态报告生成工具，它允许用户将 R 代码嵌�
 library(reticulate)  #是一个 R 和 Python 的接口包，它允许用户在 R 环境中运行 Python 代码，并实现 R 和 Python 之间的无缝数据交换。
 library(plotly)#加载plotly包，用于创建交互式图形
 library(mvtnorm)#用于计算多元正态分布的概率密度
-
+library(tibble) # 用于生成表格
 
 # 设置knitr全局选项
 knitr::opts_chunk$set(

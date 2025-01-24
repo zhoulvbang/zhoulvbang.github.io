@@ -1,0 +1,402 @@
+# 病案数据清洗与分析
+
+## 使用Python对病案数据进行清洗
+
+由于完整数据很大，且涉及到数据的保密，只选取部分数据以作参考。
+
+对数据进行清洗可以使用多种方式，包括但不限于使用Excel、Python、R等。
+
+考虑到数据量较大，本次处理选择使用Python对其进行清洗，测试数据存放
+在[test-patients-info](https://zhoulvbang.github.io/Data/test-patients-info.xlsx)中，
+可以使'pandas'对其进行读取与修改，步骤如下：
+
+1. 前置准备，安装必要的包
+
+```{python,eval = FALSE,collapse = TRUE}
+pip install pandas openpyxl #安装pandas和openpyxl这两个包
+```
+
+2. 导入'pandas'包
+
+```{python,eval = FALSE,collapse = TRUE}
+import pandas as pd
+```
+
+3. 导入xlsx文件并查看数据
+
+```{python,eval = FALSE,collapse = TRUE}
+# input_file = r"C:\Data\test-patients-info.xlsx"  #r转置符
+excel_file = './Data/test-patients-info.xlsx'        #导入文件
+data = pd.read_excel(excel_file)      #读入数据
+sheet_name = 'Sheet1'   #默认sheet1
+sheet_data = excel_data[sheet_name]
+
+# 读取前3行数据
+num_rows = 3
+data = sheet_data.head(num_rows)
+```
+
+实际上因为相关数据一般是分年份存放，所以会在一个.xlsx文件中有多个sheet表单，
+但是又因为各年份所纪录的并不一定完全一致或相同。因此，首先我们要对原始数据中的变量进行筛选，
+保留下我们做需要的变量信息。
+
+4. 读取所有的sheet并进行变量筛选
+
+```{python,eval = FALSE,collapse = TRUE}
+# 读取所有 sheet
+sheets = pd.read_excel(input_file, sheet_name=None)
+# 构建需要删除的变量列表
+columns_to_drop = [
+  "新生儿出生体重", "新生儿入院体重", "国籍", "籍贯", "病室", 
+  ......
+  ]
+```
+
+5. 其他要求
+  - 删除含有某特征的病例：删除公安病区的病例
+  - 删除年份不一致的数据：跨年收治的病例
+  - 删除住院天数中出现的异常值：超过Q3 + 1.5IQR
+  
+6. 构建pd.ExcelWriter，综合上述信息：
+
+```{python,eval = FALSE,collapse = TRUE}
+with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+    for year in years:
+        sheet_name = str(year)
+        if sheet_name in sheets:
+            df = sheets[sheet_name]
+
+            # 确保数据包含 '入院日期' 和 '出院日期'
+            if '入院日期' not in df.columns or '出院日期' not in df.columns:
+                print(f"⚠️ {year} 年数据缺少 '入院日期' 或 '出院日期' 列，跳过。")
+                continue
+
+            # 删除无用列（忽略不存在的列，避免报错）
+            df = df.drop(columns=[col for col in columns_to_drop if col in df.columns], errors='ignore')
+
+            # 只删除 '入院日期' 和 '出院日期' 为空的行
+            df = df.dropna(subset=['入院日期', '出院日期'])
+
+            # 转换日期
+            df['入院日期'] = pd.to_datetime(df['入院日期'], errors='coerce')
+            df['出院日期'] = pd.to_datetime(df['出院日期'], errors='coerce')
+
+            # **调试信息：检查 NaN**
+            print(f"{year} 年 - 入院日期 NaT 数量: {df['入院日期'].isna().sum()}")
+            print(f"{year} 年 - 出院日期 NaT 数量: {df['出院日期'].isna().sum()}")
+
+            # 选择保留的年份变量，并重命名为 'year'
+            df['year'] = df['入院年份']  # 或者 df['出院年份']，看你需要哪个年份
+
+            # 删除不再需要的年份变量（如果需要的话）
+            df = df.drop(columns=['入院年份', '出院年份'])
+
+            # **调试信息：检查年份分布**
+            print(f"{year} 年 - 年份分布:\n{df['year'].value_counts()}")
+
+            # 检查 "1手术名称" 列是否有数据，如果有数据则赋值 1，否则赋值 0
+            df['是否手术'] = df['1手术名称'].apply(lambda x: 1 if pd.notna(x) and x != '' else 0)
+
+            # 打印结果查看
+            print(df[['1手术名称', '是否手术']].head())  # 只打印 '1手术名称' 和 '是否手术' 列的前几行
+
+            # 提取年龄数值部分
+            df['年龄'] = df['年龄'].astype(str).str.extract('(\d+)').astype(float)
+
+            # 打印结果查看
+            print(df[['年龄']].head())  # 打印 '年龄' 列的前几行
+
+            # 过滤掉 '公安病区'
+            if '入院科别' in df.columns and '出院科别' in df.columns:
+                df = df[~df['入院科别'].isin(['公安病区'])]
+                df = df[~df['出院科别'].isin(['公安病区'])]
+
+                # **调试信息：删除公安病区后数据行数**
+                print(f"{year} 年 - 过滤公安病区后剩余行数: {len(df)}")
+
+            if '住院天数' in df.columns:
+                Q1 = df['住院天数'].quantile(0.25)  # 下四分位数
+                Q3 = df['住院天数'].quantile(0.75)  # 上四分位数
+                IQR = Q3 - Q1  # 四分位距
+                upper_bound = Q3 + 1.5 * IQR  # 异常值上限
+
+            # 过滤掉超过异常值上界的行
+                df = df[df['住院天数'] <= upper_bound]
+                print(f"✅ {year} 年 - 住院天数异常值上限: {upper_bound}, 剩余数据行数: {len(df)}")
+
+            # 筛选该年份数据
+            filtered_df = df[(df['入院年份'] == year) & (df['出院年份'] == year)]
+
+            # **调试信息：筛选后数据**
+            print(f"{year} 年 - 筛选 {year} 年入院且出院后数据行数: {len(filtered_df)}")
+
+            # 只有当数据不为空时才保存
+            if not filtered_df.empty:
+                filtered_df.to_excel(writer, sheet_name=sheet_name, index=False)
+                print(f"✅ {year} 年数据清洗完成并保存。")
+                all_sheets_empty = False
+            else:
+                print(f"⚠️ {year} 年筛选后无数据，未保存。")
+
+    # 如果所有 sheet 都为空，则写入默认的 README sheet
+    if all_sheets_empty:
+        df_readme = pd.DataFrame({"信息": ["所有年份的数据筛选后为空，未生成可用数据。"]})
+        df_readme.to_excel(writer, sheet_name="README", index=False)
+        print("⚠️ 所有年份数据均为空，创建 README sheet 以避免 Excel 报错。")
+
+output_file = r"C:\Data\allclean.xlsx"
+print(f"\n✅ 所有年份数据清洗完成，已保存到 {output_file}")
+```
+
+7. sheet的合并
+
+```{python,eval = FALSE,collapse = TRUE}
+import pandas as pd
+
+# =========== 1. Excel文件路径与Sheet名称列表 ===========
+# 假设在同一份Excel里有6个Sheet，分别是 "2018", "2019", ..., "2023"
+file_path = r"C:\Data\allclean.xlsx.xlsx"
+sheet_names = ["2017", "2018", "2019", "2020", "2021", "2022", "2023"]
+
+# 用于存放各年份DataFrame的列表
+df_list = []
+
+# =========== 2. 逐个读取并append到列表 ===========
+for sheet in sheet_names:
+    df_temp = pd.read_excel(file_path, sheet_name=sheet, header=0)
+    
+    # 可在此检查一下当前Sheet的列名，确保与其他年份一致
+    print(f"{sheet} 列名:", df_temp.columns.tolist())
+    
+    # 将DataFrame添加到列表
+    df_list.append(df_temp)
+
+# =========== 3. 按照列名对应进行纵向合并 ===========
+# 如果所有Sheet列名完全一致，就能顺利concat
+df_merged = pd.concat(df_list, ignore_index=True)
+
+# =========== 4. 查看合并结果并导出 ===========
+print("\n合并后前5行数据：")
+print(df_merged.head())
+
+# 导出为新的Excel，包含所有6个年份数据
+output_file = r"C:\Data\merged_result.xlsx"
+df_merged.to_excel(output_file, index=False)
+print(f"\n合并完成！已保存到：{output_file}")
+```
+
+## 使用stata程序对诊断进行分列与赋值
+
+### 诊断拆分与共病判断
+
+在得到合并年份的.xlsx文件后，需要继续对数据进行整理，在保留下来的“出院诊断”变量中，形式如下：
+
+> 上颌窦囊肿|J34.104|有,鼻中隔偏曲|J34.200|有,变应性鼻炎|J30.400|有,慢性鼻窦炎|J32.900|有,脑梗死|I63.900|有
+
+> 乳房恶性肿瘤个人史|Z85.300|有,手术后恶性肿瘤化学治疗|Z51.102|有
+
+> 腹股沟斜疝|K40.901|有
+
+从上可以看处，单个患者的诊断可能是一个，也可能是多个，我们一般将第一个诊断作为该患者的疾病分类依据，同时可以根据是否有多个诊断来判断该患者是否共病（患有多种疾病）。
+
+1. 疾病诊断拆分
+
+可通过下面stata程序实现：
+
+```{stata,eval = FALSE,collapse = TRUE}
+***********************************************************
+* 1. 清理环境并导入数据
+***********************************************************
+clear all
+
+* 读取 Excel 文件，假设第一行为列名
+import excel "C:\Users\asus\Desktop\test\stata\ICD-10\allclean.xlsx", ///
+    firstrow case(lower) clear
+* 注意：
+*  - firstrow 表示将第一行作为变量名
+*  - case(lower) 将变量名转换为小写，避免中文或大小写冲突
+*  - 如果您的表格存在中文列名，可能需要手动 rename
+
+***********************************************************
+* 2. 处理、提取与分类: 以“出院诊断”列为例
+***********************************************************
+
+*---------------------------------------------------------
+* (可选) 如果数据集中 出院诊断 是中文列名，且您想要改成 disease：
+gen disease = 出院诊断
+*---------------------------------------------------------
+
+// 对disease进行拆分
+* 1. 按 | 分隔 disease 列，生成多个新变量
+split disease, parse("|") generate(disease_part)
+ 
+// 提取第一个 ICD 编码
+* 2. 提取第二部分（part2）作为 icd10，使用正则表达式剔除多余编码
+* 保留 disease_part2 的前7个字符作为 icd10，形如 C15.900
+gen icd10 = substr(disease_part2, 1, 7)
+gen icd_com = substr(disease_part4, 1, 7)
+* 去除前后的空格
+replace icd10 = trim(icd10)
+
+* 3. 删除所有拆分部分
+drop disease_part1-disease_part55
+
+* 4. 检查结果
+list disease icd10 in 1/10
+```
+
+2. 按 ICD 数量判断是否共病
+
+```{stata,eval = FALSE,collapse = TRUE}
+***************************************
+* 按 ICD 数量判断是否共病
+***************************************
+gen comorbidity = 0  // 初始值为 0
+
+replace comorbidity = 1 if !missing(icd10) & !missing(icd_com)  
+// 如果ICD10和ICD_com都不为空，则赋值为1
+list icd10 icd_com comorbidity in 1/10  
+// 查看前10行的数据
+```
+
+### 疾病分类
+
+按照ICD-10（International Classification of Diseases）进行分类与赋值.
+
+1. ICD-10
+
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
+icd_data <- tibble::tribble(
+  ~"章", ~"块", ~"标题",
+  "I", "A00-B99", "某些传染病和寄生虫病",
+  "II", "C00-D48", "肿瘤",
+  "III", "D50-D89", "血液及造血器官疾病和某些涉及免疫系统的疾患",
+  "IV", "E00-E90", "内分泌，营养和代谢疾病",
+  "V", "F00-F99", "精神和行为疾患",
+  "VI", "G00-G99", "神经系统疾病",
+  "VII", "H00-H59", "眼和附器疾病",
+  "VIII", "H60-H95", "耳和乳突疾病",
+  "IX", "I00-I99", "循环系统疾病",
+  "X", "J00-J99", "呼吸系统疾病",
+  "XI", "K00-K93", "消化系统疾病",
+  "XII", "L00-L99", "皮肤和皮下组织疾病",
+  "XIII", "M00-M99", "肌肉骨骼系统和结缔组织疾病",
+  "XIV", "N00-N99", "泌尿生殖系统疾病",
+  "XV", "O00-O99", "妊娠、分娩和产褥期",
+  "XVI", "P00-P96", "起源于围产期的某些情况",
+  "XVII", "Q00-Q99", "先天畸形、变形和染色体异常",
+  "XVIII", "R00-R99", "症状、体征和临床与实验室异常所见，不可归类在他处者",
+  "XIX", "S00-T98", "损伤、中毒和外因的某些其他后果",
+  "XX", "V01-Y98", "疾病和死亡的外因",
+  "XXI", "Z00-Z99", "影响健康状态和与保健机构接触的因素",
+  "XXII", "U00-U99", "特殊目的代码"
+)
+
+knitr::kable(icd_data, caption = "ICD 分类章节")
+```
+
+关于 ICD-10 的更多信息请查看：<https://zh.wikipedia.org/wiki/ICD-10>、<https://zh.wikipedia.org/wiki/ICD-10>
+
+2. 截取变量
+
+```{stata,eval = FALSE,collapse = TRUE}
+***************************************
+* 按 ICD 编码生成截取变量
+***************************************
+
+* 如果 icd10 是数值型，转换为字符串型
+tostring icd10, replace  
+
+* 检查并创建 icd_3c 变量
+gen icd_3c = ""   // 如果 icd_3c 不存在，创建一个空的字符串变量
+
+* icd_3c:：截取 ICD 编码的前三位并赋值给 icd_3c
+replace icd_3c = substr(icd10, 1, 3)
+
+* 如果 icd_3c 是数值型，转换为字符串型
+tostring icd_3c, replace 
+
+* 创建 icd_str1 变量
+gen icd_str1 = ""
+
+* icd_str1: ICD 的编码首位
+replace icd_str1 = substr(icd10,1,1)
+
+* 如果 icd_str1 是数值型，转换为字符串型
+tostring icd_str1, replace 
+
+* 使用 trim() 来去除空格
+replace icd_str1 = trim(icd_str1)
+
+* 查看 icd_str1 的数据类型
+describe icd_str1
+```
+
+3. 按照 ICD-10 编码进行分类
+
+```{stata,eval = FALSE,collapse = TRUE}
+***************************************
+* 按照ICD编码归为22类
+***************************************
+
+* 创建icd分类变量：icd_chapter
+gen icd_chapter = "" 
+
+// 为icd_chapter赋值
+
+replace icd_chapter=1 if icd_str1=="A"|icd_str1=="B"
+replace icd_chapter=2 if icd_str1=="C"|(icd_3c>="D00"&icd_3c<="D48")
+replace icd_chapter=3 if icd_3c>="D50"&icd_3c<="D89"
+replace icd_chapter=4 if icd_3c>="E00"&icd_3c<="E90"
+replace icd_chapter=5 if icd_3c>="F00"&icd_3c<="F99"
+replace icd_chapter=6 if icd_3c>="G00"&icd_3c<="G99"
+replace icd_chapter=7 if icd_3c>="H00"&icd_3c<="H59"
+replace icd_chapter=8 if icd_3c>="H60"&icd_3c<="H99"
+replace icd_chapter=9 if icd_str1=="I"
+replace icd_chapter=10 if icd_str1=="J"
+replace icd_chapter=11 if icd_str1=="K"
+replace icd_chapter=12 if icd_str1=="L"
+replace icd_chapter=13 if icd_str1=="M"
+replace icd_chapter=14 if icd_str1=="N"
+replace icd_chapter=15 if icd_str1=="O"
+replace icd_chapter=16 if icd_str1=="P"
+replace icd_chapter=17 if icd_str1=="Q"
+replace icd_chapter=18 if icd_str1=="R"
+replace icd_chapter=19 if icd_str1=="S"| icd_str1=="T"
+replace icd_chapter=20 if icd_str1=="V"| icd_str1=="Y"
+replace icd_chapter=21 if icd_str1=="Z"
+replace icd_chapter=22 if icd_str1=="U"
+replace icd_chapter=20 if icd_str1=="V"| icd_str1=="Y"|icd_str1=="X"|icd_str1=="W"
+replace icd_chapter=21 if icd_str1=="Z"| substr(trim(icd10),1,2)=="WW"
+replace icd_chapter=22 if icd_str1=="U"
+```
+
+4. 报错
+你可能会遇到如下报错：
+
+```{stata,eval = FALSE,collapse = TRUE}
+* 为icd_chapter赋值
+. replace icd_chapter = 1 if icd_str1 == "A" | icd_str1 == "B"
+type mismatch
+r(109);
+```
+
+这个问题花了很多时间寻找解决方案，但是实际上它“真的”只是一个小问题，然而很难想到。
+报错的原因是“type mismatch”，这是因为在运行`replace icd_chapter=1`时，给`icd_chapter`赋值的数据类型是`1`，这是数值型变量，因此只要让`icd_chapter`可以写入数值变量就可以。
+
+```{stata,eval = FALSE,collapse = TRUE}
+* 创建icd分类变量：icd_chapter
+gen icd_chapter = "" 
+
+* 字符转换为数值
+destring icd_chapter,replace
+```
+
+5. 保存数据
+
+```{stata,eval = FALSE,collapse = TRUE}
+*导出为 Stata 格式
+save "C:\Data\ICD-result.dta", replace
+```
+
+
