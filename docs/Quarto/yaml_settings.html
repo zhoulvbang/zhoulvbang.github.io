@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>YAML设置 – 医学统计学笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Quarto/quarto-intro.html" rel="prev">
+<link href="../images/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-471db41ce322a552900897f16bd8eadd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-39599dd41c217de25ded3edcfc388f1c.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G2HZEXHNCE"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-G2HZEXHNCE', { 'anonymize_ip': true});
+</script><script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "classic",
+  "openSidebar": false,
+  "showHighlights": "always",
+  "enableExperimentalNewNoteButton": true
+}
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<meta property="og:title" content="YAML设置 – 医学统计学笔记">
+<meta property="og:description" content="This is a Note site.">
+<meta property="og:image" content="www.lazyzhou.cn/Med-Stat-Notes/Quarto/logo.png">
+<meta property="og:site_name" content="医学统计学笔记">
+<meta name="twitter:title" content="YAML设置 – 医学统计学笔记">
+<meta name="twitter:description" content="This is a Note site.">
+<meta name="twitter:image" content="www.lazyzhou.cn/Med-Stat-Notes/Quarto/images/截屏2023-11-22 20.30.02.png">
+<meta name="twitter:image-height" content="1368">
+<meta name="twitter:image-width" content="2546">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">医学统计学笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learn</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">
+<li>
+    <a class="dropdown-item" href="../Learn/Basic/00-basic.html">
+ <span class="dropdown-text">Basic</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guide" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guide</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guide">
+<li>
+    <a class="dropdown-item" href="../Guide/Guide-intro.html">
+ <span class="dropdown-text">Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Guide/Python/Python-intro.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Guide/R/R-intro.html">
+ <span class="dropdown-text">R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Guide/SAS/SAS-intro.html">
+ <span class="dropdown-text">SAS</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-quarto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Quarto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-quarto">
+<li>
+    <a class="dropdown-item" href="../Quarto/quarto-intro.html">
+ <span class="dropdown-text">Intro</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../navbar/book.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/zhoulvbang" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Quarto/quarto-intro.html">Quarto introduction</a></li><li class="breadcrumb-item"><a href="../Quarto/yaml_settings.html">YAML设置</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">主页</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Learn/Basic/00-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">医学统计学基础</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Learn/Basic/00-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">医学统计学基础</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Learn/Basic/01-preview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preview</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Guide/Guide-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">统计软件使用指南</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Guide/R/R-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Guide/R/R-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R install</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Guide/R/2025-02-22-CLHLS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CLHLS Data Analysis by R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Guide/Python/Python-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Guide/Python/2025-02-20-Medical-expenses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">用Python处理一份卫生费用数据</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Guide/SAS/SAS-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SAS introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Guide/SAS/SAS-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SAS Install</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Guide/SAS/2025-02-16-CLHLS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">使用SAS处理CLHLS数据</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Quarto/quarto-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Quarto/yaml_settings.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">YAML设置</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#sec-project_setting" id="toc-sec-project_setting" class="nav-link active" data-scroll-target="#sec-project_setting"><span class="header-section-number">1</span> <code>project</code>设置</a></li>
+  <li>
+<a href="#%E6%A0%87%E9%A2%98%E4%BD%9C%E8%80%85%E6%97%A5%E6%9C%9F%E4%BF%A1%E6%81%AF" id="toc-标题作者日期信息" class="nav-link" data-scroll-target="#%E6%A0%87%E9%A2%98%E4%BD%9C%E8%80%85%E6%97%A5%E6%9C%9F%E4%BF%A1%E6%81%AF"><span class="header-section-number">2</span> 标题/作者/日期信息</a>
+  <ul class="collapse">
+<li><a href="#sec-dateformat" id="toc-sec-dateformat" class="nav-link" data-scroll-target="#sec-dateformat"><span class="header-section-number">2.1</span> <code>date-format</code>的设置</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-theme" id="toc-sec-theme" class="nav-link" data-scroll-target="#sec-theme"><span class="header-section-number">3</span> <code>theme</code>主题设置</a></li>
+  <li><a href="#sec-toc" id="toc-sec-toc" class="nav-link" data-scroll-target="#sec-toc"><span class="header-section-number">4</span> <code>toc</code>目录设置</a></li>
+  <li><a href="#sec-number_sections" id="toc-sec-number_sections" class="nav-link" data-scroll-target="#sec-number_sections"><span class="header-section-number">5</span> <code>number-sections</code>标题编号设置</a></li>
+  <li><a href="#%E6%8E%92%E7%89%88%E8%AE%BE%E7%BD%AE" id="toc-排版设置" class="nav-link" data-scroll-target="#%E6%8E%92%E7%89%88%E8%AE%BE%E7%BD%AE"><span class="header-section-number">6</span> 排版设置</a></li>
+  <li><a href="#execute%E4%BB%A3%E7%A0%81%E5%9D%97%E6%89%A7%E8%A1%8C%E8%AE%BE%E7%BD%AE" id="toc-execute代码块执行设置" class="nav-link" data-scroll-target="#execute%E4%BB%A3%E7%A0%81%E5%9D%97%E6%89%A7%E8%A1%8C%E8%AE%BE%E7%BD%AE"><span class="header-section-number">7</span> <code>execute</code>代码块执行设置</a></li>
+  <li><a href="#crossref%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E8%AE%BE%E7%BD%AE" id="toc-crossref交叉引用设置" class="nav-link" data-scroll-target="#crossref%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E8%AE%BE%E7%BD%AE"><span class="header-section-number">8</span> <code>crossref</code>交叉引用设置</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E8%AE%BE%E7%BD%AE" id="toc-参考文献设置" class="nav-link" data-scroll-target="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E8%AE%BE%E7%BD%AE"><span class="header-section-number">9</span> 参考文献设置</a></li>
+  <li>
+<a href="#format%E7%BC%96%E8%AF%91%E8%AE%BE%E7%BD%AE" id="toc-format编译设置" class="nav-link" data-scroll-target="#format%E7%BC%96%E8%AF%91%E8%AE%BE%E7%BD%AE"><span class="header-section-number">10</span> <code>format</code>编译设置</a>
+  <ul class="collapse">
+<li><a href="#%E7%BC%96%E8%AF%91html" id="toc-编译html" class="nav-link" data-scroll-target="#%E7%BC%96%E8%AF%91html"><span class="header-section-number">10.1</span> 编译HTML</a></li>
+  <li><a href="#sec-github-markdown" id="toc-sec-github-markdown" class="nav-link" data-scroll-target="#sec-github-markdown"><span class="header-section-number">10.2</span> 编译GitHub Flavored Markdown（GFM）</a></li>
+  <li><a href="#%E7%BC%96%E8%AF%91pdf" id="toc-编译pdf" class="nav-link" data-scroll-target="#%E7%BC%96%E8%AF%91pdf"><span class="header-section-number">10.3</span> 编译PDF</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/blob/main/Quarto/yaml_settings.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Quarto/quarto-intro.html">Quarto introduction</a></li><li class="breadcrumb-item"><a href="../Quarto/yaml_settings.html">YAML设置</a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">YAML设置</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p><strong>Quarto主要由三大部分组成：metadata, text, 和 code</strong>。其中metadata是文档开头写在”—“之间的句子，它采用的是<a href="https://en.wikipedia.org/wiki/YAML">YAML语法</a>，所以有时候也被叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto文档的各种属性，比如编译文件类型、主题、代码块的执行行为以及目录等。<strong>在</strong>YAML metadata<strong>中采用正确的缩进十分重要</strong>。</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><a href="https://images.datacamp.com/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf">Quarto Cheat sheet</a></p>
+</div>
+</div>
+</div>
+<p><img src="images/截屏2023-11-22 20.30.02.png" class="img-fluid"></p>
+<section id="sec-project_setting" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> <code>project</code>设置</h1>
+<p><code>project</code>在编写<strong>Quarto Book</strong>或者<strong>Quarto Websites</strong>时使用，因为要创建这些类型的Quarto项目需要通过新建一个Quarto Project来进行，因此YAML中的<code>project</code>项就定义了项目的类型是Quarto Book还是Quarto Websites，以及其他项目的基本设定。并且这些类型的Quarto项目会在根目录中生成一个”<strong>_quarto.yml</strong>”文件，对于YAML的配置在这个独立的文件中进行，从而将项目内的多个.qmd文档合并编译成一个Quarto Book或者Quarto Websites。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> book</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> <span class="st">"docs"</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  execute<span class="sc">-</span>dir<span class="sc">:</span> project </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<p><code>project</code>：项目类型。定义了项目编译后的文档类型，包括”default”, “<strong>website</strong>”（Quarto Websites）和”<strong>book</strong>”（Quarto Book）。这里我们在新建项目时选择了Quarto Books，所以这里自动填写了”books”。</p>
+<p><img src="images/截屏2023-11-22 19.34.34.png" class="img-fluid" width="389"></p>
+</li>
+<li><p><code>output-dir</code>：输出文件夹。编译后的HTML文件、PDF文件以及运行code chunk后产生的图像、数据等的输出文件夹。上面的例子中将输出文件夹指定为”docs”文件夹可以方便将输出的HTML文件通过GitHub Pages发布。</p></li>
+<li><p><code>execute-dir</code>：<strong>在编译时</strong>，各个qmd文件内的code chunk脚本运行的根目录，默认是”file”，即当前qmd文<strong>档所在目录</strong>，可设置为 “<strong>project</strong>”，这样在编译过程中执行代码块时会将运行根目录设置为项目根目录。</p></li>
+</ul></section><section id="标题作者日期信息" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> 标题/作者/日期信息</h1>
+<p>对于HTML的编译，这些信息会展示在文档的开头部分。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Quarto</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>subtitle<span class="sc">:</span> R Markdown</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> username</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="dv">2025-02-22</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>date<span class="sc">-</span>modified<span class="sc">:</span> now</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>date<span class="sc">-</span>format<span class="sc">:</span> <span class="st">"YYYY[年]M[月]D[日] HH:mm"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>author<span class="sc">-</span>title<span class="sc">:</span> 作者</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>published<span class="sc">-</span>title<span class="sc">:</span> 写作日期</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>title</code>：标题。</p></li>
+<li><p><code>subtitle</code>：副标题。在标题下方以较小字号展示。</p></li>
+<li><p><code>author</code>：作者姓名。</p></li>
+<li><p><code>author-title</code>：作者栏的标签。默认标签为”AUTHOR”</p></li>
+<li><p><code>date</code>：文档发行日期。日期既可以手动添加，如”2023/11/10”，也可以通过<code>now</code>（输出样式：2023年11月11日 19:01）或<code>today</code>（输出样式：2023年11月11日）自动生成日期。</p></li>
+<li><p><code>date-modified</code>：文档的修改日期。</p></li>
+<li><p><code>date-format</code>：日期格式。</p></li>
+<li><p><code>published-title</code>：修改<code>date</code>的标签，默认是”PUBLISHED DATE”。</p></li>
+</ul>
+<section id="sec-dateformat" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="sec-dateformat">
+<span class="header-section-number">2.1</span> <code>date-format</code>的设置</h2>
+<p><code>date-format</code>通过以下关键词来定义日期格式：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 52%">
+<col style="width: 27%">
+</colgroup>
+<thead><tr class="header">
+<th>Style</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>full</code></td>
+<td>A full date that includes the weekday name</td>
+<td>Monday, March 7, 2005</td>
+</tr>
+<tr class="even">
+<td><code>long</code></td>
+<td>A long date that includes a wide month name</td>
+<td>March 7, 2005</td>
+</tr>
+<tr class="odd">
+<td><code>medium</code></td>
+<td>A medium date</td>
+<td>Mar 7, 2005</td>
+</tr>
+<tr class="even">
+<td><code>short</code></td>
+<td>A short date with a numeric month</td>
+<td>3/7/05</td>
+</tr>
+<tr class="odd">
+<td><code>iso</code></td>
+<td>A short date in ISO format</td>
+<td>2005-03-07</td>
+</tr>
+</tbody>
+</table>
+<p>也可以通过以下语法更加灵活的定义日期格式：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 50%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>ormat String</strong></th>
+<th><strong>Output</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>YY</code></td>
+<td>18</td>
+<td>Two-digit year</td>
+</tr>
+<tr class="even">
+<td><code>YYYY</code></td>
+<td>2018</td>
+<td>四位数年份</td>
+</tr>
+<tr class="odd">
+<td><code>M</code></td>
+<td>1-12</td>
+<td>The month, beginning at 1</td>
+</tr>
+<tr class="even">
+<td><code>MM</code></td>
+<td>01-12</td>
+<td>两位数月份</td>
+</tr>
+<tr class="odd">
+<td><code>MMM</code></td>
+<td>Jan-Dec</td>
+<td>The abbreviated month name</td>
+</tr>
+<tr class="even">
+<td><code>MMMM</code></td>
+<td>January-December</td>
+<td>The full month name</td>
+</tr>
+<tr class="odd">
+<td><code>D</code></td>
+<td>1-31</td>
+<td>The day of the month</td>
+</tr>
+<tr class="even">
+<td><code>DD</code></td>
+<td>01-31</td>
+<td>两位数日期</td>
+</tr>
+<tr class="odd">
+<td><code>d</code></td>
+<td>0-6</td>
+<td>The day of the week, with Sunday as 0</td>
+</tr>
+<tr class="even">
+<td><code>dd</code></td>
+<td>Su-Sa</td>
+<td>The min name of the day of the week</td>
+</tr>
+<tr class="odd">
+<td><code>ddd</code></td>
+<td>Sun-Sat</td>
+<td>The short name of the day of the week</td>
+</tr>
+<tr class="even">
+<td><code>dddd</code></td>
+<td>Sunday-Saturday</td>
+<td>The name of the day of the week</td>
+</tr>
+<tr class="odd">
+<td><code>H</code></td>
+<td>0-23</td>
+<td>The hour</td>
+</tr>
+<tr class="even">
+<td><code>HH</code></td>
+<td>00-23</td>
+<td>两位数小时，24小时制</td>
+</tr>
+<tr class="odd">
+<td><code>h</code></td>
+<td>1-12</td>
+<td>The hour, 12-hour clock</td>
+</tr>
+<tr class="even">
+<td><code>hh</code></td>
+<td>01-12</td>
+<td>The hour, 12-hour clock, 2-digits</td>
+</tr>
+<tr class="odd">
+<td><code>m</code></td>
+<td>0-59</td>
+<td>The minute</td>
+</tr>
+<tr class="even">
+<td><code>mm</code></td>
+<td>00-59</td>
+<td>两位数分钟</td>
+</tr>
+<tr class="odd">
+<td><code>s</code></td>
+<td>0-59</td>
+<td>The second</td>
+</tr>
+<tr class="even">
+<td><code>ss</code></td>
+<td>00-59</td>
+<td>The second, 2-digits</td>
+</tr>
+<tr class="odd">
+<td><code>SSS</code></td>
+<td>000-999</td>
+<td>The millisecond, 3-digits</td>
+</tr>
+<tr class="even">
+<td><code>Z</code></td>
+<td>+05:00</td>
+<td>The offset from UTC, ±HH:mm</td>
+</tr>
+<tr class="odd">
+<td><code>A</code></td>
+<td>AM PM</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>a</code></td>
+<td>am pm</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>Do</code></td>
+<td>1st 2nd … 31st</td>
+<td>Day of Month with ordinal</td>
+</tr>
+</tbody>
+</table>
+<p>可以通过”[]“添加自定义字符。通过这些语法，可以定制符合中文语法的日期格式，如：<code>date-format: "YYYY[年]M[月]D[日] HH:mm"</code></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>关于日期的详细指南，详见：<a href="https://quarto.org/docs/reference/dates.html" class="uri">https://quarto.org/docs/reference/dates.html</a>。</p>
+</div>
+</div>
+</section></section><section id="sec-theme" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> <code>theme</code>主题设置</h1>
+<p><code>theme</code>定义了编译文档的主题。可以直接调用Quarto内置的Bootswatch主题，如”default”、“cerulean”和”cosmo”等，也可以通过Sassy Cascading Style Sheets (SCSS)文件来自定义主题。<code>theme</code>参数既可以在YAML中直接定义，也可以在不同的<code>format</code>内定义，这样可以对不同的编译格式应用不同的主题。关于Quarto主题的详细指南，参考<a href="https://quarto.org/docs/output-formats/html-themes.html">Quarto Guide</a>。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> flatly</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Quarto的HTML文档默认使用Bootstrap 5样式输出（<code>theme: default</code>）。Quarto内置了来自<a href="https://bootswatch.com">Bootswatch</a>项目的25个主题。下面列出了可用的主题。关于这些主题的介绍详见：<a href="https://bootswatch.com" class="uri">https://bootswatch.com</a>。</p>
+<p><img src="images/screenshot_2023-11-08 17.58.05.png" class="img-fluid" width="334"></p>
+<p>个人认为比较美观、清晰的主题有：<strong>Cosmo</strong>、<strong>Flatly</strong>、<strong>Lux</strong>和<strong>Darkly。可以通过</strong><code>light</code>和<code>dark</code><strong>分别设置一套亮色主题和一套深色主题，如：</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>这样，在输出的HTML网页的右上角会出现一个亮色/深色模式的切换开关。</p>
+</section><section id="sec-toc" class="level1" data-number="4"><h1 data-number="4">
+<span class="header-section-number">4</span> <code>toc</code>目录设置</h1>
+<p>和<code>theme</code>一样<code>toc</code>同样可以在YAML中直接定义，也可以在不同的<code>format</code>内定义。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">:</span> true</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>title<span class="sc">:</span> Contents</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">2</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>expand<span class="sc">:</span> <span class="dv">2</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>location<span class="sc">:</span> left</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>toc</code>：是否显示目录。</p></li>
+<li><p><code>toc-title</code>：目录的标题。</p></li>
+<li><p><code>toc-depth</code>：设置目录显示的最低层级（默认为显示到3级标题）。</p></li>
+<li><p><code>toc-expand</code>：在一开始目录显示到多少级，默认显示到一级标题。当向下浏览内容时目录会自动展开到<code>toc-depth</code>所设置的层级。设置为<code>true</code>时，则在一开始就展开所有目录；设置为<code>false</code>则在一开始折叠所有目录。</p></li>
+<li><p><code>toc-location</code>：设置目录的位置。默认在右侧（<code>right</code>）,可以设置为<code>left</code>或<code>body</code>（在文稿最开头显示）。</p></li>
+</ul></section><section id="sec-number_sections" class="level1" data-number="5"><h1 data-number="5">
+<span class="header-section-number">5</span> <code>number-sections</code>标题编号设置</h1>
+<p>和<code>theme</code>一样<code>number-sections</code>同样可以在YAML中直接定义，也可以在不同的<code>format</code>内定义。</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">number</span><span class="op">-</span><span class="va">sections</span><span class="op">:</span> <span class="va">true</span></span>
+<span><span class="va">number</span><span class="op">-</span><span class="va">depth</span><span class="op">:</span> <span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>number-sections</code>：设置为<code>true</code>时会给各级标题编号。默认为<code>false</code>。</p></li>
+<li><p><code>number-depth</code>：编号的最低标题层级。默认给所有级别的标题编号。</p></li>
+<li><p><code>{.unnumbered}</code>：如果想要某一个标题不编号，则把这行命令粘贴到该标题后面。如”第三章{.unnumbered}“。</p></li>
+<li><p><code>{.unlisted}</code>：将某个标题设置为不在目录中列出。如”第三章{.unlisted}“。如果想要某个标题既不编号也不在目录中列出就可以这样写：”标题{.unnumbered .unlisted}“。</p></li>
+</ul></section><section id="排版设置" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> 排版设置</h1>
+<p>主要定义了图/表标题的位置、参考文献/脚注的位置、页面大小和页边距等。可以在YAML中直接定义，也可以在不同的<code>format</code>内定义。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig<span class="sc">-</span>cap<span class="sc">-</span>location<span class="sc">:</span> bottom</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">-</span>cap<span class="sc">-</span>location<span class="sc">:</span> top</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>reference<span class="sc">-</span>location<span class="sc">:</span> margin </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>citation<span class="sc">-</span>location<span class="sc">:</span> document  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code>fig-cap-location</code>：图片标题的位置。默认在图片底部（<code>bottom</code>）。</li>
+<li>
+<code>tbl-cap-location</code>：表格标题的位置。默认在表格上方（<code>top</code>）。</li>
+<li>
+<code>reference-location</code>：脚注的默认展示位置。默认为文档最后 (<code>document</code>)。</li>
+<li>
+<code>citation-location</code>：参考文献的默认展示位置。默认为文档最后 (<code>document</code>)。</li>
+</ul>
+<div id="tbl-图表标题位置设置" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-图表标题位置设置-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: 图/表标题位置、参考文献/脚注的位置设置
+</figcaption><div aria-describedby="tbl-图表标题位置设置-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead><tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>reference-location</code></td>
+<td>Where to place footnotes. Defaults to&nbsp;<code>document</code>.<br>
+[<code>document</code>&nbsp;|&nbsp;<code>section</code>&nbsp;|&nbsp;<code>block</code>&nbsp;|&nbsp;<code>margin</code>&nbsp;]</td>
+</tr>
+<tr class="even">
+<td><code>citation-location</code></td>
+<td>Where to place citations. Defaults to&nbsp;<code>document</code>.<br>
+[<code>document</code>&nbsp;|&nbsp;<code>margin</code>&nbsp;]</td>
+</tr>
+<tr class="odd">
+<td><code>cap-location</code></td>
+<td>Where to place figure and table captions. Defaults to&nbsp;<code>bottom</code>&nbsp;for figures and&nbsp;<code>top</code>&nbsp;for tables.&nbsp;| [<code>top</code>&nbsp;|&nbsp;<code>bottom</code>&nbsp;|&nbsp;<code>margin</code>]</td>
+</tr>
+<tr class="even">
+<td><code>fig-cap-location</code></td>
+<td>Where to place figure captions. Defaults to&nbsp;<code>bottom</code>.<br>
+[<code>top</code>&nbsp;|&nbsp;<code>bottom</code>&nbsp;|&nbsp;<code>margin</code>]</td>
+</tr>
+<tr class="odd">
+<td><code>tbl-cap-location</code></td>
+<td>Where to place table captions. Defaults to&nbsp;<code>top</code>.<br>
+[<code>top</code>&nbsp;|&nbsp;<code>bottom</code>&nbsp;|&nbsp;<code>margin</code>]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section><section id="execute代码块执行设置" class="level1" data-number="7"><h1 data-number="7">
+<span class="header-section-number">7</span> <code>execute</code>代码块执行设置</h1>
+<p><code>execute</code>用来指定代码块的执行行为，例如是否运行、是否显示警告信息和是否缓存运行结果等。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      eval<span class="sc">:</span> false</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      warning<span class="sc">:</span> false</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      cache<span class="sc">:</span> true</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>eval</code>：设置为<code>false</code>时<strong>只显示代码，不运行</strong>。默认为<code>true</code>。</p></li>
+<li><p><code>echo</code>：设置为<code>false</code>时在输出文件中<strong>不显示代码，仅显示代码的运行结果</strong>。设置为<code>fenced</code>，会将代码块的设置，即”#|“符号后的内容，也展示出来。<a href="#fig-%E7%AE%B1%E5%9E%8B%E5%9B%BE" class="quarto-xref">Figure&nbsp;1</a> 这个代码块就用了<code>echo: fenced</code>这个设定，可以看一下效果。默认为<code>true</code>。</p></li>
+<li><p><code>output</code>：设置为<code>false</code>时，<strong>只运行代码不显示运行结果</strong>。默认为<code>true</code>。</p></li>
+<li><p><code>warning</code>：是否显示代码运行的警告信息。默认为<code>true</code>。</p></li>
+<li><p><code>cache</code>：是否开启运算结果缓存。默认为<code>false</code>。如果设置为<code>true</code>，就会在编译时将源代码的运算结果保存到文件目录中后缀为”_cache”的文件夹中。这样在重新编译同一个文档时会加快编译速度。</p></li>
+</ul>
+<p>除了对代码执行行为的全局设置，我们也可以针对每个代码块设置其执行行为。许多参数和YAML中的语法相似，只不过需要在每个参数前加上”<strong>#|</strong>”符号。如：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-箱型图</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: 箱型图</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(1:100)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-箱型图" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-箱型图-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="yaml_settings_files/figure-html/fig-箱型图-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-箱型图-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 箱型图
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>有时候当一个代码块需要读取一个较大的对象时（如包含大量细胞的Seurat对象），尽管运行该代码块不会报错，但是在编译时可能会出现如下报错：</p>
+<pre><code>long vectors not supported yet: /Volumes/Builds/R4/R-4.3.2/src/main/connections.c:6093</code></pre>
+<p>这时我们可以通过添加<code>#| cache-lazy: false</code>命令，<a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache-lazy.html">取消延迟缓存</a>来解决这个问题：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| cache-lazy: false</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(Seurat)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">seurat_integrated &lt;- readRDS("output/scRNA-seq_online/seurat_clustered.rds")</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section><section id="crossref交叉引用设置" class="level1" data-number="8"><h1 data-number="8">
+<span class="header-section-number">8</span> <code>crossref</code>交叉引用设置</h1>
+<p><code>crossref</code>定义了图/表的标签、默认引用样式、编号类型等。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>crossref<span class="sc">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>title<span class="sc">:</span> 图     </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>title<span class="sc">:</span> 表     </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">-</span>delim<span class="sc">:</span> <span class="st">"："</span>  </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>prefix<span class="sc">:</span> 图   </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>prefix<span class="sc">:</span> 表    </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  sec<span class="sc">-</span>prefix<span class="sc">:</span> 章节 </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  ref<span class="sc">-</span>hyperlink<span class="sc">:</span> true </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>labels<span class="sc">:</span> arabic    </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>labels<span class="sc">:</span> arabic   </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  subref<span class="sc">-</span>labels<span class="sc">:</span> alpha A </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>fig-title</code>: 图的默认标签文字（默认是”Figure”）</p></li>
+<li><p><code>tbl-title</code>: 表的默认标签文字（默认是”Table”）</p></li>
+<li><p><code>title-delim</code>: 图、表标签文字和后面的图、表标题之间的连接符（默认是”:“）</p></li>
+<li><p><code>fig-prefix</code>: 图的默认引用样式（默认是”Figure”）</p></li>
+<li><p><code>tbl-prefix</code>: 表的默认引用样式（默认是”Table”）</p></li>
+<li><p><code>sec-prefix</code>: 章节的默认引用样式（默认是”Section”）</p></li>
+<li><p><code>ref-hyperlink</code>: 是否为交叉引用加上内部链接（默认是”true”）</p></li>
+<li><p><code>fig-labels</code>: 图片的编号类型（默认是阿拉伯数字：arabic)</p></li>
+<li><p><code>tbl-labels</code>: 表格的编号类型（默认是阿拉伯数字：arabic）</p></li>
+<li><p><code>subref-labels</code>: 次级引用编号类型，如组图中的小图（默认是小写字母：alpha a）</p></li>
+</ul>
+<p>可用的编号类型包括：</p>
+<ul>
+<li><p><code>arabic</code>&nbsp;(1, 2, 3)</p></li>
+<li><p><code>roman</code>&nbsp;(I, II, III, IV)</p></li>
+<li><p><code>roman i</code>&nbsp;(i, ii, iii, iv)</p></li>
+<li><p><code>alpha x</code>&nbsp;(start from letter ‘x’)</p></li>
+<li><p><code>alpha X</code>&nbsp;(start from letter ‘X’)</p></li>
+</ul></section><section id="参考文献设置" class="level1" data-number="9"><h1 data-number="9">
+<span class="header-section-number">9</span> 参考文献设置</h1>
+<p>只要在编辑qmd文档时插入了参考文献，YAML中会新增参考文献的配置选项：<code>bibliography: references.bib</code>。同时根目录下会生成一个名为”references.bib”的参考文献配置文件。该配置文件包括了qmd文档中所插入的所有参考文献的列表。以BibTeX/Citation风格语言编写。<code>bibliography</code>指定了这个参考文献配置文件所在的路径。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> references.bib</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="format编译设置" class="level1" data-number="10"><h1 data-number="10">
+<span class="header-section-number">10</span> <code>format</code>编译设置</h1>
+<p><code>format</code>定义了qmd文档编译后的文件类型，例如：“html”, “pdf”, “docx”, “odt”, “pptx”, “revealjs”, “beamer”, “gfm”（GitHub风格的Markdown文档）, “commonmark”, “mediawiki”, “epub”, “ipynb”。不同的编译格式对应的子项设置各不相同，有些参数适用于某些格式但是在另一些格式中则无法兼容。所有支持的编译格式详见<a href="https://quarto.org/docs/output-formats/all-formats.html">Quarto官方文档</a>。下面的案例为编译HTML和GFM的常用设置。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  gfm<span class="sc">:</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    citation<span class="sc">-</span>location<span class="sc">:</span> document</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">-</span>file<span class="sc">:</span> <span class="st">"README.md"</span> </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>编译Quarto文档时，首先<a href="http://yihui.name/knitr/">knitr</a>将运行所有代码块，并创建一个新的markdown（.md）文档，其中包括源代码及其输出结果。接下来，生成的markdown文件经过<a href="http://pandoc.org/">pandoc</a>（RStudio内置了pandoc）处理后，被转换成HTML、PDF或者Word等我们需要的文档格式。RStudio封装了这些操作，当我们完成Quarto编辑，点击渲染时，就会完成上述过程。</p>
+<p><span class="smallcaps"><em>Quarto的渲染工作流</em></span></p>
+<p><img src="images/rstudio-qmd-how-it-works.png" class="img-fluid"></p>
+<section id="编译html" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="编译html">
+<span class="header-section-number">10.1</span> 编译HTML</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    embed<span class="sc">-</span>resources<span class="sc">:</span> false</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>tools<span class="sc">:</span> true</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">:</span> images<span class="sc">/</span>banner.jpg </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">-</span>color<span class="sc">:</span> <span class="st">"black"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>title<span class="sc">:</span> 目录</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>location<span class="sc">:</span> left</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">2</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>expand<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    anchor<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    link<span class="sc">-</span>external<span class="sc">-</span>icon<span class="sc">:</span> true</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    link<span class="sc">-</span>external<span class="sc">-</span>newwindow<span class="sc">:</span> true</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    df<span class="sc">-</span>print<span class="sc">:</span> kable </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>link<span class="sc">:</span> true</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>theme</code>：主题。同 <a href="#sec-theme" class="quarto-xref">Section&nbsp;3</a> 。</p></li>
+<li><p><code>embed-resources</code>：是否将所有源文件嵌入HTML文件以方便分享。默认为”false”。</p></li>
+<li><p><code>code-tools</code>：是否在网页右上角显示”&lt;code&gt;“按钮。点击该按钮可以看到Quarto文档的原始markdown代码。</p></li>
+<li>
+<p><code>title-block-banner</code>：标题横幅设置。<code>title-block-banner</code>有以下选项：</p>
+<ul>
+<li><p><code>true</code>：将标题以网页横幅的形式展示，样式为<code>them</code>中所选样式的默认样式。</p></li>
+<li><p>具体颜色：如<code>title-block-banner: "#003262"</code>。</p></li>
+<li><p>图片路径：如<code>title-block-banner: images/banner.jpeg</code>。</p></li>
+</ul>
+</li>
+<li><p><code>toc</code>相关设置：同 <a href="#sec-toc" class="quarto-xref">Section&nbsp;4</a> 。</p></li>
+<li><p><code>number-sections</code>、<code>number-depth</code>：同 <a href="#sec-number_sections" class="quarto-xref">Section&nbsp;5</a> 。</p></li>
+<li><p><code>anchor-sections</code>: 设置为<code>true</code>时，当鼠标移到各级标题上时会显示anchor link，方便我们复制直接定位到该标题的超链接。</p></li>
+<li><p><code>link-external-icon</code>：设置为<code>true</code>时会在外部链接上显示一个小图标。</p></li>
+<li><p><code>link-external-newwindow</code>：是否在新标签页打开外部链接。</p></li>
+<li><p><code>df-print</code>：表格输出样式</p></li>
+<li>
+<p><code>code-copy</code>：设置代码复制按钮：</p>
+<ul>
+<li><p><code>true</code>: 总是在代码块右上角显示代码复制按钮。</p></li>
+<li><p><code>false</code>: 隐藏代码复制按钮。</p></li>
+<li><p><code>hover</code>：（默认）当鼠标移过时显示代码复制按钮。</p></li>
+</ul>
+</li>
+<li><p><code>code-fold</code>: 是否折叠代码。</p></li>
+<li><p><code>code-link</code>: 是否自动为函数加上超链接。该功能基于<a href="https://downlit.r-lib.org/">downlit</a>包，可以自动为识别到的函数加上一个链接到官方文档的超链接。</p></li>
+</ul></section><section id="sec-github-markdown" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="sec-github-markdown">
+<span class="header-section-number">10.2</span> 编译GitHub Flavored Markdown（GFM）</h2>
+<p>我们可以将Quarto文档转换为GitHub风格的Markdown文档（GitHub Flavored Markdown，GFM）。这可以用来生成GitHub项目的README.md文档。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"My Project"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  gfm<span class="sc">:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    identifier<span class="sc">-</span>prefix<span class="sc">:</span> readme <span class="co"># 标识符</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># preview-mode: raw # 预览原始markdown</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    keep<span class="sc">-</span>yaml<span class="sc">:</span> true</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    citation<span class="sc">-</span>location<span class="sc">:</span> document</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">-</span>file<span class="sc">:</span> <span class="st">"README.md"</span> <span class="co"># 输出文档的文件名</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="编译pdf" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="编译pdf">
+<span class="header-section-number">10.3</span> 编译PDF</h2>
+<p>如果要在rmarkdown、bookdown中使用PDF输出功能， 可以在在R中安装tinytex扩展包并安装TinyTeX编译软件：</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tinytex'</span><span class="op">)</span></span>
+<span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>其中上面第一行命令安装R的tinytex扩展包， 第二行将下载LaTeX编译程序的服务器设置为清华大学tuna镜像站， 第三行安装LaTeX编译程序。</p>
+<p>如果安装成功， TinyTeX软件包在MS Windows系统中一般会安装在&nbsp;<code>C:\Users\用户名\AppData\Roaming\TinyTeX</code>目录中， 其中”用户名”应替换成系统当前用户名。 如果需要删除TinyTeX软件包， 只要直接删除那个子目录就可以。</p>
+<p>为了判断TinyTeX是否安装成功， 在RStudio中运行：</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/is_tinytex.html">is_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>结果应为<code>TRUE</code>, 出错或者结果为<code>FALSE</code>都说明安装不成功。</p>
+<p>当用户使用RMarkdown和tinytex包转换latex并编译为PDF时， 如果缺少某些latex宏包， tinytex会自动安装缺少的宏包。</p>
+
+
+<!-- -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("www\.lazyzhou\.cn\/Med-Stat-Notes");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><script src="https://giscus.app/client.js" data-repo="zhoulvbang/comments" data-repo-id="R_kgDON9RmWA" data-category="General" data-category-id="DIC_kwDON9RmWM4CnLUH" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../Quarto/quarto-intro.html" class="pagination-link" aria-label="Quarto introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quarto introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "YAML设置"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">      eval: false</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">      warning: false</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>**Quarto主要由三大部分组成：metadata, text, 和 code**。其中metadata是文档开头写在"---"之间的句子，它采用的是[YAML语法](https://en.wikipedia.org/wiki/YAML)，所以有时候也被叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto文档的各种属性，比如编译文件类型、主题、代码块的执行行为以及目录等。**在**YAML metadata**中采用正确的缩进十分重要**。</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip appearance="minimal"}</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto Cheat sheet</span><span class="co">](https://images.datacamp.com/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf)</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/截屏2023-11-22%2020.30.02.png)</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># `project`设置 {#sec-project_setting}</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="in">`project`</span>在编写**Quarto Book**或者**Quarto Websites**时使用，因为要创建这些类型的Quarto项目需要通过新建一个Quarto Project来进行，因此YAML中的`project`项就定义了项目的类型是Quarto Book还是Quarto Websites，以及其他项目的基本设定。并且这些类型的Quarto项目会在根目录中生成一个"**\_quarto.yml**"文件，对于YAML的配置在这个独立的文件中进行，从而将项目内的多个.qmd文档合并编译成一个Quarto Book或者Quarto Websites。</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> book</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> <span class="st">"docs"</span> </span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  execute<span class="sc">-</span>dir<span class="sc">:</span> project </span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`project`</span>：项目类型。定义了项目编译后的文档类型，包括"default", "**website**"（Quarto Websites）和"**book**"（Quarto Book）。这里我们在新建项目时选择了Quarto Books，所以这里自动填写了"books"。</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    <span class="al">![](images/截屏2023-11-22%2019.34.34.png)</span>{width="389"}</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`output-dir`</span>：输出文件夹。编译后的HTML文件、PDF文件以及运行code chunk后产生的图像、数据等的输出文件夹。上面的例子中将输出文件夹指定为"docs"文件夹可以方便将输出的HTML文件通过GitHub Pages发布。</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`execute-dir`</span>：**在编译时**，各个qmd文件内的code chunk脚本运行的根目录，默认是"file"，即当前qmd文**档所在目录**，可设置为 "**project**"，这样在编译过程中执行代码块时会将运行根目录设置为项目根目录。</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="fu"># 标题/作者/日期信息</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>对于HTML的编译，这些信息会展示在文档的开头部分。</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Quarto</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>subtitle<span class="sc">:</span> R Markdown</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> username</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="dv">2025-02-22</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>date<span class="sc">-</span>modified<span class="sc">:</span> now</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>date<span class="sc">-</span>format<span class="sc">:</span> <span class="st">"YYYY[年]M[月]D[日] HH:mm"</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>author<span class="sc">-</span>title<span class="sc">:</span> 作者</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>published<span class="sc">-</span>title<span class="sc">:</span> 写作日期</span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`title`</span>：标题。</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`subtitle`</span>：副标题。在标题下方以较小字号展示。</span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`author`</span>：作者姓名。</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`author-title`</span>：作者栏的标签。默认标签为"AUTHOR"</span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`date`</span>：文档发行日期。日期既可以手动添加，如"2023/11/10"，也可以通过<span class="in">`now`</span>（输出样式：2023年11月11日 19:01）或<span class="in">`today`</span>（输出样式：2023年11月11日）自动生成日期。</span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`date-modified`</span>：文档的修改日期。</span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`date-format`</span>：日期格式。</span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`published-title`</span>：修改<span class="in">`date`</span>的标签，默认是"PUBLISHED DATE"。</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## `date-format`的设置 {#sec-dateformat}</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a><span class="in">`date-format`</span>通过以下关键词来定义日期格式：</span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>| Style         | Description                                 | Example               |</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>+===============+=============================================+=======================+</span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>| <span class="in">`full`</span>        | A full date that includes the weekday name  | Monday, March 7, 2005 |</span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>| <span class="in">`long`</span>        | A long date that includes a wide month name | March 7, 2005         |</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>| <span class="in">`medium`</span>      | A medium date                               | Mar 7, 2005           |</span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a>| <span class="in">`short`</span>       | A short date with a numeric month           | 3/7/05                |</span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>| <span class="in">`iso`</span>         | A short date in ISO format                  | 2005-03-07            |</span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>+---------------+---------------------------------------------+-----------------------+</span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a>也可以通过以下语法更加灵活的定义日期格式：</span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a>| **ormat String** | **Output**       | **Description**                       |</span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a>+==================+==================+=======================================+</span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a>| <span class="in">`YY`</span>             | 18               | Two-digit year                        |</span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a>| <span class="in">`YYYY`</span>           | 2018             | 四位数年份                            |</span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a>| <span class="in">`M`</span>              | 1-12             | The month, beginning at 1             |</span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a>| <span class="in">`MM`</span>             | 01-12            | 两位数月份                            |</span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a>| <span class="in">`MMM`</span>            | Jan-Dec          | The abbreviated month name            |</span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>| <span class="in">`MMMM`</span>           | January-December | The full month name                   |</span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a>| <span class="in">`D`</span>              | 1-31             | The day of the month                  |</span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a>| <span class="in">`DD`</span>             | 01-31            | 两位数日期                            |</span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a>| <span class="in">`d`</span>              | 0-6              | The day of the week, with Sunday as 0 |</span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a>| <span class="in">`dd`</span>             | Su-Sa            | The min name of the day of the week   |</span>
+<span id="cb19-116"><a href="#cb19-116" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-117"><a href="#cb19-117" aria-hidden="true" tabindex="-1"></a>| <span class="in">`ddd`</span>            | Sun-Sat          | The short name of the day of the week |</span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a>| <span class="in">`dddd`</span>           | Sunday-Saturday  | The name of the day of the week       |</span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a>| <span class="in">`H`</span>              | 0-23             | The hour                              |</span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a>| <span class="in">`HH`</span>             | 00-23            | 两位数小时，24小时制                  |</span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a>| <span class="in">`h`</span>              | 1-12             | The hour, 12-hour clock               |</span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a>| <span class="in">`hh`</span>             | 01-12            | The hour, 12-hour clock, 2-digits     |</span>
+<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a>| <span class="in">`m`</span>              | 0-59             | The minute                            |</span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a>| <span class="in">`mm`</span>             | 00-59            | 两位数分钟                            |</span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a>| <span class="in">`s`</span>              | 0-59             | The second                            |</span>
+<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a>| <span class="in">`ss`</span>             | 00-59            | The second, 2-digits                  |</span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a>| <span class="in">`SSS`</span>            | 000-999          | The millisecond, 3-digits             |</span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a>| <span class="in">`Z`</span>              | +05:00           | The offset from UTC, ±HH:mm           |</span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-141"><a href="#cb19-141" aria-hidden="true" tabindex="-1"></a>| <span class="in">`A`</span>              | AM PM            |                                       |</span>
+<span id="cb19-142"><a href="#cb19-142" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a>| <span class="in">`a`</span>              | am pm            |                                       |</span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a>| <span class="in">`Do`</span>             | 1st 2nd ... 31st | Day of Month with ordinal             |</span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a>+------------------+------------------+---------------------------------------+</span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a>可以通过"<span class="sc">\[\]</span>"添加自定义字符。通过这些语法，可以定制符合中文语法的日期格式，如：<span class="in">`date-format: "YYYY[年]M[月]D[日] HH:mm"`</span></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a>关于日期的详细指南，详见：<span class="ot">&lt;https://quarto.org/docs/reference/dates.html&gt;</span>。</span>
+<span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-153"><a href="#cb19-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-154"><a href="#cb19-154" aria-hidden="true" tabindex="-1"></a><span class="fu"># `theme`主题设置 {#sec-theme}</span></span>
+<span id="cb19-155"><a href="#cb19-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a><span class="in">`theme`</span>定义了编译文档的主题。可以直接调用Quarto内置的Bootswatch主题，如"default"、"cerulean"和"cosmo"等，也可以通过Sassy Cascading Style Sheets (SCSS)文件来自定义主题。<span class="in">`theme`</span>参数既可以在YAML中直接定义，也可以在不同的<span class="in">`format`</span>内定义，这样可以对不同的编译格式应用不同的主题。关于Quarto主题的详细指南，参考<span class="co">[</span><span class="ot">Quarto Guide</span><span class="co">](https://quarto.org/docs/output-formats/html-themes.html)</span>。</span>
+<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> flatly</span>
+<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a>Quarto的HTML文档默认使用Bootstrap 5样式输出（<span class="in">`theme: default`</span>）。Quarto内置了来自<span class="co">[</span><span class="ot">Bootswatch</span><span class="co">](https://bootswatch.com)</span>项目的25个主题。下面列出了可用的主题。关于这些主题的介绍详见：<span class="ot">&lt;https://bootswatch.com&gt;</span>。</span>
+<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/screenshot_2023-11-08%2017.58.05.png)</span>{width="334"}</span>
+<span id="cb19-171"><a href="#cb19-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-172"><a href="#cb19-172" aria-hidden="true" tabindex="-1"></a>个人认为比较美观、清晰的主题有：**Cosmo**、**Flatly**、**Lux**和**Darkly。可以通过**`light`和`dark`**分别设置一套亮色主题和一套深色主题，如：**</span>
+<span id="cb19-173"><a href="#cb19-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span></span>
+<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly</span>
+<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly</span>
+<span id="cb19-183"><a href="#cb19-183" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-184"><a href="#cb19-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a>这样，在输出的HTML网页的右上角会出现一个亮色/深色模式的切换开关。</span>
+<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a><span class="fu"># `toc`目录设置 {#sec-toc}</span></span>
+<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a>和<span class="in">`theme`</span>一样<span class="in">`toc`</span>同样可以在YAML中直接定义，也可以在不同的<span class="in">`format`</span>内定义。</span>
+<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-195"><a href="#cb19-195" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-196"><a href="#cb19-196" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">:</span> true</span>
+<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>title<span class="sc">:</span> Contents</span>
+<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">2</span> </span>
+<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>expand<span class="sc">:</span> <span class="dv">2</span> </span>
+<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a>toc<span class="sc">-</span>location<span class="sc">:</span> left</span>
+<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-204"><a href="#cb19-204" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc`</span>：是否显示目录。</span>
+<span id="cb19-205"><a href="#cb19-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc-title`</span>：目录的标题。</span>
+<span id="cb19-207"><a href="#cb19-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-208"><a href="#cb19-208" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc-depth`</span>：设置目录显示的最低层级（默认为显示到3级标题）。</span>
+<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc-expand`</span>：在一开始目录显示到多少级，默认显示到一级标题。当向下浏览内容时目录会自动展开到<span class="in">`toc-depth`</span>所设置的层级。设置为<span class="in">`true`</span>时，则在一开始就展开所有目录；设置为<span class="in">`false`</span>则在一开始折叠所有目录。</span>
+<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc-location`</span>：设置目录的位置。默认在右侧（<span class="in">`right`</span>）,可以设置为<span class="in">`left`</span>或<span class="in">`body`</span>（在文稿最开头显示）。</span>
+<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a><span class="fu"># `number-sections`标题编号设置 {#sec-number_sections}</span></span>
+<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a>和<span class="in">`theme`</span>一样<span class="in">`number-sections`</span>同样可以在YAML中直接定义，也可以在不同的<span class="in">`format`</span>内定义。</span>
+<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-220"><a href="#cb19-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-221"><a href="#cb19-221" aria-hidden="true" tabindex="-1"></a>number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a>number<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb19-223"><a href="#cb19-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-224"><a href="#cb19-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`number-sections`</span>：设置为<span class="in">`true`</span>时会给各级标题编号。默认为<span class="in">`false`</span>。</span>
+<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`number-depth`</span>：编号的最低标题层级。默认给所有级别的标题编号。</span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`{.unnumbered}`</span>：如果想要某一个标题不编号，则把这行命令粘贴到该标题后面。如"第三章{.unnumbered}"。</span>
+<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`{.unlisted}`</span>：将某个标题设置为不在目录中列出。如"第三章{.unlisted}"。如果想要某个标题既不编号也不在目录中列出就可以这样写："标题{.unnumbered .unlisted}"。</span>
+<span id="cb19-232"><a href="#cb19-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-233"><a href="#cb19-233" aria-hidden="true" tabindex="-1"></a><span class="fu"># 排版设置</span></span>
+<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a>主要定义了图/表标题的位置、参考文献/脚注的位置、页面大小和页边距等。可以在YAML中直接定义，也可以在不同的<span class="in">`format`</span>内定义。</span>
+<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a>fig<span class="sc">-</span>cap<span class="sc">-</span>location<span class="sc">:</span> bottom</span>
+<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">-</span>cap<span class="sc">-</span>location<span class="sc">:</span> top</span>
+<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a>reference<span class="sc">-</span>location<span class="sc">:</span> margin </span>
+<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a>citation<span class="sc">-</span>location<span class="sc">:</span> document  </span>
+<span id="cb19-245"><a href="#cb19-245" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-246"><a href="#cb19-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`fig-cap-location`</span>：图片标题的位置。默认在图片底部（<span class="in">`bottom`</span>）。</span>
+<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tbl-cap-location`</span>：表格标题的位置。默认在表格上方（<span class="in">`top`</span>）。</span>
+<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`reference-location`</span>：脚注的默认展示位置。默认为文档最后 (<span class="in">`document`</span>)。</span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`citation-location`</span>：参考文献的默认展示位置。默认为文档最后 (<span class="in">`document`</span>)。</span>
+<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a>| Option               | Description                                                                                                                           |</span>
+<span id="cb19-255"><a href="#cb19-255" aria-hidden="true" tabindex="-1"></a>+======================+=======================================================================================================================================+</span>
+<span id="cb19-256"><a href="#cb19-256" aria-hidden="true" tabindex="-1"></a>| <span class="in">`reference-location`</span> | Where to place footnotes. Defaults to&nbsp;<span class="in">`document`</span>.\                                                                                    |</span>
+<span id="cb19-257"><a href="#cb19-257" aria-hidden="true" tabindex="-1"></a>|                      | <span class="sc">\[</span><span class="in">`document`</span>&nbsp;\|&nbsp;<span class="in">`section`</span>&nbsp;\|&nbsp;<span class="in">`block`</span>&nbsp;\|&nbsp;<span class="in">`margin`</span>&nbsp;<span class="sc">\]</span>                                                                                   |</span>
+<span id="cb19-258"><a href="#cb19-258" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-259"><a href="#cb19-259" aria-hidden="true" tabindex="-1"></a>| <span class="in">`citation-location`</span>  | Where to place citations. Defaults to&nbsp;<span class="in">`document`</span>.\                                                                                    |</span>
+<span id="cb19-260"><a href="#cb19-260" aria-hidden="true" tabindex="-1"></a>|                      | <span class="sc">\[</span><span class="in">`document`</span>&nbsp;\|&nbsp;<span class="in">`margin`</span>&nbsp;<span class="sc">\]</span>                                                                                                           |</span>
+<span id="cb19-261"><a href="#cb19-261" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-262"><a href="#cb19-262" aria-hidden="true" tabindex="-1"></a>| <span class="in">`cap-location`</span>       | Where to place figure and table captions. Defaults to&nbsp;<span class="in">`bottom`</span>&nbsp;for figures and&nbsp;<span class="in">`top`</span>&nbsp;for tables.&nbsp;\| <span class="sc">\[</span><span class="in">`top`</span>&nbsp;\|&nbsp;<span class="in">`bottom`</span>&nbsp;\|&nbsp;<span class="in">`margin`</span><span class="sc">\]</span> |</span>
+<span id="cb19-263"><a href="#cb19-263" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-264"><a href="#cb19-264" aria-hidden="true" tabindex="-1"></a>| <span class="in">`fig-cap-location`</span>   | Where to place figure captions. Defaults to&nbsp;<span class="in">`bottom`</span>.\                                                                                |</span>
+<span id="cb19-265"><a href="#cb19-265" aria-hidden="true" tabindex="-1"></a>|                      | <span class="sc">\[</span><span class="in">`top`</span>&nbsp;\|&nbsp;<span class="in">`bottom`</span>&nbsp;\|&nbsp;<span class="in">`margin`</span><span class="sc">\]</span>                                                                                                     |</span>
+<span id="cb19-266"><a href="#cb19-266" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-267"><a href="#cb19-267" aria-hidden="true" tabindex="-1"></a>| <span class="in">`tbl-cap-location`</span>   | Where to place table captions. Defaults to&nbsp;<span class="in">`top`</span>.\                                                                                    |</span>
+<span id="cb19-268"><a href="#cb19-268" aria-hidden="true" tabindex="-1"></a>|                      | <span class="sc">\[</span><span class="in">`top`</span>&nbsp;\|&nbsp;<span class="in">`bottom`</span>&nbsp;\|&nbsp;<span class="in">`margin`</span><span class="sc">\]</span>                                                                                                     |</span>
+<span id="cb19-269"><a href="#cb19-269" aria-hidden="true" tabindex="-1"></a>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span id="cb19-270"><a href="#cb19-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-271"><a href="#cb19-271" aria-hidden="true" tabindex="-1"></a>: 图/表标题位置、参考文献/脚注的位置设置 {#tbl-图表标题位置设置}</span>
+<span id="cb19-272"><a href="#cb19-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-273"><a href="#cb19-273" aria-hidden="true" tabindex="-1"></a><span class="fu"># `execute`代码块执行设置</span></span>
+<span id="cb19-274"><a href="#cb19-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a><span class="in">`execute`</span>用来指定代码块的执行行为，例如是否运行、是否显示警告信息和是否缓存运行结果等。</span>
+<span id="cb19-276"><a href="#cb19-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-279"><a href="#cb19-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-280"><a href="#cb19-280" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-281"><a href="#cb19-281" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span></span>
+<span id="cb19-282"><a href="#cb19-282" aria-hidden="true" tabindex="-1"></a>      eval<span class="sc">:</span> false</span>
+<span id="cb19-283"><a href="#cb19-283" aria-hidden="true" tabindex="-1"></a>      warning<span class="sc">:</span> false</span>
+<span id="cb19-284"><a href="#cb19-284" aria-hidden="true" tabindex="-1"></a>      cache<span class="sc">:</span> true</span>
+<span id="cb19-285"><a href="#cb19-285" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-286"><a href="#cb19-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-287"><a href="#cb19-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-288"><a href="#cb19-288" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`eval`</span>：设置为<span class="in">`false`</span>时**只显示代码，不运行**。默认为<span class="in">`true`</span>。</span>
+<span id="cb19-289"><a href="#cb19-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-290"><a href="#cb19-290" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`echo`</span>：设置为<span class="in">`false`</span>时在输出文件中**不显示代码，仅显示代码的运行结果**。设置为<span class="in">`fenced`</span>，会将代码块的设置，即"#\|"符号后的内容，也展示出来。@fig-箱型图 这个代码块就用了<span class="in">`echo: fenced`</span>这个设定，可以看一下效果。默认为<span class="in">`true`</span>。</span>
+<span id="cb19-291"><a href="#cb19-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-292"><a href="#cb19-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`output`</span>：设置为<span class="in">`false`</span>时，**只运行代码不显示运行结果**。默认为<span class="in">`true`</span>。</span>
+<span id="cb19-293"><a href="#cb19-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-294"><a href="#cb19-294" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`warning`</span>：是否显示代码运行的警告信息。默认为<span class="in">`true`</span>。</span>
+<span id="cb19-295"><a href="#cb19-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-296"><a href="#cb19-296" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`cache`</span>：是否开启运算结果缓存。默认为<span class="in">`false`</span>。如果设置为<span class="in">`true`</span>，就会在编译时将源代码的运算结果保存到文件目录中后缀为"<span class="sc">\_</span>cache"的文件夹中。这样在重新编译同一个文档时会加快编译速度。</span>
+<span id="cb19-297"><a href="#cb19-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-298"><a href="#cb19-298" aria-hidden="true" tabindex="-1"></a>除了对代码执行行为的全局设置，我们也可以针对每个代码块设置其执行行为。许多参数和YAML中的语法相似，只不过需要在每个参数前加上"**#\|**"符号。如：</span>
+<span id="cb19-299"><a href="#cb19-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-302"><a href="#cb19-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-303"><a href="#cb19-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb19-304"><a href="#cb19-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb19-305"><a href="#cb19-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb19-306"><a href="#cb19-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: fenced</span></span>
+<span id="cb19-307"><a href="#cb19-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-箱型图</span></span>
+<span id="cb19-308"><a href="#cb19-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: 箱型图</span></span>
+<span id="cb19-309"><a href="#cb19-309" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
+<span id="cb19-310"><a href="#cb19-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-311"><a href="#cb19-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-312"><a href="#cb19-312" aria-hidden="true" tabindex="-1"></a>::: callout-caution</span>
+<span id="cb19-313"><a href="#cb19-313" aria-hidden="true" tabindex="-1"></a>有时候当一个代码块需要读取一个较大的对象时（如包含大量细胞的Seurat对象），尽管运行该代码块不会报错，但是在编译时可能会出现如下报错：</span>
+<span id="cb19-314"><a href="#cb19-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-315"><a href="#cb19-315" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb19-316"><a href="#cb19-316" aria-hidden="true" tabindex="-1"></a><span class="in">long vectors not supported yet: /Volumes/Builds/R4/R-4.3.2/src/main/connections.c:6093</span></span>
+<span id="cb19-317"><a href="#cb19-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-318"><a href="#cb19-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-319"><a href="#cb19-319" aria-hidden="true" tabindex="-1"></a>这时我们可以通过添加<span class="in">`#| cache-lazy: false`</span>命令，<span class="co">[</span><span class="ot">取消延迟缓存</span><span class="co">](https://bookdown.org/yihui/rmarkdown-cookbook/cache-lazy.html)</span>来解决这个问题：</span>
+<span id="cb19-320"><a href="#cb19-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-323"><a href="#cb19-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-324"><a href="#cb19-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: fenced</span></span>
+<span id="cb19-325"><a href="#cb19-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache-lazy: false</span></span>
+<span id="cb19-326"><a href="#cb19-326" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb19-327"><a href="#cb19-327" aria-hidden="true" tabindex="-1"></a>seurat_integrated <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/scRNA-seq_online/seurat_clustered.rds"</span>)</span>
+<span id="cb19-328"><a href="#cb19-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-329"><a href="#cb19-329" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-330"><a href="#cb19-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-331"><a href="#cb19-331" aria-hidden="true" tabindex="-1"></a><span class="fu"># `crossref`交叉引用设置</span></span>
+<span id="cb19-332"><a href="#cb19-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-333"><a href="#cb19-333" aria-hidden="true" tabindex="-1"></a><span class="in">`crossref`</span>定义了图/表的标签、默认引用样式、编号类型等。</span>
+<span id="cb19-334"><a href="#cb19-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-337"><a href="#cb19-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-338"><a href="#cb19-338" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-339"><a href="#cb19-339" aria-hidden="true" tabindex="-1"></a>crossref<span class="sc">:</span></span>
+<span id="cb19-340"><a href="#cb19-340" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>title<span class="sc">:</span> 图     </span>
+<span id="cb19-341"><a href="#cb19-341" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>title<span class="sc">:</span> 表     </span>
+<span id="cb19-342"><a href="#cb19-342" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">-</span>delim<span class="sc">:</span> <span class="st">"："</span>  </span>
+<span id="cb19-343"><a href="#cb19-343" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>prefix<span class="sc">:</span> 图   </span>
+<span id="cb19-344"><a href="#cb19-344" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>prefix<span class="sc">:</span> 表    </span>
+<span id="cb19-345"><a href="#cb19-345" aria-hidden="true" tabindex="-1"></a>  sec<span class="sc">-</span>prefix<span class="sc">:</span> 章节 </span>
+<span id="cb19-346"><a href="#cb19-346" aria-hidden="true" tabindex="-1"></a>  ref<span class="sc">-</span>hyperlink<span class="sc">:</span> true </span>
+<span id="cb19-347"><a href="#cb19-347" aria-hidden="true" tabindex="-1"></a>  fig<span class="sc">-</span>labels<span class="sc">:</span> arabic    </span>
+<span id="cb19-348"><a href="#cb19-348" aria-hidden="true" tabindex="-1"></a>  tbl<span class="sc">-</span>labels<span class="sc">:</span> arabic   </span>
+<span id="cb19-349"><a href="#cb19-349" aria-hidden="true" tabindex="-1"></a>  subref<span class="sc">-</span>labels<span class="sc">:</span> alpha A </span>
+<span id="cb19-350"><a href="#cb19-350" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-351"><a href="#cb19-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-352"><a href="#cb19-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-353"><a href="#cb19-353" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`fig-title`</span>: 图的默认标签文字（默认是"Figure"）</span>
+<span id="cb19-354"><a href="#cb19-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-355"><a href="#cb19-355" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tbl-title`</span>: 表的默认标签文字（默认是"Table"）</span>
+<span id="cb19-356"><a href="#cb19-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-357"><a href="#cb19-357" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`title-delim`</span>: 图、表标签文字和后面的图、表标题之间的连接符（默认是":"）</span>
+<span id="cb19-358"><a href="#cb19-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-359"><a href="#cb19-359" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`fig-prefix`</span>: 图的默认引用样式（默认是"Figure"）</span>
+<span id="cb19-360"><a href="#cb19-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-361"><a href="#cb19-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tbl-prefix`</span>: 表的默认引用样式（默认是"Table"）</span>
+<span id="cb19-362"><a href="#cb19-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-363"><a href="#cb19-363" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`sec-prefix`</span>: 章节的默认引用样式（默认是"Section"）</span>
+<span id="cb19-364"><a href="#cb19-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-365"><a href="#cb19-365" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ref-hyperlink`</span>: 是否为交叉引用加上内部链接（默认是"true"）</span>
+<span id="cb19-366"><a href="#cb19-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-367"><a href="#cb19-367" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`fig-labels`</span>: 图片的编号类型（默认是阿拉伯数字：arabic)</span>
+<span id="cb19-368"><a href="#cb19-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-369"><a href="#cb19-369" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tbl-labels`</span>: 表格的编号类型（默认是阿拉伯数字：arabic）</span>
+<span id="cb19-370"><a href="#cb19-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-371"><a href="#cb19-371" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`subref-labels`</span>: 次级引用编号类型，如组图中的小图（默认是小写字母：alpha a）</span>
+<span id="cb19-372"><a href="#cb19-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-373"><a href="#cb19-373" aria-hidden="true" tabindex="-1"></a>可用的编号类型包括：</span>
+<span id="cb19-374"><a href="#cb19-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-375"><a href="#cb19-375" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`arabic`</span>&nbsp;(1, 2, 3)</span>
+<span id="cb19-376"><a href="#cb19-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-377"><a href="#cb19-377" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`roman`</span>&nbsp;(I, II, III, IV)</span>
+<span id="cb19-378"><a href="#cb19-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-379"><a href="#cb19-379" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`roman i`</span>&nbsp;(i, ii, iii, iv)</span>
+<span id="cb19-380"><a href="#cb19-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-381"><a href="#cb19-381" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`alpha x`</span>&nbsp;(start from letter 'x')</span>
+<span id="cb19-382"><a href="#cb19-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-383"><a href="#cb19-383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`alpha X`</span>&nbsp;(start from letter 'X')</span>
+<span id="cb19-384"><a href="#cb19-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-385"><a href="#cb19-385" aria-hidden="true" tabindex="-1"></a><span class="fu"># 参考文献设置</span></span>
+<span id="cb19-386"><a href="#cb19-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-387"><a href="#cb19-387" aria-hidden="true" tabindex="-1"></a>只要在编辑qmd文档时插入了参考文献，YAML中会新增参考文献的配置选项：<span class="in">`bibliography: references.bib`</span>。同时根目录下会生成一个名为"references.bib"的参考文献配置文件。该配置文件包括了qmd文档中所插入的所有参考文献的列表。以BibTeX/Citation风格语言编写。<span class="in">`bibliography`</span>指定了这个参考文献配置文件所在的路径。</span>
+<span id="cb19-388"><a href="#cb19-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-391"><a href="#cb19-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-392"><a href="#cb19-392" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-393"><a href="#cb19-393" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> references.bib</span>
+<span id="cb19-394"><a href="#cb19-394" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-395"><a href="#cb19-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-396"><a href="#cb19-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-397"><a href="#cb19-397" aria-hidden="true" tabindex="-1"></a><span class="fu"># `format`编译设置</span></span>
+<span id="cb19-398"><a href="#cb19-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-399"><a href="#cb19-399" aria-hidden="true" tabindex="-1"></a><span class="in">`format`</span>定义了qmd文档编译后的文件类型，例如："html", "pdf", "docx", "odt", "pptx", "revealjs", "beamer", "gfm"（GitHub风格的Markdown文档）, "commonmark", "mediawiki", "epub", "ipynb"。不同的编译格式对应的子项设置各不相同，有些参数适用于某些格式但是在另一些格式中则无法兼容。所有支持的编译格式详见<span class="co">[</span><span class="ot">Quarto官方文档</span><span class="co">](https://quarto.org/docs/output-formats/all-formats.html)</span>。下面的案例为编译HTML和GFM的常用设置。</span>
+<span id="cb19-400"><a href="#cb19-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-403"><a href="#cb19-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-404"><a href="#cb19-404" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-405"><a href="#cb19-405" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb19-406"><a href="#cb19-406" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb19-407"><a href="#cb19-407" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> </span>
+<span id="cb19-408"><a href="#cb19-408" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly </span>
+<span id="cb19-409"><a href="#cb19-409" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly </span>
+<span id="cb19-410"><a href="#cb19-410" aria-hidden="true" tabindex="-1"></a>  gfm<span class="sc">:</span></span>
+<span id="cb19-411"><a href="#cb19-411" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb19-412"><a href="#cb19-412" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb19-413"><a href="#cb19-413" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb19-414"><a href="#cb19-414" aria-hidden="true" tabindex="-1"></a>    citation<span class="sc">-</span>location<span class="sc">:</span> document</span>
+<span id="cb19-415"><a href="#cb19-415" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">-</span>file<span class="sc">:</span> <span class="st">"README.md"</span> </span>
+<span id="cb19-416"><a href="#cb19-416" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-417"><a href="#cb19-417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-418"><a href="#cb19-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-419"><a href="#cb19-419" aria-hidden="true" tabindex="-1"></a>编译Quarto文档时，首先<span class="co">[</span><span class="ot">knitr</span><span class="co">](http://yihui.name/knitr/)</span>将运行所有代码块，并创建一个新的markdown（.md）文档，其中包括源代码及其输出结果。接下来，生成的markdown文件经过<span class="co">[</span><span class="ot">pandoc</span><span class="co">](http://pandoc.org/)</span>（RStudio内置了pandoc）处理后，被转换成HTML、PDF或者Word等我们需要的文档格式。RStudio封装了这些操作，当我们完成Quarto编辑，点击渲染时，就会完成上述过程。</span>
+<span id="cb19-420"><a href="#cb19-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-421"><a href="#cb19-421" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">*Quarto的渲染工作流*</span><span class="co">]</span>{.smallcaps}</span>
+<span id="cb19-422"><a href="#cb19-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-423"><a href="#cb19-423" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/rstudio-qmd-how-it-works.png)</span></span>
+<span id="cb19-424"><a href="#cb19-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-425"><a href="#cb19-425" aria-hidden="true" tabindex="-1"></a><span class="fu">## 编译HTML</span></span>
+<span id="cb19-426"><a href="#cb19-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-429"><a href="#cb19-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-430"><a href="#cb19-430" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-431"><a href="#cb19-431" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb19-432"><a href="#cb19-432" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb19-433"><a href="#cb19-433" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> </span>
+<span id="cb19-434"><a href="#cb19-434" aria-hidden="true" tabindex="-1"></a>      light<span class="sc">:</span> flatly </span>
+<span id="cb19-435"><a href="#cb19-435" aria-hidden="true" tabindex="-1"></a>      dark<span class="sc">:</span> darkly </span>
+<span id="cb19-436"><a href="#cb19-436" aria-hidden="true" tabindex="-1"></a>    embed<span class="sc">-</span>resources<span class="sc">:</span> false</span>
+<span id="cb19-437"><a href="#cb19-437" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>tools<span class="sc">:</span> true</span>
+<span id="cb19-438"><a href="#cb19-438" aria-hidden="true" tabindex="-1"></a>    title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">:</span> images<span class="sc">/</span>banner.jpg </span>
+<span id="cb19-439"><a href="#cb19-439" aria-hidden="true" tabindex="-1"></a>    title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">-</span>color<span class="sc">:</span> <span class="st">"black"</span></span>
+<span id="cb19-440"><a href="#cb19-440" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb19-441"><a href="#cb19-441" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>title<span class="sc">:</span> 目录</span>
+<span id="cb19-442"><a href="#cb19-442" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>location<span class="sc">:</span> left</span>
+<span id="cb19-443"><a href="#cb19-443" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">2</span></span>
+<span id="cb19-444"><a href="#cb19-444" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>expand<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb19-445"><a href="#cb19-445" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb19-446"><a href="#cb19-446" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb19-447"><a href="#cb19-447" aria-hidden="true" tabindex="-1"></a>    anchor<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb19-448"><a href="#cb19-448" aria-hidden="true" tabindex="-1"></a>    link<span class="sc">-</span>external<span class="sc">-</span>icon<span class="sc">:</span> true</span>
+<span id="cb19-449"><a href="#cb19-449" aria-hidden="true" tabindex="-1"></a>    link<span class="sc">-</span>external<span class="sc">-</span>newwindow<span class="sc">:</span> true</span>
+<span id="cb19-450"><a href="#cb19-450" aria-hidden="true" tabindex="-1"></a>    df<span class="sc">-</span>print<span class="sc">:</span> kable </span>
+<span id="cb19-451"><a href="#cb19-451" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>link<span class="sc">:</span> true</span>
+<span id="cb19-452"><a href="#cb19-452" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-453"><a href="#cb19-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-454"><a href="#cb19-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-455"><a href="#cb19-455" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`theme`</span>：主题。同 @sec-theme 。</span>
+<span id="cb19-456"><a href="#cb19-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-457"><a href="#cb19-457" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`embed-resources`</span>：是否将所有源文件嵌入HTML文件以方便分享。默认为"false"。</span>
+<span id="cb19-458"><a href="#cb19-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-459"><a href="#cb19-459" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`code-tools`</span>：是否在网页右上角显示"<span class="sc">\&lt;</span>code<span class="sc">\&gt;</span>"按钮。点击该按钮可以看到Quarto文档的原始markdown代码。</span>
+<span id="cb19-460"><a href="#cb19-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-461"><a href="#cb19-461" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`title-block-banner`</span>：标题横幅设置。<span class="in">`title-block-banner`</span>有以下选项：</span>
+<span id="cb19-462"><a href="#cb19-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-463"><a href="#cb19-463" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`true`</span>：将标题以网页横幅的形式展示，样式为<span class="in">`them`</span>中所选样式的默认样式。</span>
+<span id="cb19-464"><a href="#cb19-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-465"><a href="#cb19-465" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>具体颜色：如<span class="in">`title-block-banner: "#003262"`</span>。</span>
+<span id="cb19-466"><a href="#cb19-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-467"><a href="#cb19-467" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>图片路径：如<span class="in">`title-block-banner: images/banner.jpeg`</span>。</span>
+<span id="cb19-468"><a href="#cb19-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-469"><a href="#cb19-469" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`toc`</span>相关设置：同 @sec-toc 。</span>
+<span id="cb19-470"><a href="#cb19-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-471"><a href="#cb19-471" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`number-sections`</span>、<span class="in">`number-depth`</span>：同 @sec-number_sections 。</span>
+<span id="cb19-472"><a href="#cb19-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-473"><a href="#cb19-473" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`anchor-sections`</span>: 设置为<span class="in">`true`</span>时，当鼠标移到各级标题上时会显示anchor link，方便我们复制直接定位到该标题的超链接。</span>
+<span id="cb19-474"><a href="#cb19-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-475"><a href="#cb19-475" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`link-external-icon`</span>：设置为<span class="in">`true`</span>时会在外部链接上显示一个小图标。</span>
+<span id="cb19-476"><a href="#cb19-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-477"><a href="#cb19-477" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`link-external-newwindow`</span>：是否在新标签页打开外部链接。</span>
+<span id="cb19-478"><a href="#cb19-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-479"><a href="#cb19-479" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`df-print`</span>：表格输出样式</span>
+<span id="cb19-480"><a href="#cb19-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-481"><a href="#cb19-481" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`code-copy`</span>：设置代码复制按钮：</span>
+<span id="cb19-482"><a href="#cb19-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-483"><a href="#cb19-483" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`true`</span>: 总是在代码块右上角显示代码复制按钮。</span>
+<span id="cb19-484"><a href="#cb19-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-485"><a href="#cb19-485" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`false`</span>: 隐藏代码复制按钮。</span>
+<span id="cb19-486"><a href="#cb19-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-487"><a href="#cb19-487" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`hover`</span>：（默认）当鼠标移过时显示代码复制按钮。</span>
+<span id="cb19-488"><a href="#cb19-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-489"><a href="#cb19-489" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`code-fold`</span>: 是否折叠代码。</span>
+<span id="cb19-490"><a href="#cb19-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-491"><a href="#cb19-491" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`code-link`</span>: 是否自动为函数加上超链接。该功能基于<span class="co">[</span><span class="ot">downlit</span><span class="co">](https://downlit.r-lib.org/)</span>包，可以自动为识别到的函数加上一个链接到官方文档的超链接。</span>
+<span id="cb19-492"><a href="#cb19-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-493"><a href="#cb19-493" aria-hidden="true" tabindex="-1"></a><span class="fu">## 编译GitHub Flavored Markdown（GFM） {#sec-github-markdown}</span></span>
+<span id="cb19-494"><a href="#cb19-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-495"><a href="#cb19-495" aria-hidden="true" tabindex="-1"></a>我们可以将Quarto文档转换为GitHub风格的Markdown文档（GitHub Flavored Markdown，GFM）。这可以用来生成GitHub项目的README.md文档。</span>
+<span id="cb19-496"><a href="#cb19-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-499"><a href="#cb19-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-500"><a href="#cb19-500" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-501"><a href="#cb19-501" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"My Project"</span></span>
+<span id="cb19-502"><a href="#cb19-502" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb19-503"><a href="#cb19-503" aria-hidden="true" tabindex="-1"></a>  gfm<span class="sc">:</span></span>
+<span id="cb19-504"><a href="#cb19-504" aria-hidden="true" tabindex="-1"></a>    identifier<span class="sc">-</span>prefix<span class="sc">:</span> readme <span class="co"># 标识符</span></span>
+<span id="cb19-505"><a href="#cb19-505" aria-hidden="true" tabindex="-1"></a>    <span class="co"># preview-mode: raw # 预览原始markdown</span></span>
+<span id="cb19-506"><a href="#cb19-506" aria-hidden="true" tabindex="-1"></a>    keep<span class="sc">-</span>yaml<span class="sc">:</span> true</span>
+<span id="cb19-507"><a href="#cb19-507" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb19-508"><a href="#cb19-508" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">-</span>depth<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb19-509"><a href="#cb19-509" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb19-510"><a href="#cb19-510" aria-hidden="true" tabindex="-1"></a>    citation<span class="sc">-</span>location<span class="sc">:</span> document</span>
+<span id="cb19-511"><a href="#cb19-511" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">-</span>file<span class="sc">:</span> <span class="st">"README.md"</span> <span class="co"># 输出文档的文件名</span></span>
+<span id="cb19-512"><a href="#cb19-512" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-513"><a href="#cb19-513" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-514"><a href="#cb19-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-515"><a href="#cb19-515" aria-hidden="true" tabindex="-1"></a><span class="fu">## 编译PDF</span></span>
+<span id="cb19-516"><a href="#cb19-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-517"><a href="#cb19-517" aria-hidden="true" tabindex="-1"></a>如果要在rmarkdown、bookdown中使用PDF输出功能， 可以在在R中安装tinytex扩展包并安装TinyTeX编译软件：</span>
+<span id="cb19-518"><a href="#cb19-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-521"><a href="#cb19-521" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-522"><a href="#cb19-522" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tinytex'</span>)</span>
+<span id="cb19-523"><a href="#cb19-523" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
+<span id="cb19-524"><a href="#cb19-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-525"><a href="#cb19-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-526"><a href="#cb19-526" aria-hidden="true" tabindex="-1"></a>其中上面第一行命令安装R的tinytex扩展包， 第二行将下载LaTeX编译程序的服务器设置为清华大学tuna镜像站， 第三行安装LaTeX编译程序。</span>
+<span id="cb19-527"><a href="#cb19-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-528"><a href="#cb19-528" aria-hidden="true" tabindex="-1"></a>如果安装成功， TinyTeX软件包在MS Windows系统中一般会安装在&nbsp;<span class="in">`C:\Users\用户名\AppData\Roaming\TinyTeX`</span>目录中， 其中"用户名"应替换成系统当前用户名。 如果需要删除TinyTeX软件包， 只要直接删除那个子目录就可以。</span>
+<span id="cb19-529"><a href="#cb19-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-530"><a href="#cb19-530" aria-hidden="true" tabindex="-1"></a>为了判断TinyTeX是否安装成功， 在RStudio中运行：</span>
+<span id="cb19-531"><a href="#cb19-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-534"><a href="#cb19-534" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-535"><a href="#cb19-535" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">is_tinytex</span>()</span>
+<span id="cb19-536"><a href="#cb19-536" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-537"><a href="#cb19-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-538"><a href="#cb19-538" aria-hidden="true" tabindex="-1"></a>结果应为<span class="in">`TRUE`</span>, 出错或者结果为<span class="in">`FALSE`</span>都说明安装不成功。</span>
+<span id="cb19-539"><a href="#cb19-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-540"><a href="#cb19-540" aria-hidden="true" tabindex="-1"></a>当用户使用RMarkdown和tinytex包转换latex并编译为PDF时， 如果缺少某些latex宏包， tinytex会自动安装缺少的宏包。</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item">
+ This website was built with Quarto
+  </li>  
+</ul>
+</div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025, simonzhou</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/blob/main/Quarto/yaml_settings.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zhoulvbang">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

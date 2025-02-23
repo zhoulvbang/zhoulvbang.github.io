@@ -1,0 +1,7 @@
+---
+title: "R install"
+number-sections: false
+toc: false
+---
+
+R的安装

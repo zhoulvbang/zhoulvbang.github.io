@@ -1,0 +1,56 @@
+---
+title: "医学统计学习笔记"
+author: simonzhou
+date: now
+date-format: "YYYY[年]M[月]D[日] HH:mm"
+author-title: 作者 # 作者栏的标签。默认标签为“AUTHOR”。
+published-title: 编译日期
+citation:
+  url: https://github.com/zhoulvbang/Med-Stat-Notes
+sidebar: false #开启后会在主页面出现sidebar
+toc: false
+number-sections: false
+code-tools: false
+page-layout: full
+#image: images/logo.png
+image-title: "just simonzhou"
+
+about:
+  template: solana
+  image: images/logo.png
+  image-shape: round
+  
+  links:
+    - icon: book-fill # 添加logo（https://icons.getbootstrap.com）
+      text: Bookdown
+      href: https://bookdown.org
+    - icon: github
+      text: Github项目
+      href: https://github.com/zhoulvbang/Med-Stat-Notes
+    - icon: envelope-fill
+      text: Email
+      href: mailto::simonzhou01@outlook.com
+---
+
+本书的前身是开始于23年暑假的`Rmarkdown`笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页，由于Quarto的出现和发展，感觉到它的强大与便利，遂用Quarto重制。
+
+现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.)；还有有一部分的项目分享（如果顺利的话）和读书报告。
+
+Epidemiologists, in response to a health emergency or as a result of systematic surveillance, first obtain and analyze observed data. They use data, observations, science, and theory as they work at identifying a pathogen (when unknown) behind an observed disease outbreak or as they proceed to plan or implement policies that ameliorates its impact.
+
+按照大类再细分的话会有如下：
+
+-   统计学
+    -   医学统计学（基础篇）
+    -   贝叶斯统计
+    -   最大似然统计
+-   统计软件的使用
+    -   R
+    -   Python
+    -   SAS
+    -   Stata
+    -   Quarto
+-   项目记录
+    -   Kaggle
+-   读书笔记
+

@@ -1,0 +1,401 @@
+---
+title: "使用SAS处理CLHLS数据"
+author: "simonzhou"
+number-sections: false
+toc: false
+date: "2025-02-16"
+bibliography: references.bib
+format: html
+---
+
+“中国老年健康影响因素跟踪调查”（简称“中国老年健康调查”，英文缩写CLHLS），以下简称CLHLS数据，是由北京大学健康老龄与发展研究中心/国家发展研究院组织的老年人追踪调查，调查范围覆盖全国23个省市自治区，调查对象为65岁及以上老年人和35-64岁成年子女，调查问卷分为存活被访者问卷和死亡老人家属问卷两种。存活被访者问卷的调查内容包括老人及家庭基本状况、社会经济背景及家庭结构、经济来源和经济状况、健康和生活质量自评、认知功能、性格心理特征、日常活动能力、生活方式、生活照料、疾病治疗和医疗费承担；死亡老人家属问卷的调查内容包括老人死亡时间、死因等内容。该调查项目在1998年进行基线调查后分别于2000 年、2002年、2005年、2008-2009年、2011-2012年、2014年和2017-2018年进行了跟踪调查，最近的一次跟踪调查(2017-2018年)共访问15,874 名65+岁老年人,收集了2014-2018年期间死亡的2,226位老年人的信息。“中国老年健康调查”累计入户访问11.3万人次，其中最需照料的80岁及以上高龄老人占总样本67.4%，其余为较低龄老人和中年对照组；同时访问2.89万位65+岁已死亡被访老人的直接家庭成员，收集了老人死亡前健康状况、生活质量与医疗和照料需求成本等详细数据。CLHLS数据共有15874例样本，761个变量，由于本文主要研究老年人的自评和客观健康水平以及代际支持模式对健康水平的影响，因此需要对样本和变量进行筛选，保留符合要求的样本和变量进行后续的分析。[DVN/WBO7LK_2020](#DVN/WBO7LK_2020)
+
+# 数据的获取
+
+更多信息和细节请访问：[中国老年健康与家庭幸福调查（CLHLS-HF）](https://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/WBO7LK&version=2.0)
+
+# 变量的选取
+
+## 因变量的选取
+
+**老年人自评健康状况（SHEALTH）**：对应变量 b12 （self-reported health），为有序变量（Ordinal），可用于衡量老年人对自身健康的主观评价，其赋值为：很好=1，好=2，一般=3，不好=4，很不好=5。
+
+**生活自理能力（ADL）**：对应变量 e1 （bathing，洗澡）、e2 （dressing，穿衣）、e3 （toileting，如厕）、e4 （indoor transferring，室内移动）、e5 （continence，大小便控制）、e6 （feeding，进食），均为有序变量（Ordinal）。通过这些变量的得分计算可体现老年人的生活自理能力。
+
+变量 e1b 、e2b 、e3b 、e4b 、e5b 、e6b 分别记录了在需要他人帮助情况下，这些活动的帮助持续天数，可作为辅助信息进一步分析生活自理能力情况。其变量赋值为：不需要帮扶=1，需要一个帮扶=2，需要多个帮扶=3，将其合并为ADL变量，相加值越低则表示生活自理能力越好，反之越差。
+
+**工具型生活自理能力（IADL）**：对应变量 e7 （able to go outside to visit neighbors，能外出拜访邻居）、e8 （able to go shopping by yourself，能自己去购物）、e9 （able to make food by yourself，能自己做饭）、e10 （able to wash clothes，能洗衣服）、e11 （able to walk one kilometer，能步行一公里）、e12 （able to carry 5kg weight，能搬运 5 公斤重物）、e13 （able to crouch and stand three times，能蹲下并站立三次）、e14 （able to take public transportation，能乘坐公共交通工具），均为有序变量（Ordinal）。这些变量可综合反映老年人在更复杂日常生活任务上的能力。其变量赋值为：可以=1，些微困难=2，不能=3，将其合并为IADL变量，相加值越低则表示工具型生活自理能力越好，反之越差。
+
+## 自变量的选取
+
+**经济支持**：新设变量为 economic-support，对应的原始变量 f12a （how much did you receive from your son (s) or daughter (s)-in-law last year，去年从儿子或儿媳处收到多少钱）、f12b （how much did you receive from your daughter (s) or son (s)-in-law last year，去年从女儿或女婿处收到多少钱）、f12c （how much did you receive from your grandchild (ren) last year，去年从孙辈处收到多少钱），均为尺度变量（Scale），其中给与物质支持=99998，不知道=88888，缺失=99999，通过统计99998的个数来估计经济支持的程度，如果没有99998则赋值为0,。通过这些变量可衡量子女及孙辈在物质上给予老年人的经济支持。
+
+**照料支持**：新设变量为：residence，对应原始变量a51（co-residence of interviewee，受访者居住情况），有人同住=1，独居=2，住在机构=3；新设变量为living，对应变量 a52（how many people are living with you，有多少人居住在一起），数值型变量；新设变量 visit-fren，对应细分变量为f103a5 （frequent visits of the 1st child，第一个孩子的探访频率）、f103b5 （frequent visits of the 2nd child，第二个孩子的探访频率）、f103c5 （frequent visits of the 3rd child，第三个孩子的探访频率）等（一直到 f103k5 等关于各个孩子的探访频率变量），均为有序变量（Ordinal），有探访=1，没有=2，任一一个孩子=1即可认为有探访，同时给新变量赋值为1，如果没有则给新变量赋值为0。
+
+设置care-support变量，如果residence=1或visit-fren=1则给care-support赋值为1，否则赋值为0。
+
+用这些变量以老年人与子女相处和见面的频率来间接反映子女对老人的照料支持情况。
+
+**情感支持（emotion support）**：对应细分变量 f103a6 （contact with the 1st child，与第一个孩子的联系情况）、f103b6 （contact with the 2nd child，与第二个孩子的联系情况）、f103c6 （contact with the 3rd child，与第三个孩子的联系情况）等（一直到 f103k6 等关于各个孩子的联系情况变量），均为名义变量（Nominal）。根据这些变量所反映的与子女联系的情况来体现子女对老人的情感关怀。有联系=1，没联系=2，任一一个为1即可说明有孩子联系。
+
+## 控制变量的选取
+
+**年龄**：问卷中的 trueage “真实年龄”，用于获取老年人的实际年龄。
+
+**性别**：问卷中 a1 “性别”，男性赋值为 1，女性赋值为 2。
+
+**受教育程度**：问卷中的 f1 “受教育年限”，数值型变量，但是其中如果赋值为88或99则表示“不知道”或“缺失”。
+
+**退休前的工作类型：**问卷中 f2 “60 岁之前的主要职业”，名义变量，专业技术人员=0，政府、机构或管理人员=1，商业、服务或工业工人=2，自雇人士=3，农、林、牧或渔业工人=4，家政工人=5，军事人员=6，从未工作过=7，其他=8。
+
+**婚姻状况**：问卷中 f41 “您目前的婚姻状态是？”，将 “已婚或与伴侣同居” 赋值为 1，其他赋值为 0。
+
+**户口类型**：问卷中的 hukou “hukou type of the elderly being visited，被访老人的户口类型”， “城镇” 赋值为 1，“农村” 赋值为 2。
+
+**社保和养老保险**：问卷中的 nf64a f64b f64c（do you have any social security and social insurance now? 你是否有任何社保和社会保险？），有任何一种社保或养老保险则赋值为 1，没有赋值为 0；。
+
+**医疗保险**：问卷中f64d f64e f64f f64h(是否有医疗保险)，有任何一种医疗保险则赋值为 1，没有赋值为 0。
+
+**子女年龄：**通过对问卷中的 f103a4 f103b4 到 f103m4 来检查该老人的子女的年龄，如果最后一个还活着的孩子年龄\>60，赋值为1，则表示该老人的子女也是老年状态，否则为0。
+
+**慢性病**：问卷中 g15a1 g15b1 一直到 g15x1 表示是否患有某种慢性病，有任何一种慢性病赋值为 1，否则为 0。
+
+**抽烟**：问卷中 g151 “你24小时内抽烟吗？”，是赋值为 1，否赋值为 2。
+
+**喝酒**：问卷中 g161 “你24小时内饮酒吗？”，是赋值为 1，否赋值为 2。
+
+**体育锻炼**：问卷中d91 d92 分别表示“目前是否锻炼？”和“过去是否锻炼过？”，是赋值为 1，否赋值为 2。
+
+# 纳入与排除标准
+
+## **纳入标准**
+
+**年龄要求**：年龄大于 60 岁，通过实际年龄 \> 60进行筛选。60 岁以上人群处于老年阶段，其健康、社会角色和代际关系有老年群体特征，符合本研究对老年人的研究范围。
+
+**生育情况**：生育过子女，通过反映生育子女数量的变量（如 f10 生育子女数），要求f10 \> 0。代际支持模式研究需存在代际关系，生育子女是形成代际关系的前提。
+
+**子女存活情况**：所生育子女中至少有一个存活。可通过检查如 f103a3 - f103m3 等表示孩子存活情况的变量，只要有一个值为表示存活的标识即可纳入（原始数据的变量赋值为存活=1，去世=2）。有在世子女才能开展代际支持研究。
+
+## **排除标准**
+
+**关键变量缺失值**：排除关键变量存在缺失值和无效值的样本。关键变量涵盖上述控制变量及后续分析的因变量、自变量等。缺失值或无效值会影响数据质量和分析结果准确性。
+
+**不合理生育数量**：生育子女数量超过合理上限（结合研究背景和数据确定，上限为 7）或者为缺失值，则需要排除（f10\>7 or f10 = null）。不合理生育数量可能是数据录入错误或特殊情况，干扰研究结果。
+
+通过多次尝试，以下是用于筛选的SAS代码：
+
+```{sas}
+#| eval: false
+/* 导入必要的库 */
+proc import 
+    datafile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\clhls_2018_15874.sav'  /* 请将这里替换为你的SAV文件的实际路径 */
+    out = raw_data 
+    dbms = sav 
+    replace;
+run;
+
+/* 筛选合适的变量并排序 */
+data selected_data;
+    set raw_data;
+    
+    /* 因变量 */
+    /* 老年人自评健康状况（SHEALTH） */
+    SHEALTH = b12;
+    
+    /* 生活自理能力（ADL） */
+    array adl_vars(*) e1 e2 e3 e4 e5 e6;
+    array adl_help_days(*) e1b e2b e3b e4b e5b e6b;
+    ADL = 0;
+    do i = 1 to dim(adl_vars);
+        if adl_help_days[i] = 1 then ADL = ADL + adl_vars[i];
+        else if adl_help_days[i] = 2 then ADL = ADL + adl_vars[i] * 2;
+        else if adl_help_days[i] = 3 then ADL = ADL + adl_vars[i] * 3;
+    end;
+    
+    /* 新增：生活自理障碍二分类变量 ADL2 */
+    ADL2 = 0;
+    do i = 1 to dim(adl_vars);
+        if adl_vars[i] > 1 then do;
+            ADL2 = 1;
+            leave;
+        end;
+    end;
+    
+    /* 工具型生活自理能力（IADL） */
+    array iadl_vars(*) e7 e8 e9 e10 e11 e12 e13 e14;
+    IADL = 0;
+    do i = 1 to dim(iadl_vars);
+        IADL = IADL + iadl_vars[i];
+    end;
+    
+    /* 新增：工具型生活自理障碍二分类变量 IADL2 */
+    IADL2 = 0;
+    do i = 1 to dim(iadl_vars);
+        if iadl_vars[i] > 1 then do;
+            IADL2 = 1;
+            leave;
+        end;
+    end;
+    
+    /* 自变量 */
+    /* 经济支持 */
+    array economic_vars(*) f12a f12b f12c;
+    economic_support = 0;
+    do i = 1 to dim(economic_vars);
+        if economic_vars[i] = 99998 then
+            economic_support = economic_support + 10000;
+        else if economic_vars[i] in (88888, 99999) then
+            continue; /* 跳过无效值或缺失值 */
+        else
+            economic_support = economic_support + economic_vars[i];
+    end;
+    
+    /* 照料支持 */
+    residence = a51;
+    living = a52;
+    array visit_freq(*) f103a5 f103b5 f103c5 f103d5 f103e5 f103f5 f103g5 f103h5 f103i5 f103j5 f103k5;
+    visit_fren = 0;
+    do i = 1 to dim(visit_freq);
+        if visit_freq[i] = 1 then do;
+            visit_fren = 1;
+            leave;
+        end;
+    end;
+    
+    /* 情感支持 */
+    array contact_vars(*) f103a6 f103b6 f103c6 f103d6 f103e6 f103f6 f103g6 f103h6 f103i6 f103j6 f103k6;
+    emotion_support = 2; /* 先假设没联系 */
+    do i = 1 to dim(contact_vars);
+        if contact_vars[i] = 1 then do;
+            emotion_support = 1;
+            leave;
+        end;
+    end;
+    
+    /* 控制变量 */
+    /* 年龄 */
+    age = trueage;
+    
+    /* 性别 */
+    gender = a1;
+    
+    /* 受教育程度 */
+    education = f1;
+    
+    /* 退休前的工作类型 */
+    job_type = f2;
+    
+    /* 婚姻状况 */
+    if f41 = 1 then marriage_status = 1; /* 假设 1 代表已婚或与伴侣同居 */
+    else marriage_status = 0;
+    
+    /* 户口类型 */
+    hukou_type = hukou;
+    
+    /* 社保和养老保险 */
+    if nf64a = 0 or f64b = 1 or f64c = 1 or f64i = 1 then social_insurance = 1;
+    else social_insurance = 0;
+    
+    /* 医疗保险 */
+    if f64d = 1 or f64e = 1 or f64g = 1 or f64h = 1 then medical_insurance = 1;
+    else medical_insurance = 0;
+    
+    /* 慢性病 */
+    array chronic_vars(*) g15a1 g15b1 g15c1 g15d1 g15e1 g15f1 g15g1 g15h1 g15i1 g15j1 g15k1 g15l1 g15m1 g15n1 g15o1 g15p1 g15q1 g15r1 g15s1 g15t1 g15u1 g15v1 g15w1 g15x1;
+    chronic_disease = 0;
+    do i = 1 to dim(chronic_vars);
+        if chronic_vars[i] = 1 then chronic_disease = 1;
+        if chronic_disease = 1 then leave;
+    end;
+    
+    /* 抽烟 */
+    smoking = g151;
+    
+    /* 喝酒 */
+    drinking = g161;
+    
+    /* 体育锻炼 */
+    if d91 = 1 or d92 = 1 then exercise = 1;
+    else exercise = 2;
+
+    /* 子女年龄状态 */
+    array child_ages(*) f103a4 f103b4 f103c4 f103d4 f103e4 f103f4 f103g4 f103h4 f103i4 f103j4 f103k4 f103l4 f103m4;
+    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+    last_alive_child_age = .;
+    do i = dim(child_ages) to 1 by -1;
+        if child_alive[i] = 1 then do;
+            last_alive_child_age = child_ages[i];
+            leave;
+        end;
+    end;
+    if last_alive_child_age > 60 then child_elderly_status = 1;
+    else child_elderly_status = 0;
+
+    /* 生成 care - support 变量 */
+    if residence = 1 or visit_fren = 1 then care_support = 1;
+    else care_support = 0;
+    
+    /* 选择需要的变量 */
+    keep SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support 
+         f10 age gender education job_type marriage_status hukou_type 
+         social_insurance medical_insurance chronic_disease smoking drinking exercise
+         child_elderly_status care_support f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/* 将筛选后的保存为 XLSX 格式文件 */
+/*
+proc export data=selected_data
+    outfile='C:\Users\asus\Desktop\test\CLHLS\CLHLS数据\CLHLS数据\clhls_2018_sort0220.xlsx'
+    dbms=xlsx
+    replace;
+run;
+*/
+
+/*检查f10 生育子女数的分布情况*/
+proc freq data=selected_data;
+    tables f10;
+run;
+
+/*检查子女存活状态*/
+proc freq data=selected_data;
+    tables f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/* 样本筛选 */
+data temp_data;
+    set selected_data;
+
+    /* 纳入标准 */
+    /* 年龄要求 */
+    /*age_include = (age > 60);*/
+    /* 生育情况 */
+    fertility_include = (f10 > 0);
+
+    /* 子女存活情况 */
+    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+    child_alive_include = 0;
+    do i = 1 to dim(child_alive);
+        if child_alive[i] = 1 then do;
+            child_alive_include = 1;
+            leave;
+        end;
+    end;
+    meet_include = fertility_include and child_alive_include;
+
+    /* 排除标准 */ 
+    /* 关键变量缺失值检查 */
+    /*array key_vars(*) SHEALTH ADL IADL;*/
+    array key_vars(*) SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support 
+                      age gender education job_type marriage_status hukou_type 
+                      social_insurance medical_insurance chronic_disease smoking drinking exercise
+                      child_elderly_status care_support;
+    has_missing = 0;
+    do i = 1 to dim(key_vars);
+        if missing(key_vars[i]) then do;
+            has_missing = 1;
+            leave;
+        end;
+    end;
+    /* 不合理生育数量检查 */
+    unreasonable_fertility = (f10 > 7 or missing(f10));
+    meet_exclude = has_missing or unreasonable_fertility;
+
+    /* 筛选符合条件的样本 */
+    if meet_include and not meet_exclude;
+
+
+    /* 移除临时判断变量 */
+    drop fertility_include child_alive_include has_missing unreasonable_fertility meet_include meet_exclude;
+    /*移除部分原始变量*/
+    drop f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/*打印所有变量的频数分布表，检查是否含有异常值*/
+/*
+proc freq data=final_data;
+    tables _all_;
+run;
+*/
+
+/*还需要删除含有的样本，即某些变量中赋值为9（not applicable）和88（don't know）的样本*/
+/*具体需要剔除变量满足这些条件的样本：SHEALTH>8,ADL>18,IADL>24,residence>3,eudcation>22,smoking>2,drinking>2*/
+/* 删除满足特定条件的样本 */
+data final_data;
+    set temp_data;
+    if (SHEALTH <= 8) and (ADL <= 18) and (IADL <= 24) and (residence <= 3) and (age>=60) and (education <= 22) and (smoking <= 2) and (drinking <= 2);
+run;
+
+proc freq data=final_data;
+    tables _all_;
+run;
+
+/* 保存筛选后的数据为 XLSX 格式 */
+proc export
+    data = final_data
+    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\final_data.xlsx' /* 请替换为实际保存路径 */
+    dbms = xlsx
+    replace;
+run;
+
+/* 对 age 变量进行分组 */
+data final_data_grouped;
+    set final_data;
+    if age < 70 then age_group = '60 - 69';
+    else if age < 80 then age_group = '70 - 79';
+    else if age < 90 then age_group = '80 - 89';
+    else age_group = '90+';
+run;
+
+/* 探查每个变量的基本统计信息，查看是否有异常值 */
+proc means data=final_data n nmiss min max mean std;
+    var SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support
+        age gender education job_type marriage_status hukou_type
+        social_insurance medical_insurance chronic_disease smoking drinking exercise
+        child_elderly_status care_support;
+run;
+
+/* 查看字符型变量的唯一值，看是否有异常字符 */
+proc freq data=final_data_grouped;
+    tables age_group gender education job_type marriage_status hukou_type;
+run;
+
+/* 打印因变量、自变量和控制变量的频数分布表并汇总 */
+proc freq data=final_data_grouped noprint;
+    tables SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support
+           age_group gender education job_type marriage_status hukou_type
+           social_insurance medical_insurance chronic_disease smoking drinking exercise
+           child_elderly_status care_support / out=freq_summary;
+run;
+
+/* 导出频数汇总表到 Excel */
+proc export
+    data = freq_summary
+    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\frequency_summary.xlsx' /* 请替换为实际保存路径 */
+    dbms = xlsx
+    replace;
+run;
+```
+
+Notes:在Qmd中输入SAS代码时，不可以直接使用
+
+``` bash
+```{sas eval=false} your SAS code here ```
+```
+
+进行标注，应使用如下形式：
+
+``` bash
+```{sas} #| eval: false your code here ```
+```
+
+否则会在输出报错，使用了错误的
+
+``` bash
+``````````````````` :::
+```
+
+原因是因为，在 Quarto 中，fenced div 的正确语法是：
+
+``` bash
+::: {.class-name}  Content here  :::
+```

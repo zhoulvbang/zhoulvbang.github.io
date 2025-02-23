@@ -1,15 +1,30 @@
-欢迎到来！
+# Medical-Statistics-Notes
+医学统计学的笔记项目
 
-这是一个基于 R Markdown 和 **bookdown**（https://github.com/rstudio/bookdown）的最简示例书籍模板。
+simonzhou
 
-该模板提供了一个文件结构的框架，您可以编辑它来创建您自己的书籍。
+2024-02-06
 
-.Rmd 文件中的内容提供了一些指南，以帮助您入门，但您也可以随意删除每个文件中的内容，从头开始。
+**网址：**<https://github.com/zhoulvbang/Medical-Statistics-Notes>
 
-额外资源：
+本书的前身是开始于23年暑假的rmarkdown笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页。
 
-**bookdown** 书籍：https://bookdown.org/yihui/bookdown/
+现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.)；还有有一部分的项目分享（如果顺利的话）和读书报告。
 
-**bookdown** 包参考站点：https://pkgs.rstudio.com/bookdown
+按照大类细分的话会有如下架构：
 
-本仓库的内容（除模版外）均不提供商业用途和分发。
+- 统计学
+  - 概率统计
+  - 贝叶斯统计
+  - 最大似然统计
+- 统计软件的使用
+  - R
+  - Python
+  - SAS
+  - Stata
+  - Quarto
+- 项目记录
+  - kaggle
+- 读书笔记
+
+本网站/笔记基于Quarto搭建/提供支持。

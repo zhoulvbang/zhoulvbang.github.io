@@ -1,0 +1,160 @@
+project:
+  type: website
+  output-dir: "docs" # 输出（编译后的HTML文件、PDF文件以及运行code chunk后产生的图像、数据等）文件夹
+  execute-dir: project
+editor: visual
+
+jupyter: 
+  path: "C:/ProgramData/anaconda3/python.exe"
+  kernelspec:
+    name: "python3"
+    language: "python"
+    display_name: "Python 3"
+  kernel: python3
+  conda:
+    environment: base
+    
+execute:
+  eval: true
+  warning: false
+  cache: true # 开启运算结果缓存。将会在文件目录中生成后缀“_cache”的文件夹。
+  freeze: auto
+
+number-sections: true # 是否开启章节编号
+number-depth: 3 # 标题编号级数
+
+fig-align: left
+
+crossref:
+  subref-labels: alpha A # 次级引用编号类型，如组图中的小图（默认是小写字母：alpha a）
+
+bibliography: references.bib # 参考文献目录
+
+language:
+  search-box-placeholder: Search
+
+website:
+  title: "医学统计学笔记"
+  page-navigation: true
+  reader-mode: true
+  description: "This is a Note site."
+  twitter-card: true
+  google-analytics: "G-G2HZEXHNCE"
+  site-url: www.lazyzhou.cn/Med-Stat-Notes
+  repo-url: https://github.com/zhoulvbang/Med-Stat-Notes # GitHub仓库的链接
+  repo-actions: [source, issue] # 在页面右侧显示导航到GitHub仓库的链接
+  favicon: images/logo.png # 网页的logo
+  open-graph: 
+    image: logo.png
+  search:
+    location: navbar
+    type: textbox # overlay or textbox
+
+
+
+  navbar:
+    logo: images/logo.png
+    title: "医学统计学笔记"
+    background: light # 顶栏背景色（默认为primary，网页主色）
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Learn"
+        menu:
+          - text: "Basic"
+            file: Learn/Basic/00-basic.qmd
+      - text: "Guide"
+        menu:
+          - text: "Guide"
+            file: Guide/Guide-intro.qmd
+          - text: "Python"
+            file: Guide/Python/Python-intro.qmd
+          - text: "R"
+            file: Guide/R/R-intro.qmd
+          - text: "SAS"
+            file: Guide/SAS/SAS-intro.qmd
+      - text: "Quarto"
+        menu:
+          - text: "Intro"
+            file: Quarto/quarto-intro.qmd
+
+    right:
+      #- icon: book
+      - text: "Books"
+        file: navbar/book.qmd
+
+    tools:
+      - icon: github
+        href: https://github.com/zhoulvbang
+
+  sidebar:
+    style: docked # “docked” and “floating”
+    border: true
+    search: false
+    collapse-level: 2 # 导航栏初始显示多少级标题
+
+    contents:
+      - text: 主页
+        file: index.qmd
+      - section: Learn/Basic/00-basic.qmd
+        contents:
+          - section: Learn/Basic/00-basic.qmd
+            contents:
+              - Learn/Basic/01-preview.qmd
+      - section: Guide/Guide-intro.qmd
+        contents:
+          - section: Guide/R/R-intro.qmd
+            contents:
+              - Guide/R/R-install.qmd
+              - Guide/R/2025-02-22-CLHLS.qmd
+          - section: Guide/Python/Python-intro.qmd
+            contents:
+              - Guide/Python/2025-02-20-Medical-expenses.qmd
+          - section: Guide/SAS/SAS-intro.qmd
+            contents:
+              - Guide/SAS/SAS-install.qmd
+              - Guide/SAS/2025-02-16-CLHLS.qmd
+      - section: Quarto/quarto-intro.qmd
+        contents:
+          - Quarto/yaml_settings.qmd
+
+  page-footer:
+    left:
+      - text: "This website was built with Quarto"
+    center: "Copyright 2025, simonzhou"
+    right:
+      - icon: github
+        href: https://github.com/zhoulvbang
+    border: true
+
+
+format:
+  html:
+    theme: 
+      light: cosmo # 分别设置暗色主题和亮色主题
+      dark: darkly
+    grid:
+      sidebar-width: 250px
+    embed-resources: false # 是否将所有源文件嵌入HTML文件
+    code-tools: true
+    code-link: true
+    anchor-sections: true # 是否显示章节锚点图标（便于复制直接定位到某个章节的链接）
+    link-external-newwindow: true # 是否在新窗口打开链接
+    toc: true
+    toc-depth: 3 # 设置右侧目录显示的最低层级（默认为显示到3级标题）
+    toc-expand: 1 # 右侧目录在一开始显示到多少级，默认显示到一级标题。
+    comments:
+      hypothesis:
+        theme: classic
+        openSidebar: false
+        showHighlights: always
+        enableExperimentalNewNoteButton: true
+      giscus:
+        repo: zhoulvbang/comments
+        input-position: top
+    includes:
+      after-body: _includes/giscus.html
+
+
+

@@ -1,0 +1,7 @@
+---
+title: "Python introduction"
+number-sections: false
+toc: false
+---
+
+**Python**（英式发音：[/ˈpaɪθən/](https://zh.wikipedia.org/wiki/Help:%E8%8B%B1%E8%AA%9E%E5%9C%8B%E9%9A%9B%E9%9F%B3%E6%A8%99 "Help:英语国际音标")；美式发音：[/ˈpaɪθɑːn/](https://zh.wikipedia.org/wiki/Help:%E8%8B%B1%E8%AA%9E%E5%9C%8B%E9%9A%9B%E9%9F%B3%E6%A8%99 "Help:英语国际音标")），是一种广泛使用的[解释型](https://zh.wikipedia.org/wiki/%E7%9B%B4%E8%AD%AF%E8%AA%9E%E8%A8%80 "解释型语言")、[高级](https://zh.wikipedia.org/wiki/%E9%AB%98%E7%B4%9A%E8%AA%9E%E8%A8%80 "高级语言")和[通用](https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80 "通用编程语言")的[编程语言](https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80 "编程语言")。Python支持多种编程范型，包括结构化、过程式、反射式、面向对象和函数式编程。它拥有[动态类型系统](https://zh.wikipedia.org/wiki/%E9%A1%9E%E5%9E%8B%E7%B3%BB%E7%B5%B1 "类型系统")和[垃圾回收](https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8) "垃圾回收 (计算机科学)")功能，能够自动管理内存使用，并且其本身拥有一个巨大而广泛的标准库。它的语言结构以及[面向对象](https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1 "面向对象程序设计")的方法，旨在帮助程序员为小型的和大型的项目编写逻辑清晰的代码。

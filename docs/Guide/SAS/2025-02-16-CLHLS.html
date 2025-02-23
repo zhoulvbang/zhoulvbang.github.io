@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="simonzhou">
+<meta name="dcterms.date" content="2025-02-16">
+
+<title>使用SAS处理CLHLS数据 – 医学统计学笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../Quarto/quarto-intro.html" rel="next">
+<link href="../../Guide/SAS/SAS-install.html" rel="prev">
+<link href="../../images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-471db41ce322a552900897f16bd8eadd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-39599dd41c217de25ded3edcfc388f1c.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G2HZEXHNCE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-G2HZEXHNCE', { 'anonymize_ip': true});
+</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "classic",
+  "openSidebar": false,
+  "showHighlights": "always",
+  "enableExperimentalNewNoteButton": true
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+
+<meta property="og:title" content="使用SAS处理CLHLS数据 – 医学统计学笔记">
+<meta property="og:description" content="This is a Note site.">
+<meta property="og:image" content="www.lazyzhou.cn/Med-Stat-Notes/Guide/SAS/logo.png">
+<meta property="og:site_name" content="医学统计学笔记">
+<meta name="twitter:title" content="使用SAS处理CLHLS数据 – 医学统计学笔记">
+<meta name="twitter:description" content="This is a Note site.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">医学统计学笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learn</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
+        <li>
+    <a class="dropdown-item" href="../../Learn/Basic/00-basic.html">
+ <span class="dropdown-text">Basic</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guide" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guide</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guide">    
+        <li>
+    <a class="dropdown-item" href="../../Guide/Guide-intro.html">
+ <span class="dropdown-text">Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Guide/Python/Python-intro.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Guide/R/R-intro.html">
+ <span class="dropdown-text">R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Guide/SAS/SAS-intro.html">
+ <span class="dropdown-text">SAS</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-quarto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Quarto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-quarto">    
+        <li>
+    <a class="dropdown-item" href="../../Quarto/quarto-intro.html">
+ <span class="dropdown-text">Intro</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../navbar/book.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/zhoulvbang" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Guide/Guide-intro.html">统计软件使用指南</a></li><li class="breadcrumb-item"><a href="../../Guide/SAS/SAS-intro.html">SAS introduction</a></li><li class="breadcrumb-item"><a href="../../Guide/SAS/2025-02-16-CLHLS.html">使用SAS处理CLHLS数据</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">主页</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Learn/Basic/00-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">医学统计学基础</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Learn/Basic/00-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">医学统计学基础</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Learn/Basic/01-preview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Guide/Guide-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">统计软件使用指南</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Guide/R/R-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Guide/R/R-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R install</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Guide/R/2025-02-22-CLHLS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CLHLS Data Analysis by R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Guide/Python/Python-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Guide/Python/2025-02-20-Medical-expenses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">用Python处理一份卫生费用数据</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Guide/SAS/SAS-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SAS introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Guide/SAS/SAS-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SAS Install</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Guide/SAS/2025-02-16-CLHLS.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">使用SAS处理CLHLS数据</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Quarto/quarto-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Quarto/yaml_settings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">YAML设置</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Guide/Guide-intro.html">统计软件使用指南</a></li><li class="breadcrumb-item"><a href="../../Guide/SAS/SAS-intro.html">SAS introduction</a></li><li class="breadcrumb-item"><a href="../../Guide/SAS/2025-02-16-CLHLS.html">使用SAS处理CLHLS数据</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">使用SAS处理CLHLS数据</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>simonzhou </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 16, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>“中国老年健康影响因素跟踪调查”（简称“中国老年健康调查”，英文缩写CLHLS），以下简称CLHLS数据，是由北京大学健康老龄与发展研究中心/国家发展研究院组织的老年人追踪调查，调查范围覆盖全国23个省市自治区，调查对象为65岁及以上老年人和35-64岁成年子女，调查问卷分为存活被访者问卷和死亡老人家属问卷两种。存活被访者问卷的调查内容包括老人及家庭基本状况、社会经济背景及家庭结构、经济来源和经济状况、健康和生活质量自评、认知功能、性格心理特征、日常活动能力、生活方式、生活照料、疾病治疗和医疗费承担；死亡老人家属问卷的调查内容包括老人死亡时间、死因等内容。该调查项目在1998年进行基线调查后分别于2000 年、2002年、2005年、2008-2009年、2011-2012年、2014年和2017-2018年进行了跟踪调查，最近的一次跟踪调查(2017-2018年)共访问15,874 名65+岁老年人,收集了2014-2018年期间死亡的2,226位老年人的信息。“中国老年健康调查”累计入户访问11.3万人次，其中最需照料的80岁及以上高龄老人占总样本67.4%，其余为较低龄老人和中年对照组；同时访问2.89万位65+岁已死亡被访老人的直接家庭成员，收集了老人死亡前健康状况、生活质量与医疗和照料需求成本等详细数据。CLHLS数据共有15874例样本，761个变量，由于本文主要研究老年人的自评和客观健康水平以及代际支持模式对健康水平的影响，因此需要对样本和变量进行筛选，保留符合要求的样本和变量进行后续的分析。<a href="#DVN/WBO7LK_2020">DVN/WBO7LK_2020</a></p>
+<section id="数据的获取" class="level1">
+<h1>数据的获取</h1>
+<p>更多信息和细节请访问：<a href="https://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/WBO7LK&amp;version=2.0">中国老年健康与家庭幸福调查（CLHLS-HF）</a></p>
+</section>
+<section id="变量的选取" class="level1">
+<h1>变量的选取</h1>
+<section id="因变量的选取" class="level2">
+<h2 class="anchored" data-anchor-id="因变量的选取">因变量的选取</h2>
+<p><strong>老年人自评健康状况（SHEALTH）</strong>：对应变量 b12 （self-reported health），为有序变量（Ordinal），可用于衡量老年人对自身健康的主观评价，其赋值为：很好=1，好=2，一般=3，不好=4，很不好=5。</p>
+<p><strong>生活自理能力（ADL）</strong>：对应变量 e1 （bathing，洗澡）、e2 （dressing，穿衣）、e3 （toileting，如厕）、e4 （indoor transferring，室内移动）、e5 （continence，大小便控制）、e6 （feeding，进食），均为有序变量（Ordinal）。通过这些变量的得分计算可体现老年人的生活自理能力。</p>
+<p>变量 e1b 、e2b 、e3b 、e4b 、e5b 、e6b 分别记录了在需要他人帮助情况下，这些活动的帮助持续天数，可作为辅助信息进一步分析生活自理能力情况。其变量赋值为：不需要帮扶=1，需要一个帮扶=2，需要多个帮扶=3，将其合并为ADL变量，相加值越低则表示生活自理能力越好，反之越差。</p>
+<p><strong>工具型生活自理能力（IADL）</strong>：对应变量 e7 （able to go outside to visit neighbors，能外出拜访邻居）、e8 （able to go shopping by yourself，能自己去购物）、e9 （able to make food by yourself，能自己做饭）、e10 （able to wash clothes，能洗衣服）、e11 （able to walk one kilometer，能步行一公里）、e12 （able to carry 5kg weight，能搬运 5 公斤重物）、e13 （able to crouch and stand three times，能蹲下并站立三次）、e14 （able to take public transportation，能乘坐公共交通工具），均为有序变量（Ordinal）。这些变量可综合反映老年人在更复杂日常生活任务上的能力。其变量赋值为：可以=1，些微困难=2，不能=3，将其合并为IADL变量，相加值越低则表示工具型生活自理能力越好，反之越差。</p>
+</section>
+<section id="自变量的选取" class="level2">
+<h2 class="anchored" data-anchor-id="自变量的选取">自变量的选取</h2>
+<p><strong>经济支持</strong>：新设变量为 economic-support，对应的原始变量 f12a （how much did you receive from your son (s) or daughter (s)-in-law last year，去年从儿子或儿媳处收到多少钱）、f12b （how much did you receive from your daughter (s) or son (s)-in-law last year，去年从女儿或女婿处收到多少钱）、f12c （how much did you receive from your grandchild (ren) last year，去年从孙辈处收到多少钱），均为尺度变量（Scale），其中给与物质支持=99998，不知道=88888，缺失=99999，通过统计99998的个数来估计经济支持的程度，如果没有99998则赋值为0,。通过这些变量可衡量子女及孙辈在物质上给予老年人的经济支持。</p>
+<p><strong>照料支持</strong>：新设变量为：residence，对应原始变量a51（co-residence of interviewee，受访者居住情况），有人同住=1，独居=2，住在机构=3；新设变量为living，对应变量 a52（how many people are living with you，有多少人居住在一起），数值型变量；新设变量 visit-fren，对应细分变量为f103a5 （frequent visits of the 1st child，第一个孩子的探访频率）、f103b5 （frequent visits of the 2nd child，第二个孩子的探访频率）、f103c5 （frequent visits of the 3rd child，第三个孩子的探访频率）等（一直到 f103k5 等关于各个孩子的探访频率变量），均为有序变量（Ordinal），有探访=1，没有=2，任一一个孩子=1即可认为有探访，同时给新变量赋值为1，如果没有则给新变量赋值为0。</p>
+<p>设置care-support变量，如果residence=1或visit-fren=1则给care-support赋值为1，否则赋值为0。</p>
+<p>用这些变量以老年人与子女相处和见面的频率来间接反映子女对老人的照料支持情况。</p>
+<p><strong>情感支持（emotion support）</strong>：对应细分变量 f103a6 （contact with the 1st child，与第一个孩子的联系情况）、f103b6 （contact with the 2nd child，与第二个孩子的联系情况）、f103c6 （contact with the 3rd child，与第三个孩子的联系情况）等（一直到 f103k6 等关于各个孩子的联系情况变量），均为名义变量（Nominal）。根据这些变量所反映的与子女联系的情况来体现子女对老人的情感关怀。有联系=1，没联系=2，任一一个为1即可说明有孩子联系。</p>
+</section>
+<section id="控制变量的选取" class="level2">
+<h2 class="anchored" data-anchor-id="控制变量的选取">控制变量的选取</h2>
+<p><strong>年龄</strong>：问卷中的 trueage “真实年龄”，用于获取老年人的实际年龄。</p>
+<p><strong>性别</strong>：问卷中 a1 “性别”，男性赋值为 1，女性赋值为 2。</p>
+<p><strong>受教育程度</strong>：问卷中的 f1 “受教育年限”，数值型变量，但是其中如果赋值为88或99则表示“不知道”或“缺失”。</p>
+<p><strong>退休前的工作类型：</strong>问卷中 f2 “60 岁之前的主要职业”，名义变量，专业技术人员=0，政府、机构或管理人员=1，商业、服务或工业工人=2，自雇人士=3，农、林、牧或渔业工人=4，家政工人=5，军事人员=6，从未工作过=7，其他=8。</p>
+<p><strong>婚姻状况</strong>：问卷中 f41 “您目前的婚姻状态是？”，将 “已婚或与伴侣同居” 赋值为 1，其他赋值为 0。</p>
+<p><strong>户口类型</strong>：问卷中的 hukou “hukou type of the elderly being visited，被访老人的户口类型”， “城镇” 赋值为 1，“农村” 赋值为 2。</p>
+<p><strong>社保和养老保险</strong>：问卷中的 nf64a f64b f64c（do you have any social security and social insurance now? 你是否有任何社保和社会保险？），有任何一种社保或养老保险则赋值为 1，没有赋值为 0；。</p>
+<p><strong>医疗保险</strong>：问卷中f64d f64e f64f f64h(是否有医疗保险)，有任何一种医疗保险则赋值为 1，没有赋值为 0。</p>
+<p><strong>子女年龄：</strong>通过对问卷中的 f103a4 f103b4 到 f103m4 来检查该老人的子女的年龄，如果最后一个还活着的孩子年龄&gt;60，赋值为1，则表示该老人的子女也是老年状态，否则为0。</p>
+<p><strong>慢性病</strong>：问卷中 g15a1 g15b1 一直到 g15x1 表示是否患有某种慢性病，有任何一种慢性病赋值为 1，否则为 0。</p>
+<p><strong>抽烟</strong>：问卷中 g151 “你24小时内抽烟吗？”，是赋值为 1，否赋值为 2。</p>
+<p><strong>喝酒</strong>：问卷中 g161 “你24小时内饮酒吗？”，是赋值为 1，否赋值为 2。</p>
+<p><strong>体育锻炼</strong>：问卷中d91 d92 分别表示“目前是否锻炼？”和“过去是否锻炼过？”，是赋值为 1，否赋值为 2。</p>
+</section>
+</section>
+<section id="纳入与排除标准" class="level1">
+<h1>纳入与排除标准</h1>
+<section id="纳入标准" class="level2">
+<h2 class="anchored" data-anchor-id="纳入标准"><strong>纳入标准</strong></h2>
+<p><strong>年龄要求</strong>：年龄大于 60 岁，通过实际年龄 &gt; 60进行筛选。60 岁以上人群处于老年阶段，其健康、社会角色和代际关系有老年群体特征，符合本研究对老年人的研究范围。</p>
+<p><strong>生育情况</strong>：生育过子女，通过反映生育子女数量的变量（如 f10 生育子女数），要求f10 &gt; 0。代际支持模式研究需存在代际关系，生育子女是形成代际关系的前提。</p>
+<p><strong>子女存活情况</strong>：所生育子女中至少有一个存活。可通过检查如 f103a3 - f103m3 等表示孩子存活情况的变量，只要有一个值为表示存活的标识即可纳入（原始数据的变量赋值为存活=1，去世=2）。有在世子女才能开展代际支持研究。</p>
+</section>
+<section id="排除标准" class="level2">
+<h2 class="anchored" data-anchor-id="排除标准"><strong>排除标准</strong></h2>
+<p><strong>关键变量缺失值</strong>：排除关键变量存在缺失值和无效值的样本。关键变量涵盖上述控制变量及后续分析的因变量、自变量等。缺失值或无效值会影响数据质量和分析结果准确性。</p>
+<p><strong>不合理生育数量</strong>：生育子女数量超过合理上限（结合研究背景和数据确定，上限为 7）或者为缺失值，则需要排除（f10&gt;7 or f10 = null）。不合理生育数量可能是数据录入错误或特殊情况，干扰研究结果。</p>
+<p>通过多次尝试，以下是用于筛选的SAS代码：</p>
+<pre class="{sas}"><code>#| eval: false
+/* 导入必要的库 */
+proc import 
+    datafile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\clhls_2018_15874.sav'  /* 请将这里替换为你的SAV文件的实际路径 */
+    out = raw_data 
+    dbms = sav 
+    replace;
+run;
+
+/* 筛选合适的变量并排序 */
+data selected_data;
+    set raw_data;
+    
+    /* 因变量 */
+    /* 老年人自评健康状况（SHEALTH） */
+    SHEALTH = b12;
+    
+    /* 生活自理能力（ADL） */
+    array adl_vars(*) e1 e2 e3 e4 e5 e6;
+    array adl_help_days(*) e1b e2b e3b e4b e5b e6b;
+    ADL = 0;
+    do i = 1 to dim(adl_vars);
+        if adl_help_days[i] = 1 then ADL = ADL + adl_vars[i];
+        else if adl_help_days[i] = 2 then ADL = ADL + adl_vars[i] * 2;
+        else if adl_help_days[i] = 3 then ADL = ADL + adl_vars[i] * 3;
+    end;
+    
+    /* 新增：生活自理障碍二分类变量 ADL2 */
+    ADL2 = 0;
+    do i = 1 to dim(adl_vars);
+        if adl_vars[i] &gt; 1 then do;
+            ADL2 = 1;
+            leave;
+        end;
+    end;
+    
+    /* 工具型生活自理能力（IADL） */
+    array iadl_vars(*) e7 e8 e9 e10 e11 e12 e13 e14;
+    IADL = 0;
+    do i = 1 to dim(iadl_vars);
+        IADL = IADL + iadl_vars[i];
+    end;
+    
+    /* 新增：工具型生活自理障碍二分类变量 IADL2 */
+    IADL2 = 0;
+    do i = 1 to dim(iadl_vars);
+        if iadl_vars[i] &gt; 1 then do;
+            IADL2 = 1;
+            leave;
+        end;
+    end;
+    
+    /* 自变量 */
+    /* 经济支持 */
+    array economic_vars(*) f12a f12b f12c;
+    economic_support = 0;
+    do i = 1 to dim(economic_vars);
+        if economic_vars[i] = 99998 then
+            economic_support = economic_support + 10000;
+        else if economic_vars[i] in (88888, 99999) then
+            continue; /* 跳过无效值或缺失值 */
+        else
+            economic_support = economic_support + economic_vars[i];
+    end;
+    
+    /* 照料支持 */
+    residence = a51;
+    living = a52;
+    array visit_freq(*) f103a5 f103b5 f103c5 f103d5 f103e5 f103f5 f103g5 f103h5 f103i5 f103j5 f103k5;
+    visit_fren = 0;
+    do i = 1 to dim(visit_freq);
+        if visit_freq[i] = 1 then do;
+            visit_fren = 1;
+            leave;
+        end;
+    end;
+    
+    /* 情感支持 */
+    array contact_vars(*) f103a6 f103b6 f103c6 f103d6 f103e6 f103f6 f103g6 f103h6 f103i6 f103j6 f103k6;
+    emotion_support = 2; /* 先假设没联系 */
+    do i = 1 to dim(contact_vars);
+        if contact_vars[i] = 1 then do;
+            emotion_support = 1;
+            leave;
+        end;
+    end;
+    
+    /* 控制变量 */
+    /* 年龄 */
+    age = trueage;
+    
+    /* 性别 */
+    gender = a1;
+    
+    /* 受教育程度 */
+    education = f1;
+    
+    /* 退休前的工作类型 */
+    job_type = f2;
+    
+    /* 婚姻状况 */
+    if f41 = 1 then marriage_status = 1; /* 假设 1 代表已婚或与伴侣同居 */
+    else marriage_status = 0;
+    
+    /* 户口类型 */
+    hukou_type = hukou;
+    
+    /* 社保和养老保险 */
+    if nf64a = 0 or f64b = 1 or f64c = 1 or f64i = 1 then social_insurance = 1;
+    else social_insurance = 0;
+    
+    /* 医疗保险 */
+    if f64d = 1 or f64e = 1 or f64g = 1 or f64h = 1 then medical_insurance = 1;
+    else medical_insurance = 0;
+    
+    /* 慢性病 */
+    array chronic_vars(*) g15a1 g15b1 g15c1 g15d1 g15e1 g15f1 g15g1 g15h1 g15i1 g15j1 g15k1 g15l1 g15m1 g15n1 g15o1 g15p1 g15q1 g15r1 g15s1 g15t1 g15u1 g15v1 g15w1 g15x1;
+    chronic_disease = 0;
+    do i = 1 to dim(chronic_vars);
+        if chronic_vars[i] = 1 then chronic_disease = 1;
+        if chronic_disease = 1 then leave;
+    end;
+    
+    /* 抽烟 */
+    smoking = g151;
+    
+    /* 喝酒 */
+    drinking = g161;
+    
+    /* 体育锻炼 */
+    if d91 = 1 or d92 = 1 then exercise = 1;
+    else exercise = 2;
+
+    /* 子女年龄状态 */
+    array child_ages(*) f103a4 f103b4 f103c4 f103d4 f103e4 f103f4 f103g4 f103h4 f103i4 f103j4 f103k4 f103l4 f103m4;
+    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+    last_alive_child_age = .;
+    do i = dim(child_ages) to 1 by -1;
+        if child_alive[i] = 1 then do;
+            last_alive_child_age = child_ages[i];
+            leave;
+        end;
+    end;
+    if last_alive_child_age &gt; 60 then child_elderly_status = 1;
+    else child_elderly_status = 0;
+
+    /* 生成 care - support 变量 */
+    if residence = 1 or visit_fren = 1 then care_support = 1;
+    else care_support = 0;
+    
+    /* 选择需要的变量 */
+    keep SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support 
+         f10 age gender education job_type marriage_status hukou_type 
+         social_insurance medical_insurance chronic_disease smoking drinking exercise
+         child_elderly_status care_support f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/* 将筛选后的保存为 XLSX 格式文件 */
+/*
+proc export data=selected_data
+    outfile='C:\Users\asus\Desktop\test\CLHLS\CLHLS数据\CLHLS数据\clhls_2018_sort0220.xlsx'
+    dbms=xlsx
+    replace;
+run;
+*/
+
+/*检查f10 生育子女数的分布情况*/
+proc freq data=selected_data;
+    tables f10;
+run;
+
+/*检查子女存活状态*/
+proc freq data=selected_data;
+    tables f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/* 样本筛选 */
+data temp_data;
+    set selected_data;
+
+    /* 纳入标准 */
+    /* 年龄要求 */
+    /*age_include = (age &gt; 60);*/
+    /* 生育情况 */
+    fertility_include = (f10 &gt; 0);
+
+    /* 子女存活情况 */
+    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+    child_alive_include = 0;
+    do i = 1 to dim(child_alive);
+        if child_alive[i] = 1 then do;
+            child_alive_include = 1;
+            leave;
+        end;
+    end;
+    meet_include = fertility_include and child_alive_include;
+
+    /* 排除标准 */ 
+    /* 关键变量缺失值检查 */
+    /*array key_vars(*) SHEALTH ADL IADL;*/
+    array key_vars(*) SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support 
+                      age gender education job_type marriage_status hukou_type 
+                      social_insurance medical_insurance chronic_disease smoking drinking exercise
+                      child_elderly_status care_support;
+    has_missing = 0;
+    do i = 1 to dim(key_vars);
+        if missing(key_vars[i]) then do;
+            has_missing = 1;
+            leave;
+        end;
+    end;
+    /* 不合理生育数量检查 */
+    unreasonable_fertility = (f10 &gt; 7 or missing(f10));
+    meet_exclude = has_missing or unreasonable_fertility;
+
+    /* 筛选符合条件的样本 */
+    if meet_include and not meet_exclude;
+
+
+    /* 移除临时判断变量 */
+    drop fertility_include child_alive_include has_missing unreasonable_fertility meet_include meet_exclude;
+    /*移除部分原始变量*/
+    drop f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;
+run;
+
+/*打印所有变量的频数分布表，检查是否含有异常值*/
+/*
+proc freq data=final_data;
+    tables _all_;
+run;
+*/
+
+/*还需要删除含有的样本，即某些变量中赋值为9（not applicable）和88（don't know）的样本*/
+/*具体需要剔除变量满足这些条件的样本：SHEALTH&gt;8,ADL&gt;18,IADL&gt;24,residence&gt;3,eudcation&gt;22,smoking&gt;2,drinking&gt;2*/
+/* 删除满足特定条件的样本 */
+data final_data;
+    set temp_data;
+    if (SHEALTH &lt;= 8) and (ADL &lt;= 18) and (IADL &lt;= 24) and (residence &lt;= 3) and (age&gt;=60) and (education &lt;= 22) and (smoking &lt;= 2) and (drinking &lt;= 2);
+run;
+
+proc freq data=final_data;
+    tables _all_;
+run;
+
+/* 保存筛选后的数据为 XLSX 格式 */
+proc export
+    data = final_data
+    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\final_data.xlsx' /* 请替换为实际保存路径 */
+    dbms = xlsx
+    replace;
+run;
+
+/* 对 age 变量进行分组 */
+data final_data_grouped;
+    set final_data;
+    if age &lt; 70 then age_group = '60 - 69';
+    else if age &lt; 80 then age_group = '70 - 79';
+    else if age &lt; 90 then age_group = '80 - 89';
+    else age_group = '90+';
+run;
+
+/* 探查每个变量的基本统计信息，查看是否有异常值 */
+proc means data=final_data n nmiss min max mean std;
+    var SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support
+        age gender education job_type marriage_status hukou_type
+        social_insurance medical_insurance chronic_disease smoking drinking exercise
+        child_elderly_status care_support;
+run;
+
+/* 查看字符型变量的唯一值，看是否有异常字符 */
+proc freq data=final_data_grouped;
+    tables age_group gender education job_type marriage_status hukou_type;
+run;
+
+/* 打印因变量、自变量和控制变量的频数分布表并汇总 */
+proc freq data=final_data_grouped noprint;
+    tables SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support
+           age_group gender education job_type marriage_status hukou_type
+           social_insurance medical_insurance chronic_disease smoking drinking exercise
+           child_elderly_status care_support / out=freq_summary;
+run;
+
+/* 导出频数汇总表到 Excel */
+proc export
+    data = freq_summary
+    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\frequency_summary.xlsx' /* 请替换为实际保存路径 */
+    dbms = xlsx
+    replace;
+run;</code></pre>
+<p>Notes:在Qmd中输入SAS代码时，不可以直接使用</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">{sas</span> eval=false} your SAS code here <span class="kw">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>进行标注，应使用如下形式：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">{sas}</span> <span class="co">#| eval: false your code here </span><span class="kw">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>否则会在输出报错，使用了错误的</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">```````````````````</span> <span class="ex">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>原因是因为，在 Quarto 中，fenced div 的正确语法是：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">:::&nbsp;{.class-name}</span>  Content&nbsp;here  :::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("www\.lazyzhou\.cn\/Med-Stat-Notes");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="zhoulvbang/comments" data-repo-id="R_kgDON9RmWA" data-category="General" data-category-id="DIC_kwDON9RmWM4CnLUH" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../Guide/SAS/SAS-install.html" class="pagination-link" aria-label="SAS Install">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SAS Install</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../Quarto/quarto-intro.html" class="pagination-link" aria-label="Quarto introduction">
+        <span class="nav-page-text">Quarto introduction</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "使用SAS处理CLHLS数据"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "simonzhou"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">number-sections:</span><span class="co"> false</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-02-16"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>“中国老年健康影响因素跟踪调查”（简称“中国老年健康调查”，英文缩写CLHLS），以下简称CLHLS数据，是由北京大学健康老龄与发展研究中心/国家发展研究院组织的老年人追踪调查，调查范围覆盖全国23个省市自治区，调查对象为65岁及以上老年人和35-64岁成年子女，调查问卷分为存活被访者问卷和死亡老人家属问卷两种。存活被访者问卷的调查内容包括老人及家庭基本状况、社会经济背景及家庭结构、经济来源和经济状况、健康和生活质量自评、认知功能、性格心理特征、日常活动能力、生活方式、生活照料、疾病治疗和医疗费承担；死亡老人家属问卷的调查内容包括老人死亡时间、死因等内容。该调查项目在1998年进行基线调查后分别于2000 年、2002年、2005年、2008-2009年、2011-2012年、2014年和2017-2018年进行了跟踪调查，最近的一次跟踪调查(2017-2018年)共访问15,874 名65+岁老年人,收集了2014-2018年期间死亡的2,226位老年人的信息。“中国老年健康调查”累计入户访问11.3万人次，其中最需照料的80岁及以上高龄老人占总样本67.4%，其余为较低龄老人和中年对照组；同时访问2.89万位65+岁已死亡被访老人的直接家庭成员，收集了老人死亡前健康状况、生活质量与医疗和照料需求成本等详细数据。CLHLS数据共有15874例样本，761个变量，由于本文主要研究老年人的自评和客观健康水平以及代际支持模式对健康水平的影响，因此需要对样本和变量进行筛选，保留符合要求的样本和变量进行后续的分析。<span class="co">[</span><span class="ot">DVN/WBO7LK_2020</span><span class="co">](#DVN/WBO7LK_2020)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># 数据的获取</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>更多信息和细节请访问：<span class="co">[</span><span class="ot">中国老年健康与家庭幸福调查（CLHLS-HF）</span><span class="co">](https://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/WBO7LK&amp;version=2.0)</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># 变量的选取</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## 因变量的选取</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>**老年人自评健康状况（SHEALTH）**：对应变量 b12 （self-reported health），为有序变量（Ordinal），可用于衡量老年人对自身健康的主观评价，其赋值为：很好=1，好=2，一般=3，不好=4，很不好=5。</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>**生活自理能力（ADL）**：对应变量 e1 （bathing，洗澡）、e2 （dressing，穿衣）、e3 （toileting，如厕）、e4 （indoor transferring，室内移动）、e5 （continence，大小便控制）、e6 （feeding，进食），均为有序变量（Ordinal）。通过这些变量的得分计算可体现老年人的生活自理能力。</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>变量 e1b 、e2b 、e3b 、e4b 、e5b 、e6b 分别记录了在需要他人帮助情况下，这些活动的帮助持续天数，可作为辅助信息进一步分析生活自理能力情况。其变量赋值为：不需要帮扶=1，需要一个帮扶=2，需要多个帮扶=3，将其合并为ADL变量，相加值越低则表示生活自理能力越好，反之越差。</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>**工具型生活自理能力（IADL）**：对应变量 e7 （able to go outside to visit neighbors，能外出拜访邻居）、e8 （able to go shopping by yourself，能自己去购物）、e9 （able to make food by yourself，能自己做饭）、e10 （able to wash clothes，能洗衣服）、e11 （able to walk one kilometer，能步行一公里）、e12 （able to carry 5kg weight，能搬运 5 公斤重物）、e13 （able to crouch and stand three times，能蹲下并站立三次）、e14 （able to take public transportation，能乘坐公共交通工具），均为有序变量（Ordinal）。这些变量可综合反映老年人在更复杂日常生活任务上的能力。其变量赋值为：可以=1，些微困难=2，不能=3，将其合并为IADL变量，相加值越低则表示工具型生活自理能力越好，反之越差。</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 自变量的选取</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>**经济支持**：新设变量为 economic-support，对应的原始变量 f12a （how much did you receive from your son (s) or daughter (s)-in-law last year，去年从儿子或儿媳处收到多少钱）、f12b （how much did you receive from your daughter (s) or son (s)-in-law last year，去年从女儿或女婿处收到多少钱）、f12c （how much did you receive from your grandchild (ren) last year，去年从孙辈处收到多少钱），均为尺度变量（Scale），其中给与物质支持=99998，不知道=88888，缺失=99999，通过统计99998的个数来估计经济支持的程度，如果没有99998则赋值为0,。通过这些变量可衡量子女及孙辈在物质上给予老年人的经济支持。</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>**照料支持**：新设变量为：residence，对应原始变量a51（co-residence of interviewee，受访者居住情况），有人同住=1，独居=2，住在机构=3；新设变量为living，对应变量 a52（how many people are living with you，有多少人居住在一起），数值型变量；新设变量 visit-fren，对应细分变量为f103a5 （frequent visits of the 1st child，第一个孩子的探访频率）、f103b5 （frequent visits of the 2nd child，第二个孩子的探访频率）、f103c5 （frequent visits of the 3rd child，第三个孩子的探访频率）等（一直到 f103k5 等关于各个孩子的探访频率变量），均为有序变量（Ordinal），有探访=1，没有=2，任一一个孩子=1即可认为有探访，同时给新变量赋值为1，如果没有则给新变量赋值为0。</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>设置care-support变量，如果residence=1或visit-fren=1则给care-support赋值为1，否则赋值为0。</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>用这些变量以老年人与子女相处和见面的频率来间接反映子女对老人的照料支持情况。</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>**情感支持（emotion support）**：对应细分变量 f103a6 （contact with the 1st child，与第一个孩子的联系情况）、f103b6 （contact with the 2nd child，与第二个孩子的联系情况）、f103c6 （contact with the 3rd child，与第三个孩子的联系情况）等（一直到 f103k6 等关于各个孩子的联系情况变量），均为名义变量（Nominal）。根据这些变量所反映的与子女联系的情况来体现子女对老人的情感关怀。有联系=1，没联系=2，任一一个为1即可说明有孩子联系。</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## 控制变量的选取</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>**年龄**：问卷中的 trueage “真实年龄”，用于获取老年人的实际年龄。</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>**性别**：问卷中 a1 “性别”，男性赋值为 1，女性赋值为 2。</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>**受教育程度**：问卷中的 f1 “受教育年限”，数值型变量，但是其中如果赋值为88或99则表示“不知道”或“缺失”。</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>**退休前的工作类型：**问卷中 f2 “60 岁之前的主要职业”，名义变量，专业技术人员=0，政府、机构或管理人员=1，商业、服务或工业工人=2，自雇人士=3，农、林、牧或渔业工人=4，家政工人=5，军事人员=6，从未工作过=7，其他=8。</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>**婚姻状况**：问卷中 f41 “您目前的婚姻状态是？”，将 “已婚或与伴侣同居” 赋值为 1，其他赋值为 0。</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>**户口类型**：问卷中的 hukou “hukou type of the elderly being visited，被访老人的户口类型”， “城镇” 赋值为 1，“农村” 赋值为 2。</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>**社保和养老保险**：问卷中的 nf64a f64b f64c（do you have any social security and social insurance now? 你是否有任何社保和社会保险？），有任何一种社保或养老保险则赋值为 1，没有赋值为 0；。</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>**医疗保险**：问卷中f64d f64e f64f f64h(是否有医疗保险)，有任何一种医疗保险则赋值为 1，没有赋值为 0。</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>**子女年龄：**通过对问卷中的 f103a4 f103b4 到 f103m4 来检查该老人的子女的年龄，如果最后一个还活着的孩子年龄<span class="sc">\&gt;</span>60，赋值为1，则表示该老人的子女也是老年状态，否则为0。</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>**慢性病**：问卷中 g15a1 g15b1 一直到 g15x1 表示是否患有某种慢性病，有任何一种慢性病赋值为 1，否则为 0。</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>**抽烟**：问卷中 g151 “你24小时内抽烟吗？”，是赋值为 1，否赋值为 2。</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>**喝酒**：问卷中 g161 “你24小时内饮酒吗？”，是赋值为 1，否赋值为 2。</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>**体育锻炼**：问卷中d91 d92 分别表示“目前是否锻炼？”和“过去是否锻炼过？”，是赋值为 1，否赋值为 2。</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="fu"># 纳入与排除标准</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## **纳入标准**</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>**年龄要求**：年龄大于 60 岁，通过实际年龄 <span class="sc">\&gt;</span> 60进行筛选。60 岁以上人群处于老年阶段，其健康、社会角色和代际关系有老年群体特征，符合本研究对老年人的研究范围。</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>**生育情况**：生育过子女，通过反映生育子女数量的变量（如 f10 生育子女数），要求f10 <span class="sc">\&gt;</span> 0。代际支持模式研究需存在代际关系，生育子女是形成代际关系的前提。</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>**子女存活情况**：所生育子女中至少有一个存活。可通过检查如 f103a3 - f103m3 等表示孩子存活情况的变量，只要有一个值为表示存活的标识即可纳入（原始数据的变量赋值为存活=1，去世=2）。有在世子女才能开展代际支持研究。</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## **排除标准**</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>**关键变量缺失值**：排除关键变量存在缺失值和无效值的样本。关键变量涵盖上述控制变量及后续分析的因变量、自变量等。缺失值或无效值会影响数据质量和分析结果准确性。</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>**不合理生育数量**：生育子女数量超过合理上限（结合研究背景和数据确定，上限为 7）或者为缺失值，则需要排除（f10<span class="sc">\&gt;</span>7 or f10 = null）。不合理生育数量可能是数据录入错误或特殊情况，干扰研究结果。</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>通过多次尝试，以下是用于筛选的SAS代码：</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{sas}</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="in">/* 导入必要的库 */</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="in">proc import </span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="in">    datafile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\clhls_2018_15874.sav'  /* 请将这里替换为你的SAV文件的实际路径 */</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="in">    out = raw_data </span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="in">    dbms = sav </span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">    replace;</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="in">/* 筛选合适的变量并排序 */</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="in">data selected_data;</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="in">    set raw_data;</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 因变量 */</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 老年人自评健康状况（SHEALTH） */</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="in">    SHEALTH = b12;</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 生活自理能力（ADL） */</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="in">    array adl_vars(*) e1 e2 e3 e4 e5 e6;</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="in">    array adl_help_days(*) e1b e2b e3b e4b e5b e6b;</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="in">    ADL = 0;</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(adl_vars);</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="in">        if adl_help_days[i] = 1 then ADL = ADL + adl_vars[i];</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="in">        else if adl_help_days[i] = 2 then ADL = ADL + adl_vars[i] * 2;</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="in">        else if adl_help_days[i] = 3 then ADL = ADL + adl_vars[i] * 3;</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 新增：生活自理障碍二分类变量 ADL2 */</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="in">    ADL2 = 0;</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(adl_vars);</span></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="in">        if adl_vars[i] &gt; 1 then do;</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="in">            ADL2 = 1;</span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 工具型生活自理能力（IADL） */</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="in">    array iadl_vars(*) e7 e8 e9 e10 e11 e12 e13 e14;</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="in">    IADL = 0;</span></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(iadl_vars);</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="in">        IADL = IADL + iadl_vars[i];</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 新增：工具型生活自理障碍二分类变量 IADL2 */</span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="in">    IADL2 = 0;</span></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(iadl_vars);</span></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="in">        if iadl_vars[i] &gt; 1 then do;</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a><span class="in">            IADL2 = 1;</span></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 自变量 */</span></span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 经济支持 */</span></span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a><span class="in">    array economic_vars(*) f12a f12b f12c;</span></span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a><span class="in">    economic_support = 0;</span></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(economic_vars);</span></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="in">        if economic_vars[i] = 99998 then</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a><span class="in">            economic_support = economic_support + 10000;</span></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a><span class="in">        else if economic_vars[i] in (88888, 99999) then</span></span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a><span class="in">            continue; /* 跳过无效值或缺失值 */</span></span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a><span class="in">        else</span></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="in">            economic_support = economic_support + economic_vars[i];</span></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 照料支持 */</span></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a><span class="in">    residence = a51;</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="in">    living = a52;</span></span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="in">    array visit_freq(*) f103a5 f103b5 f103c5 f103d5 f103e5 f103f5 f103g5 f103h5 f103i5 f103j5 f103k5;</span></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="in">    visit_fren = 0;</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(visit_freq);</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a><span class="in">        if visit_freq[i] = 1 then do;</span></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a><span class="in">            visit_fren = 1;</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 情感支持 */</span></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="in">    array contact_vars(*) f103a6 f103b6 f103c6 f103d6 f103e6 f103f6 f103g6 f103h6 f103i6 f103j6 f103k6;</span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a><span class="in">    emotion_support = 2; /* 先假设没联系 */</span></span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(contact_vars);</span></span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a><span class="in">        if contact_vars[i] = 1 then do;</span></span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a><span class="in">            emotion_support = 1;</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 控制变量 */</span></span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 年龄 */</span></span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a><span class="in">    age = trueage;</span></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 性别 */</span></span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a><span class="in">    gender = a1;</span></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 受教育程度 */</span></span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a><span class="in">    education = f1;</span></span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 退休前的工作类型 */</span></span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a><span class="in">    job_type = f2;</span></span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 婚姻状况 */</span></span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a><span class="in">    if f41 = 1 then marriage_status = 1; /* 假设 1 代表已婚或与伴侣同居 */</span></span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a><span class="in">    else marriage_status = 0;</span></span>
+<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 户口类型 */</span></span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a><span class="in">    hukou_type = hukou;</span></span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 社保和养老保险 */</span></span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a><span class="in">    if nf64a = 0 or f64b = 1 or f64c = 1 or f64i = 1 then social_insurance = 1;</span></span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a><span class="in">    else social_insurance = 0;</span></span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 医疗保险 */</span></span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a><span class="in">    if f64d = 1 or f64e = 1 or f64g = 1 or f64h = 1 then medical_insurance = 1;</span></span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a><span class="in">    else medical_insurance = 0;</span></span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 慢性病 */</span></span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a><span class="in">    array chronic_vars(*) g15a1 g15b1 g15c1 g15d1 g15e1 g15f1 g15g1 g15h1 g15i1 g15j1 g15k1 g15l1 g15m1 g15n1 g15o1 g15p1 g15q1 g15r1 g15s1 g15t1 g15u1 g15v1 g15w1 g15x1;</span></span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a><span class="in">    chronic_disease = 0;</span></span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(chronic_vars);</span></span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a><span class="in">        if chronic_vars[i] = 1 then chronic_disease = 1;</span></span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a><span class="in">        if chronic_disease = 1 then leave;</span></span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 抽烟 */</span></span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a><span class="in">    smoking = g151;</span></span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 喝酒 */</span></span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a><span class="in">    drinking = g161;</span></span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 体育锻炼 */</span></span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a><span class="in">    if d91 = 1 or d92 = 1 then exercise = 1;</span></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a><span class="in">    else exercise = 2;</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 子女年龄状态 */</span></span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a><span class="in">    array child_ages(*) f103a4 f103b4 f103c4 f103d4 f103e4 f103f4 f103g4 f103h4 f103i4 f103j4 f103k4 f103l4 f103m4;</span></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a><span class="in">    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;</span></span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a><span class="in">    last_alive_child_age = .;</span></span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = dim(child_ages) to 1 by -1;</span></span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a><span class="in">        if child_alive[i] = 1 then do;</span></span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a><span class="in">            last_alive_child_age = child_ages[i];</span></span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a><span class="in">    if last_alive_child_age &gt; 60 then child_elderly_status = 1;</span></span>
+<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a><span class="in">    else child_elderly_status = 0;</span></span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 生成 care - support 变量 */</span></span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a><span class="in">    if residence = 1 or visit_fren = 1 then care_support = 1;</span></span>
+<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a><span class="in">    else care_support = 0;</span></span>
+<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 选择需要的变量 */</span></span>
+<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a><span class="in">    keep SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support </span></span>
+<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a><span class="in">         f10 age gender education job_type marriage_status hukou_type </span></span>
+<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a><span class="in">         social_insurance medical_insurance chronic_disease smoking drinking exercise</span></span>
+<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a><span class="in">         child_elderly_status care_support f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;</span></span>
+<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a><span class="in">/* 将筛选后的保存为 XLSX 格式文件 */</span></span>
+<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a><span class="in">/*</span></span>
+<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a><span class="in">proc export data=selected_data</span></span>
+<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a><span class="in">    outfile='C:\Users\asus\Desktop\test\CLHLS\CLHLS数据\CLHLS数据\clhls_2018_sort0220.xlsx'</span></span>
+<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a><span class="in">    dbms=xlsx</span></span>
+<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a><span class="in">    replace;</span></span>
+<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a><span class="in">*/</span></span>
+<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a><span class="in">/*检查f10 生育子女数的分布情况*/</span></span>
+<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=selected_data;</span></span>
+<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a><span class="in">    tables f10;</span></span>
+<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a><span class="in">/*检查子女存活状态*/</span></span>
+<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=selected_data;</span></span>
+<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a><span class="in">    tables f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;</span></span>
+<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-265"><a href="#cb6-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-266"><a href="#cb6-266" aria-hidden="true" tabindex="-1"></a><span class="in">/* 样本筛选 */</span></span>
+<span id="cb6-267"><a href="#cb6-267" aria-hidden="true" tabindex="-1"></a><span class="in">data temp_data;</span></span>
+<span id="cb6-268"><a href="#cb6-268" aria-hidden="true" tabindex="-1"></a><span class="in">    set selected_data;</span></span>
+<span id="cb6-269"><a href="#cb6-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-270"><a href="#cb6-270" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 纳入标准 */</span></span>
+<span id="cb6-271"><a href="#cb6-271" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 年龄要求 */</span></span>
+<span id="cb6-272"><a href="#cb6-272" aria-hidden="true" tabindex="-1"></a><span class="in">    /*age_include = (age &gt; 60);*/</span></span>
+<span id="cb6-273"><a href="#cb6-273" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 生育情况 */</span></span>
+<span id="cb6-274"><a href="#cb6-274" aria-hidden="true" tabindex="-1"></a><span class="in">    fertility_include = (f10 &gt; 0);</span></span>
+<span id="cb6-275"><a href="#cb6-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-276"><a href="#cb6-276" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 子女存活情况 */</span></span>
+<span id="cb6-277"><a href="#cb6-277" aria-hidden="true" tabindex="-1"></a><span class="in">    array child_alive(*) f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;</span></span>
+<span id="cb6-278"><a href="#cb6-278" aria-hidden="true" tabindex="-1"></a><span class="in">    child_alive_include = 0;</span></span>
+<span id="cb6-279"><a href="#cb6-279" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(child_alive);</span></span>
+<span id="cb6-280"><a href="#cb6-280" aria-hidden="true" tabindex="-1"></a><span class="in">        if child_alive[i] = 1 then do;</span></span>
+<span id="cb6-281"><a href="#cb6-281" aria-hidden="true" tabindex="-1"></a><span class="in">            child_alive_include = 1;</span></span>
+<span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-285"><a href="#cb6-285" aria-hidden="true" tabindex="-1"></a><span class="in">    meet_include = fertility_include and child_alive_include;</span></span>
+<span id="cb6-286"><a href="#cb6-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-287"><a href="#cb6-287" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 排除标准 */ </span></span>
+<span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 关键变量缺失值检查 */</span></span>
+<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a><span class="in">    /*array key_vars(*) SHEALTH ADL IADL;*/</span></span>
+<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a><span class="in">    array key_vars(*) SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support </span></span>
+<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a><span class="in">                      age gender education job_type marriage_status hukou_type </span></span>
+<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a><span class="in">                      social_insurance medical_insurance chronic_disease smoking drinking exercise</span></span>
+<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a><span class="in">                      child_elderly_status care_support;</span></span>
+<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a><span class="in">    has_missing = 0;</span></span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a><span class="in">    do i = 1 to dim(key_vars);</span></span>
+<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a><span class="in">        if missing(key_vars[i]) then do;</span></span>
+<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a><span class="in">            has_missing = 1;</span></span>
+<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a><span class="in">            leave;</span></span>
+<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a><span class="in">        end;</span></span>
+<span id="cb6-300"><a href="#cb6-300" aria-hidden="true" tabindex="-1"></a><span class="in">    end;</span></span>
+<span id="cb6-301"><a href="#cb6-301" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 不合理生育数量检查 */</span></span>
+<span id="cb6-302"><a href="#cb6-302" aria-hidden="true" tabindex="-1"></a><span class="in">    unreasonable_fertility = (f10 &gt; 7 or missing(f10));</span></span>
+<span id="cb6-303"><a href="#cb6-303" aria-hidden="true" tabindex="-1"></a><span class="in">    meet_exclude = has_missing or unreasonable_fertility;</span></span>
+<span id="cb6-304"><a href="#cb6-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-305"><a href="#cb6-305" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 筛选符合条件的样本 */</span></span>
+<span id="cb6-306"><a href="#cb6-306" aria-hidden="true" tabindex="-1"></a><span class="in">    if meet_include and not meet_exclude;</span></span>
+<span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-308"><a href="#cb6-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-309"><a href="#cb6-309" aria-hidden="true" tabindex="-1"></a><span class="in">    /* 移除临时判断变量 */</span></span>
+<span id="cb6-310"><a href="#cb6-310" aria-hidden="true" tabindex="-1"></a><span class="in">    drop fertility_include child_alive_include has_missing unreasonable_fertility meet_include meet_exclude;</span></span>
+<span id="cb6-311"><a href="#cb6-311" aria-hidden="true" tabindex="-1"></a><span class="in">    /*移除部分原始变量*/</span></span>
+<span id="cb6-312"><a href="#cb6-312" aria-hidden="true" tabindex="-1"></a><span class="in">    drop f103a3 f103b3 f103c3 f103d3 f103e3 f103f3 f103g3 f103h3 f103i3 f103j3 f103k3 f103l3 f103m3;</span></span>
+<span id="cb6-313"><a href="#cb6-313" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a><span class="in">/*打印所有变量的频数分布表，检查是否含有异常值*/</span></span>
+<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a><span class="in">/*</span></span>
+<span id="cb6-317"><a href="#cb6-317" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=final_data;</span></span>
+<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a><span class="in">    tables _all_;</span></span>
+<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-320"><a href="#cb6-320" aria-hidden="true" tabindex="-1"></a><span class="in">*/</span></span>
+<span id="cb6-321"><a href="#cb6-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-322"><a href="#cb6-322" aria-hidden="true" tabindex="-1"></a><span class="in">/*还需要删除含有的样本，即某些变量中赋值为9（not applicable）和88（don't know）的样本*/</span></span>
+<span id="cb6-323"><a href="#cb6-323" aria-hidden="true" tabindex="-1"></a><span class="in">/*具体需要剔除变量满足这些条件的样本：SHEALTH&gt;8,ADL&gt;18,IADL&gt;24,residence&gt;3,eudcation&gt;22,smoking&gt;2,drinking&gt;2*/</span></span>
+<span id="cb6-324"><a href="#cb6-324" aria-hidden="true" tabindex="-1"></a><span class="in">/* 删除满足特定条件的样本 */</span></span>
+<span id="cb6-325"><a href="#cb6-325" aria-hidden="true" tabindex="-1"></a><span class="in">data final_data;</span></span>
+<span id="cb6-326"><a href="#cb6-326" aria-hidden="true" tabindex="-1"></a><span class="in">    set temp_data;</span></span>
+<span id="cb6-327"><a href="#cb6-327" aria-hidden="true" tabindex="-1"></a><span class="in">    if (SHEALTH &lt;= 8) and (ADL &lt;= 18) and (IADL &lt;= 24) and (residence &lt;= 3) and (age&gt;=60) and (education &lt;= 22) and (smoking &lt;= 2) and (drinking &lt;= 2);</span></span>
+<span id="cb6-328"><a href="#cb6-328" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=final_data;</span></span>
+<span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a><span class="in">    tables _all_;</span></span>
+<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-333"><a href="#cb6-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-334"><a href="#cb6-334" aria-hidden="true" tabindex="-1"></a><span class="in">/* 保存筛选后的数据为 XLSX 格式 */</span></span>
+<span id="cb6-335"><a href="#cb6-335" aria-hidden="true" tabindex="-1"></a><span class="in">proc export</span></span>
+<span id="cb6-336"><a href="#cb6-336" aria-hidden="true" tabindex="-1"></a><span class="in">    data = final_data</span></span>
+<span id="cb6-337"><a href="#cb6-337" aria-hidden="true" tabindex="-1"></a><span class="in">    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\final_data.xlsx' /* 请替换为实际保存路径 */</span></span>
+<span id="cb6-338"><a href="#cb6-338" aria-hidden="true" tabindex="-1"></a><span class="in">    dbms = xlsx</span></span>
+<span id="cb6-339"><a href="#cb6-339" aria-hidden="true" tabindex="-1"></a><span class="in">    replace;</span></span>
+<span id="cb6-340"><a href="#cb6-340" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-341"><a href="#cb6-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-342"><a href="#cb6-342" aria-hidden="true" tabindex="-1"></a><span class="in">/* 对 age 变量进行分组 */</span></span>
+<span id="cb6-343"><a href="#cb6-343" aria-hidden="true" tabindex="-1"></a><span class="in">data final_data_grouped;</span></span>
+<span id="cb6-344"><a href="#cb6-344" aria-hidden="true" tabindex="-1"></a><span class="in">    set final_data;</span></span>
+<span id="cb6-345"><a href="#cb6-345" aria-hidden="true" tabindex="-1"></a><span class="in">    if age &lt; 70 then age_group = '60 - 69';</span></span>
+<span id="cb6-346"><a href="#cb6-346" aria-hidden="true" tabindex="-1"></a><span class="in">    else if age &lt; 80 then age_group = '70 - 79';</span></span>
+<span id="cb6-347"><a href="#cb6-347" aria-hidden="true" tabindex="-1"></a><span class="in">    else if age &lt; 90 then age_group = '80 - 89';</span></span>
+<span id="cb6-348"><a href="#cb6-348" aria-hidden="true" tabindex="-1"></a><span class="in">    else age_group = '90+';</span></span>
+<span id="cb6-349"><a href="#cb6-349" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-350"><a href="#cb6-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-351"><a href="#cb6-351" aria-hidden="true" tabindex="-1"></a><span class="in">/* 探查每个变量的基本统计信息，查看是否有异常值 */</span></span>
+<span id="cb6-352"><a href="#cb6-352" aria-hidden="true" tabindex="-1"></a><span class="in">proc means data=final_data n nmiss min max mean std;</span></span>
+<span id="cb6-353"><a href="#cb6-353" aria-hidden="true" tabindex="-1"></a><span class="in">    var SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support</span></span>
+<span id="cb6-354"><a href="#cb6-354" aria-hidden="true" tabindex="-1"></a><span class="in">        age gender education job_type marriage_status hukou_type</span></span>
+<span id="cb6-355"><a href="#cb6-355" aria-hidden="true" tabindex="-1"></a><span class="in">        social_insurance medical_insurance chronic_disease smoking drinking exercise</span></span>
+<span id="cb6-356"><a href="#cb6-356" aria-hidden="true" tabindex="-1"></a><span class="in">        child_elderly_status care_support;</span></span>
+<span id="cb6-357"><a href="#cb6-357" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-358"><a href="#cb6-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-359"><a href="#cb6-359" aria-hidden="true" tabindex="-1"></a><span class="in">/* 查看字符型变量的唯一值，看是否有异常字符 */</span></span>
+<span id="cb6-360"><a href="#cb6-360" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=final_data_grouped;</span></span>
+<span id="cb6-361"><a href="#cb6-361" aria-hidden="true" tabindex="-1"></a><span class="in">    tables age_group gender education job_type marriage_status hukou_type;</span></span>
+<span id="cb6-362"><a href="#cb6-362" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-363"><a href="#cb6-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-364"><a href="#cb6-364" aria-hidden="true" tabindex="-1"></a><span class="in">/* 打印因变量、自变量和控制变量的频数分布表并汇总 */</span></span>
+<span id="cb6-365"><a href="#cb6-365" aria-hidden="true" tabindex="-1"></a><span class="in">proc freq data=final_data_grouped noprint;</span></span>
+<span id="cb6-366"><a href="#cb6-366" aria-hidden="true" tabindex="-1"></a><span class="in">    tables SHEALTH ADL ADL2 IADL IADL2 economic_support residence living visit_fren emotion_support</span></span>
+<span id="cb6-367"><a href="#cb6-367" aria-hidden="true" tabindex="-1"></a><span class="in">           age_group gender education job_type marriage_status hukou_type</span></span>
+<span id="cb6-368"><a href="#cb6-368" aria-hidden="true" tabindex="-1"></a><span class="in">           social_insurance medical_insurance chronic_disease smoking drinking exercise</span></span>
+<span id="cb6-369"><a href="#cb6-369" aria-hidden="true" tabindex="-1"></a><span class="in">           child_elderly_status care_support / out=freq_summary;</span></span>
+<span id="cb6-370"><a href="#cb6-370" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-371"><a href="#cb6-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-372"><a href="#cb6-372" aria-hidden="true" tabindex="-1"></a><span class="in">/* 导出频数汇总表到 Excel */</span></span>
+<span id="cb6-373"><a href="#cb6-373" aria-hidden="true" tabindex="-1"></a><span class="in">proc export</span></span>
+<span id="cb6-374"><a href="#cb6-374" aria-hidden="true" tabindex="-1"></a><span class="in">    data = freq_summary</span></span>
+<span id="cb6-375"><a href="#cb6-375" aria-hidden="true" tabindex="-1"></a><span class="in">    outfile = 'C:\Users\asus\Desktop\test\CLHLS\Analysis-0214\frequency_summary.xlsx' /* 请替换为实际保存路径 */</span></span>
+<span id="cb6-376"><a href="#cb6-376" aria-hidden="true" tabindex="-1"></a><span class="in">    dbms = xlsx</span></span>
+<span id="cb6-377"><a href="#cb6-377" aria-hidden="true" tabindex="-1"></a><span class="in">    replace;</span></span>
+<span id="cb6-378"><a href="#cb6-378" aria-hidden="true" tabindex="-1"></a><span class="in">run;</span></span>
+<span id="cb6-379"><a href="#cb6-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-380"><a href="#cb6-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-381"><a href="#cb6-381" aria-hidden="true" tabindex="-1"></a>Notes:在Qmd中输入SAS代码时，不可以直接使用</span>
+<span id="cb6-382"><a href="#cb6-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-383"><a href="#cb6-383" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb6-384"><a href="#cb6-384" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">{sas</span> eval=false} your SAS code here <span class="kw">```</span></span>
+<span id="cb6-385"><a href="#cb6-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-386"><a href="#cb6-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-387"><a href="#cb6-387" aria-hidden="true" tabindex="-1"></a>进行标注，应使用如下形式：</span>
+<span id="cb6-388"><a href="#cb6-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-389"><a href="#cb6-389" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb6-390"><a href="#cb6-390" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">{sas}</span> <span class="co">#| eval: false your code here </span><span class="kw">```</span></span>
+<span id="cb6-391"><a href="#cb6-391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-392"><a href="#cb6-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-393"><a href="#cb6-393" aria-hidden="true" tabindex="-1"></a>否则会在输出报错，使用了错误的</span>
+<span id="cb6-394"><a href="#cb6-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-395"><a href="#cb6-395" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb6-396"><a href="#cb6-396" aria-hidden="true" tabindex="-1"></a><span class="kw">```````````````````</span> <span class="ex">:::</span></span>
+<span id="cb6-397"><a href="#cb6-397" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
+<span id="cb6-398"><a href="#cb6-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-399"><a href="#cb6-399" aria-hidden="true" tabindex="-1"></a><span class="ex">原因是因为，在</span> Quarto 中，fenced div 的正确语法是：</span>
+<span id="cb6-400"><a href="#cb6-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-401"><a href="#cb6-401" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span> <span class="fu">bash</span></span>
+<span id="cb6-402"><a href="#cb6-402" aria-hidden="true" tabindex="-1"></a><span class="ex">:::&nbsp;{.class-name}</span>  Content&nbsp;here  :::</span>
+<span id="cb6-403"><a href="#cb6-403" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ This website was built with Quarto
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025, simonzhou</p>
+<div class="toc-actions"><ul><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/blob/main/Guide/SAS/2025-02-16-CLHLS.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/zhoulvbang/Med-Stat-Notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zhoulvbang">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

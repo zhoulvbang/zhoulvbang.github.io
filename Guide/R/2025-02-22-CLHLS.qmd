@@ -1,0 +1,493 @@
+---
+title: "CLHLS Data Analysis by R"
+author: "Simonzhou"
+date: "2025-02-22"
+format: 
+  html:           # 输出格式为 HTML
+    self-contained: true  # 生成独立的 HTML 文件
+  pdf:            # 可选：如果需要 PDF 输出
+    default
+execute:
+  echo: true      # 在输出中显示代码
+  eval: true      # 执行代码
+  warning: false  # 隐藏警告信息
+  message: false  # 隐藏消息
+---
+
+# CLHLS 数据分析
+
+这是一个使用 R 语言对 CLHLS 数据进行清洗和分析的工作文档。
+
+## 加载必要的包
+
+```{r setup, include=FALSE}
+# 安装并加载必要的 R 包
+if (!requireNamespace("haven", quietly = TRUE)) {
+  install.packages("haven")
+}
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr")
+}
+if (!requireNamespace("tidyr", quietly = TRUE)) {
+  install.packages("tidyr")
+}
+if (!requireNamespace("writexl", quietly = TRUE)) {
+  install.packages("writexl")
+}
+library(haven)        # 用于读取 SPSS (.sav) 文件
+library(dplyr)        # 用于数据操作
+library(tidyr)        # 用于数据整理
+library(writexl)      # 用于导出 Excel 文件
+library(purrr)      # 函数式编程
+library(officer)
+library(flextable)
+# 设置代码块选项
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+本文数据源来自北大开放研究数据平台。[DVN/WBO7LK_2020](#DVN/WBO7LK_2020)
+
+使用SAS逐渐让我失去的耐心，极其臃肿和笨重，Vintage Car，交互页面也很糟糕，用起来很令人烦躁，遂改用R对数据进行分析。
+
+# 数据的导入与变量的生成
+
+```{r, eval = FALSE}
+# 1. 导入数据
+raw_data <- read_sav("C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/clhls_2018_15874.sav")
+
+# 2. 检查数据结构（相当于proc contents）
+str(raw_data)
+
+# 3. 选择变量并创建新变量
+selected_data <- raw_data %>%
+  mutate(
+    # 因变量
+    SHEALTH = ifelse(!b12 %in% c(NA, 8, 9), b12, NA),
+    
+    # ADL
+    ADLsum = rowSums(select(., e1:e6), na.rm = TRUE),
+    ADL = (ADLsum == 6),
+    
+    # IADL
+    IADLsum = rowSums(select(., e7:e14), na.rm = TRUE),
+    IADL = (IADLsum == 8),
+    
+    # 自变量 - 经济支持
+    economic_support = pmap_dbl(
+      list(f12a, f12b, f12c),
+      function(a, b, c) {
+        sum = 0
+        for (x in c(a, b, c)) {
+          if (!is.na(x)) {
+            if (x == 99998) sum = sum + 10000
+            else if (!x %in% c(88888, 99999)) sum = sum + x
+          }
+        }
+        return(sum)
+      }
+    ),
+    
+    # 照料支持
+    residence = a51,
+    living = a52,
+    visit_fren = apply(select(., starts_with("f103") & ends_with("5")), 1, 
+                      function(x) max(x, na.rm = TRUE) == 1),
+    care_support = (residence == 1 | visit_fren),
+    
+    # 情感支持
+    emotion_support = apply(select(., starts_with("f103") & ends_with("6")), 1,
+                           function(x) max(x, na.rm = TRUE) == 1),
+    
+    # 控制变量
+    age = trueage,
+    gender = a1,
+    education = f1,
+    job_type = f2,
+    marriage_status = (f41 == 1),
+    hukou_type = hukou,
+    social_insurance = (nf64a == 0 | f64b == 1 | f64c == 1 | f64i == 1),
+    medical_insurance = (f64d == 1 | f64e == 1 | f64g == 1 | f64h == 1),
+    
+    # 慢性病
+    chronic_disease = apply(select(., starts_with("g15") & ends_with("1")), 1,
+                           function(x) max(x, na.rm = TRUE) == 1),
+    
+    smoking = g151,
+    drinking = g161,
+    exercise = (d91 == 1 | d92 == 1)
+  ) %>%
+  select(SHEALTH, ADL, ADLsum, IADL, IADLsum, economic_support, residence, living,
+         visit_fren, emotion_support, f10, age, gender, education, job_type,
+         marriage_status, hukou_type, social_insurance, medical_insurance,
+         chronic_disease, smoking, drinking, exercise, care_support)
+
+# 4. 样本筛选
+temp_data <- selected_data %>%
+  filter(
+    complete.cases(SHEALTH, ADL, ADLsum, IADL, IADLsum, economic_support,
+                  residence, living, visit_fren, emotion_support, age, gender,
+                  education, job_type, marriage_status, hukou_type,
+                  social_insurance, medical_insurance, chronic_disease,
+                  smoking, drinking, exercise, care_support),
+    f10 > 0 & f10 <= 13
+  )
+
+# 5. 删除特定条件的样本
+final_data <- temp_data %>%
+  filter(
+    SHEALTH <= 8,
+    ADLsum <= 18,
+    IADLsum <= 24,
+    residence <= 3,
+    age >= 60,
+    education <= 22,
+    smoking <= 2,
+    drinking <= 2
+  )
+
+# 6. 年龄分组
+final_data_grouped <- final_data %>%
+  mutate(
+    age_group = case_when(
+      age < 70 ~ "60-69",
+      age < 80 ~ "70-79",
+      age < 90 ~ "80-89",
+      TRUE ~ "90+"
+    )
+  )
+
+# 7. 计算描述性统计量
+summary_stats <- final_data_grouped %>%
+  summarise(across(
+    c(SHEALTH, ADL, ADLsum, IADL, IADLsum, economic_support, care_support,
+      emotion_support, age, gender, education, marriage_status, hukou_type,
+      social_insurance, medical_insurance, chronic_disease, smoking,
+      drinking, exercise),
+    list(
+      n = ~sum(!is.na(.)),
+      mean = ~mean(., na.rm = TRUE),
+      std = ~sd(., na.rm = TRUE),
+      min = ~min(., na.rm = TRUE),
+      median = ~median(., na.rm = TRUE),
+      max = ~max(., na.rm = TRUE)
+    )
+  )) %>%
+  pivot_longer(
+    everything(),
+    names_to = c("var_name", "stat"),
+    names_sep = "_",
+    values_to = "value"
+  ) %>%
+  pivot_wider(
+    names_from = "stat",
+    values_from = "value"
+  )
+
+# 8. 创建变量标签映射
+label_map <- tibble(
+  var_name = c("SHEALTH", "ADL", "ADLsum", "IADL", "IADLsum", "economic_support",
+              "care_support", "emotion_support", "age", "gender", "education",
+              "marriage_status", "hukou_type", "social_insurance",
+              "medical_insurance", "chronic_disease", "smoking", "drinking",
+              "exercise"),
+  label = c("自评健康状况", "生活自理能力", "生活自理能力总分", "工具型生活自理能力",
+           "工具型生活自理能力总分", "经济支持", "照料支持", "情感支持", "年龄", "性别",
+           "受教育程度", "婚姻状况", "户口类型", "养老保险", "医疗保险", "慢性病",
+           "抽烟", "喝酒", "体育锻炼")
+)
+
+# 9. 合并结果
+final_summary <- summary_stats %>%
+  left_join(label_map, by = "var_name") %>%
+  select(label, n, mean, std, min, median, max)
+
+# 10. 查看结果
+print(final_summary)
+
+# 11. 输出描述性统计表格
+library(knitr)
+kable(final_summary,
+      digits = 3,
+      col.names = c("变量名", "样本数", "平均数", "标准差", "最小值", "中位数", "最大值"),
+      caption = "表3-1 描述性统计分析")
+
+
+```
+
+## 数据导出
+
+```{r, eval = FALSE}
+library(writexl)  
+# 12. 保存描述性统计表格  
+write_xlsx(final_summary, "C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/Rsummary0223.xlsx")  
+# 13. 保存结果  
+write_xlsx(final_data, "C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/final_data0223.xlsx")
+```
+
+## 描述性统计
+
+# 加载必要的包
+
+```{r, eval = FALSE}
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(officer)
+library(flextable)
+library(car)
+
+# 确认包是否正确加载
+if (!require(officer)) stop("请安装 officer 包")
+if (!require(flextable)) stop("请安装 flextable 包")
+if (!require(dplyr)) stop("请安装 dplyr 包")
+
+# 1. 导入数据
+final_data <- read_excel("C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/final_data.xlsx", 
+                         sheet = "final_data")
+
+# 2. 定义变量列表（描述性统计用）
+varlist <- c("SHEALTH", "ADLsum", "ADL", "IADLsum", "IADL", "economic_support",
+             "residence", "living", "visit_fren", "care_support", "emotion_support",
+             "age", "gender", "education", "job_type", "marriage_status",
+             "hukou_type", "social_insurance", "medical_insurance", "chronic_disease",
+             "smoking", "drinking", "exercise", "f10")
+
+# 3. 创建变量标签映射
+label_map <- data.frame(
+  variable = varlist,
+  label = c("自评健康状况", "生活自理能力总分", "生活自理能力", "工具型生活自理能力总分",
+            "工具型生活自理能力", "经济支持", "居住情况", "居住状态", "探访频率",
+            "照料支持", "情感支持", "年龄", "性别", "受教育程度", "工作类型",
+            "婚姻状况", "户口类型", "社会保险", "医疗保险", "慢性病",
+            "吸烟情况", "饮酒情况", "体育锻炼", "子女数")
+)
+
+# 4. 生成描述性统计
+summary_stats <- final_data[ , varlist]
+summary_stats <- summarise(summary_stats, across(
+  all_of(varlist),
+  list(
+    count = ~sum(!is.na(.)),
+    mean = ~mean(., na.rm = TRUE),
+    sd = ~sd(., na.rm = TRUE),
+    min = ~min(., na.rm = TRUE),
+    p50 = ~median(., na.rm = TRUE),
+    max = ~max(., na.rm = TRUE)
+  ),
+  .names = "{.col}_{.fn}"
+))
+
+# 调试：检查 summarise 后的数据
+cat("检查 summarise 后的数据:\n")
+print(head(summary_stats))
+cat("检查 summarise 后的列类型:\n")
+print(sapply(summary_stats, class))
+
+# 转换为长格式，修复分割问题
+summary_stats <- pivot_longer(summary_stats, 
+                              cols = everything(), 
+                              names_to = c("variable", "stat"), 
+                              names_pattern = "(.*)_(.*)",  # 使用正则表达式匹配
+                              values_to = "value")
+
+# 调试：检查 pivot_longer 后的数据
+cat("检查 pivot_longer 后的数据:\n")
+print(head(summary_stats, 10))
+cat("检查 pivot_longer 后的列类型:\n")
+print(sapply(summary_stats, class))
+
+# 检查重复值
+duplicates <- summary_stats %>%
+  group_by(variable, stat) %>%
+  summarise(n = n()) %>%
+  filter(n > 1)
+cat("检查重复值:\n")
+print(duplicates)
+
+# 转换为宽格式，确保唯一值
+summary_stats <- pivot_wider(summary_stats, 
+                             names_from = "stat", 
+                             values_from = "value",
+                             values_fn = list(value = mean))  # 如果有重复，取均值
+
+# 调试：检查 pivot_wider 后的数据
+cat("检查 pivot_wider 后的数据:\n")
+print(head(summary_stats))
+cat("检查 pivot_wider 后的列类型:\n")
+print(sapply(summary_stats, class))
+
+# 合并标签并选择列
+summary_stats <- left_join(summary_stats, label_map, by = "variable")
+summary_stats <- select(summary_stats, label, count, mean, sd, min, p50, max)
+
+# 调试：检查合并后的数据
+cat("检查合并后的数据:\n")
+print(head(summary_stats))
+cat("检查合并后的列类型:\n")
+print(sapply(summary_stats, class))
+
+# 确保所有列为数值型并四舍五入
+summary_stats <- mutate(summary_stats,
+                        count = as.numeric(count),
+                        mean = as.numeric(mean),
+                        sd = as.numeric(sd),
+                        min = as.numeric(min),
+                        p50 = as.numeric(p50),
+                        max = as.numeric(max))
+summary_stats <- mutate(summary_stats, 
+                        across(c(mean, sd, min, p50, max), ~round(., 2)))
+
+# 调试：检查最终数据
+cat("检查最终 summary_stats 数据:\n")
+print(head(summary_stats))
+cat("检查最终 summary_stats 列类型:\n")
+print(sapply(summary_stats, class))
+
+# 5. 在 R 窗口显示结果
+cat("直接打印 kable 表格:\n")
+print(kable(summary_stats,
+            digits = 2,
+            col.names = c("变量名", "观测数", "均值", "标准差", "最小值", "中位数", "最大值"),
+            caption = "描述性统计"))
+
+# 6. 导出描述性统计到 DOCX 文件
+stats_table <- flextable(summary_stats)
+stats_table <- set_header_labels(stats_table,
+                                 label = "变量名",
+                                 count = "观测数",
+                                 mean = "均值",
+                                 sd = "标准差",
+                                 min = "最小值",
+                                 p50 = "中位数",
+                                 max = "最大值")
+stats_table <- colformat_double(stats_table, j = 2:7, digits = 2)
+stats_table <- set_caption(stats_table, "描述性统计")
+stats_table <- autofit(stats_table)
+
+doc <- read_docx()
+doc <- body_add_flextable(doc, stats_table)
+print(doc, target = "C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/描述性统计0218.docx")
+
+cat("描述性统计已导出到 C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/描述性统计0218.docx\n")
+
+# 后续代码保持不变（分组、频数表、ANOVA）
+# 7. 对年龄和教育进行分组
+final_data$age_group <- cut(final_data$age, breaks = c(60, 70, 80, 150), 
+                            labels = c("60-69", "70-79", "80及以上"), 
+                            right = FALSE)
+final_data$edu_group <- cut(final_data$education, breaks = c(0, 1, 7, 10, 13, 18, 23),
+                            labels = c("无教育", "小学", "初中", "高中", "大学", "硕博"), 
+                            right = FALSE)
+
+# 8. 定义因变量和控制变量
+outcomes <- c("SHEALTH", "ADL", "IADL")
+controls <- c("age_group", "gender", "edu_group", "marriage_status", "hukou_type",
+              "social_insurance", "medical_insurance", "chronic_disease",
+              "smoking", "drinking", "exercise")
+
+# 9. 更新变量标签映射
+label_map <- rbind(label_map,
+                   data.frame(
+                     variable = c("age_group", "edu_group"),
+                     label = c("年龄组", "教育组")
+                   ))
+
+# 10. 生成所有控制变量的频数和占比表
+freq_tables <- list()
+for (ctrl in controls) {
+  freq_table <- group_by(final_data, !!sym(ctrl))
+  freq_table <- summarise(freq_table,
+                          freq = n(),
+                          pct = (n() / nrow(final_data)) * 100)
+  colnames(freq_table) <- c(label_map$label[label_map$variable == ctrl], "频数", "占比 (%)")
+  cat("\n频数表 for", ctrl, ":\n")
+  print(freq_table)
+  freq_tables[[ctrl]] <- freq_table
+}
+
+# 11. 单因素方差分析
+anova_results <- list()
+for (outcome in outcomes) {
+  anova_results[[outcome]] <- data.frame()
+  
+  for (ctrl in controls) {
+    if (!is.numeric(final_data[[ctrl]])) {
+      final_data[[ctrl]] <- as.factor(final_data[[ctrl]])
+    }
+    
+    formula <- as.formula(paste(outcome, "~", ctrl))
+    anova_fit <- tryCatch({
+      fit <- aov(formula, data = final_data)
+      summary_fit <- summary(fit)[[1]]
+      result <- data.frame(
+        "控制变量" = label_map$label[label_map$variable == ctrl],
+        "平方和" = summary_fit$"Sum Sq"[1],
+        "自由度" = summary_fit$"Df"[1],
+        "F 值" = summary_fit$"F value"[1],
+        "p 值" = summary_fit$"Pr(>F)"[1]
+      )
+      cat("\nANOVA:", outcome, "vs", ctrl, "\n")
+      print(result)
+      result
+    }, error = function(e) {
+      message(paste("ANOVA 失败:", outcome, "vs", ctrl, "错误:", e$message))
+      return(data.frame(
+        "控制变量" = label_map$label[label_map$variable == ctrl],
+        "平方和" = NA,
+        "自由度" = NA,
+        "F 值" = NA,
+        "p 值" = NA
+      ))
+    })
+    
+    anova_results[[outcome]] <- rbind(anova_results[[outcome]], anova_fit)
+  }
+}
+
+# 12. 创建 Word 文档并输出结果
+doc <- read_docx()
+
+# 添加所有控制变量的频数和占比表
+doc <- body_add_par(doc, "控制变量的频数和占比表", style = "heading 1")
+for (ctrl in controls) {
+  freq_table <- freq_tables[[ctrl]]
+  if (nrow(freq_table) > 0) {
+    freq_ft <- flextable(freq_table)
+    freq_ft <- colformat_double(freq_ft, j = 2, digits = 0)
+    freq_ft <- colformat_double(freq_ft, j = 3, digits = 2)
+    freq_ft <- autofit(freq_ft)
+    doc <- body_add_par(doc, paste("变量:", label_map$label[label_map$variable == ctrl]), style = "heading 2")
+    doc <- body_add_flextable(doc, freq_ft)
+  } else {
+    cat("警告: 频数表为空 -", ctrl, "\n")
+  }
+}
+
+# 添加 ANOVA 结果
+doc <- body_add_par(doc, "单因素方差分析结果", style = "heading 1")
+for (outcome in outcomes) {
+  anova_table <- anova_results[[outcome]]
+  if (nrow(anova_table) > 0) {
+    anova_ft <- flextable(anova_table)
+    anova_ft <- colformat_double(anova_ft, j = 2, digits = 2)
+    anova_ft <- colformat_double(anova_ft, j = 3, digits = 0)
+    anova_ft <- colformat_double(anova_ft, j = 4, digits = 2)
+    anova_ft <- colformat_double(anova_ft, j = 5, digits = 3)
+    anova_ft <- autofit(anova_ft)
+    doc <- body_add_par(doc, paste("因变量:", label_map$label[label_map$variable == outcome], "的单因素方差分析"), style = "heading 2")
+    doc <- body_add_par(doc, paste("ANOVA 结果表 -", label_map$label[label_map$variable == outcome]))
+    doc <- body_add_flextable(doc, anova_ft)
+  } else {
+    cat("警告: ANOVA 结果表为空 -", outcome, "\n")
+  }
+}
+
+# 保存文档
+print(doc, target = "C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/anova_results0223.docx")
+
+cat("单因素方差分析结果已导出到 C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/anova_results0223.docx\n")
+```
+
+
+## 构建logistic回归方程
