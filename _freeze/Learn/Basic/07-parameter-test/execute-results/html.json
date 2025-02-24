@@ -1,0 +1,15 @@
+{
+  "hash": "94a037eab3b29c0ca21afc8d7bb486cd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"参数检验\"\nauthor: \"Simonzhou\"\ndate: \"2025-02-24\"\nformat: \n  html:           # 输出格式为 HTML\n    self-contained: true  # 生成独立的 HTML 文件\n  pdf:            # 可选：如果需要 PDF 输出\n    default\nexecute:\n  echo: true      # 在输出中显示代码\n  eval: true      # 执行代码\n  warning: false  # 隐藏警告信息\n  message: false  # 隐藏消息\n---\n\n\n\n\n\n\n# 参数检验\n\n## 参数检验和非参数检验的区别\n\n| 维度 | 参数检验（Parameter test） | 非参数检验（Non-parameter tests） |\n|:-----------------|:--------------------------|:--------------------------|\n| 定义 | 以特定的总体分布为前提$\\rightarrow$? | 不依赖于总体分布特征$\\rightarrow$? |\n| 举例 | $Z$检验、$t$分布、$F$检验 | 秩和检验（Rank sum test）、卡方检验 |\n| 优点 | 1\\. 直接利用原始观测值计算统计量，检验效能高；<br>2.可对总体参数做出估计 | 1\\. 适用范围广、收集资料方便；<br>2. 多数非参数检验方法比较简便、易于掌握 |\n| 缺点 | 对数据分布有特定要求，适用范围窄 | 1\\. 没有充分利用原始数据，检验效能低；<br>2. 不能对总体参数做出推断 |\n| 适用范围 | 必须符合相应的要求，如两样本t检验要求：独立、正态、方差齐 | 1\\. 总体分布形式未知、分布类型不明确、偏态分布数据；<br>2. 等级资料；<br>3. 不满足参数检验条件的数据；<br>4. 数据一段或两端为无法测量的数值等。 |\n| 选用原则 | 1\\. 如果数据符合参数检验条件，或经过变换后符合参数检验的条件，最好用参数检验；<br>2. 参数检验误用为非参数检验，会导致检验效能降低。 |  |\n\n## $t$分布\n\n| 类目 | $t$分布 |\n|:---------------------|:-------------------------------------------------|\n| 概念 | 设从正态分布$N(\\mu,\\sigma^2)$随机抽取含量为n的样本，样本均数为$\\bar x$、标准差为$s$、则$t=\\frac{\\bar x-\\mu}{s_{\\bar x}}=\\frac{\\bar x-\\mu}{s/\\sqrt{n}}$，自由度为$n-1$。 |\n| 图形特点 | 一簇以0为中心，左右对称的单峰曲线；<br> 但随着自由度的增加，$t$分布曲线将越来越接近于标准正态分布曲线 |\n| 统计量值 | $t$的取值范围$-\\infty \\sim +\\infty$ |\n| 自由度 | $v=n-1$ |\n\n\n\n\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![t-Distribution Curves vs. Standard Normal Curve](07-parameter-test_files/figure-html/unnamed-chunk-1-1.png){fig-align='center' width=672}\n:::\n:::\n\n\n\n\n\n\n## 一个正态总体参数的估计\n\n### 点估计\n\n### 区间估计\n\n#### 总体均数$\\mu$的置信区间估计\n\n1.  正态（或正态近似法）\n2.  t分布法\n\n#### 总体方差$\\sigma^2$的置信区间估计\n\n## 两个正态总体的参数估计\n\n## 小结\n\n1.  样本均数的中心极限定理。从任意均数等于$\\mu$，方差等于$\\sigma^2$的一个总体中抽取样本量为$n$的简单随机样本，<font color=Red>当样本量$n$很大时，无论总体分布形态如何，样本均数的抽样分布近似服从正态分布</font>。\n2.  样本率的中心极限定理。从“成功”率为$\\pi$的总体中随机抽取样本量为$n$的样本，其样本“成功”率用$p$表示，<font color=Red>当$n\\pi>5$且$n(1-\\pi)>5$时，样本率$p$近似服从正态分布</font>。",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

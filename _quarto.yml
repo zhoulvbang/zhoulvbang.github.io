@@ -5,7 +5,7 @@ project:
 editor: visual
 
 jupyter: 
-  path: "C:/ProgramData/anaconda3/python.exe"
+  path: "C:/Users/asus/AppData/Local/Programs/Python/Python312/python.exe"
   kernelspec:
     name: "python3"
     language: "python"
@@ -15,6 +15,7 @@ jupyter:
     environment: base
     
 execute:
+  python: "C:/Users/asus/AppData/Local/Programs/Python/Python312/python.exe"
   eval: true
   warning: false
   cache: true # 开启运算结果缓存。将会在文件目录中生成后缀“_cache”的文件夹。
@@ -98,26 +99,17 @@ website:
       - text: 主页
         file: index.qmd
       - section: Learn/Basic/00-basic.qmd
-        contents:
-          - section: Learn/Basic/00-basic.qmd
-            contents:
-              - Learn/Basic/01-preview.qmd
+        contents: Learn/Basic/*.qmd
       - section: Guide/Guide-intro.qmd
         contents:
           - section: Guide/R/R-intro.qmd
-            contents:
-              - Guide/R/R-install.qmd
-              - Guide/R/2025-02-22-CLHLS.qmd
+            contents: Guide/R/*.qmd
           - section: Guide/Python/Python-intro.qmd
-            contents:
-              - Guide/Python/2025-02-20-Medical-expenses.qmd
+            contents: Guide/Python/*.qmd
           - section: Guide/SAS/SAS-intro.qmd
-            contents:
-              - Guide/SAS/SAS-install.qmd
-              - Guide/SAS/2025-02-16-CLHLS.qmd
+            contents: Guide/SAS/*.qmd
       - section: Quarto/quarto-intro.qmd
-        contents:
-          - Quarto/yaml_settings.qmd
+        contents: Quarto/*.qmd
 
   page-footer:
     left:

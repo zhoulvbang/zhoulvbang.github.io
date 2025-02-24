@@ -1,0 +1,149 @@
+---
+title: "离散型随机变量的概率分布"
+author: "Simonzhou"
+date: "2025-02-23"
+format: 
+  html:           # 输出格式为 HTML
+    self-contained: true  # 生成独立的 HTML 文件
+  pdf:            # 可选：如果需要 PDF 输出
+    default
+execute:
+  echo: true      # 在输出中显示代码
+  eval: true      # 执行代码
+  warning: false  # 隐藏警告信息
+  message: false  # 隐藏消息
+---
+
+```{r setup, include=FALSE}
+# 安装并加载必要的 R 包
+library(ggplot2)
+library(cowplot)
+# 设置代码块选项
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 离散型随机变量的概率分布
+
+![type of data](images\type%20of%20data.png "type of data")
+
+## 二项分布(Binomial Distribution)
+
+**定义：**$n$次伯努利试验，成功的次数为$X$的离散概率分布，其中每次试验的成功概率为$\pi$，失败的概率为$1-\pi$。
+
+-   $X$的总体均数$\mu_{x}=n\pi$
+-   总体方差$\sigma_{x}=n\pi(1-\pi)$
+
+*notice：*
+
+-   实际上，当$n=1$时，二项分布就是伯努利试验。
+-   伯努利试验要求：<font color=Red>互斥、独立、重复</font>
+
+```{r,fig.cap="Binomial Distribution with Different n/π",fig.show='hold', fig.align='center', echo=FALSE}
+library(ggplot2)
+library(gridExtra)
+
+# Parameters
+parameters <- list(
+  list(n = 5, pi = 0.3),
+  list(n = 10, pi = 0.3),
+  list(n = 20, pi = 0.5),
+  list(n = 30, pi = 0.3)
+)
+
+# Create a list to store the plots
+plots <- list()
+
+# Loop through each set of parameters and create the plot
+for (param in parameters) {
+  n <- param$n
+  pi <- param$pi
+  
+  x <- 0:n
+  pmf <- dbinom(x, size = n, prob = pi)
+  
+  title <- paste("Binomial Distribution (n =", n, ", π =", pi, ")")
+  
+  data <- data.frame(x, pmf)
+  
+  plot <- ggplot(data, aes(x = x, y = pmf)) +
+    geom_bar(stat = "identity", fill = "skyblue", width = 0.5) +
+    labs(title = title, x = "Number of Successes", y = "Probability") +
+    theme_minimal() +
+    theme(plot.title = element_text(hjust = 0.5))  # Center the plot title
+    
+  plots[[length(plots) + 1]] <- plot
+}
+
+# Arrange the plots in a 2x2 grid
+grid.arrange(grobs = plots, ncol = 2)
+```
+
+## 泊松分布(Poission Distribution)
+
+**定义：**描述在单位面积、单位时间或单位空间中罕见事件发生次数的概率分布为泊松分布，记作$P(\mu)$。泊松分布是二项分布的极限形式，<font color=Red>当一个二项分布的$n$很大，$\pi$很小时，此时，这个二项分布近似于泊松分布</font>。
+
+-   其总体<font color=Red>均数</font>与总体<font color=Red>方差</font>相等，记为$\mu$
+-   可加性：$X\sim P(\mu_{1})$，$Y\sim P(\mu_{2})$，若$X$与$Y$ 独立，则$X+Y \sim P(\mu_{1}+\mu_{1})$
+-   泊松分布只有一个参数$\lambda(\mu)$
+-   服从泊松分布的随机变量，其取值为$0$到$+\infty$的概率之和为1
+-   一般来说，当$\mu \ge20$时，可以认为近似正态分布
+
+```{r,echo=TRUE}
+library(ggplot2)
+# Define the range for x
+x <- 0:40
+
+# Define the lambda values
+lambdas <- c(1, 4, 10, 20)
+
+# Set up the plot area
+plot(x, dpois(x, lambdas[1]), type="n", ylim=c(0, max(dpois(x, lambdas))), 
+     xlab="x", ylab="Probability", main="Poisson Distribution with Different λ Values")
+
+# Plot the Poisson distributions for each lambda
+colors <- c("blue", "green", "red", "purple")
+for (i in 1:length(lambdas)) {
+  lines(x, dpois(x, lambdas[i]), type="b", pch=19, col=colors[i])
+}
+
+# Add a legend
+legend("topright", legend=paste("λ =", lambdas), col=colors, pch=19)
+```
+
+```{r,fig.cap="Poisson Distribution with Different λ=nπ",fig.show='hold', fig.align='center', echo=FALSE}
+library(ggplot2)
+# Parameters
+lambda_values <- c(1, 4, 10, 20)  # 添加了 lambda 值为 20
+symbols <- c("triangle", "circle", "square", "diamond")  # 添加一个形状用于表示 lambda 值为 20
+
+# 创建不同 lambda 值的数据
+data <- data.frame()
+for (i in 1:length(lambda_values)) {
+  lambda <- lambda_values[i]
+  x <- 0:40
+  pmf <- dpois(x, lambda = lambda)
+  symbol <- symbols[i]
+  
+  data <- rbind(data, data.frame(x, pmf, lambda, symbol))
+}
+
+# 创建绘图
+ggplot(data, aes(x = x, y = pmf, shape = symbol, color = factor(lambda))) +
+  geom_point(size = 3) +
+  geom_line(aes(y = pmf), linetype = "dotted", color = "black") +
+  labs(title = "Poisson Distribution with Different λ", x = "Number of Events", y = expression(Pr(X == K))) +
+  scale_shape_manual(values = symbols) +
+  scale_color_discrete(name = expression(lambda)) +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+## 二项分布的应用
+
+1.  统计描述角度：直接法计算概率 \[ Pr(X=K)=\frac{n!}{k!(n-k)!}\pi^{k}(1-^\pi){n-k},k=0,1,2,3,\cdots,n \]
+2.  统计推断角度：区间估计、假设检验
+
+## 泊松分布的应用
+
+1.  统计描述角度：直接法计算概率 \[ Pr(X=K)=\frac{e^{-\mu}\mu^{k}}{k!},k=0,1,2,\cdots \]
+2.  统计推断角度：区间估计、假设检验

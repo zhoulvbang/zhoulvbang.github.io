@@ -40,17 +40,16 @@ Epidemiologists, in response to a health emergency or as a result of systematic 
 
 按照大类再细分的话会有如下：
 
--   统计学
-    -   医学统计学（基础篇）
-    -   贝叶斯统计
-    -   最大似然统计
--   统计软件的使用
-    -   R
-    -   Python
-    -   SAS
-    -   Stata
-    -   Quarto
--   项目记录
-    -   Kaggle
--   读书笔记
-
+- 统计学
+  -   医学统计学（基础篇）
+  -   贝叶斯统计
+  -   最大似然统计
+- 统计软件的使用
+  -   R
+  -   Python
+  -   SAS
+  -   Stata
+  -   Quarto
+- 项目记录
+  -   Kaggle
+- 读书笔记

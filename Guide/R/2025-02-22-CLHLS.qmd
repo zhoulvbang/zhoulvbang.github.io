@@ -489,5 +489,4 @@ print(doc, target = "C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/anova_result
 cat("单因素方差分析结果已导出到 C:/Users/asus/Desktop/test/CLHLS/Analysis-0214/anova_results0223.docx\n")
 ```
 
-
 ## 构建logistic回归方程

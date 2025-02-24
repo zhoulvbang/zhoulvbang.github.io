@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "医学统计学习笔记",
     "section": "",
-    "text": "本书的前身是开始于23年暑假的Rmarkdown笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页，由于Quarto的出现和发展，感觉到它的强大与便利，遂用Quarto重制。\n现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.)；还有有一部分的项目分享（如果顺利的话）和读书报告。\nEpidemiologists, in response to a health emergency or as a result of systematic surveillance, first obtain and analyze observed data. They use data, observations, science, and theory as they work at identifying a pathogen (when unknown) behind an observed disease outbreak or as they proceed to plan or implement policies that ameliorates its impact.\n按照大类再细分的话会有如下：\n\n统计学\n\n医学统计学（基础篇）\n贝叶斯统计\n最大似然统计\n\n统计软件的使用\n\nR\nPython\nSAS\nStata\nQuarto\n\n项目记录\n\nKaggle\n\n读书笔记\n\n\n\nCitationBibTeX citation:@online{2025,\n  author = {, simonzhou},\n  title = {医学统计学习笔记},\n  date = {2025-02-22},\n  url = {https://github.com/zhoulvbang/Med-Stat-Notes},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nsimonzhou. 2025. “医学统计学习笔记.” February 22, 2025. https://github.com/zhoulvbang/Med-Stat-Notes.",
+    "text": "本书的前身是开始于23年暑假的Rmarkdown笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页，由于Quarto的出现和发展，感觉到它的强大与便利，遂用Quarto重制。\n现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.)；还有有一部分的项目分享（如果顺利的话）和读书报告。\nEpidemiologists, in response to a health emergency or as a result of systematic surveillance, first obtain and analyze observed data. They use data, observations, science, and theory as they work at identifying a pathogen (when unknown) behind an observed disease outbreak or as they proceed to plan or implement policies that ameliorates its impact.\n按照大类再细分的话会有如下：\n\n统计学\n\n医学统计学（基础篇）\n贝叶斯统计\n最大似然统计\n\n统计软件的使用\n\nR\nPython\nSAS\nStata\nQuarto\n\n项目记录\n\nKaggle\n\n读书笔记\n\n\n\nCitationBibTeX citation:@online{2025,\n  author = {, simonzhou},\n  title = {医学统计学习笔记},\n  date = {2025-02-24},\n  url = {https://github.com/zhoulvbang/Med-Stat-Notes},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nsimonzhou. 2025. “医学统计学习笔记.” February 24, 2025. https://github.com/zhoulvbang/Med-Stat-Notes.",
     "crumbs": [
       "Home",
       "主页"
@@ -490,35 +490,60 @@
     "href": "Quarto/config-giscus-github.html",
     "title": "Qmd config giscus",
     "section": "",
-    "text": "[giscus](https://giscus.app/zh-CN)\n\n\n\nGiscus是一个基于Github Discussion的评论插件，可以为无服务器端的博客运营者提供简易的部署和拓展。根据官网，其存在以下特性：\n开源！\n无跟踪，无广告，永久免费；\n无需数据库。全部数据均储存在 GitHub Discussions 中；\n支持自定义主题、多种语言、高度可配置；\n自动从 GitHub 拉取新评论与编辑；\n可自建服务！\n工作原理:\n  Giscus在加载时，会使用 GitHub Discussions 搜索 API 根据选定的映射方式（如 URL、pathname等）来查找与当前页面关联的discussion。如果找不到匹配的discussion，giscus bot就会在第一次有人留下评论或回应时自动创建一个discussion。\n\n  在评论时，访客必须按 GitHub OAuth 流程授权 giscus app 代表他发帖。或者访客也可以直接在 GitHub Discussion 里评论。你可以在 GitHub 上管理评论。\n\n\n\n\n首先要在GitHub建一个开放、可以使用Discussion的仓库，命名可以根据自己需要来，不能同网站仓库一致，因为独立存放评论内容。\n\n创建仓库完成后，请点击仓库最后一个选项setting，往下滑，找到Features功能区中的Discussion，点击勾选，开启仓库的Discussion功能，并安装giscus app ，点击连接并且install到对应新建的仓库就可以了。\n\n\n\n\n\n\nhttps://github.com/apps/giscus\n\nGiscus 应用库可以帮助你更方便地管理设置。通过上述链接进入网页进行安装：\n\n安装完成后转到如下页面，选择已创建好的comments仓库作为评论仓库。\n\n\n\n\n进入&lt;https://giscus.app/zh-CN&gt;配置页面，在该页面中根据自己的需求，选择配置。\n\n仓库选项是必须的，你需要把你创建好的comments仓库输入其中。\n选择合适的分类：\n\n嵌入到网站，在上述配置完成后，会生成一段script，将其放置在你想要展示评论的位置即可。"
+    "text": "[giscus](https://giscus.app/zh-CN)\n\n\n\nGiscus是一个基于Github Discussion的评论插件，可以为无服务器端的博客运营者提供简易的部署和拓展。根据官网，其存在以下特性：\n开源！\n无跟踪，无广告，永久免费；\n无需数据库。全部数据均储存在 GitHub Discussions 中；\n支持自定义主题、多种语言、高度可配置；\n自动从 GitHub 拉取新评论与编辑；\n可自建服务！\n工作原理:\n  Giscus在加载时，会使用 GitHub Discussions 搜索 API 根据选定的映射方式（如 URL、pathname等）来查找与当前页面关联的discussion。如果找不到匹配的discussion，giscus bot就会在第一次有人留下评论或回应时自动创建一个discussion。\n\n  在评论时，访客必须按 GitHub OAuth 流程授权 giscus app 代表他发帖。或者访客也可以直接在 GitHub Discussion 里评论。你可以在 GitHub 上管理评论。\n\n\n\n\n首先要在GitHub建一个开放、可以使用Discussion的仓库，命名可以根据自己需要来，不能同网站仓库一致，因为独立存放评论内容。\n\n创建仓库完成后，请点击仓库最后一个选项setting，往下滑，找到Features功能区中的Discussion，点击勾选，开启仓库的Discussion功能，并安装giscus app ，点击连接并且install到对应新建的仓库就可以了。\n\n\n\n\n\n\nhttps://github.com/apps/giscus\n\nGiscus 应用库可以帮助你更方便地管理设置。通过上述链接进入网页进行安装：\n\n安装完成后转到如下页面，选择已创建好的comments仓库作为评论仓库。\n\n\n\n\n进入&lt;https://giscus.app/zh-CN&gt;配置页面，在该页面中根据自己的需求，选择配置。\n\n仓库选项是必须的，你需要把你创建好的comments仓库输入其中。\n选择合适的分类：\n\n嵌入到网站，在上述配置完成后，会生成一段script，将其放置在你想要展示评论的位置即可。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Qmd config giscus"
+    ]
   },
   {
     "objectID": "Quarto/config-giscus-github.html#什么是giscus",
     "href": "Quarto/config-giscus-github.html#什么是giscus",
     "title": "Qmd config giscus",
     "section": "",
-    "text": "Giscus是一个基于Github Discussion的评论插件，可以为无服务器端的博客运营者提供简易的部署和拓展。根据官网，其存在以下特性：\n开源！\n无跟踪，无广告，永久免费；\n无需数据库。全部数据均储存在 GitHub Discussions 中；\n支持自定义主题、多种语言、高度可配置；\n自动从 GitHub 拉取新评论与编辑；\n可自建服务！\n工作原理:\n  Giscus在加载时，会使用 GitHub Discussions 搜索 API 根据选定的映射方式（如 URL、pathname等）来查找与当前页面关联的discussion。如果找不到匹配的discussion，giscus bot就会在第一次有人留下评论或回应时自动创建一个discussion。\n\n  在评论时，访客必须按 GitHub OAuth 流程授权 giscus app 代表他发帖。或者访客也可以直接在 GitHub Discussion 里评论。你可以在 GitHub 上管理评论。"
+    "text": "Giscus是一个基于Github Discussion的评论插件，可以为无服务器端的博客运营者提供简易的部署和拓展。根据官网，其存在以下特性：\n开源！\n无跟踪，无广告，永久免费；\n无需数据库。全部数据均储存在 GitHub Discussions 中；\n支持自定义主题、多种语言、高度可配置；\n自动从 GitHub 拉取新评论与编辑；\n可自建服务！\n工作原理:\n  Giscus在加载时，会使用 GitHub Discussions 搜索 API 根据选定的映射方式（如 URL、pathname等）来查找与当前页面关联的discussion。如果找不到匹配的discussion，giscus bot就会在第一次有人留下评论或回应时自动创建一个discussion。\n\n  在评论时，访客必须按 GitHub OAuth 流程授权 giscus app 代表他发帖。或者访客也可以直接在 GitHub Discussion 里评论。你可以在 GitHub 上管理评论。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Qmd config giscus"
+    ]
   },
   {
     "objectID": "Quarto/config-giscus-github.html#如何使用giscus",
     "href": "Quarto/config-giscus-github.html#如何使用giscus",
     "title": "Qmd config giscus",
     "section": "",
-    "text": "首先要在GitHub建一个开放、可以使用Discussion的仓库，命名可以根据自己需要来，不能同网站仓库一致，因为独立存放评论内容。\n\n创建仓库完成后，请点击仓库最后一个选项setting，往下滑，找到Features功能区中的Discussion，点击勾选，开启仓库的Discussion功能，并安装giscus app ，点击连接并且install到对应新建的仓库就可以了。"
+    "text": "首先要在GitHub建一个开放、可以使用Discussion的仓库，命名可以根据自己需要来，不能同网站仓库一致，因为独立存放评论内容。\n\n创建仓库完成后，请点击仓库最后一个选项setting，往下滑，找到Features功能区中的Discussion，点击勾选，开启仓库的Discussion功能，并安装giscus app ，点击连接并且install到对应新建的仓库就可以了。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Qmd config giscus"
+    ]
   },
   {
     "objectID": "Quarto/config-giscus-github.html#安装giscus-app",
     "href": "Quarto/config-giscus-github.html#安装giscus-app",
     "title": "Qmd config giscus",
     "section": "",
-    "text": "https://github.com/apps/giscus\n\nGiscus 应用库可以帮助你更方便地管理设置。通过上述链接进入网页进行安装：\n\n安装完成后转到如下页面，选择已创建好的comments仓库作为评论仓库。"
+    "text": "https://github.com/apps/giscus\n\nGiscus 应用库可以帮助你更方便地管理设置。通过上述链接进入网页进行安装：\n\n安装完成后转到如下页面，选择已创建好的comments仓库作为评论仓库。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Qmd config giscus"
+    ]
   },
   {
     "objectID": "Quarto/config-giscus-github.html#配置giscus",
     "href": "Quarto/config-giscus-github.html#配置giscus",
     "title": "Qmd config giscus",
     "section": "",
-    "text": "进入&lt;https://giscus.app/zh-CN&gt;配置页面，在该页面中根据自己的需求，选择配置。\n\n仓库选项是必须的，你需要把你创建好的comments仓库输入其中。\n选择合适的分类：\n\n嵌入到网站，在上述配置完成后，会生成一段script，将其放置在你想要展示评论的位置即可。"
+    "text": "进入&lt;https://giscus.app/zh-CN&gt;配置页面，在该页面中根据自己的需求，选择配置。\n\n仓库选项是必须的，你需要把你创建好的comments仓库输入其中。\n选择合适的分类：\n\n嵌入到网站，在上述配置完成后，会生成一段script，将其放置在你想要展示评论的位置即可。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Qmd config giscus"
+    ]
   },
   {
     "objectID": "Guide/Python/Python-intro.html",
@@ -563,6 +588,180 @@
       "统计软件使用指南",
       "R introduction",
       "CLHLS Data Analysis by R"
+    ]
+  },
+  {
+    "objectID": "Learn/Basic/10-regression-correlation.html",
+    "href": "Learn/Basic/10-regression-correlation.html",
+    "title": "简单线性相关和回归",
+    "section": "",
+    "text": "two variables relationship\n\n\n\n\n\nThe basic process of straight-line regression analysis\n\n\n\n\n\n\n\n\n名称\n适用条件\n\n\n\nPearson直线相关系数\n双变量正态分布的资料\\(\\rightarrow\\)定量\\(\\rightarrow\\)类比t检验、方差分析\n\n\n列联系数\n非等级资料\\(\\rightarrow\\)分类\\(\\rightarrow\\)类比卡方检验\n\n\nSpearman秩相关系数\n不满足双变量正态分布、分布未知、等级资料\\(\\rightarrow\\)定量+分类\\(\\rightarrow\\)类比秩和检验\n\n\n\n\n\n\nDraw a scatterplot\n\n\n选择一组数据集的“最佳拟合直线”，需要设法通过观测数据确定参数\\(\\alpha\\)与\\(\\beta\\)的估计值a和b，使得直线\n\\[\\hat y=a+bx\\]\n能最佳地反映\\((x_i,y_i)\\)之间的变化关系，该直线称为一元回归直线。\n常用最小二乘估计法（least squares estimation）来最佳直线，其基本原理是通过最小化残差平方和，使得各观测点到回归直线的纵向距离的平方和最小。\n\\[\n\\begin{cases}\na=\\bar y-b \\bar x\\\\\nb=\\frac{\\sum\\limits_{i=1}^n x_i y_i - \\frac{1}{n}(\\sum\\limits_{i=1}^n x_i)(\\sum\\limits_{i=1}^n y_i)}{\\sum\\limits_{i=1}^n x_i^2 - \\frac{1}{n}(\\sum\\limits_{i=1}^n x_i)^2}\n\\end{cases}\n\\] 为方便，引入以下记号： \\[\nSS_{xx}=\\sum_{i}(x_i-\\bar x)^2=\\sum_{i}x_i^2-\\frac{1}{n}(\\sum_{i}x_i)^2\\\\\nSS_{yy}=\\sum_{i}(y_i-\\bar y)^2=\\sum_{i}y_i^2-\\frac{1}{n}(\\sum_{i}y_i)^2\\\\\nSS_{xy}=\\sum_{i}(x_i-\\bar x)(y_i-\\bar y)=\\sum_{i}x_i y_i-\\frac{1}{n}(\\sum_{i}x_i)(\\sum_{i}y_i)\n\\] 其中，\\(SS_{xx}\\)和\\(SS_{yy}\\)是离均差平方和，\\(SS_{xy}\\)称为离均差积和。\n这样可以简化为： \\[\n\\begin{cases}\na=\\bar y-b \\bar x\\\\\nb=\\frac{SS_{xy}}{SS_{xx}}\n\\end{cases}\n\\]\n\n\nF检验\n\n\\(y_i\\)的总离均差平方和为：\n\\[SS_{yy}=\\sum_{i}(y_i-\\bar y)^2\\] 对其做分解，得到等式：\n\\[SS_{yy}=\\sum_{i}^{n}(\\hat y_i-\\bar y)^2+\\sum_{i}^{n}(y_i-\\hat y_i)^2\\] \\(\\sum_{i}^{n}(\\hat y_i-\\bar y)^2\\)为回归平方和（regression sum of squares），记为\\(SS_R\\)，表示回归估计值\\(\\hat y_i\\)与均数\\(\\bar y\\)的离差平方和，其公式为：\n\\[\n\\begin{align}\nSS_{yy} &= \\sum_{i=1}^{n}(\\hat y_i - \\bar y)^2 \\\\\n        &= \\sum_{i=1}^{n}[a + bx_i - (a + b\\bar x)]^2 \\\\\n        &= SS_{xx}b^2 \\\\\n        &= SS_{xy}b\n\\end{align}\n\\] 显然，回归平方和\\(SS_{R}\\)反映的是在y的总变异中由x与y的直线回归关系解释的那部分变异。\\(SS_R\\)值越大，说明回归直线的拟合效果就越好。\n\\(\\sum_{i}^{n}(y_i-\\hat y_i)^2\\)为残差平方和（residual sum of squares），记为\\(SS_E\\)，表示观测值\\(y_i\\)与回归估计值\\(\\hat y_i\\)的离差平方和，其公式为： \\[SS_E=\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\\] \\(SS_E\\)反映了在总变异中扣除自变量x对因变量y的线性影响以后的其他因素（包括x对y的非线性影响和随机误差等）对y变异的影响，也就是在总平方和中无法用y和x线性回归关系解释的部分。\\(SS_E\\)值越小，说明回归直线的拟合效果就越好。\n对公式进行简化： \\[\\begin{align}\nSS_{yy}=&\\sum_{i}^{n}(\\hat y_i-\\bar y)^2+\\sum_{i}^{n}(y_i-\\hat y_i)^2\\\\\n=&SS_R+SS_E\n\\end{align}\\] 上述三个平方和，各有其相应的自由度\\(v\\)，并有如下关系： \\[v_{yy}=v_R+v_E\\\\\nv_{yy}=n-1,v_R=1,v_E=n-2\\]\n在\\(H_0\\)成立的条件下，有： \\[\\frac{SS_R}{\\sigma^2}\\sim \\chi^2(v_R),\\frac{SS_E}{\\sigma^2}\\sim \\chi^2(v_E)\\] 且\\(SS_R\\)和\\(SS_E\\)相互独立。\n检验统计量：\n\\[F=\\frac{SS_R/v_R}{SS_E/v_E}\\] 服从自由度\\(v_R=1,v_E=n-2\\)的F分布。如果y和x确实存在直线回归关系，那么回归所解释的变异\\(SS_R\\)应大于其他因素所解释的变异\\(SS_E\\)。由此可见，F检验正是建立在这个基础上的。\n对于给定的检验水准\\(\\alpha\\)， 如果\\(F&gt;F_{(v_R,v_E),1-\\alpha}\\)，则拒绝\\(H_0\\)，认为直线回归方程有统计学显著性；\n如果\\(F\\leq F_{(v_R,v_E),1-\\alpha}\\)，则不拒绝\\(H_0\\)，尚不能认为直线回归方程有统计学显著性。\n\nt检验法\n\n\n\n\n\n\n\n\n区别与联系\n类目\n内容\n\n\n\n区别\n资料要求\n1. 线性相关要求X,Y服从双变量正态分布，对这种资料进行回归分析称为\\(\\textrm{II}\\)型回归，即可以把X当自变量，也可以当因变量，反之亦然。2. 线性回归要求Y在给定X值时服从正态分布，X可以是精确测量和严格控制的变量，这时的回归称为型回归，即不可以把X当因变量，Y当自变量进行回归分析。\n\n\n\n\n应用\n1. 线性相关用来表达两个变量间的互依关系，两个变量的研究地位是相等的，谁做X，谁做Y都可以；2. 线性回归用来表达两个变量间的依存变化的数量关系，即一个变量（为因变量Y）如何依存于另一个变量（为自变量X）而变化，两个变量的研究地位是不相等的。\n\n\n\n意义\n1. 相关系数r说明具有线性关系的两个变量之间的密切程度和相关方向；2. 回归系数b表示X每变化一个单位所导致的Y的平均变化量。\n\n\n\nr和b的取值范围\nr没有单位，而b有单位（其单位是：Y的单位/X的单位），所以导致两者的取值范围不同；\\(-1 \\le r \\le 1\\),\\(-\\infty&lt;b&lt;+\\infty\\)\n\n\n\n\nr和b的计算公式不同\n\n\\(r=\\frac{l_{xy}}{\\sqrt{l_{xx}l_{yy}}}\\),\\(b=\\frac{l_{xy}}{l_{xx}}\\)\n\n\n\n联系\n符号\n对于既可以做相关又可作回归的同一组资料，计算出r与b的正负号相同\n\n\n\n假设检验\n对于同一组资料，相关系数和回归系数的假设检验等价。即有：\\(t_b=t_r\\)\n\n\n\n\n相互换算\n对于同一组资料，相关系数和回归系数可通过下式换算：\\(b=r\\frac{S_Y}{S_X}\\)，式中的\\(S_X,S_Y\\)分别是\\(X,Y\\)的标准差\n\n\n\n用回归解释相关\n又决定系数\\(R^2=\\frac{SS_{回}}{SS_{总}}\\)，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则\\(R^2\\)越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。\n\n\n\nnotice：关于双变量正态分布\n双元正态变量是指两个随机变量同时遵循正态分布的情况，通常记作 \\((X, Y) \\sim N(\\mu, \\Sigma)\\)，其中 \\(\\mu\\) 是均值向量，\\(\\Sigma\\) 是协方差矩阵。\n数学定义\n1.  均值向量：对于双元正态变量 $(X, Y)$，均值向量为：\n\\[\\mu = \\begin{pmatrix}\n\\mu_X \\\\\n\\mu_Y\n\\end{pmatrix}\\]\n其中 \\(\\mu_X\\) 和 \\(\\mu_Y\\) 分别是随机变量 \\(X\\) 和 \\(Y\\) 的均值。 2. 协方差矩阵：协方差矩阵为：\n\\[\\Sigma = \\begin{pmatrix}\n\\sigma_X^2 & \\sigma_{XY} \\\\\n\\sigma_{XY} & \\sigma_Y^2\n\\end{pmatrix}\\]\n其中 \\(\\sigma_X^2\\) 和 \\(\\sigma_Y^2\\) 是 \\(X\\) 和 \\(Y\\) 的方差，\\(\\sigma_{XY}\\) 是它们之间的协方差。\n性质\n•   边缘分布：$X$ 和 $Y$ 的边缘分布也是正态分布。\n•   条件分布：给定 $X$ 的值，$Y$ 的条件分布也是正态分布。\n•   相关性：协方差矩阵的值可以用来判断 X 和 Y 之间的相关性。如果 $\\sigma_{XY} &gt; 0$，则两者正相关；如果 $\\sigma_{XY} &lt; 0$，则负相关。\n示例\n假设有一组数据描述学生的身高 \\(X\\) 和体重 \\(Y\\)，并且假设 \\((X, Y)\\) 服从双元正态分布：\n•   均值向量：\n\\[\\mu = \\begin{pmatrix}\n170 \\\\\n65\n\\end{pmatrix}\\]\n表示身高的均值为 170 厘米，体重的均值为 65 千克。 • 协方差矩阵：\n\\[\\Sigma = \\begin{pmatrix}\n100 & 20 \\\\\n20 & 25\n\\end{pmatrix}\\]\n这里，身高的方差为 100，体重的方差为 25，协方差为 20，表示身高和体重之间存在正相关关系。\n在这个示例中，如果我们知道某个学生的身高为 180 厘米，我们可以利用条件分布来预测他的体重，这个体重的预测值也是正态分布。\n我们用一个图形来展示：\n\n## 安装和加载所需的包\n#install.packages(\"plotly\")\n#install.packages(\"mvtnorm\")\nlibrary(plotly)\nlibrary(mvtnorm)\nlibrary(webshot2)\n\n# 创建网格数据\nx &lt;- seq(150, 190, length.out = 100)\n#身高150-190，等距的100个值\ny &lt;- seq(50, 80, length.out = 100)\n#体重50-80，等距的100个值\ngrid &lt;- expand.grid(X = x, Y = y)\n#生成 x 和 y 的所有组合，用于构建一个网格数据框，以便计算多元正态分布的概率密度。\n\n# 设置均值和协方差矩阵\nmu &lt;- c(170, 65)\n#设置双元正态分布的均值向量，表示均值分别为身高 170 cm 和体重 65 kg\n\nsigma &lt;- matrix(c(100, 20, 20, 25), nrow = 2)\n#设置协方差矩阵，表示身高的方差为 100，体重的方差为 25，身高和体重之间的协方差为 20\n\n# 计算概率密度\nz &lt;- dmvnorm(as.matrix(grid), mean = mu, sigma = sigma)\n#计算每个网格点上双元正态分布的概率密度。\n\n# 将概率密度矩阵转换为适合绘图的形状\nz_matrix &lt;- matrix(z, nrow = 100, ncol = 100)\n\n# 绘制三维表面图\nplot_ly(x = x, y = y, z = z_matrix, type = \"surface\") %&gt;%\n  layout(title = list(text = \"双元正态分布的三维概率密度图\", y=0.95),\n         scene = list(xaxis = list(title = \"身高 (cm)\"),\n                      yaxis = list(title = \"体重 (kg)\"),\n                      zaxis = list(title = \"概率密度\")))\n\n\nBinary normal distribution\n\n\n注：上述图像在被转换为PDF文件时，会发生报错：Quarto 文档中包含了一些生成 HTML 输出的函数（比如交互式图表或其他 HTML 小部件），但你当前的目标输出格式是 PDF。由于 PDF 是静态格式，无法直接渲染 HTML 内容，Quarto 会报错并停止执行。\n解决方案，此章节不转换为PDF格式，或者：\n如果你仍想输出 PDF，但希望将 HTML 小部件作为静态截图嵌入，可以安装 R 的 webshot 或 webshot2 包。Quarto 会利用它们将 HTML 内容转换为图片。\n需要安装：\n\ninstall.packages(\"webshot2\")\n\n然后在这段程序的前部导入该包：library(webshot2)。",
+    "crumbs": [
+      "Home",
+      "医学统计学基础",
+      "简单线性相关和回归"
+    ]
+  },
+  {
+    "objectID": "Learn/Basic/10-regression-correlation.html#两变量关系分析",
+    "href": "Learn/Basic/10-regression-correlation.html#两变量关系分析",
+    "title": "简单线性相关和回归",
+    "section": "",
+    "text": "two variables relationship",
+    "crumbs": [
+      "Home",
+      "医学统计学基础",
+      "简单线性相关和回归"
+    ]
+  },
+  {
+    "objectID": "Learn/Basic/10-regression-correlation.html#常见相关系数",
+    "href": "Learn/Basic/10-regression-correlation.html#常见相关系数",
+    "title": "简单线性相关和回归",
+    "section": "",
+    "text": "The basic process of straight-line regression analysis\n\n\n\n\n\n\n\n\n名称\n适用条件\n\n\n\nPearson直线相关系数\n双变量正态分布的资料\\(\\rightarrow\\)定量\\(\\rightarrow\\)类比t检验、方差分析\n\n\n列联系数\n非等级资料\\(\\rightarrow\\)分类\\(\\rightarrow\\)类比卡方检验\n\n\nSpearman秩相关系数\n不满足双变量正态分布、分布未知、等级资料\\(\\rightarrow\\)定量+分类\\(\\rightarrow\\)类比秩和检验",
+    "crumbs": [
+      "Home",
+      "医学统计学基础",
+      "简单线性相关和回归"
+    ]
+  },
+  {
+    "objectID": "Learn/Basic/10-regression-correlation.html#简单直线回归",
+    "href": "Learn/Basic/10-regression-correlation.html#简单直线回归",
+    "title": "简单线性相关和回归",
+    "section": "",
+    "text": "Draw a scatterplot\n\n\n选择一组数据集的“最佳拟合直线”，需要设法通过观测数据确定参数\\(\\alpha\\)与\\(\\beta\\)的估计值a和b，使得直线\n\\[\\hat y=a+bx\\]\n能最佳地反映\\((x_i,y_i)\\)之间的变化关系，该直线称为一元回归直线。\n常用最小二乘估计法（least squares estimation）来最佳直线，其基本原理是通过最小化残差平方和，使得各观测点到回归直线的纵向距离的平方和最小。\n\\[\n\\begin{cases}\na=\\bar y-b \\bar x\\\\\nb=\\frac{\\sum\\limits_{i=1}^n x_i y_i - \\frac{1}{n}(\\sum\\limits_{i=1}^n x_i)(\\sum\\limits_{i=1}^n y_i)}{\\sum\\limits_{i=1}^n x_i^2 - \\frac{1}{n}(\\sum\\limits_{i=1}^n x_i)^2}\n\\end{cases}\n\\] 为方便，引入以下记号： \\[\nSS_{xx}=\\sum_{i}(x_i-\\bar x)^2=\\sum_{i}x_i^2-\\frac{1}{n}(\\sum_{i}x_i)^2\\\\\nSS_{yy}=\\sum_{i}(y_i-\\bar y)^2=\\sum_{i}y_i^2-\\frac{1}{n}(\\sum_{i}y_i)^2\\\\\nSS_{xy}=\\sum_{i}(x_i-\\bar x)(y_i-\\bar y)=\\sum_{i}x_i y_i-\\frac{1}{n}(\\sum_{i}x_i)(\\sum_{i}y_i)\n\\] 其中，\\(SS_{xx}\\)和\\(SS_{yy}\\)是离均差平方和，\\(SS_{xy}\\)称为离均差积和。\n这样可以简化为： \\[\n\\begin{cases}\na=\\bar y-b \\bar x\\\\\nb=\\frac{SS_{xy}}{SS_{xx}}\n\\end{cases}\n\\]\n\n\nF检验\n\n\\(y_i\\)的总离均差平方和为：\n\\[SS_{yy}=\\sum_{i}(y_i-\\bar y)^2\\] 对其做分解，得到等式：\n\\[SS_{yy}=\\sum_{i}^{n}(\\hat y_i-\\bar y)^2+\\sum_{i}^{n}(y_i-\\hat y_i)^2\\] \\(\\sum_{i}^{n}(\\hat y_i-\\bar y)^2\\)为回归平方和（regression sum of squares），记为\\(SS_R\\)，表示回归估计值\\(\\hat y_i\\)与均数\\(\\bar y\\)的离差平方和，其公式为：\n\\[\n\\begin{align}\nSS_{yy} &= \\sum_{i=1}^{n}(\\hat y_i - \\bar y)^2 \\\\\n        &= \\sum_{i=1}^{n}[a + bx_i - (a + b\\bar x)]^2 \\\\\n        &= SS_{xx}b^2 \\\\\n        &= SS_{xy}b\n\\end{align}\n\\] 显然，回归平方和\\(SS_{R}\\)反映的是在y的总变异中由x与y的直线回归关系解释的那部分变异。\\(SS_R\\)值越大，说明回归直线的拟合效果就越好。\n\\(\\sum_{i}^{n}(y_i-\\hat y_i)^2\\)为残差平方和（residual sum of squares），记为\\(SS_E\\)，表示观测值\\(y_i\\)与回归估计值\\(\\hat y_i\\)的离差平方和，其公式为： \\[SS_E=\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\\] \\(SS_E\\)反映了在总变异中扣除自变量x对因变量y的线性影响以后的其他因素（包括x对y的非线性影响和随机误差等）对y变异的影响，也就是在总平方和中无法用y和x线性回归关系解释的部分。\\(SS_E\\)值越小，说明回归直线的拟合效果就越好。\n对公式进行简化： \\[\\begin{align}\nSS_{yy}=&\\sum_{i}^{n}(\\hat y_i-\\bar y)^2+\\sum_{i}^{n}(y_i-\\hat y_i)^2\\\\\n=&SS_R+SS_E\n\\end{align}\\] 上述三个平方和，各有其相应的自由度\\(v\\)，并有如下关系： \\[v_{yy}=v_R+v_E\\\\\nv_{yy}=n-1,v_R=1,v_E=n-2\\]\n在\\(H_0\\)成立的条件下，有： \\[\\frac{SS_R}{\\sigma^2}\\sim \\chi^2(v_R),\\frac{SS_E}{\\sigma^2}\\sim \\chi^2(v_E)\\] 且\\(SS_R\\)和\\(SS_E\\)相互独立。\n检验统计量：\n\\[F=\\frac{SS_R/v_R}{SS_E/v_E}\\] 服从自由度\\(v_R=1,v_E=n-2\\)的F分布。如果y和x确实存在直线回归关系，那么回归所解释的变异\\(SS_R\\)应大于其他因素所解释的变异\\(SS_E\\)。由此可见，F检验正是建立在这个基础上的。\n对于给定的检验水准\\(\\alpha\\)， 如果\\(F&gt;F_{(v_R,v_E),1-\\alpha}\\)，则拒绝\\(H_0\\)，认为直线回归方程有统计学显著性；\n如果\\(F\\leq F_{(v_R,v_E),1-\\alpha}\\)，则不拒绝\\(H_0\\)，尚不能认为直线回归方程有统计学显著性。\n\nt检验法",
+    "crumbs": [
+      "Home",
+      "医学统计学基础",
+      "简单线性相关和回归"
+    ]
+  },
+  {
+    "objectID": "Learn/Basic/10-regression-correlation.html#直线相关与直线回归的比较",
+    "href": "Learn/Basic/10-regression-correlation.html#直线相关与直线回归的比较",
+    "title": "简单线性相关和回归",
+    "section": "",
+    "text": "区别与联系\n类目\n内容\n\n\n\n区别\n资料要求\n1. 线性相关要求X,Y服从双变量正态分布，对这种资料进行回归分析称为\\(\\textrm{II}\\)型回归，即可以把X当自变量，也可以当因变量，反之亦然。2. 线性回归要求Y在给定X值时服从正态分布，X可以是精确测量和严格控制的变量，这时的回归称为型回归，即不可以把X当因变量，Y当自变量进行回归分析。\n\n\n\n\n应用\n1. 线性相关用来表达两个变量间的互依关系，两个变量的研究地位是相等的，谁做X，谁做Y都可以；2. 线性回归用来表达两个变量间的依存变化的数量关系，即一个变量（为因变量Y）如何依存于另一个变量（为自变量X）而变化，两个变量的研究地位是不相等的。\n\n\n\n意义\n1. 相关系数r说明具有线性关系的两个变量之间的密切程度和相关方向；2. 回归系数b表示X每变化一个单位所导致的Y的平均变化量。\n\n\n\nr和b的取值范围\nr没有单位，而b有单位（其单位是：Y的单位/X的单位），所以导致两者的取值范围不同；\\(-1 \\le r \\le 1\\),\\(-\\infty&lt;b&lt;+\\infty\\)\n\n\n\n\nr和b的计算公式不同\n\n\\(r=\\frac{l_{xy}}{\\sqrt{l_{xx}l_{yy}}}\\),\\(b=\\frac{l_{xy}}{l_{xx}}\\)\n\n\n\n联系\n符号\n对于既可以做相关又可作回归的同一组资料，计算出r与b的正负号相同\n\n\n\n假设检验\n对于同一组资料，相关系数和回归系数的假设检验等价。即有：\\(t_b=t_r\\)\n\n\n\n\n相互换算\n对于同一组资料，相关系数和回归系数可通过下式换算：\\(b=r\\frac{S_Y}{S_X}\\)，式中的\\(S_X,S_Y\\)分别是\\(X,Y\\)的标准差\n\n\n\n用回归解释相关\n又决定系数\\(R^2=\\frac{SS_{回}}{SS_{总}}\\)，当总平方和的大小决定了相关的密切程度，回归平方和越接近总平方和，则\\(R^2\\)越接近1，相关的效果越好，说明回归效果越好，相关的密切程度也越高。\n\n\n\nnotice：关于双变量正态分布\n双元正态变量是指两个随机变量同时遵循正态分布的情况，通常记作 \\((X, Y) \\sim N(\\mu, \\Sigma)\\)，其中 \\(\\mu\\) 是均值向量，\\(\\Sigma\\) 是协方差矩阵。\n数学定义\n1.  均值向量：对于双元正态变量 $(X, Y)$，均值向量为：\n\\[\\mu = \\begin{pmatrix}\n\\mu_X \\\\\n\\mu_Y\n\\end{pmatrix}\\]\n其中 \\(\\mu_X\\) 和 \\(\\mu_Y\\) 分别是随机变量 \\(X\\) 和 \\(Y\\) 的均值。 2. 协方差矩阵：协方差矩阵为：\n\\[\\Sigma = \\begin{pmatrix}\n\\sigma_X^2 & \\sigma_{XY} \\\\\n\\sigma_{XY} & \\sigma_Y^2\n\\end{pmatrix}\\]\n其中 \\(\\sigma_X^2\\) 和 \\(\\sigma_Y^2\\) 是 \\(X\\) 和 \\(Y\\) 的方差，\\(\\sigma_{XY}\\) 是它们之间的协方差。\n性质\n•   边缘分布：$X$ 和 $Y$ 的边缘分布也是正态分布。\n•   条件分布：给定 $X$ 的值，$Y$ 的条件分布也是正态分布。\n•   相关性：协方差矩阵的值可以用来判断 X 和 Y 之间的相关性。如果 $\\sigma_{XY} &gt; 0$，则两者正相关；如果 $\\sigma_{XY} &lt; 0$，则负相关。\n示例\n假设有一组数据描述学生的身高 \\(X\\) 和体重 \\(Y\\)，并且假设 \\((X, Y)\\) 服从双元正态分布：\n•   均值向量：\n\\[\\mu = \\begin{pmatrix}\n170 \\\\\n65\n\\end{pmatrix}\\]\n表示身高的均值为 170 厘米，体重的均值为 65 千克。 • 协方差矩阵：\n\\[\\Sigma = \\begin{pmatrix}\n100 & 20 \\\\\n20 & 25\n\\end{pmatrix}\\]\n这里，身高的方差为 100，体重的方差为 25，协方差为 20，表示身高和体重之间存在正相关关系。\n在这个示例中，如果我们知道某个学生的身高为 180 厘米，我们可以利用条件分布来预测他的体重，这个体重的预测值也是正态分布。\n我们用一个图形来展示：\n\n## 安装和加载所需的包\n#install.packages(\"plotly\")\n#install.packages(\"mvtnorm\")\nlibrary(plotly)\nlibrary(mvtnorm)\nlibrary(webshot2)\n\n# 创建网格数据\nx &lt;- seq(150, 190, length.out = 100)\n#身高150-190，等距的100个值\ny &lt;- seq(50, 80, length.out = 100)\n#体重50-80，等距的100个值\ngrid &lt;- expand.grid(X = x, Y = y)\n#生成 x 和 y 的所有组合，用于构建一个网格数据框，以便计算多元正态分布的概率密度。\n\n# 设置均值和协方差矩阵\nmu &lt;- c(170, 65)\n#设置双元正态分布的均值向量，表示均值分别为身高 170 cm 和体重 65 kg\n\nsigma &lt;- matrix(c(100, 20, 20, 25), nrow = 2)\n#设置协方差矩阵，表示身高的方差为 100，体重的方差为 25，身高和体重之间的协方差为 20\n\n# 计算概率密度\nz &lt;- dmvnorm(as.matrix(grid), mean = mu, sigma = sigma)\n#计算每个网格点上双元正态分布的概率密度。\n\n# 将概率密度矩阵转换为适合绘图的形状\nz_matrix &lt;- matrix(z, nrow = 100, ncol = 100)\n\n# 绘制三维表面图\nplot_ly(x = x, y = y, z = z_matrix, type = \"surface\") %&gt;%\n  layout(title = list(text = \"双元正态分布的三维概率密度图\", y=0.95),\n         scene = list(xaxis = list(title = \"身高 (cm)\"),\n                      yaxis = list(title = \"体重 (kg)\"),\n                      zaxis = list(title = \"概率密度\")))\n\n\nBinary normal distribution\n\n\n注：上述图像在被转换为PDF文件时，会发生报错：Quarto 文档中包含了一些生成 HTML 输出的函数（比如交互式图表或其他 HTML 小部件），但你当前的目标输出格式是 PDF。由于 PDF 是静态格式，无法直接渲染 HTML 内容，Quarto 会报错并停止执行。\n解决方案，此章节不转换为PDF格式，或者：\n如果你仍想输出 PDF，但希望将 HTML 小部件作为静态截图嵌入，可以安装 R 的 webshot 或 webshot2 包。Quarto 会利用它们将 HTML 内容转换为图片。\n需要安装：\n\ninstall.packages(\"webshot2\")\n\n然后在这段程序的前部导入该包：library(webshot2)。",
+    "crumbs": [
+      "Home",
+      "医学统计学基础",
+      "简单线性相关和回归"
+    ]
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html",
+    "title": "Quarto与LaTeX的记录",
+    "section": "",
+    "text": "在2025-02-23迁移博客到本网站时遇到一些问题，主要是因为在相关与回归部分使用plotly包制作了一个三维图形，在以前的Rmarkdown博客中，因为未知原因导致从2024年中的一次更新开始就无法在生成PDF文件，所以这个问题没有被发现。\n简而言之就是使用plotly绘制了一个图形后，如果Quarto被指定要生成PDF文件，需要载入更多的R包且更新TeXLive的宏包来提供支持。\n## 安装和加载所需的包\n#install.packages(\"plotly\")\n#install.packages(\"mvtnorm\")\nlibrary(plotly)\nlibrary(mvtnorm)\nlibrary(webshot2)\n\n# 创建网格数据\nx &lt;- seq(150, 190, length.out = 100)\n#身高150-190，等距的100个值\ny &lt;- seq(50, 80, length.out = 100)\n#体重50-80，等距的100个值\ngrid &lt;- expand.grid(X = x, Y = y)\n#生成 x 和 y 的所有组合，用于构建一个网格数据框，以便计算多元正态分布的概率密度。\n\n# 设置均值和协方差矩阵\nmu &lt;- c(170, 65)\n#设置双元正态分布的均值向量，表示均值分别为身高 170 cm 和体重 65 kg\n\nsigma &lt;- matrix(c(100, 20, 20, 25), nrow = 2)\n#设置协方差矩阵，表示身高的方差为 100，体重的方差为 25，身高和体重之间的协方差为 20\n\n# 计算概率密度\nz &lt;- dmvnorm(as.matrix(grid), mean = mu, sigma = sigma)\n#计算每个网格点上双元正态分布的概率密度。\n\n# 将概率密度矩阵转换为适合绘图的形状\nz_matrix &lt;- matrix(z, nrow = 100, ncol = 100)\n\n# 绘制三维表面图\nplot_ly(x = x, y = y, z = z_matrix, type = \"surface\") %&gt;%\n  layout(title = list(text = \"双元正态分布的三维概率密度图\", y=0.95),\n         scene = list(xaxis = list(title = \"身高 (cm)\"),\n                      yaxis = list(title = \"体重 (kg)\"),\n                      zaxis = list(title = \"概率密度\")))\n\n\nBinary normal distribution\n上述图像在被转换为PDF文件时，会发生报错：Quarto 文档中包含了一些生成 HTML 输出的函数（比如交互式图表或其他 HTML 小部件），但你当前的目标输出格式是 PDF。由于 PDF 是静态格式，无法直接渲染 HTML 内容，Quarto 会报错并停止执行。"
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案1",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案1",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n1 解决方案1",
+    "text": "1 解决方案1\n此章节不转换为PDF格式。"
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案2",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案2",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n2 解决方案2",
+    "text": "2 解决方案2\n增加支持：如果你仍想输出 PDF，但希望将 HTML 小部件作为静态截图嵌入，可以安装 R 的 webshot 或 webshot2 包。Quarto 会利用它们将 HTML 内容转换为图片。\n需要安装：\n\ninstall.packages(\"webshot2\")\n\n然后在这段程序的前部导入该包：library(webshot2)。\n也可以使用\n\ninstall.packages(\"webshot\")\n\n但是使用 webshot 还需要安装 PhantomJS\n\nwebshot::install_phantomjs()"
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案3启用-prefer-html-true-选项",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方案3启用-prefer-html-true-选项",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n3 解决方案3：启用 prefer-html: true 选项\n",
+    "text": "3 解决方案3：启用 prefer-html: true 选项\n\n如果你不在乎 HTML 内容在 PDF 中不可见，可以通过添加 prefer-html: true 来跳过这个错误。这种方法会忽略 HTML 输出，PDF 中不会显示相关内容。\n\n\n在 .qmd 文件的 YAML 前置元数据中添加：\n\nformat: pdf: toc: true # 可选{yaml}"
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方法-4检查并移除-html-输出代码",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#解决方法-4检查并移除-html-输出代码",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n4 解决方法 4：检查并移除 HTML 输出代码\n",
+    "text": "4 解决方法 4：检查并移除 HTML 输出代码\n\n如果你的目标是纯 PDF 输出，且不需要 HTML 小部件，可以检查文档中的代码块，移除或调整生成 HTML 的部分。例如：\n\n如果使用了 R 的 plotly 或 htmlwidgets，将其替换为静态图形库（如 ggplot2）。\n检查是否有 {r, results='asis'} 或其他生成 HTML 的设置，改为适合 PDF 的输出。\n\n示例：\n将交互式图表改为静态图表：\n\n# 原代码（生成 HTML）\nlibrary(plotly)\nplot_ly(data, x = ~x, y = ~y, type = \"scatter\")\n\n# 修改后（适合 PDF）\nlibrary(ggplot2)\nggplot(data, aes(x = x, y = y)) + geom_point()"
+  },
+  {
+    "objectID": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#quarto调用texlive报错",
+    "href": "Quarto/yaml_settings_files/figure-html/quarto-LaTeX.html#quarto调用texlive报错",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n5 Quarto调用TeXLive报错",
+    "text": "5 Quarto调用TeXLive报错\n在使用方法一进行完善的过程中，terminal输出了一些关于TeX Live的信息：\n{bash， eval = FALSE} TeX Live infrastructure update in progress ... TeX Live infrastructure update in progress ... Detailed command logging to \"C:\\texlive\\2024\\temp\\update-self.log\" self update: texlive.infra (70084 -&gt; 73495) texlive.infra.windows (69813 -&gt; 71447) tlperl.windows (69939 -&gt; 71515) Infrastructure update finished successfully. You may now close this window.\n这是因为Quarto的预览过程中触发了TeX Live的更新，这里的输出显示已完成更新，但是preview .qmd文档仍然不顺利，怀疑没有正确更新，且因为太晚关闭了电脑，导致更新中断。\n试着从terminal对TeX Live进行更新，在cmd中使用如下命令\n\ntlmgr update --self --all\n\n你的Windows电脑可能会和我一样报错：\n\nC:\\Users\\asus&gt;tlmgr update --self --all\nLocale 'English_United States.936' is unsupported, and may crash the interpreter.\n\n这是因为：\n当你运行 tlmgr update --self --all 来更新 TeX Live 时，出现了 Locale 'English_United States.936' is unsupported, and may crash the interpreter 的警告。这表明 TeX Live 的包管理器（tlmgr）在你的系统区域设置（locale）下遇到了兼容性问题，可能是因为你的 Windows 系统使用了中文（代码页 936，简体中文 GBK）作为默认区域设置，而 tlmgr 默认期望一个支持的区域设置（如 UTF-8 或英语）。\n以下是解决这个问题的步骤：\n\n\n5.1 方案 1：检查系统区域设置\n\n\n查看当前区域设置：\n\n按 Win + R，输入 intl.cpl，回车，打开“区域”设置。\n在“格式”选项卡中，查看当前格式（可能是“中文（简体，中国）”）。\n点击“管理”选项卡 -&gt; “更改系统区域设置”，查看“当前系统区域设置”（可能是“中文（简体，中国）”）。\n\n\n\n问题原因：\n\n代码页 936（中文 GBK）不是 TeX Live 的 tlmgr 完全支持的区域设置，可能导致编码或解释器错误。\n\n\n\n\n5.2 方案 2：临时更改区域设置运行 tlmgr\n\n为了让 tlmgr 正常工作，可以临时将区域设置为英语（美国），运行更新后再改回。\n操作步骤：\n\n\n更改系统区域设置：\n\n按 Win + R，输入 intl.cpl。\n点击“管理”选项卡 -&gt; “更改系统区域设置”。\n在下拉菜单中选择“英语（美国）”（English (United States)）。\n勾选“Beta: 使用 UTF-8 提供全球语言支持”（推荐），然后点击“确定”。\n系统会提示重启，点击“立即重启”。\n\n\n\n运行更新：\n\n重启后，打开命令行（cmd）。\n\n输入：\ntlmgr update --self --all\n\n观察是否还有错误，等待更新完成。\n\n\n\n恢复区域设置（可选）：\n\n更新完成后，重复上述步骤，将区域设置改回“中文（简体，中国）”，再次重启。\n\n\n\n\n5.3 方案 3：使用环境变量绕过区域问题\n如果你不想更改系统区域设置，可以通过设置环境变量临时调整 tlmgr 的运行环境。\n操作步骤：\n\n打开命令行（cmd）。\n\n输入以下命令设置临时环境变量：\nset LC_ALL=en_US.UTF-8\n\n\n紧接着运行更新：\ntlmgr update --self --all\n\n\n检查是否成功执行。如果仍然报错，尝试：\nset LANG=en_US.UTF-8\ntlmgr update --self --all\n\n说明：\n\n\nLC_ALL 或 LANG 是控制区域设置的环境变量，设置为 en_US.UTF-8 可以让 tlmgr 在英语环境下运行，避免中文编码问题。\n这种方法无需重启，适合临时解决。\n\n\n5.4 方案 4：验证更新结果\n更新完成后，检查 TeX Live 是否正常工作： 1. 运行： tlmgr info --list installed 查看已安装的包列表，确保更新生效。 2. 返回 Quarto 项目，运行： quarto preview 确认是否还有 TeX 相关的问题。\n\n5.5 额外建议\n\n\n检查 TeX Live 安装： 如果问题持续存在，可能是 TeX Live 安装不完整。可以尝试重新安装：\n\n下载最新版 TeX Live（tug.org/texlive）。\n安装时选择“完整安装”以确保所有组件齐全。\n\n\n\n使用 PowerShell 或 WSL： 如果 cmd 仍然有问题，可以尝试在 PowerShell 或 Windows Subsystem for Linux (WSL) 中运行 tlmgr，这些环境可能更好地处理区域设置。\n\n\n5.6 推荐方案\n\n\n快速解决：用 Step 3 设置 LC_ALL=en_US.UTF-8，无需重启，最简单。\n\n彻底解决：用 Step 2 临时改为英语区域设置，更新后再改回。\n\n我采用了方案 1，在cmd中输入命令后，出现如下：\n\nC:\\Users\\asus&gt;tlmgr update --self --all\ntlmgr.pl: package repository https://mirrors.hust.edu.cn/CTAN/systems/texlive/tlnet (not verified: gpg unavailable)\ntlmgr.pl: saving backups to C:/texlive/2024/tlpkg/backups\ntlmgr.pl: no self-updates for tlmgr available\ntlmgr.pl: skipping forcibly removed package: extractbb\ntlmgr.pl: skipping forcibly removed package: extractbb.windows\n[  1/764, ??:??/??:??] update: ebgaramond [8780k] (66604 -&gt; 71069) ... done\n[  2/764, 00:16/42:39] update: ebgaramond-maths [567k] (52168 -&gt; 74174) ... done\n\n表示在更新中，这个过程大概需要45分钟左右。"
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html",
+    "href": "Quarto/quarto-LaTeX.html",
+    "title": "Quarto与LaTeX的记录",
+    "section": "",
+    "text": "在2025-02-23迁移博客到本网站时遇到一些问题，主要是因为在相关与回归部分使用plotly包制作了一个三维图形，在以前的Rmarkdown博客中，因为未知原因导致从2024年中的一次更新开始就无法在生成PDF文件，所以这个问题没有被发现。\n简而言之就是使用plotly绘制了一个图形后，如果Quarto被指定要生成PDF文件，需要载入更多的R包且更新TeXLive的宏包来提供支持。\n## 安装和加载所需的包\n#install.packages(\"plotly\")\n#install.packages(\"mvtnorm\")\nlibrary(plotly)\nlibrary(mvtnorm)\nlibrary(webshot2)\n\n# 创建网格数据\nx &lt;- seq(150, 190, length.out = 100)\n#身高150-190，等距的100个值\ny &lt;- seq(50, 80, length.out = 100)\n#体重50-80，等距的100个值\ngrid &lt;- expand.grid(X = x, Y = y)\n#生成 x 和 y 的所有组合，用于构建一个网格数据框，以便计算多元正态分布的概率密度。\n\n# 设置均值和协方差矩阵\nmu &lt;- c(170, 65)\n#设置双元正态分布的均值向量，表示均值分别为身高 170 cm 和体重 65 kg\n\nsigma &lt;- matrix(c(100, 20, 20, 25), nrow = 2)\n#设置协方差矩阵，表示身高的方差为 100，体重的方差为 25，身高和体重之间的协方差为 20\n\n# 计算概率密度\nz &lt;- dmvnorm(as.matrix(grid), mean = mu, sigma = sigma)\n#计算每个网格点上双元正态分布的概率密度。\n\n# 将概率密度矩阵转换为适合绘图的形状\nz_matrix &lt;- matrix(z, nrow = 100, ncol = 100)\n\n# 绘制三维表面图\nplot_ly(x = x, y = y, z = z_matrix, type = \"surface\") %&gt;%\n  layout(title = list(text = \"双元正态分布的三维概率密度图\", y=0.95),\n         scene = list(xaxis = list(title = \"身高 (cm)\"),\n                      yaxis = list(title = \"体重 (kg)\"),\n                      zaxis = list(title = \"概率密度\")))\n\n\nBinary normal distribution\n上述图像在被转换为PDF文件时，会发生报错：Quarto 文档中包含了一些生成 HTML 输出的函数（比如交互式图表或其他 HTML 小部件），但你当前的目标输出格式是 PDF。由于 PDF 是静态格式，无法直接渲染 HTML 内容，Quarto 会报错并停止执行。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html#解决方案1",
+    "href": "Quarto/quarto-LaTeX.html#解决方案1",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n1 解决方案1",
+    "text": "1 解决方案1\n此章节不转换为PDF格式。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html#解决方案2",
+    "href": "Quarto/quarto-LaTeX.html#解决方案2",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n2 解决方案2",
+    "text": "2 解决方案2\n增加支持：如果你仍想输出 PDF，但希望将 HTML 小部件作为静态截图嵌入，可以安装 R 的 webshot 或 webshot2 包。Quarto 会利用它们将 HTML 内容转换为图片。\n需要安装：\n\ninstall.packages(\"webshot2\")\n\n然后在这段程序的前部导入该包：library(webshot2)。\n也可以使用\n\ninstall.packages(\"webshot\")\n\n但是使用 webshot 还需要安装 PhantomJS\n\nwebshot::install_phantomjs()",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html#解决方案3启用-prefer-html-true-选项",
+    "href": "Quarto/quarto-LaTeX.html#解决方案3启用-prefer-html-true-选项",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n3 解决方案3：启用 prefer-html: true 选项\n",
+    "text": "3 解决方案3：启用 prefer-html: true 选项\n\n如果你不在乎 HTML 内容在 PDF 中不可见，可以通过添加 prefer-html: true 来跳过这个错误。这种方法会忽略 HTML 输出，PDF 中不会显示相关内容。\n\n\n在 .qmd 文件的 YAML 前置元数据中添加：\n\nformat: pdf: toc: true # 可选{yaml}",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html#解决方法-4检查并移除-html-输出代码",
+    "href": "Quarto/quarto-LaTeX.html#解决方法-4检查并移除-html-输出代码",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n4 解决方法 4：检查并移除 HTML 输出代码\n",
+    "text": "4 解决方法 4：检查并移除 HTML 输出代码\n\n如果你的目标是纯 PDF 输出，且不需要 HTML 小部件，可以检查文档中的代码块，移除或调整生成 HTML 的部分。例如：\n\n如果使用了 R 的 plotly 或 htmlwidgets，将其替换为静态图形库（如 ggplot2）。\n检查是否有 {r, results='asis'} 或其他生成 HTML 的设置，改为适合 PDF 的输出。\n\n示例：\n将交互式图表改为静态图表：\n\n# 原代码（生成 HTML）\nlibrary(plotly)\nplot_ly(data, x = ~x, y = ~y, type = \"scatter\")\n\n# 修改后（适合 PDF）\nlibrary(ggplot2)\nggplot(data, aes(x = x, y = y)) + geom_point()",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Quarto/quarto-LaTeX.html#quarto调用texlive报错",
+    "href": "Quarto/quarto-LaTeX.html#quarto调用texlive报错",
+    "title": "Quarto与LaTeX的记录",
+    "section": "\n5 Quarto调用TeXLive报错",
+    "text": "5 Quarto调用TeXLive报错\n在使用方法一进行完善的过程中，terminal输出了一些关于TeX Live的信息：\n{bash， eval = FALSE} TeX Live infrastructure update in progress ... TeX Live infrastructure update in progress ... Detailed command logging to \"C:\\texlive\\2024\\temp\\update-self.log\" self update: texlive.infra (70084 -&gt; 73495) texlive.infra.windows (69813 -&gt; 71447) tlperl.windows (69939 -&gt; 71515) Infrastructure update finished successfully. You may now close this window.\n这是因为Quarto的预览过程中触发了TeX Live的更新，这里的输出显示已完成更新，但是preview .qmd文档仍然不顺利，怀疑没有正确更新，且因为太晚关闭了电脑，导致更新中断。\n试着从terminal对TeX Live进行更新，在cmd中使用如下命令\n\ntlmgr update --self --all\n\n你的Windows电脑可能会和我一样报错：\n\nC:\\Users\\asus&gt;tlmgr update --self --all\nLocale 'English_United States.936' is unsupported, and may crash the interpreter.\n\n这是因为：\n当你运行 tlmgr update --self --all 来更新 TeX Live 时，出现了 Locale 'English_United States.936' is unsupported, and may crash the interpreter 的警告。这表明 TeX Live 的包管理器（tlmgr）在你的系统区域设置（locale）下遇到了兼容性问题，可能是因为你的 Windows 系统使用了中文（代码页 936，简体中文 GBK）作为默认区域设置，而 tlmgr 默认期望一个支持的区域设置（如 UTF-8 或英语）。\n以下是解决这个问题的步骤：\n\n\n5.1 方案 1：检查系统区域设置\n\n\n查看当前区域设置：\n\n按 Win + R，输入 intl.cpl，回车，打开“区域”设置。\n在“格式”选项卡中，查看当前格式（可能是“中文（简体，中国）”）。\n点击“管理”选项卡 -&gt; “更改系统区域设置”，查看“当前系统区域设置”（可能是“中文（简体，中国）”）。\n\n\n\n问题原因：\n\n代码页 936（中文 GBK）不是 TeX Live 的 tlmgr 完全支持的区域设置，可能导致编码或解释器错误。\n\n\n\n\n5.2 方案 2：临时更改区域设置运行 tlmgr\n\n为了让 tlmgr 正常工作，可以临时将区域设置为英语（美国），运行更新后再改回。\n操作步骤：\n\n\n更改系统区域设置：\n\n按 Win + R，输入 intl.cpl。\n点击“管理”选项卡 -&gt; “更改系统区域设置”。\n在下拉菜单中选择“英语（美国）”（English (United States)）。\n勾选“Beta: 使用 UTF-8 提供全球语言支持”（推荐），然后点击“确定”。\n系统会提示重启，点击“立即重启”。\n\n\n\n运行更新：\n\n重启后，打开命令行（cmd）。\n\n输入：\ntlmgr update --self --all\n\n观察是否还有错误，等待更新完成。\n\n\n\n恢复区域设置（可选）：\n\n更新完成后，重复上述步骤，将区域设置改回“中文（简体，中国）”，再次重启。\n\n\n\n\n5.3 方案 3：使用环境变量绕过区域问题\n如果你不想更改系统区域设置，可以通过设置环境变量临时调整 tlmgr 的运行环境。\n操作步骤：\n\n打开命令行（cmd）。\n\n输入以下命令设置临时环境变量：\nset LC_ALL=en_US.UTF-8\n\n\n紧接着运行更新：\ntlmgr update --self --all\n\n\n检查是否成功执行。如果仍然报错，尝试：\nset LANG=en_US.UTF-8\ntlmgr update --self --all\n\n说明：\n\n\nLC_ALL 或 LANG 是控制区域设置的环境变量，设置为 en_US.UTF-8 可以让 tlmgr 在英语环境下运行，避免中文编码问题。\n这种方法无需重启，适合临时解决。\n\n\n5.4 方案 4：验证更新结果\n更新完成后，检查 TeX Live 是否正常工作： 1. 运行： tlmgr info --list installed 查看已安装的包列表，确保更新生效。 2. 返回 Quarto 项目，运行： quarto preview 确认是否还有 TeX 相关的问题。\n\n5.5 额外建议\n\n\n检查 TeX Live 安装： 如果问题持续存在，可能是 TeX Live 安装不完整。可以尝试重新安装：\n\n下载最新版 TeX Live（tug.org/texlive）。\n安装时选择“完整安装”以确保所有组件齐全。\n\n\n\n使用 PowerShell 或 WSL： 如果 cmd 仍然有问题，可以尝试在 PowerShell 或 Windows Subsystem for Linux (WSL) 中运行 tlmgr，这些环境可能更好地处理区域设置。\n\n\n5.6 推荐方案\n\n\n快速解决：用 Step 3 设置 LC_ALL=en_US.UTF-8，无需重启，最简单。\n\n彻底解决：用 Step 2 临时改为英语区域设置，更新后再改回。\n\n我采用了方案 1，在cmd中输入命令后，出现如下：\n\nC:\\Users\\asus&gt;tlmgr update --self --all\ntlmgr.pl: package repository https://mirrors.hust.edu.cn/CTAN/systems/texlive/tlnet (not verified: gpg unavailable)\ntlmgr.pl: saving backups to C:/texlive/2024/tlpkg/backups\ntlmgr.pl: no self-updates for tlmgr available\ntlmgr.pl: skipping forcibly removed package: extractbb\ntlmgr.pl: skipping forcibly removed package: extractbb.windows\n[  1/764, ??:??/??:??] update: ebgaramond [8780k] (66604 -&gt; 71069) ... done\n[  2/764, 00:16/42:39] update: ebgaramond-maths [567k] (52168 -&gt; 74174) ... done\n\n表示在更新中，这个过程大概需要45分钟左右。",
+    "crumbs": [
+      "Home",
+      "Quarto introduction",
+      "Quarto与LaTeX的记录"
     ]
   }
 ]
