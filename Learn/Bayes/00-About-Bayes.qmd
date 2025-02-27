@@ -1,0 +1,23 @@
+---
+title: "贝叶斯与概率推理"
+author: "Simonzhou"
+date: "2025-02-28"
+format: 
+  html:           # 输出格式为 HTML
+    self-contained: true  # 生成独立的 HTML 文件
+  pdf:            # 可选：如果需要 PDF 输出
+    default
+execute:
+  echo: true      # 在输出中显示代码
+  eval: true      # 执行代码
+  warning: false  # 隐藏警告信息
+  message: false  # 隐藏消息
+---
+
+Bayes系列的笔记主要基于[Learning-Probabilistic-Graphical-Models-in-R](https://github.com/PacktPublishing/Learning-Probabilistic-Graphical-Models-in-R).
+
+皮埃尔-西蒙·拉普拉斯(Pierre-Simon Laplace,1749-1827)，法国数学家，也是有史以来最伟大的科学家之被认为是第一批理解数据收集重要性的人:他发现了数 -，不据不可靠，有不确定性，也就是今天说的有噪声。他也是第一个研究使用概率来处理不确定性等问题，并表示事件或信息信念度的人。
+
+在他的论文《概率的哲学》​（Essai philosophique sur lesprobabilités,1814）中，拉普拉斯给出了最初的支持新老数据推理的数学系统，其中的用户信念会在新数据可用的时候得到更新和改进。
+
+**概率是表示和处理不确定性的严密的数学方法**

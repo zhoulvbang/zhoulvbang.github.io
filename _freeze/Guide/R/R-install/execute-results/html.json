@@ -1,0 +1,12 @@
+{
+  "hash": "ff0777f549a7cdc22e0ae59817747fb3",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"MacOS \"\nauthor: \"Simonzhou\"\ndate: \"2025-02-19\"\nformat: \n  html:           # 输出格式为 HTML\n    self-contained: true  # 生成独立的 HTML 文件\n#  pdf:            # 可选：如果需要 PDF 输出\n#    default\n---\n\n\n\n\n1.  进入官网：<https://www.r-project.org/>\n\n2.  找到适合操作系统的安装包与合适的版本\n\n点击download R\n\n找个离你近的学校或者随便哪个都行\n\n根据电脑选择一下安装包\n\nmacOS需要看一下是Intel还是arm的CPU，arm目前在M1/M2上搭载\n\n下载到download中\n\n在download中查看，选中R-4.3.2-x86_64.pkg这个文件，右键后选择第一个option“open”\n\n3.  进入安装界面\n\n然后一直continue\n\n出现上面页面后，点击install后需要输入电脑密码，解锁后安装\n\n安装完成后可以选择保留安装包或者将其移入trash（废纸篓）\n\n安装完成后在Launchpad中找到R，双击进入操作界面\n\n进入后发现系统有点缺陷，因为是新电脑，有很多不完善的地方，找了一些办法解决\n\n``` bash\nDuring startup - Warning messages:  \n1: Setting LC_CTYPE failed, using \"C\"   \n2: Setting LC_COLLATE failed, using \"C\"   \n3: Setting LC_TIME failed, using \"C\"   \n4: Setting LC_MESSAGES failed, using \"C\"   \n5: Setting LC_MONETARY failed, using \"C\"   \n[R.app GUI 1.80 (8281) x86_64-apple-darwin20]    \nWARNING: You're using a non-UTF8 locale, therefore only ASCII characters will work. Please read R for Mac OS X FAQ (see Help) section 9 and adjust your system preferences accordingly.\n```\n\n以上是warning，解决办法是\n\n⌘+space(空格键）调出Spotlight Search，然后输入terminal再点击open，打开后输入locale查看本地的设置，得到如下\n\n\n\n\n```{bash,eval = FALSE}\nLANG=\"\" LC_COLLATE=\"C\" LC_CTYPE=\"UTF-8\" LC_MESSAGES=\"C\" LC_MONETARY=\"C\" LC_NUMERIC=\"C\" LC_TIME=\"C\" LC_ALL=\n```\n\n\n\n\n这些还没有配置好，进行一些配置：\n\n`{bash，eval = FALSE}        export LC_CTYPE=en_US.UTF-8 export LC_COLLATE=en_US.UTF-8 export LC_TIME=en_US.UTF-8 export LC_MESSAGES=en_US.UTF-8 export LC_MONETARY=en_US.UTF-8`\n\n这样就可以了。\n\n然后再安装Rstudio，**RStudio**是为[R语言](https://zh.wikipedia.org/wiki/R%E8%AA%9E%E8%A8%80)设计的一种[跨平台](https://zh.wikipedia.org/wiki/%E8%B7%A8%E5%B9%B3%E5%8F%B0)[集成开发环境](https://zh.wikipedia.org/wiki/%E6%95%B4%E5%90%88%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83)。其特色包括可客制化的[软件套件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E4%BB%B6%E5%A5%97%E4%BB%B6)视觉化界面与同团队开发的一系列[数据可视化](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96)与出版工具。\n\n在[Rstudio](https://www.rstudio.com/categories/rstudio-ide/)中下载合适的版本，按照上述操作再来亿遍即可。\n\n",
+    "supporting": [
+      "R-install_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

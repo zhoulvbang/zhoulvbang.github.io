@@ -65,6 +65,8 @@ website:
         menu:
           - text: "Basic"
             file: Learn/Basic/00-basic.qmd
+          - text: "Bayes"
+            file : Learn/Bayes/00-About-Bayes.qmd
       - text: "Guide"
         menu:
           - text: "Guide"
@@ -98,8 +100,12 @@ website:
     contents:
       - text: 主页
         file: index.qmd
-      - section: Learn/Basic/00-basic.qmd
-        contents: Learn/Basic/*.qmd
+      - section: 
+        contents: 
+          - section: Learn/Basic/00-basic.qmd
+            contents: Learn/Basic/*.qmd
+          - section: Learn/Bayes/00-About-Bayes.qmd
+            contents: Learn/Bayes/*.qmd
       - section: Guide/Guide-intro.qmd
         contents:
           - section: Guide/R/R-intro.qmd

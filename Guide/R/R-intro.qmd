@@ -1,7 +1,12 @@
 ---
 title: "R introduction"
-number-sections: false
-toc: false
+author: "Simonzhou"
+date: "2025-02-19"
+format: 
+  html:           # 输出格式为 HTML
+    self-contained: true  # 生成独立的 HTML 文件
+#  pdf:            # 可选：如果需要 PDF 输出
+#    default
 ---
 
-R的介绍
+R语言是一种自由软件编程语言与操作环境，主要用于统计分析、绘图以及数据挖掘。R由新西兰奥克兰大学的统计学家罗斯·伊哈卡和罗伯特·杰特曼开发，现在由R核心小组负责开发，同时也有其他用户编写了诸多外挂的软件包。R以S语言为基础，其词法作用域语义来自Scheme。R的后台程序大多由C语言、FORTRAN语言和R自己写成。
