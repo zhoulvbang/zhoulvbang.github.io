@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "医学统计学习笔记",
     "section": "",
-    "text": "本书的前身是开始于23年暑假的Rmarkdown笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页，由于Quarto的出现和发展，感觉到它的强大与便利，遂用Quarto重制。\n现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.)；还有有一部分的项目分享（如果顺利的话）和读书报告。\nEpidemiologists, in response to a health emergency or as a result of systematic surveillance, first obtain and analyze observed data. They use data, observations, science, and theory as they work at identifying a pathogen (when unknown) behind an observed disease outbreak or as they proceed to plan or implement policies that ameliorates its impact.\n按照大类再细分的话会有如下：\n\n统计学\n\n医学统计学（基础篇）\n贝叶斯统计\n最大似然统计\n\n统计软件的使用\n\nR\nPython\nSAS\nStata\nQuarto\n\n项目记录\n\nKaggle\n\n读书笔记\n\n\n\nCitationBibTeX citation:@online{2025,\n  author = {, simonzhou},\n  title = {医学统计学习笔记},\n  date = {2025-02-27},\n  url = {https://github.com/zhoulvbang/Med-Stat-Notes},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nsimonzhou. 2025. “医学统计学习笔记.” February 27, 2025. https://github.com/zhoulvbang/Med-Stat-Notes.",
+    "text": "本书的前身是开始于23年夏天的Rmarkdown笔记的制作，在考研的过程中，一些无聊又不想学习的时间被用来整理这些笔记和制作文档与网页，由于Quarto的出现和发展，感觉到它的强大与便利，遂用Quarto重制。\n现在重制这本学习笔记，按照初步构想，会继续完善卫生/医学统计学部分的内容，从低阶往高阶完善；再就是记录相关程序的使用技巧和学习记录（R、Python、SAS etc.）；还有有一部分的项目分享（如果顺利的话）和读书报告。\nEpidemiologists, in response to a health emergency or as a result of systematic surveillance, first obtain and analyze observed data. They use data, observations, science, and theory as they work at identifying a pathogen (when unknown) behind an observed disease outbreak or as they proceed to plan or implement policies that ameliorates its impact.\n按照大类再细分的话会有如下：\n\n统计学\n\n医学统计学（基础篇）\n贝叶斯统计\n最大似然统计\n\n统计软件的使用\n\nR\nPython\nSAS\nStata\nQuarto\n\n项目记录\n\nKaggle\n\n读书笔记\n\n\n\nCitationBibTeX citation:@online{2025,\n  author = {, simonzhou},\n  title = {医学统计学习笔记},\n  date = {2025-02-28},\n  url = {https://github.com/zhoulvbang/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nsimonzhou. 2025. “医学统计学习笔记.” February 28, 2025. https://github.com/zhoulvbang/.",
     "crumbs": [
       "Home",
       "主页"
@@ -25,61 +25,61 @@
   {
     "objectID": "Quarto/yaml_settings.html",
     "href": "Quarto/yaml_settings.html",
-    "title": "YAML设置",
+    "title": "Quarto yaml设置",
     "section": "",
     "text": "Quarto主要由三大部分组成：metadata, text, 和 code。其中metadata是文档开头写在”—“之间的句子，它采用的是YAML语法，所以有时候也被叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto文档的各种属性，比如编译文件类型、主题、代码块的执行行为以及目录等。在YAML metadata中采用正确的缩进十分重要。",
     "crumbs": [
       "Home",
       "Quarto introduction",
-      "YAML设置"
+      "Quarto yaml设置"
     ]
   },
   {
     "objectID": "Quarto/yaml_settings.html#sec-dateformat",
     "href": "Quarto/yaml_settings.html#sec-dateformat",
-    "title": "YAML设置",
+    "title": "Quarto yaml设置",
     "section": "\n2.1 date-format的设置",
     "text": "2.1 date-format的设置\ndate-format通过以下关键词来定义日期格式：\n\n\n\n\n\n\n\nStyle\nDescription\nExample\n\n\n\nfull\nA full date that includes the weekday name\nMonday, March 7, 2005\n\n\nlong\nA long date that includes a wide month name\nMarch 7, 2005\n\n\nmedium\nA medium date\nMar 7, 2005\n\n\nshort\nA short date with a numeric month\n3/7/05\n\n\niso\nA short date in ISO format\n2005-03-07\n\n\n\n也可以通过以下语法更加灵活的定义日期格式：\n\n\n\n\n\n\n\normat String\nOutput\nDescription\n\n\n\nYY\n18\nTwo-digit year\n\n\nYYYY\n2018\n四位数年份\n\n\nM\n1-12\nThe month, beginning at 1\n\n\nMM\n01-12\n两位数月份\n\n\nMMM\nJan-Dec\nThe abbreviated month name\n\n\nMMMM\nJanuary-December\nThe full month name\n\n\nD\n1-31\nThe day of the month\n\n\nDD\n01-31\n两位数日期\n\n\nd\n0-6\nThe day of the week, with Sunday as 0\n\n\ndd\nSu-Sa\nThe min name of the day of the week\n\n\nddd\nSun-Sat\nThe short name of the day of the week\n\n\ndddd\nSunday-Saturday\nThe name of the day of the week\n\n\nH\n0-23\nThe hour\n\n\nHH\n00-23\n两位数小时，24小时制\n\n\nh\n1-12\nThe hour, 12-hour clock\n\n\nhh\n01-12\nThe hour, 12-hour clock, 2-digits\n\n\nm\n0-59\nThe minute\n\n\nmm\n00-59\n两位数分钟\n\n\ns\n0-59\nThe second\n\n\nss\n00-59\nThe second, 2-digits\n\n\nSSS\n000-999\nThe millisecond, 3-digits\n\n\nZ\n+05:00\nThe offset from UTC, ±HH:mm\n\n\nA\nAM PM\n\n\n\na\nam pm\n\n\n\nDo\n1st 2nd … 31st\nDay of Month with ordinal\n\n\n\n可以通过”[]“添加自定义字符。通过这些语法，可以定制符合中文语法的日期格式，如：date-format: \"YYYY[年]M[月]D[日] HH:mm\"\n\n\n\n\n\n\nTip\n\n\n\n关于日期的详细指南，详见：https://quarto.org/docs/reference/dates.html。",
     "crumbs": [
       "Home",
       "Quarto introduction",
-      "YAML设置"
+      "Quarto yaml设置"
     ]
   },
   {
     "objectID": "Quarto/yaml_settings.html#编译html",
     "href": "Quarto/yaml_settings.html#编译html",
-    "title": "YAML设置",
+    "title": "Quarto yaml设置",
     "section": "\n10.1 编译HTML",
     "text": "10.1 编译HTML\n\n---\nformat: \n  html:\n    theme: \n      light: flatly \n      dark: darkly \n    embed-resources: false\n    code-tools: true\n    title-block-banner: images/banner.jpg \n    title-block-banner-color: \"black\"\n    toc: true\n    toc-title: 目录\n    toc-location: left\n    toc-depth: 2\n    toc-expand: 1\n    number-sections: true\n    number-depth: 3\n    anchor-sections: true\n    link-external-icon: true\n    link-external-newwindow: true\n    df-print: kable \n    code-link: true\n---\n\n\ntheme：主题。同 Section 3 。\nembed-resources：是否将所有源文件嵌入HTML文件以方便分享。默认为”false”。\ncode-tools：是否在网页右上角显示”&lt;code&gt;“按钮。点击该按钮可以看到Quarto文档的原始markdown代码。\n\ntitle-block-banner：标题横幅设置。title-block-banner有以下选项：\n\ntrue：将标题以网页横幅的形式展示，样式为them中所选样式的默认样式。\n具体颜色：如title-block-banner: \"#003262\"。\n图片路径：如title-block-banner: images/banner.jpeg。\n\n\ntoc相关设置：同 Section 4 。\nnumber-sections、number-depth：同 Section 5 。\nanchor-sections: 设置为true时，当鼠标移到各级标题上时会显示anchor link，方便我们复制直接定位到该标题的超链接。\nlink-external-icon：设置为true时会在外部链接上显示一个小图标。\nlink-external-newwindow：是否在新标签页打开外部链接。\ndf-print：表格输出样式\n\ncode-copy：设置代码复制按钮：\n\ntrue: 总是在代码块右上角显示代码复制按钮。\nfalse: 隐藏代码复制按钮。\nhover：（默认）当鼠标移过时显示代码复制按钮。\n\n\ncode-fold: 是否折叠代码。\ncode-link: 是否自动为函数加上超链接。该功能基于downlit包，可以自动为识别到的函数加上一个链接到官方文档的超链接。",
     "crumbs": [
       "Home",
       "Quarto introduction",
-      "YAML设置"
+      "Quarto yaml设置"
     ]
   },
   {
     "objectID": "Quarto/yaml_settings.html#sec-github-markdown",
     "href": "Quarto/yaml_settings.html#sec-github-markdown",
-    "title": "YAML设置",
+    "title": "Quarto yaml设置",
     "section": "\n10.2 编译GitHub Flavored Markdown（GFM）",
     "text": "10.2 编译GitHub Flavored Markdown（GFM）\n我们可以将Quarto文档转换为GitHub风格的Markdown文档（GitHub Flavored Markdown，GFM）。这可以用来生成GitHub项目的README.md文档。\n\n---\ntitle: \"My Project\"\nformat: \n  gfm:\n    identifier-prefix: readme # 标识符\n    # preview-mode: raw # 预览原始markdown\n    keep-yaml: true\n    toc: true\n    toc-depth: 1\n    number-sections: true\n    citation-location: document\n    output-file: \"README.md\" # 输出文档的文件名\n---",
     "crumbs": [
       "Home",
       "Quarto introduction",
-      "YAML设置"
+      "Quarto yaml设置"
     ]
   },
   {
     "objectID": "Quarto/yaml_settings.html#编译pdf",
     "href": "Quarto/yaml_settings.html#编译pdf",
-    "title": "YAML设置",
+    "title": "Quarto yaml设置",
     "section": "\n10.3 编译PDF",
     "text": "10.3 编译PDF\n如果要在rmarkdown、bookdown中使用PDF输出功能， 可以在在R中安装tinytex扩展包并安装TinyTeX编译软件：\n\ninstall.packages('tinytex')\ntinytex::install_tinytex()\n\n其中上面第一行命令安装R的tinytex扩展包， 第二行将下载LaTeX编译程序的服务器设置为清华大学tuna镜像站， 第三行安装LaTeX编译程序。\n如果安装成功， TinyTeX软件包在MS Windows系统中一般会安装在 C:\\Users\\用户名\\AppData\\Roaming\\TinyTeX目录中， 其中”用户名”应替换成系统当前用户名。 如果需要删除TinyTeX软件包， 只要直接删除那个子目录就可以。\n为了判断TinyTeX是否安装成功， 在RStudio中运行：\n\ntinytex::is_tinytex()\n\n结果应为TRUE, 出错或者结果为FALSE都说明安装不成功。\n当用户使用RMarkdown和tinytex包转换latex并编译为PDF时， 如果缺少某些latex宏包， tinytex会自动安装缺少的宏包。",
     "crumbs": [
       "Home",
       "Quarto introduction",
-      "YAML设置"
+      "Quarto yaml设置"
     ]
   },
   {
@@ -581,8 +581,8 @@
     "objectID": "Guide/R/2025-02-22-CLHLS.html#构建logistic回归方程",
     "href": "Guide/R/2025-02-22-CLHLS.html#构建logistic回归方程",
     "title": "CLHLS Data Analysis by R",
-    "section": "\n3.1 构建logistic回归方程",
-    "text": "3.1 构建logistic回归方程",
+    "section": "\n3.1 构建Logistic回归方程",
+    "text": "3.1 构建Logistic回归方程",
     "crumbs": [
       "Home",
       "统计软件使用指南",
@@ -762,6 +762,50 @@
       "Home",
       "Quarto introduction",
       "Quarto与LaTeX的记录"
+    ]
+  },
+  {
+    "objectID": "Learn/Bayes/00-About-Bayes.html",
+    "href": "Learn/Bayes/00-About-Bayes.html",
+    "title": "贝叶斯与概率推理",
+    "section": "",
+    "text": "Bayes系列的笔记主要基于Learning-Probabilistic-Graphical-Models-in-R.\n皮埃尔-西蒙·拉普拉斯(Pierre-Simon Laplace,1749-1827)，法国数学家，也是有史以来最伟大的科学家之被认为是第一批理解数据收集重要性的人:他发现了数 -，不据不可靠，有不确定性，也就是今天说的有噪声。他也是第一个研究使用概率来处理不确定性等问题，并表示事件或信息信念度的人。\n在他的论文《概率的哲学》​（Essai philosophique sur lesprobabilités,1814）中，拉普拉斯给出了最初的支持新老数据推理的数学系统，其中的用户信念会在新数据可用的时候得到更新和改进。\n概率是表示和处理不确定性的严密的数学方法。\n概率是一种量化常识推理和信念程度的工具。\n概率图模型，从数学的角度看，是一种表示几个变量概率分布的方法，也叫作联合概率分布。换句话说，它是一种表示几个变量共同出现的数值信念的工具。基于这种理解，虽然概率图模型看起来很简单，但是概率图模型强调的是对于许多变量概率分布的表示。",
+    "crumbs": [
+      "Home",
+      "贝叶斯与概率推理"
+    ]
+  },
+  {
+    "objectID": "Learn/Bayes/00-About-Bayes.html#联合概率分布",
+    "href": "Learn/Bayes/00-About-Bayes.html#联合概率分布",
+    "title": "贝叶斯与概率推理",
+    "section": "\n1 联合概率分布",
+    "text": "1 联合概率分布\n当我们同时考虑两个试验（投掷硬币2次和投掷一个骰子）的时候，我们对同时获得0、1或2的概率以及1、2、3、4、5或6的点数概率更感兴趣。这两个同时考虑的随机变量的概率分布写作 \\(P(N, D)\\) ，称作联合概率分布。\n一个概率图模型就是一个联合概率分布。除此之外，别无他物。\n联合概率分布的最后一个重要概念是边缘化（marginalization）。\n联合分布\\(P(X,Y)\\)的边缘分布\\(P(X)\\)可以通过下列操作获得：\n\\[P(X)=\\sum_y P(X,Y)\\]\n当Y值是连续值是，边缘化可以写作：\n\\(P(X)=\\int_{y} P(X,y) \\mathrm{d}y\\)。",
+    "crumbs": [
+      "Home",
+      "贝叶斯与概率推理"
+    ]
+  },
+  {
+    "objectID": "Learn/Bayes/00-About-Bayes.html#贝叶斯规则",
+    "href": "Learn/Bayes/00-About-Bayes.html#贝叶斯规则",
+    "title": "贝叶斯与概率推理",
+    "section": "\n2 贝叶斯规则",
+    "text": "2 贝叶斯规则\n\n2.1 条件概率\n条件概率是指在知道其他时间发生的条件下当前事件的概率。很明显，两个事件必须某种程度的依赖，否则一个事件的发生不会影响另一个事件。\n条件概率转化为公式如下：\n\\(P(X|Y)=\\frac{P(X,Y)}{P(Y)}\\)和\\(P(Y|X)=\\frac{P(X,Y)}{P(X)}\\)\n\n2.2 贝叶斯公式\n从上述两个公式推导出贝叶斯公式：\n\\(P(X|Y)=\\frac{{P(Y|X)}·P(X)}{P(Y)}\\)\n在这个公式中，我们把 \\(P(X|Y)\\) 叫做是给定\\(Y\\)下\\(X\\)的后验分布，因此，\\(P(X)\\) 叫做后验分布。",
+    "crumbs": [
+      "Home",
+      "贝叶斯与概率推理"
+    ]
+  },
+  {
+    "objectID": "Learn/Bayes/00-About-Bayes.html#例子机器与灯泡",
+    "href": "Learn/Bayes/00-About-Bayes.html#例子机器与灯泡",
+    "title": "贝叶斯与概率推理",
+    "section": "\n3 例子：机器与灯泡",
+    "text": "3 例子：机器与灯泡\n在构建贝叶斯统计的时候，我们总是需要建立两个部件：\n\n先验分布\n似然率\n\n先验分布使我们关于机器工作状态的初试信念。我们确定了第一个刻画机器状态的随机变量 \\(M\\) 。这个随机变量有两个状态 \\({working,broken}\\) 。我们相信机器是好的，是可以正常工作的，所以先验分布如下：\n\n\\(P(M=working)=0.99\\)\n\\(P(M=broken)=0.01\\)\n\n\n3.1 R代码的实现\n先验分布、似然率和数据序列\n\nprior &lt;- c(working=0.99, broken=0.01) \nlikelihood &lt;- rbind( \n    working = c(good = 0.99, bad = 0.01),broken = c(good = 0.6, bad = 0.4) \n) \ndata &lt;- c(\"bad\", \"bad\", \"bad\", \"bad\") \n\n贝叶斯更新函数\n\nbayes &lt;-function(prior, likelihood, data)\n{\nposterior &lt;-matrix(0, nrow =length(data), ncol =length(prior))\ndimnames(posterior) &lt;-list(data, names(prior))\ninitial_prior &lt;-prior\nfor (i in 1:length(data))\n{\nposterior[i, ] &lt;-\nprior *likelihood[, data[i]]/\nsum(prior *likelihood[, data[i]])\nprior &lt;-posterior[i, ]\n}\nreturn(rbind(initial_prior, posterior))\n}\n\n\n创建一个矩阵，存储后验分布的连续计算结果。\n\n\n然后对于每一个数据，给定当前先验概率计算后验概率：和之前的一样，你可以看到贝叶斯公式的R代码。\n最后，新的先验概率是当前的后验概率，而且同样的过程可以迭代。\n分布的演化情况\n\nmatplot(bayes(prior, likelihood, data), t ='b', \n        lty =1, pch =20,\n        col =c(3, 2))\n\n\n\n\n\n\n\n随着坏灯泡的增多，机器正常的概率快速下降（绿色线）。\n如果我们换一个先验分布，假设我们不知道机器是否可以正常工作，即好坏参半，我们给定如下概率：\n\nprior &lt;- c(working = 0.5, broken = 0.5)\nmatplot(bayes(prior, likelihood, data), t ='b', \n        lty =1, pch =20,\n        col =c(3, 2))\n\n\n\n\n\n\n\n这个曲线快速收敛，机器有问题的概率很高。\n再对数据变换一下，假设机器正常工作的概率是99%，我们观察10个灯泡，其中一个灯泡是坏的：\n\nprior =c(working =0.99, broken =0.01)\ndata =c(\"bad\", \"good\", \"good\", \"good\", \"good\", \"good\", \"good\",\"good\", \"good\", \"good\")\nmatplot(bayes(prior, likelihood, data), t ='b', pch =20, col =c(3, 2))\n\n\n\n\n\n\n\n算法在第一个灯泡处犹豫了一下，因为这么好的机器不太可能生产出一个坏灯泡。然后它又收敛到很高的概率，因为好灯泡的序列不会预示任何问题。",
+    "crumbs": [
+      "Home",
+      "贝叶斯与概率推理"
     ]
   }
 ]

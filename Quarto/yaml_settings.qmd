@@ -1,9 +1,19 @@
 ---
-title: "YAML设置"
+title: "Quarto yaml设置"
+author: "Simonzhou"
+date: "2025-02-22"
+format: 
+  html:           # 输出格式为 HTML
+    self-contained: true  # 生成独立的 HTML 文件
+  pdf:            # 可选：如果需要 PDF 输出
+    default
 execute:
-      eval: false
-      warning: false
+  echo: true      # 在输出中显示代码
+  eval: false      # 执行代码
+  warning: false  # 隐藏警告信息
+  message: false  # 隐藏消息
 ---
+
 
 **Quarto主要由三大部分组成：metadata, text, 和 code**。其中metadata是文档开头写在"---"之间的句子，它采用的是[YAML语法](https://en.wikipedia.org/wiki/YAML)，所以有时候也被叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto文档的各种属性，比如编译文件类型、主题、代码块的执行行为以及目录等。**在**YAML metadata**中采用正确的缩进十分重要**。
 
