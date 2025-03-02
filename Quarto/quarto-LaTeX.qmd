@@ -7,8 +7,8 @@ date-format: "YYYY[年]M[月]D[日] HH:mm"
 format: 
   html:           # 输出格式为 HTML
     self-contained: true  # 生成独立的 HTML 文件
-  pdf:            # 可选：如果需要 PDF 输出
-    default
+#  pdf:            # 可选：如果需要 PDF 输出
+#    default
 execute:
   echo: true      # 在输出中显示代码
   eval: true      # 执行代码
